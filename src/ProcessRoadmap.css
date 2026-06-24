@@ -1,0 +1,132 @@
+.process-s-section {
+  width: 100%;
+  padding: 120px 20px;
+  background-color: #F8F6F0; /* Off-white background from the design */
+  overflow: hidden;
+}
+
+.process-s-container {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  aspect-ratio: 1600 / 1950;
+  display: block;
+}
+
+.process-s-title {
+  position: absolute;
+  top: 0;
+  left: 2%;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  color: #070815;
+  margin: 0;
+  line-height: 1;
+}
+
+.process-s-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.process-s-text {
+  position: absolute;
+  z-index: 2;
+}
+
+.process-s-img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  object-position: left bottom;
+  margin-bottom: 16px;
+  border-radius: 8px; /* Added slight rounding if needed */
+}
+
+.process-s-text h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 1.55vw, 21px);
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+  margin-top: 0;
+  line-height: 1.25;
+}
+
+.process-s-text p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(12px, 1.2vw, 16px);
+  line-height: 1.5;
+  color: #4A4A4A;
+  margin: 0;
+}
+
+.process-mobile-list {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .process-s-section {
+    height: auto;
+    padding: 60px 20px;
+  }
+  .process-s-container {
+    display: none;
+  }
+  .process-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .process-mobile-item {
+    display: flex;
+    gap: 20px;
+  }
+  .process-mobile-num {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+  }
+  .process-s-img-mobile {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    object-position: left bottom;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+  .process-mobile-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .process-mobile-content p {
+    margin: 0;
+    color: #4A4A4A;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+  }
+  .process-s-title {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-bottom: 40px;
+    font-size: 40px;
+  }
+}

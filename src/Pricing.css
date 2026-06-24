@@ -1,0 +1,196 @@
+.pricing-section {
+  width: 100%;
+  padding: 120px 20px;
+  background-color: #FFFFFF; /* White background as requested */
+  box-sizing: border-box;
+}
+
+.pricing-main-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.pricing-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 800;
+  color: #070815;
+  margin: 0 0 16px 0;
+  letter-spacing: -1.5px;
+}
+
+.pricing-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(20px, 2.5vw, 24px);
+  font-weight: 700;
+  color: #070815;
+  margin: 0 0 60px 0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.pricing-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E6E3;
+  border-radius: 24px;
+  padding: 48px 36px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(7, 8, 21, 0.06);
+  border-color: #E06D20; /* Highlight hover with the theme orange color */
+}
+
+.pricing-card-header {
+  margin-bottom: 32px;
+}
+
+.plan-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #070815;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.plan-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #4A4A4A;
+  margin: 0;
+}
+
+.pricing-card-body {
+  flex-grow: 1;
+  margin-bottom: 40px;
+}
+
+.features-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #070815;
+  margin: 0 0 20px 0;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feature-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pricing-check-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1A1A;
+  line-height: 1.4;
+}
+
+.feature-sublist {
+  list-style: none;
+  padding-left: 32px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feature-subitem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.feature-subitem .bullet {
+  color: #9B9B9B;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.subitem-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.4;
+}
+
+.pricing-card-footer {
+  width: 100%;
+}
+
+.pricing-cta-btn {
+  width: 100%;
+  background-color: #070815;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+  text-align: center;
+}
+
+.pricing-cta-btn:hover {
+  background-color: #E06D20; /* Highlight hover with the theme orange color */
+  box-shadow: 0 8px 20px rgba(224, 109, 32, 0.25);
+}
+
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 80px 16px;
+  }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .pricing-card {
+    padding: 36px 24px;
+  }
+}

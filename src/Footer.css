@@ -1,0 +1,258 @@
+/* ===========================
+   FOOTER – Seamless blend from white
+   =========================== */
+
+.footer-section {
+  position: relative;
+  width: 100vw;
+  align-self: stretch;
+  margin-left: 0;
+  margin-bottom: -64px; /* Cancel the #root bottom padding */
+  background-color: #F0EDE4;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  min-height: 700px;
+}
+
+/* ---- Fade overlay: white → transparent ---- */
+.footer-fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 260px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #FFFFFF 15%,
+    rgba(255, 255, 255, 0.85) 35%,
+    rgba(255, 255, 255, 0.5) 55%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* ---- Background SVG ---- */
+.footer-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.footer-bg-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ---- Content layer ---- */
+.footer-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 200px 40px 50px 40px; /* Extra top padding to sit below the fade zone */
+}
+
+/* ---- Brand logo ---- */
+.footer-brand-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.9;
+}
+
+/* ---- Tagline ---- */
+.footer-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(26, 26, 26, 0.7);
+  margin: 0 0 32px 0;
+  text-align: center;
+  max-width: 420px;
+  letter-spacing: 0.2px;
+}
+
+/* ---- CTA Button ---- */
+.footer-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1A1A1A;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 60px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.footer-cta-btn:hover {
+  background: #333333;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.footer-cta-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.footer-cta-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ---- Divider ---- */
+.footer-divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(26, 26, 26, 0.12);
+  margin-bottom: 28px;
+}
+
+/* ---- Bottom row ---- */
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-copyright-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(26, 26, 26, 0.45);
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+/* ---- Social icons ---- */
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: rgba(26, 26, 26, 0.5);
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.social-icon-link:hover {
+  color: #1A1A1A;
+  background: rgba(26, 26, 26, 0.08);
+  transform: translateY(-3px);
+}
+
+.social-icon-link svg {
+  transition: transform 0.3s ease;
+}
+
+.social-icon-link:hover svg {
+  transform: scale(1.1);
+}
+
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media (min-width: 901px) {
+  .footer-section {
+    min-height: 750px;
+  }
+
+  .footer-bg-svg {
+    object-fit: fill;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-content {
+    padding: 180px 24px 40px 24px;
+  }
+
+  .footer-fade-overlay {
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-section {
+    min-height: 550px;
+  }
+
+  .footer-content {
+    padding: 160px 20px 32px 20px;
+  }
+
+  .footer-fade-overlay {
+    height: 160px;
+  }
+
+  .footer-logo {
+    height: 32px;
+  }
+
+  .footer-tagline {
+    font-size: 15px;
+  }
+
+  .footer-cta-btn {
+    font-size: 14px;
+    padding: 12px 28px;
+    margin-bottom: 40px;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-copyright-text {
+    order: 2;
+  }
+
+  .footer-social-row {
+    order: 1;
+  }
+}

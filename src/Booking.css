@@ -1,0 +1,47 @@
+.booking-section {
+  width: 100%;
+  padding: 120px 20px;
+  background-color: #FFFFFF; /* High contrast clean white background section */
+  box-sizing: border-box;
+}
+
+.booking-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.booking-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  color: #070815; /* Brand Charcoal */
+  margin: 0 0 16px 0;
+  letter-spacing: -1.5px;
+  line-height: 1.15;
+}
+
+.booking-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+  color: #4A4A4A;
+  margin: 0 0 60px 0;
+}
+
+.calendly-inline-widget-wrapper {
+  background: #FFFFFF;
+  border: 1px solid #E7E6E3;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(7, 8, 21, 0.04);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .booking-section {
+    padding: 80px 16px;
+  }
+  .booking-subtitle {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,309 @@
+.wall-section {
+  width: 100%;
+  padding: 120px 20px;
+  background-color: #FFFFFF; /* White background matching pricing */
+  box-sizing: border-box;
+}
+
+.wall-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.wall-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  color: #070815;
+  margin: 0 0 16px 0;
+  letter-spacing: -1.5px;
+}
+
+.wall-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+  color: #4A4A4A;
+  margin: 0 0 60px 0;
+}
+
+.wall-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+/* Card spans */
+.card-span-2 {
+  grid-column: span 2;
+}
+
+/* Common Card Styling */
+.wall-card {
+  border-radius: 24px;
+  padding: 36px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.wall-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(7, 8, 21, 0.08);
+}
+
+/* COPPER STUDIO BRAND COLOR PALETTE FOR CARDS */
+
+/* 1. White Card with subtle border */
+.color-grey {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E6E3;
+}
+.color-grey:hover {
+  border-color: #E06D20;
+}
+
+/* 2. Dark Charcoal Card (High Contrast) */
+.color-blue {
+  background-color: #070815;
+  border: 1px solid #070815;
+}
+.color-blue .stat-value { color: #E06D20; } /* Copper orange */
+.color-blue .stat-label { color: #FFFFFF; }
+.color-blue .client-logo-sm { color: rgba(255, 255, 255, 0.5); }
+.color-blue .wall-arrow-circle { background-color: #11142D; color: #FFFFFF; border-color: rgba(255, 255, 255, 0.1); }
+.color-blue:hover { border-color: #E06D20; }
+
+/* 3. Off-White / Cream Card */
+.color-purple {
+  background-color: #F8F6F0;
+  border: 1px solid #E7E6E3;
+}
+.color-purple .stat-value { color: #8A2F1B; } /* Copper rust */
+.color-purple .stat-label { color: #070815; }
+.color-purple .client-logo-sm { color: rgba(7, 8, 21, 0.6); }
+.color-purple:hover { border-color: #8A2F1B; }
+
+/* 4. White Card with Rust accents */
+.color-lime {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E6E3;
+}
+.color-lime .stat-value { color: #070815; }
+.color-lime .stat-label { color: #4A4A4A; }
+.color-lime .client-logo-sm { color: rgba(7, 8, 21, 0.5); }
+.color-lime:hover { border-color: #E06D20; }
+
+/* 5. Cream Card with Dark text */
+.color-mint {
+  background-color: #F8F6F0;
+  border: 1px solid #E7E6E3;
+}
+.color-mint .stat-value { color: #E06D20; }
+.color-mint .stat-label { color: #070815; }
+.color-mint .client-logo-sm { color: rgba(7, 8, 21, 0.6); }
+.color-mint:hover { border-color: #E06D20; }
+
+/* 6. White Card with Gold/Yellow details */
+.color-yellow {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E6E3;
+}
+.color-yellow .stat-value { color: #8A2F1B; }
+.color-yellow .stat-label { color: #4A4A4A; }
+.color-yellow .client-logo-sm { color: rgba(7, 8, 21, 0.5); }
+.color-yellow:hover { border-color: #8A2F1B; }
+
+/* 7. Dark Charcoal Card for Testimonial */
+.testimonial-card.color-dark-brand {
+  background-color: #070815;
+  border: 1px solid #070815;
+}
+.testimonial-card.color-dark-brand .testimonial-text {
+  color: #FFFFFF;
+}
+.testimonial-card.color-dark-brand .author-name {
+  color: #FFFFFF;
+}
+.testimonial-card.color-dark-brand .author-role {
+  color: rgba(255, 255, 255, 0.6);
+}
+.testimonial-card.color-dark-brand .client-logo {
+  color: #E06D20;
+}
+.testimonial-card.color-dark-brand:hover {
+  border-color: #E06D20;
+}
+
+/* 8. White Card with Charcoal accents */
+.color-teal {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E6E3;
+}
+.color-teal .stat-value { color: #070815; }
+.color-teal .stat-label { color: #4A4A4A; }
+.color-teal .client-logo-sm { color: rgba(7, 8, 21, 0.5); }
+.color-teal:hover { border-color: #E06D20; }
+
+
+/* Testimonial Card layout */
+.testimonial-card {
+  min-height: 280px;
+}
+
+.testimonial-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 500;
+  color: #070815;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+  letter-spacing: -0.2px;
+}
+
+.testimonial-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.avatar-1 {
+  background-color: #E06D20;
+}
+
+.avatar-2 {
+  background-color: #8A2F1B;
+}
+
+.author-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #070815;
+  margin: 0 0 2px 0;
+}
+
+.author-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.client-logo {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #8D8C89;
+  letter-spacing: -0.5px;
+}
+
+/* Stat Card layout */
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-value {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(52px, 6vw, 76px);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -2px;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.stat-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.client-logo-sm {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Arrow circle button styling */
+.wall-arrow-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #070815;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.wall-card:hover .wall-arrow-circle {
+  background-color: #E06D20;
+  color: #FFFFFF;
+  border-color: #E06D20;
+}
+
+.color-blue:hover .wall-arrow-circle {
+  background-color: #FFFFFF;
+  color: #070815;
+  border-color: #FFFFFF;
+}
+
+/* Responsive breakpoint styling */
+@media (max-width: 1100px) {
+  .wall-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card-span-2 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .wall-section {
+    padding: 60px 16px;
+  }
+  .wall-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .card-span-2 {
+    grid-column: span 1;
+  }
+}
