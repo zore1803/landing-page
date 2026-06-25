@@ -85,6 +85,56 @@ const steps = [
   }
 ];
 
+const MobileProcessItem = ({ step, isLast }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const itemRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (itemRef.current) {
+      observer.observe(itemRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div 
+      ref={itemRef}
+      className="process-mobile-item" 
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
+      }}
+    >
+      {!isLast && (
+        <div 
+          className="process-mobile-line"
+          style={{
+            backgroundColor: isVisible ? step.color : '#D0D0D0',
+            transition: 'background-color 0.8s ease 0.2s'
+          }}
+        />
+      )}
+      <div className="process-mobile-num" style={{ backgroundColor: step.color }}>
+        {step.num}
+      </div>
+      <div className="process-mobile-content">
+        {step.img && <img src={step.img} alt={step.title} className="process-s-img-mobile" />}
+        <h3>{step.title}</h3>
+        <p>{step.desc}</p>
+      </div>
+    </div>
+  );
+};
+
 const ProcessRoadmap = () => {
   const containerRef = useRef(null);
   const pathRef = useRef(null);
@@ -197,25 +247,9 @@ const ProcessRoadmap = () => {
         {/* Mobile view */}
         <div className="process-mobile-list">
           <h2 className="process-s-title">Process</h2>
-          {steps.map((step, i) => {
-            const isVisible = scrollProgress >= (i / steps.length) * 0.8;
-            return (
-            <div key={step.num} className="process-mobile-item" style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-              }}>
-              <div className="process-mobile-num" style={{ backgroundColor: step.color }}>
-                {step.num}
-              </div>
-              <div className="process-mobile-content">
-                {step.img && <img src={step.img} alt={step.title} className="process-s-img-mobile" />}
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
-              </div>
-            </div>
-            );
-          })}
+          {steps.map((step, i) => (
+            <MobileProcessItem key={step.num} step={step} isLast={i === steps.length - 1} />
+          ))}
         </div>
       </section>
   );

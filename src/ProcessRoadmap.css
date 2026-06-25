@@ -92,14 +92,12 @@
     gap: 20px;
     position: relative;
   }
-  .process-mobile-item:not(:last-child)::after {
-    content: '';
+  .process-mobile-line {
     position: absolute;
     top: 48px;
     left: 23px;
     width: 2px;
     height: calc(100% + 40px - 48px);
-    background-color: #D0D0D0;
     z-index: 1;
   }
   .process-mobile-num {
