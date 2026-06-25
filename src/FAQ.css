@@ -1,7 +1,10 @@
 .faq-section {
   width: 100%;
   padding: 120px 20px;
-  background-color: #F8F6F0; /* Off-white background alternating with Wall of Love's white */
+  background-color: #F8F6F0; /* Matching the process section background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
 }
 

@@ -1,5 +1,5 @@
 .landing-container {
-  width: calc(100vw - 32px);
+  width: calc(100% - 32px);
   height: calc(100vh - 32px);
   position: relative;
   background: #070815;
@@ -476,6 +476,7 @@
   flex-direction: column;
   align-items: center;
   background-color: transparent;
+  box-sizing: border-box;
 }
 
 .services-title {

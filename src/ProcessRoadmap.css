@@ -3,6 +3,7 @@
   padding: 120px 20px;
   background-color: #F8F6F0; /* Off-white background from the design */
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .process-s-container {
