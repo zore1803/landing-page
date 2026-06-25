@@ -168,7 +168,7 @@ const ProcessRoadmap = () => {
   }, []);
 
   return (
-    <section className="process-s-section" ref={containerRef}>
+    <section className="process-s-section" id="projects" ref={containerRef}>
       <div className="process-s-container">
         <h2 className="process-s-title">Process</h2>
 

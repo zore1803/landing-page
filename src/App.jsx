@@ -231,7 +231,7 @@ function App() {
         </div>
       </div>
 
-      <div className="landing-container">
+      <div className="landing-container" id="home">
         {/* Background blobs / ellipses */}
       <div className="blobs-container">
         <div className="ellipse ellipse-2"></div>
@@ -289,7 +289,7 @@ function App() {
     </div>
 
       {/* Trusted Brands Section */}
-      <section className="trusted-section" ref={trustedRef}>
+      <section className="trusted-section" id="about" ref={trustedRef}>
         <h3 className="trusted-title">Trusted by Brands Across India</h3>
         <div className={`trusted-logos-wrapper ${isTrustedVisible ? 'is-visible' : ''}`}>
           <div className="trusted-logos-track">
@@ -321,7 +321,7 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section className="services-section" ref={servicesRef}>
+      <section className="services-section" id="services" ref={servicesRef}>
         <h2 className="services-title">What Services do we provide?</h2>
         
         <div className="services-toggle">
