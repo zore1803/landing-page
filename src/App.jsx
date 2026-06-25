@@ -24,6 +24,51 @@ import service6 from './assets/servicessvg/Service 8.svg';
 
 const servicesList = [service1, service2, service3, service4, service5, service6];
 
+const ServiceCard = ({ svgSrc, index }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div 
+      ref={cardRef}
+      className={`service-card-wrapper ${isVisible ? 'is-visible' : ''}`} 
+      style={{ '--card-index': index + 1 }}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const img = e.currentTarget.querySelector('.service-card-img');
+        if (img) {
+          img.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.02)`;
+        }
+      }}
+      onMouseLeave={(e) => {
+        const img = e.currentTarget.querySelector('.service-card-img');
+        if (img) {
+          img.style.transform = `translate(0px, 0px) scale(1)`;
+        }
+      }}
+    >
+      <img src={svgSrc} alt={`Service ${index + 1}`} className="service-card-img" />
+    </div>
+  );
+};
+
 function App() {
   // 14 stripes based on the Figma spec (Rectangle 89 through 102)
   const stripes = Array.from({ length: 14 });
@@ -248,31 +293,7 @@ function App() {
 
         <div className={`services-grid ${isServicesVisible ? 'is-visible' : ''}`}>
           {servicesList.map((svgSrc, index) => (
-            <div 
-              key={index} 
-              className="service-card-wrapper" 
-              style={{ '--card-index': index + 1 }}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                // Calculate cursor position relative to the center of the card
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                const img = e.currentTarget.querySelector('.service-card-img');
-                if (img) {
-                  // Pull the image 15% towards the cursor and scale up slightly
-                  img.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.02)`;
-                }
-              }}
-              onMouseLeave={(e) => {
-                const img = e.currentTarget.querySelector('.service-card-img');
-                if (img) {
-                  // Reset back to normal smoothly
-                  img.style.transform = `translate(0px, 0px) scale(1)`;
-                }
-              }}
-            >
-              <img src={svgSrc} alt={`Service ${index + 1}`} className="service-card-img" />
-            </div>
+            <ServiceCard key={index} svgSrc={svgSrc} index={index} />
           ))}
         </div>
       </section>
