@@ -567,3 +567,27 @@
     font-size: 32px;
   }
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 16px;
+    gap: 16px;
+    width: calc(100% - 32px); /* So it doesn't overflow */
+    border-radius: 12px;
+    top: 16px;
+  }
+  
+  .lets-talk-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  
+  .bottom-bar {
+    padding: 20px 16px;
+    justify-content: center;
+  }
+  
+  .scroll-text, .copyright {
+    display: none;
+  }
+}

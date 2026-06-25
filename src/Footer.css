@@ -307,6 +307,84 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .footer-container {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+  
+  .footer-top-fade {
+    height: 30%; /* Shorter fade on mobile */
+  }
 
+  .footer-content {
+    top: 60px;
+    padding: 0 20px;
+  }
 
+  .footer-main-logo {
+    width: 100%;
+    margin-top: 0;
+  }
 
+  .footer-brand {
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+
+  .footer-services {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-divider {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .footer-legal {
+    text-align: center;
+  }
+
+  .legal-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .separator {
+    display: none; /* Hide bullets between stacked links */
+  }
+  
+  /* Make sure the orange ellipses don't stretch the screen */
+  .ellipse-39 {
+    bottom: -5%;
+    width: 200vw;
+    left: -50vw;
+  }
+  
+  .ellipse-38 {
+    bottom: -10%;
+    width: 150vw;
+  }
+  
+  .ellipse-40 {
+    bottom: -10%;
+    width: 150vw;
+  }
+}
