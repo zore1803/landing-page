@@ -10,6 +10,12 @@ import brand7 from './assets/logos/DataCircles White Logo 2 (1).svg';
 
 import brandBrochureImg from './assets/brand-identity-brochure.png';
 import brandBrochureVid from './assets/brand-identity-brochure.mp4';
+import commonGroundsImg from './assets/common-grounds.jpg';
+import commonGroundsVid from './assets/Transform_this_static_café_sce.mp4';
+import teaBoxesImg from './assets/Tea - Boxes 1.png';
+import teaBoxesVid from './assets/Create_a_subtle_looping_animat.mp4';
+import premiumGroupImg from './assets/image.png';
+import premiumGroupVid from './assets/Create_a_premium_micro_animati (3).mp4';
 
 export default function ServicesSection() {
   const logos = [brand1, brand2, brand3, brand4, brand5, brand7];
@@ -83,9 +89,81 @@ export default function ServicesSection() {
                   controlsList="nodownload noplaybackrate"
                 />
               </div>
-              <div className="s-card"></div>
-              <div className="s-card"></div>
-              <div className="s-card"></div>
+              <div 
+                className="s-card interactive-media-card"
+                onMouseEnter={(e) => {
+                  const vid = e.currentTarget.querySelector('video');
+                  if (vid) vid.play();
+                }}
+                onMouseLeave={(e) => {
+                  const vid = e.currentTarget.querySelector('video');
+                  if (vid) {
+                    vid.pause();
+                    vid.currentTime = 0;
+                  }
+                }}
+              >
+                <img src={commonGroundsImg} alt="Common Grounds" className="s-card-img" />
+                <video 
+                  src={commonGroundsVid} 
+                  className="s-card-vid" 
+                  muted 
+                  loop 
+                  playsInline 
+                  disablePictureInPicture
+                  controlsList="nodownload noplaybackrate"
+                />
+              </div>
+              <div 
+                className="s-card interactive-media-card"
+                onMouseEnter={(e) => {
+                  const vid = e.currentTarget.querySelector('video');
+                  if (vid) vid.play();
+                }}
+                onMouseLeave={(e) => {
+                  const vid = e.currentTarget.querySelector('video');
+                  if (vid) {
+                    vid.pause();
+                    vid.currentTime = 0;
+                  }
+                }}
+              >
+                <img src={teaBoxesImg} alt="Tea Boxes" className="s-card-img" />
+                <video 
+                  src={teaBoxesVid} 
+                  className="s-card-vid" 
+                  muted 
+                  loop 
+                  playsInline 
+                  disablePictureInPicture
+                  controlsList="nodownload noplaybackrate"
+                />
+              </div>
+              <div 
+                className="s-card interactive-media-card"
+                onMouseEnter={(e) => {
+                  const vid = e.currentTarget.querySelector('video');
+                  if (vid) vid.play();
+                }}
+                onMouseLeave={(e) => {
+                  const vid = e.currentTarget.querySelector('video');
+                  if (vid) {
+                    vid.pause();
+                    vid.currentTime = 0;
+                  }
+                }}
+              >
+                <img src={premiumGroupImg} alt="Premium Micro Animation" className="s-card-img" />
+                <video 
+                  src={premiumGroupVid} 
+                  className="s-card-vid" 
+                  muted 
+                  loop 
+                  playsInline 
+                  disablePictureInPicture
+                  controlsList="nodownload noplaybackrate"
+                />
+              </div>
             </div>
             <div className="service-more">
               Want To <strong>Know More?</strong>

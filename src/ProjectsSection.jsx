@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import './ProjectsSection.css';
 import projectImg from './assets/brand-identity-brochure.png';
+import commonGroundsImg from './assets/common-grounds.jpg';
+import teaBoxesImg from './assets/Tea - Boxes 1.png';
+import premiumGroupImg from './assets/image.png';
 
 export default function ProjectsSection() {
   const sectionRef = useRef(null);
@@ -89,10 +92,10 @@ export default function ProjectsSection() {
   }, []);
 
   const projects = [
-    { title: "Copper Brand", tags: ["UI/UX", "Branding", "Development"] },
-    { title: "Transforming the future of fashion", tags: ["Web Design"] },
-    { title: "Project Three", tags: ["Design", "Strategy", "Print"] },
-    { title: "Project Four", tags: ["Development"] }
+    { title: "Copper Brand", tags: ["UI/UX", "Branding", "Development"], img: projectImg },
+    { title: "Common Grounds", tags: ["Web Design"], img: commonGroundsImg },
+    { title: "Tea Selection", tags: ["Design", "Packaging", "Print"], img: teaBoxesImg },
+    { title: "Project Four", tags: ["Development", "Creative"], img: premiumGroupImg }
   ];
 
   return (
@@ -109,7 +112,7 @@ export default function ProjectsSection() {
             {projects.map((proj, idx) => (
               <div className="project-card" key={idx}>
                 <div className="project-card-image-wrapper">
-                  <img src={projectImg} alt={proj.title} className="project-card-image" />
+                  <img src={proj.img} alt={proj.title} className="project-card-image" />
                 </div>
                 <div className="project-card-content">
                   <h4 className="project-card-title">{proj.title}</h4>
