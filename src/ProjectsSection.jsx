@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './ProjectsSection.css';
+import projectImg from './assets/brand-identity-brochure.png';
 
 export default function ProjectsSection() {
   const sectionRef = useRef(null);
@@ -107,6 +108,9 @@ export default function ProjectsSection() {
           <div className="projects-grid">
             {projects.map((proj, idx) => (
               <div className="project-card" key={idx}>
+                <div className="project-card-image-wrapper">
+                  <img src={projectImg} alt={proj.title} className="project-card-image" />
+                </div>
                 <div className="project-card-content">
                   <h4 className="project-card-title">{proj.title}</h4>
                   <div className="project-tags">

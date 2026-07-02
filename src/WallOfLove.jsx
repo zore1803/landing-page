@@ -1,12 +1,55 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './WallOfLove.css';
 import toolsWorkflowIcon from './assets/tools-workflow.svg';
 import brandingWebsiteIcon from './assets/branding-website.svg';
 import strategyStyleIcon from './assets/strategy-style.svg';
 
+const useCountUp = (endValue, startValue = 0, duration = 1500) => {
+  const [count, setCount] = useState(startValue);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          let startTime = null;
+          const animate = (currentTime) => {
+            if (!startTime) startTime = currentTime;
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(startValue + (endValue - startValue) * easeOut));
+            
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              setCount(endValue);
+            }
+          };
+          requestAnimationFrame(animate);
+        } else {
+          setCount(startValue);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [endValue, startValue, duration]);
+
+  return { count, ref };
+};
+
 const WallOfLove = () => {
   const sectionRef = useRef(null);
   const wrapperRef = useRef(null);
+  
+  const { count: transparencyCount, ref: transparencyRef } = useCountUp(4, 1, 1500);
+  const { count: satisfactionCount, ref: satisfactionRef } = useCountUp(98, 0, 1500);
   
   useEffect(() => {
     let ticking = false;
@@ -125,7 +168,7 @@ const WallOfLove = () => {
               <div className="bento-row">
                 <div className="bento-card bento-white bento-center-content" style={{ flex: 228 }}>
                   <div className="bento-inner-content">
-                    <h3 className="bento-stat-4x">4x</h3>
+                    <h3 className="bento-stat-4x" ref={transparencyRef}>{transparencyCount}x</h3>
                     <p className="bento-stat-desc"><strong>More project transparency</strong><br/>with real-time updates in your client portal</p>
                   </div>
                 </div>
@@ -148,7 +191,7 @@ const WallOfLove = () => {
                 
                 <div className="bento-card bento-dark bento-center-content" style={{ flex: 259 }}>
                   <div className="bento-inner-content">
-                    <h3 className="bento-stat-98">98%</h3>
+                    <h3 className="bento-stat-98" ref={satisfactionRef}>{satisfactionCount}%</h3>
                     <h4 className="bento-stat-subtitle">Client Satisfaction Rate</h4>
                     <p className="bento-stat-desc">from first ideas to final delivery</p>
                   </div>
