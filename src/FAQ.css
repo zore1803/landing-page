@@ -1,17 +1,11 @@
 .faq-section {
-  width: 100%;
-  padding: 120px 20px;
-  background-color: #F8F6F0; /* Matching the process section background */
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .faq-container {
-  width: 100%;
-  max-width: 1300px; /* Matching Wall of Love container */
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.6fr;
   gap: 80px;
@@ -26,68 +20,68 @@
 }
 
 .faq-tag {
-
-  font-size: 12px;
-  font-weight: 700;
-  color: #E06D20; /* Copper orange */
-  letter-spacing: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #EE7A1D;
+  letter-spacing: 1px;
   margin-bottom: 20px;
   text-transform: uppercase;
 }
 
 .faq-title {
-
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 800;
-  color: #070815; /* Charcoal */
-  margin: 0 0 20px 0;
-  line-height: 1.15;
-  letter-spacing: -1.5px;
+  font-size: 56px;
+  font-weight: 700;
+  color: #070815;
+  margin: 0 0 24px 0;
+  line-height: 1.1;
+  letter-spacing: -1px;
 }
 
 .faq-description {
-
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
+  font-weight: 300;
   line-height: 1.6;
-  color: #4A4A4A;
-  margin: 0 0 32px 0;
+  color: #666666;
+  margin: 0 0 40px 0;
 }
 
 .faq-contact-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-
-  font-size: 16px;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
   font-weight: 700;
   color: #070815;
   text-decoration: none;
   width: fit-content;
-  transition: color 0.3s ease;
-}
-
-.faq-contact-link svg {
-  transition: transform 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .faq-contact-link:hover {
-  color: #E06D20;
+  opacity: 0.8;
 }
 
-.faq-contact-link:hover svg {
+.faq-contact-icon svg {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.faq-contact-link:hover .faq-contact-icon svg {
   transform: translateX(6px);
 }
 
 .faq-list {
   display: flex;
   flex-direction: column;
-  border-top: 1.5px solid #E7E6E3;
+  border-top: 1px solid #EAE3D9;
 }
 
 .faq-item {
-  border-bottom: 1.5px solid #E7E6E3;
-  padding: 32px 0;
-  transition: border-color 0.3s ease;
+  border-bottom: 1px solid #EAE3D9;
+  padding: 24px 0;
 }
 
 .faq-question-btn {
@@ -101,54 +95,28 @@
   text-align: left;
   cursor: pointer;
   color: #070815;
-  transition: color 0.3s ease;
 }
 
 .faq-question {
-
-  font-size: clamp(18px, 2.2vw, 22px);
-  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.4;
-  letter-spacing: -0.3px;
   padding-right: 24px;
 }
 
 .faq-toggle-icon {
-  color: #070815;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid #E7E6E3;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 28px;
+  height: 28px;
 }
 
-/* Plus/Minus collapse animation */
 .plus-vertical-line {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
   transform-origin: center;
-}
-
-/* Hover States */
-.faq-question-btn:hover {
-  color: #E06D20; /* Highlight hover with the theme orange color */
-}
-
-.faq-question-btn:hover .faq-toggle-icon {
-  border-color: #E06D20;
-  color: #E06D20;
-}
-
-/* Active / Open States */
-.faq-item.active {
-  border-color: #070815;
-}
-
-.faq-item.active .faq-question-btn {
-  color: #070815;
 }
 
 .faq-item.active .plus-vertical-line {
@@ -156,13 +124,6 @@
   opacity: 0;
 }
 
-.faq-item.active .faq-toggle-icon {
-  background-color: #070815;
-  border-color: #070815;
-  color: #FFFFFF;
-}
-
-/* Answer slide down animation */
 .faq-answer-wrapper {
   max-height: 0;
   opacity: 0;
@@ -171,32 +132,27 @@
 }
 
 .faq-item.active .faq-answer-wrapper {
-  max-height: 250px; /* High enough to contain the answers */
+  max-height: 250px;
   opacity: 1;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
 .faq-answer {
-
-  font-size: 16px;
-  line-height: 1.7;
-  color: #4A4A4A;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #666666;
   margin: 0;
   padding-right: 48px;
 }
 
 @media (max-width: 900px) {
-  .faq-section {
-    padding: 80px 16px;
-  }
   .faq-container {
     grid-template-columns: 1fr;
     gap: 48px;
   }
   .faq-sidebar {
     position: static;
-  }
-  .faq-item {
-    padding: 24px 0;
   }
 }

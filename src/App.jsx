@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import './App.css';
-import ProcessRoadmap from './ProcessRoadmap';
+import CoordinateSection from './CoordinateSection';
+import ProjectsSection from './ProjectsSection';
 import Pricing from './Pricing';
 import WallOfLove from './WallOfLove';
 import FAQ from './FAQ';
 import Booking from './Booking';
 import Footer from './Footer';
+import ServicesSection from './ServicesSection';
 
 import logoImg from './assets/logo.svg';
 import brand1 from './assets/logos/Group 79.svg';
@@ -70,6 +72,17 @@ const ServiceCard = ({ svgSrc, index }) => {
 };
 
 function App() {
+  // Prevent downloading images/videos via right-click
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('contextmenu', handleContextMenu);
+    return () => document.removeEventListener('contextmenu', handleContextMenu);
+  }, []);
+
   // 14 stripes based on the Figma spec (Rectangle 89 through 102)
   const stripes = Array.from({ length: 14 });
   console.log("Logo path loaded as:", logoImg);
@@ -167,33 +180,62 @@ function App() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  
+  const [activeSection, setActiveSection] = useState('home');
 
   return (
     <>
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-links">
+          <a href="#home" onClick={() => { toggleMobileMenu(); setActiveSection('home'); }}>Home</a>
+          <a href="#about" onClick={() => { toggleMobileMenu(); setActiveSection('about'); }}>Studio</a>
+          <a href="#services" onClick={() => { toggleMobileMenu(); setActiveSection('services'); }}>Services</a>
+          <a href="#projects" onClick={() => { toggleMobileMenu(); setActiveSection('projects'); }}>Projects</a>
+          <a href="#contact" onClick={() => { toggleMobileMenu(); setActiveSection('contact'); }}>Contact</a>
+          <a href="#portal" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
+          <button className="lets-talk-btn mobile-lets-talk">
+             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Let's Talk &rsaquo;
+          </button>
+        </div>
+      </div>
+
       {/* Navigation Bar */}
       <nav className="navbar">
         <div className="nav-logo">
           <img src={logoImg} alt="Copper Studio Logo" className="nav-logo-icon" />
         </div>
         
+        <div className="nav-divider desktop-only"></div>
+
         <div className="nav-links desktop-only">
-          <a href="#home" className="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#projects">Projects</a>
-          <a href="#testimonials">Testimonials</a>
-          <a href="#contact">Contact</a>
+          <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={() => setActiveSection('home')}>Home</a>
+          <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => setActiveSection('about')}>Studio</a>
+          <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={() => setActiveSection('services')}>Services</a>
+          <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => setActiveSection('projects')}>Projects</a>
+          <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={() => setActiveSection('contact')}>Contact</a>
         </div>
-        
+
+        <div className="nav-divider desktop-only"></div>
+
         <div className="nav-action desktop-only">
-          <button className="lets-talk-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Let's Talk &rsaquo;
-          </button>
+          <a href="#portal" className="client-portal-link">Client Portal</a>
+          <a href="#contact" className="lets-talk-link">
+            <span className="lets-talk-icon-wrap">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4" y="5" width="16" height="15" rx="3.5" ry="3.5"></rect>
+                <line x1="16" y1="3" x2="16" y2="7"></line>
+                <line x1="8" y1="3" x2="8" y2="7"></line>
+                <line x1="4" y1="11" x2="20" y2="11"></line>
+                <circle cx="9" cy="15.5" r="1.5" fill="currentColor" stroke="none"></circle>
+              </svg>
+            </span>
+            Let's Talk
+          </a>
         </div>
 
         {/* Hamburger Menu Button */}
@@ -212,26 +254,6 @@ function App() {
           )}
         </button>
       </nav>
-
-      {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
-        <div className="mobile-nav-links">
-          <a href="#home" onClick={toggleMobileMenu}>Home</a>
-          <a href="#about" onClick={toggleMobileMenu}>About</a>
-          <a href="#services" onClick={toggleMobileMenu}>Services</a>
-          <a href="#process" onClick={toggleMobileMenu}>Process</a>
-          <a href="#projects" onClick={toggleMobileMenu}>Projects</a>
-          <a href="#testimonials" onClick={toggleMobileMenu}>Testimonials</a>
-          <a href="#contact" onClick={toggleMobileMenu}>Contact</a>
-          <button className="lets-talk-btn mobile-lets-talk">
-             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Let's Talk &rsaquo;
-          </button>
-        </div>
-      </div>
 
       <div className="landing-container" id="home">
         {/* Background blobs / ellipses */}
@@ -270,8 +292,9 @@ function App() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bottom-bar">
-        <div className="scroll-text">scroll to explore</div>
+      <div className="bottom-bar global-section" style={{ paddingTop: 0, paddingBottom: '30px' }}>
+        <div className="global-container bottom-bar-inner">
+          <div className="scroll-text">scroll to explore</div>
         
         <div className="bottom-center-pill">
           <a href="#projects" className="view-projects-btn">
@@ -287,59 +310,18 @@ function App() {
         </div>
 
         <div className="copyright">&copy;2026</div>
+        </div>
       </div>
     </div>
 
-      {/* Trusted Brands Section */}
-      <section className="trusted-section" id="about" ref={trustedRef}>
-        <h3 className="trusted-title">Trusted by Brands Across India</h3>
-        <div className={`trusted-logos-wrapper ${isTrustedVisible ? 'is-visible' : ''}`}>
-          <div className="trusted-logos-track">
-            {/* Render 8 sets of logos to ensure the track is wide enough for 5K monitors without looping gaps */}
-            {Array.from({ length: 8 }).map((_, setIndex) => (
-              <React.Fragment key={setIndex}>
-                <div className="trusted-logo-item" style={{ '--logo-index': 1 }}>
-                  <img src={brand1} alt="Trusted Brand 1" className="brand-placeholder" />
-                </div>
-                <div className="trusted-logo-item" style={{ '--logo-index': 2 }}>
-                  <img src={brand2} alt="Trusted Brand 2" className="brand-placeholder" />
-                </div>
-                <div className="trusted-logo-item" style={{ '--logo-index': 3 }}>
-                  <img src={brand3} alt="Trusted Brand 3" className="brand-placeholder" />
-                </div>
-                <div className="trusted-logo-item" style={{ '--logo-index': 4 }}>
-                  <img src={brand4} alt="Trusted Brand 4" className="brand-placeholder brand-large" />
-                </div>
-                <div className="trusted-logo-item" style={{ '--logo-index': 5 }}>
-                  <img src={brand5} alt="Trusted Brand 5" className="brand-placeholder brand-large" />
-                </div>
-                <div className="trusted-logo-item" style={{ '--logo-index': 6 }}>
-                  <img src={brand7} alt="DataCircles Logo" className="brand-placeholder brand-large" />
-                </div>
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* New Services and Trusted Brands Section */}
+      <ServicesSection />
 
-      {/* Services Section */}
-      <section className="services-section" id="services" ref={servicesRef}>
-        <h2 className="services-title">What Services do we provide?</h2>
-        
-        <div className="services-toggle">
-          <button className="toggle-btn active">CopperBrand!</button>
-          <button className="toggle-btn">CopperWeb!</button>
-        </div>
+      {/* Coordinate Section */}
+      <CoordinateSection />
 
-        <div className={`services-grid ${isServicesVisible ? 'is-visible' : ''}`}>
-          {servicesList.map((svgSrc, index) => (
-            <ServiceCard key={index} svgSrc={svgSrc} index={index} />
-          ))}
-        </div>
-      </section>
-
-      {/* Process Roadmap Section */}
-      <ProcessRoadmap />
+      {/* Projects Section */}
+      <ProjectsSection />
 
       {/* Pricing Section */}
       <Pricing />

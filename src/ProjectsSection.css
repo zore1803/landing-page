@@ -1,0 +1,154 @@
+.projects-section {
+  width: 100%;
+  padding: 0 0 20px 0;
+  background-color: #FFFFFF;
+}
+
+.projects-section .global-container {
+  max-width: 1440px;
+  padding: 0 40px;
+}
+
+.projects-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.projects-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.projects-glass-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  /* Removed outer background and blur, now just a layout container */
+  will-change: transform;
+}
+
+.cursive-accent {
+  font-family: 'Sacramento', cursive;
+  font-size: 150px;
+  color: #F69049; /* Orange from the screenshot */
+  margin-top: -90px;
+  margin-bottom: 0px;
+  /* Removed rotation for a straight baseline as seen in the image */
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 50px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.5); /* Light semi-transparent background */
+  backdrop-filter: blur(8px); /* Further reduced blur */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle dark border for the light glass */
+  border-radius: 25px;
+  opacity: 0;
+  transform: translateY(180px);
+  will-change: transform, opacity;
+  aspect-ratio: 1 / 1.1; /* slightly taller than square */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, background 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+}
+
+.project-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2;
+}
+
+.project-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  color: #101010; /* Dark text for light card */
+  margin: 0;
+}
+
+.project-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.05); /* Light grey for tags */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #101010; /* Dark text for tags */
+  padding: 6px 16px;
+  border-radius: 50px;
+}
+
+.view-more-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #101010;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  border: 1px solid #D85000; /* Match the orange/copper from the image */
+  border-radius: 50px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: transparent;
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.view-more-btn .arrow-icon {
+  color: #D85000;
+  margin-left: 8px;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.view-more-btn:hover {
+  background-color: #D85000;
+  color: #FFFFFF;
+}
+
+.view-more-btn:hover .arrow-icon {
+  color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto 50px auto;
+  }
+  .projects-glass-wrapper {
+    padding: 40px 20px;
+  }
+}

@@ -19,8 +19,7 @@
   position: absolute;
   top: 0;
   left: 2%;
-
-  font-size: clamp(40px, 6vw, 72px);
+  font-size: 56px;
   font-weight: 800;
   color: #070815;
   margin: 0;
@@ -61,8 +60,7 @@
 }
 
 .process-s-text p {
-
-  font-size: clamp(12px, 1.2vw, 16px);
+  font-size: 18px;
   line-height: 1.5;
   color: #4A4A4A;
   margin: 0;

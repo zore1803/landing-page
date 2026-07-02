@@ -1,0 +1,51 @@
+.coordinate-section {
+  width: 100%;
+  padding: 0 0 120px 0;
+  background-color: #FFFFFF;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.coordinate-section .global-container {
+  max-width: 1440px;
+  padding: 0 40px;
+}
+
+.section-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  color: #070815;
+  margin: 0 0 20px 0;
+}
+
+.section-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #504F4F;
+  max-width: 100%;
+  margin: 0 0 60px 0;
+  line-height: 1.6;
+}
+
+.subtitle-italic {
+  font-style: italic;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.coordinate-video-box {
+  width: 100%;
+  max-width: 1050px;
+  height: 485px;
+  background-color: #070815;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}

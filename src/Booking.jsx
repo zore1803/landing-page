@@ -24,14 +24,14 @@ const Booking = () => {
           container.innerHTML = '';
         }
         window.Calendly.initInlineWidget({
-          url: 'https://calendly.com/thecopperstudio/30min?hide_gdpr_banner=1&hide_event_type_details=1&hide_landing_page_details=1&background_color=ffffff&text_color=070815&primary_color=e47317',
+          url: 'https://calendly.com/thecopperstudio/30min?hide_gdpr_banner=1&hide_event_type_details=1&hide_landing_page_details=1&background_color=ffffff&text_color=070815&primary_color=ee7a1d',
           parentElement: container,
           prefill: {},
           pageSettings: {
             hideEventTypeDetails: true,
             hideLandingPageDetails: true,
             backgroundColor: 'ffffff',
-            primaryColor: 'e47317',
+            primaryColor: 'ee7a1d',
             textColor: '070815'
           }
         });
@@ -53,29 +53,26 @@ const Booking = () => {
 
   const points = [
     'A tailored brand & website roadmap built around your business',
-    'A look at how we work — strategy, design, development & launch',
-    'Straight answers on timeline, scope and pricing',
+    'A look at how we work - strategy, design development and launch.',
+    'Straight answers on timeline, scope and pricing'
   ];
 
   return (
-    <section className="booking-section" id="contact">
-      <div className="booking-container">
+    <section className="booking-section global-section" id="contact">
+      <div className="booking-container global-container">
         <div className="booking-card">
-          {/* LEFT — branded info panel */}
           <div className="booking-info">
-            <span className="booking-eyebrow">Book a call</span>
             <h2 className="booking-title">Excited? Let's Talk Today</h2>
             <p className="booking-lead">
-              Get a live, personalized walkthrough of how Copper Studio takes a brand
-              from logo to a finished website — and how we can do the same for you.
+              Book a discovery call with us. We'd love to hear about your business, understand your goals, and explore how Copper Studio can create the right solution for you.
             </p>
 
             <ul className="booking-points">
               {points.map((text) => (
                 <li key={text} className="booking-point">
                   <span className="booking-check" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
+                    <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 5L4 7L8 3" stroke="#070815" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
                   <span>{text}</span>
@@ -85,12 +82,18 @@ const Booking = () => {
 
             <div className="booking-meta">
               <div className="booking-meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
                 30 minutes
               </div>
               <div className="booking-meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 10l4.55-2.28A1 1 0 0 1 21 8.62v6.76a1 1 0 0 1-1.45.9L15 14"></path><rect x="3" y="6" width="12" height="12" rx="2"></rect></svg>
-                Video call
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                Video Call
               </div>
             </div>
 

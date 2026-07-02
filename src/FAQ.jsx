@@ -7,9 +7,10 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
       <button className="faq-question-btn" onClick={onClick}>
         <span className="faq-question">{question}</span>
         <span className="faq-toggle-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 12H19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-            <path d="M12 5V19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="plus-vertical-line"/>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="14" fill="#070815"/>
+            <path d="M9 14H19" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round"/>
+            <path d="M14 9V19" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" className="plus-vertical-line"/>
           </svg>
         </span>
       </button>
@@ -21,16 +22,16 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
 };
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(0); // Open the first item by default
+  const [openIndex, setOpenIndex] = useState(0);
 
   const faqData = [
     {
-      question: "What services does Copper Studio offer?",
-      answer: "We offer end-to-end branding, identity design, and web development. This includes everything from Logo Systems and Typography Guides, to Custom stationery, Packaging design, and high-performance Web development (built with modern frameworks for top-tier speed)."
+      question: "What service does Copper Studio offer?",
+      answer: "We offer end-to-end branding, identity design and web development. This includes everything from logo systems and typography guidelines to custom merchandise, packaging design adn high-performance web development (built with modern frameworks fro top-tier speed)."
     },
     {
       question: "How long does a typical project take?",
-      answer: "Timelines vary by scope. A branding-only package (Essential) typically takes 2-3 weeks, while a full visual identity and web development package (Ultimate) takes around 6-8 weeks from onboarding to final launch."
+      answer: "Timelines vary by scope. A branding-only package typically takes 2-3 weeks, while a full visual identity and web development package takes around 6-8 weeks from onboarding to final launch."
     },
     {
       question: "Do we get the source files for our designs?",
@@ -41,25 +42,28 @@ const FAQ = () => {
       answer: "We build websites using highly optimized technology stacks and assist you in deploying to reliable global hosting platforms. We also offer custom monthly maintenance and support packages to keep your website secure, updated, and fast."
     },
     {
-      question: "How does the design process work?",
-      answer: "We follow a highly transparent 6-step roadmap: Client Onboarding, Visual Identity Toolkit, Brand Core Design Assets, Print Collateral Design, Brand Collateral, and finally, Brand Guidelines. We gather feedback at every stage to ensure the end product is perfect."
+      question: "How does the design process work",
+      answer: "We follow a highly transparent roadmap: Client Onboarding, Visual Identity Toolkit, Brand Core Design Assets, Print Collateral Design, Brand Collateral, and finally, Brand Guidelines. We gather feedback at every stage to ensure the end product is perfect."
     }
   ];
 
   return (
-    <section className="faq-section" id="faq">
-      <div className="faq-container">
+    <section className="faq-section global-section" id="faq">
+      <div className="faq-container global-container">
         <div className="faq-sidebar">
-          <div className="faq-tag">COMMON INQUIRIES</div>
-          <h2 className="faq-title">Frequently Asked Questions</h2>
+          <div className="faq-tag">HAVE SOME DOUBTS?</div>
+          <h2 className="faq-title">Frequently Asked<br/>Questions</h2>
           <p className="faq-description">
-            Everything you need to know about our branding, design, and web development processes. Can't find the answer you're looking for? Reach out to our team directly.
+            Everything you need to know about our design, branding and web development processes. Can't find the answer you're looking for? Reach out to our team directly.
           </p>
           <a href="#contact" className="faq-contact-link">
-            <span>Get in touch</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <span>Get in Touch</span>
+            <span className="faq-contact-icon">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="14" r="14" fill="#EE7A1D"/>
+                <path d="M12 10L16 14L12 18" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
           </a>
         </div>
 

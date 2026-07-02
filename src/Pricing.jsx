@@ -82,14 +82,22 @@ const plans = [
 
 const Pricing = () => {
   return (
-    <section className="pricing-section" id="pricing">
-      <div className="pricing-main-container">
+    <section className="pricing-section global-section" id="pricing">
+      <div className="pricing-main-container global-container">
         <h2 className="pricing-title">Pricing</h2>
-        <p className="pricing-subtitle">Design Bundles Offered:</p>
+        <div className="pricing-header-text">
+          <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
+          <p className="pricing-subtitle">
+            Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
+          </p>
+        </div>
 
         <div className="pricing-grid">
           {plans.map((plan, index) => (
-            <div key={index} className="pricing-card">
+            <div key={index} className={`pricing-card ${plan.name === 'Advance' ? 'popular-card' : ''}`}>
+              {plan.name === 'Advance' && (
+                <div className="popular-banner">MOST POPULAR!</div>
+              )}
               <div className="pricing-card-header">
                 <h3 className="plan-name">{plan.name}</h3>
                 <p className="plan-desc">{plan.desc}</p>
@@ -124,6 +132,20 @@ const Pricing = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="custom-plan-banner">
+          <div className="ellipse-orange"></div>
+          <div className="ellipse-blue"></div>
+          
+          <div className="custom-plan-content">
+            <span className="custom-plan-tag">HAVE A CUSTOM REQUIREMENT?</span>
+            <h3 className="custom-plan-title">Not Finding The Perfect Plan?</h3>
+            <p className="custom-plan-desc">
+              Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.
+            </p>
+          </div>
+          <button className="custom-plan-btn">Book A Meeting</button>
         </div>
       </div>
     </section>

@@ -1,125 +1,69 @@
 .booking-section {
   position: relative;
-  width: 100%;
-  padding: 120px 20px;
-  /* Warm brand-cream wash so the booking card stands out */
-  background: radial-gradient(120% 80% at 50% 0%, #FBF3EA 0%, #F4F1EA 45%, #F7F5F0 100%);
-  box-sizing: border-box;
-  overflow: hidden;
+  background-color: #FFFFFF;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
 }
 
-/* Soft copper glow behind the card */
-.booking-section::before {
-  content: "";
-  position: absolute;
-  top: -140px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 820px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(228, 115, 23, 0.18) 0%, rgba(228, 115, 23, 0) 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.booking-container {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
-/* ---- Two-column card ---- */
 .booking-card {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  height: 660px;
   background: #FFFFFF;
-  border: 1px solid rgba(7, 8, 21, 0.06);
-  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
   overflow: hidden;
-  box-shadow:
-    0 1px 2px rgba(7, 8, 21, 0.04),
-    0 40px 80px -32px rgba(7, 8, 21, 0.30);
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* ---- LEFT: branded info panel ---- */
 .booking-info {
-  position: relative;
+  width: 550px;
+  min-width: 550px;
+  height: 100%;
+  background: #070815;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  padding: 80px 40px;
   display: flex;
   flex-direction: column;
-  padding: 52px 44px;
-  color: #FFFFFF;
-  background: linear-gradient(165deg, #14162B 0%, #070815 60%);
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* copper glow in the panel corner */
-.booking-info::before {
-  content: "";
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(228, 115, 23, 0.35) 0%, rgba(228, 115, 23, 0) 70%);
-  pointer-events: none;
-}
-
-.booking-eyebrow {
-  position: relative;
-  display: inline-flex;
+.booking-widget {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  align-self: flex-start;
-
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #F0A35E;
-  background: rgba(228, 115, 23, 0.14);
-  border: 1px solid rgba(228, 115, 23, 0.3);
-  padding: 7px 14px;
-  border-radius: 50px;
-  margin-bottom: 22px;
-}
-
-.booking-eyebrow::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #E47317;
-  box-shadow: 0 0 0 3px rgba(228, 115, 23, 0.3);
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
 }
 
 .booking-title {
-  position: relative;
-
-  font-size: clamp(30px, 3.2vw, 44px);
-  font-weight: 800;
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 56px;
+  font-weight: 600;
   color: #FFFFFF;
-  margin: 0 0 18px 0;
-  letter-spacing: -1px;
-  line-height: 1.12;
+  margin: 0 0 12px 0;
+  line-height: 68px;
 }
 
 .booking-lead {
-  position: relative;
-
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.66);
-  margin: 0 0 30px 0;
+  font-weight: 300;
+  line-height: 21px;
+  color: rgba(152, 151, 149, 0.8);
+  margin: 0 0 32px 0;
 }
 
-/* ---- Bullet points ---- */
 .booking-points {
-  position: relative;
   list-style: none;
-  margin: 0 0 32px 0;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -128,110 +72,92 @@
 .booking-point {
   display: flex;
   align-items: flex-start;
-  gap: 13px;
-
-  font-size: 15px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.88);
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 21px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .booking-check {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  margin-top: 1px;
-  border-radius: 50%;
-  color: #FFFFFF;
-  background: linear-gradient(135deg, #E47317, #C55418);
-  box-shadow: 0 4px 10px rgba(228, 115, 23, 0.35);
+  width: 14px;
+  height: 14px;
+  background: #EE7A1D;
+  border-radius: 7px;
+  margin-top: 3px;
+  flex-shrink: 0;
 }
 
-/* ---- Meta row (duration / type) ---- */
 .booking-meta {
-  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-top: auto;
-  padding-top: 28px;
+  margin-bottom: 24px;
 }
 
 .booking-meta-item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 7px;
-
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 14px;
-  border-radius: 50px;
-}
-
-.booking-meta-item svg {
-  color: #F0A35E;
+  gap: 8px;
+  background: #504F4F;
+  border: 0.5px solid rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  padding: 6px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #FFFFFF;
+  line-height: 18px;
 }
 
 .booking-signoff {
-  position: relative;
-
-  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 20px 0 0 0;
-}
-
-/* ---- RIGHT: Calendly scheduler ---- */
-.booking-widget {
-  background: #FFFFFF;
-  padding: 8px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
 }
 
 .calendly-inline-widget-wrapper {
   position: relative;
-  background: #FFFFFF;
-  border-radius: 18px;
-  overflow: hidden;
-  height: 700px;
-  min-width: 300px;
+  background: transparent;
+  width: 100%;
+  height: 100%;
 }
 
-/* ===========================
-   RESPONSIVE
-   =========================== */
 @media (max-width: 900px) {
   .booking-card {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    height: auto;
+    border-radius: 25px;
   }
   .booking-info {
-    padding: 44px 32px;
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 60px 32px;
+    height: auto;
   }
-  /* duration/type chips push to bottom only when stacked tall — keep tidy here */
   .booking-meta {
-    margin-top: 24px;
+    margin-top: 40px;
   }
-}
-
-@media (max-width: 768px) {
-  .booking-section {
-    padding: 80px 16px;
-  }
-  
   .calendly-inline-widget-wrapper {
-    height: 540px; /* Reduced height on mobile to eliminate bottom gap */
+    min-height: 500px;
   }
 }
 
 @media (max-width: 480px) {
   .booking-info {
-    padding: 36px 24px;
+    padding: 40px 24px;
   }
   .booking-widget {
-    padding: 4px;
+    padding: 16px;
   }
 }
