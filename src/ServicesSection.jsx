@@ -17,6 +17,9 @@ import brandBrochureVid from './assets/brand-identity-brochure.mp4';
 import commonGroundsImg from './assets/common-grounds.jpg';
 import commonGroundsVid from './assets/Transform_this_static_café_sce.mp4';
 import dataCirclesImg from './assets/DataCirclesLaptop.png';
+import dataCirclesDashboardImg from './assets/datacirclesdashboard.png';
+import dataCirclesWebImg from './assets/DataCircles_web.png';
+import cottsonWebImg from './assets/Cottson_web.png';
 import premiumGroupImg from './assets/image.png';
 import premiumGroupVid from './assets/Create_a_premium_micro_animati (3).mp4';
 import qodenextImg from './assets/QodenextImage.png';
@@ -124,8 +127,12 @@ export default function ServicesSection() {
                 </p>
               </div>
               <div className="service-right-col grid-2">
-                <div className="s-card"></div>
-                <div className="s-card"></div>
+                <div className="s-card">
+                  <img src={dataCirclesWebImg} alt="DataCircles Web" className="s-card-img" />
+                </div>
+                <div className="s-card">
+                  <img src={cottsonWebImg} alt="Cottson Web" className="s-card-img" />
+                </div>
               </div>
             </div>
             <div className="service-more">
@@ -153,7 +160,9 @@ export default function ServicesSection() {
                 </p>
               </div>
               <div className="service-right-col grid-1">
-                <div className="s-card"></div>
+                <div className="s-card">
+                  <img src={dataCirclesDashboardImg} alt="CopperFlow Dashboard" className="s-card-img" />
+                </div>
               </div>
             </div>
             <div className="service-more">

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './CoordinateSection.css';
+import dashboardVid from './assets/Dashboard 2.mp4';
 
 export default function CoordinateSection() {
   return (
@@ -11,7 +12,29 @@ export default function CoordinateSection() {
           Our client portal gives you a dedicated space to track progress, view project timelines, access upcoming meetings, share files, and download every deliverable.<br/>
           With lifetime access, your portal remains available long after your project is complete, giving you a permanent home for everything we've created together.
         </p>
-        <div className="coordinate-video-box"></div>
+        <div 
+          className="coordinate-video-box"
+          onMouseEnter={(e) => {
+            const vid = e.currentTarget.querySelector('video');
+            if (vid) vid.play();
+          }}
+          onMouseLeave={(e) => {
+            const vid = e.currentTarget.querySelector('video');
+            if (vid) {
+              vid.pause();
+            }
+          }}
+        >
+          <video 
+            src={dashboardVid} 
+            className="coordinate-video" 
+            muted 
+            loop 
+            playsInline 
+            disablePictureInPicture
+            controlsList="nodownload noplaybackrate"
+          />
+        </div>
       </div>
     </section>
   );

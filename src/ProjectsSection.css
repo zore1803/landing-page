@@ -283,7 +283,21 @@
     font-size: 24px;
   }
   .project-card-content {
-    padding: 24px;
+    padding: 22px;
+    gap: 6px;
+  }
+  .project-card-subtitle {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  /* Smaller pills so the longer tag sets pack into 2 rows instead of a
+     tall one-per-row stack that crowds the card. */
+  .project-tags {
+    gap: 6px;
+  }
+  .project-tag {
+    font-size: 11px;
+    padding: 5px 10px;
   }
   /* Keep the See More button a comfortable touch target */
   .view-more-btn {

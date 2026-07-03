@@ -428,4 +428,32 @@
   .footer-links a {
     font-size: 18px;
   }
+
+  /* The vw-sized glow ellipses only cover a thin band at the bottom of the
+     tall mobile footer, so it read as mostly cream. Replace them with a
+     vertical gradient — cream for most of the height, easing into copper /
+     orange at the very bottom, mirroring the desktop footer's feel. */
+  .rect-145 {
+    background: linear-gradient(
+      180deg,
+      #F0EDE4 0%,
+      #F0EDE4 5%,
+      #E8B98C 20%,
+      #E47317 45%,
+      #C55418 75%,
+      #7A2A15 100%
+    );
+  }
+  .ellipse-37,
+  .ellipse-39,
+  .ellipse-38,
+  .ellipse-40 {
+    display: none;
+  }
+
+  /* 14 folds are far too dense on a phone — hide every other pleat so the
+     remaining 7 (flex:1) widen out into cleaner, less crowded folds. */
+  .group-106 .pleat:nth-child(even) {
+    display: none;
+  }
 }

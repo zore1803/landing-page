@@ -81,6 +81,15 @@ const plans = [
 ];
 
 const Pricing = () => {
+  const handleCalendlyPopup = (e) => {
+    e.preventDefault();
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/thecopperstudio/30min?hide_gdpr_banner=1&hide_event_type_details=1&hide_landing_page_details=1&background_color=ffffff&text_color=070815&primary_color=ee7a1d'
+      });
+    }
+  };
+
   return (
     <section className="pricing-section global-section" id="pricing">
       <div className="pricing-main-container global-container">
@@ -128,7 +137,7 @@ const Pricing = () => {
               </div>
 
               <div className="pricing-card-footer">
-                <button className="pricing-cta-btn">{plan.cta}</button>
+                <button className="pricing-cta-btn" onClick={handleCalendlyPopup}>{plan.cta}</button>
               </div>
             </div>
           ))}
@@ -145,7 +154,7 @@ const Pricing = () => {
               Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.
             </p>
           </div>
-          <button className="custom-plan-btn">Book A Meeting</button>
+          <button className="custom-plan-btn" onClick={handleCalendlyPopup}>Book A Meeting</button>
         </div>
       </div>
     </section>

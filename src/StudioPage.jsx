@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import './StudioPage.css';
 import WallOfLove from './WallOfLove';
+import FAQ from './FAQ';
+import Booking from './Booking';
 
 import step1Img from './assets/process/1 1.svg';
 import step2Img from './assets/process/2 1.svg';
@@ -270,81 +272,10 @@ const StudioPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="studio-section faq-section-container">
-        <div className="studio-faq-section">
-          <div className="faq-left-panel">
-            <span className="faq-label">HAVE SOME DOUBTS?</span>
-            <h2>Frequently Asked Questions</h2>
-            <p>Everything you need to know about our design, branding and web development processes. Can't find the answer you're looking for? Reach out to our team directly.</p>
-            <div className="faq-contact-link">
-              <strong>Get in Touch</strong>
-              <div className="faq-contact-btn">
-                <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L5 4L1 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div className="faq-right-panel">
-            <div className="faq-row active faq-row-first">
-              <h4>What service does Copper Studio offer?</h4>
-              <div className="faq-icon">-</div>
-            </div>
-            <div className="studio-faq-answer">
-              We offer end-to-end branding, identity design and web development. This includes everything from logo systems and typography guidelines to custom merchandise, packaging design and high-performance web development (built with modern frameworks for top-tier speed).
-            </div>
-            <div className="faq-row">
-              <h4>How long does a typical project take?</h4>
-              <div className="faq-icon">+</div>
-            </div>
-            <div className="faq-row">
-              <h4>Do we get the source files for our designs?</h4>
-              <div className="faq-icon">+</div>
-            </div>
-            <div className="faq-row">
-              <h4>Do you provide web hosting and maintenance?</h4>
-              <div className="faq-icon">+</div>
-            </div>
-            <div className="faq-row">
-              <h4>How does the design process work?</h4>
-              <div className="faq-icon">+</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FAQ />
 
       {/* Contact */}
-      <section className="studio-section">
-        <div className="studio-contact-box">
-          <div className="contact-box-left">
-            <h2>Excited? Let's Talk Today</h2>
-            <p>Book a discovery call with us. We'd love to hear about your business, understand your goals, and explore how Copper Studio can create the right solution for you.</p>
-            <div className="contact-features">
-              <div className="contact-feature">
-                <div className="feature-dot">
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
-                </div> 
-                A tailored brand & website roadmap built around your business
-              </div>
-              <div className="contact-feature">
-                <div className="feature-dot">
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
-                </div> 
-                A look at how we work - strategy, design development and launch.
-              </div>
-              <div className="contact-feature">
-                <div className="feature-dot">
-                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
-                </div> 
-                Straight answers on timeline, scope and pricing
-              </div>
-            </div>
-          </div>
-          <div className="contact-box-right">
-            <img src={calendlyImg} alt="Book a call" className="contact-calendly-img" />
-          </div>
-        </div>
-      </section>
+      <Booking />
     </div>
   );
 };

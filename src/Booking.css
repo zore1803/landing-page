@@ -149,7 +149,7 @@
     margin-top: 40px;
   }
   .calendly-inline-widget-wrapper {
-    min-height: 500px;
+    height: 600px;
   }
 }
 
@@ -172,5 +172,25 @@
   }
   .booking-lead {
     margin-bottom: 24px;
+  }
+  /* Give the Calendly widget nearly the full card width and enough height
+     so its month calendar isn't cramped/scrolled on a phone. */
+  .booking-widget {
+    padding: 10px;
+  }
+  .calendly-inline-widget-wrapper {
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-info {
+    padding: 40px 22px;
+  }
+  .booking-widget {
+    padding: 6px;
+  }
+  .calendly-inline-widget-wrapper {
+    height: 480px;
   }
 }
