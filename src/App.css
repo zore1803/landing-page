@@ -174,15 +174,26 @@ img, video {
 }
 
 .hero-subtitle {
+  position: absolute;
+  top: calc(100% + 16vh); /* Position it far below the centered logo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  margin-top: 0;
+  
   color: rgba(255, 255, 255, 0.85);
-
+  font-family: 'DM Sans', sans-serif;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.5px;
-  margin-top: 24px;
   text-align: center;
   max-width: 600px;
   text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle i {
+  font-style: italic;
+  font-family: 'DM Sans', sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -673,40 +684,88 @@ img, video {
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 6px;
   align-items: center;
+  width: 100%;
+  max-width: 300px;
 }
 
-.mobile-nav-links a {
-
-  font-size: 24px;
+/* Primary nav links — generous tap targets */
+.mobile-nav-links > a:not(.mobile-client-portal) {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
   font-weight: 600;
-  color: #1A1A1A;
+  color: #070815;
   text-decoration: none;
-  transition: color 0.3s;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 12px;
+  transition: color 0.25s ease, background 0.25s ease;
 }
 
-.mobile-nav-links a:hover {
+.mobile-nav-links > a:not(.mobile-client-portal):hover,
+.mobile-nav-links > a:not(.mobile-client-portal):active {
   color: #E06D20;
+  background: #F7F5F0;
 }
 
-.mobile-lets-talk {
-  margin-top: 24px;
-  font-size: 16px;
-  padding: 14px 28px;
-}
-
+/* Client Portal — light pill */
 .mobile-nav-links a.mobile-client-portal {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 52px;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   font-weight: 600;
+  color: #070815;
   padding: 14px 28px;
   background: #F2F1EE;
   border-radius: 50px;
+  transition: background 0.25s ease;
 }
 
 .mobile-nav-links a.mobile-client-portal:hover {
-  color: #1A1A1A;
+  color: #070815;
   background: #E7E6E2;
+}
+
+/* Let's Talk — branded dark pill (was an unstyled default button).
+   Selector kept at .lets-talk-btn.mobile-lets-talk specificity so it wins
+   over the generic .lets-talk-btn rule in the 768 media query below. */
+.lets-talk-btn.mobile-lets-talk {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 220px;
+  min-height: 52px;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  padding: 14px 28px;
+  background: #070815;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.lets-talk-btn.mobile-lets-talk:hover {
+  background: #E06D20;
+  transform: translateY(-2px);
+}
+
+.lets-talk-btn.mobile-lets-talk svg {
+  width: 16px;
+  height: 16px;
 }
 
 @media (max-width: 768px) {
@@ -754,5 +813,60 @@ img, video {
   .trusted-logos-wrapper {
     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+
+/* Use the small-viewport height unit so the hero + bottom bar
+   stay fully visible under the mobile browser chrome. */
+@media (max-width: 768px) {
+  .landing-container {
+    height: calc(100svh - 32px);
+  }
+}
+
+@media (max-width: 640px) {
+  /* min-width:300px could clip on <320px screens; let it scale fully */
+  .main-center-logo {
+    min-width: 0;
+    width: 82vw;
+  }
+
+  /* Scoped to the landing hero so the Studio hero subtitle is untouched.
+     Keep the desktop 16vh drop below the logo (inherited) so the spacing
+     matches desktop; only constrain width/size for small screens. */
+  .logo-container .hero-subtitle {
+    font-size: 15px;
+    padding: 0 24px;
+    max-width: 92vw;
+    box-sizing: border-box;
+  }
+
+  /* scroll-text + copyright are hidden on mobile, so centre the pill */
+  .bottom-bar-inner {
+    justify-content: center;
+  }
+  .bottom-center-pill {
+    padding: 8px 8px 8px 16px;
+    gap: 8px;
+  }
+  .view-projects-btn {
+    font-size: 12px;
+    padding: 12px 6px;
+  }
+  .lets-talk-dark-btn {
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+}
+
+/* On very short screens (e.g. iPhone SE) the desktop 16vh drop would push
+   the subtitle into the bottom pill, so pull it up just enough to clear. */
+@media (max-width: 640px) and (max-height: 640px) {
+  .logo-container .hero-subtitle {
+    top: calc(100% + 6vh);
   }
 }

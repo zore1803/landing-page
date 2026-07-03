@@ -185,6 +185,14 @@ function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [showStudioPage, setShowStudioPage] = useState(false);
 
+  // Toggling between the landing page and the Studio page swaps the whole
+  // document, but the browser keeps the old scroll position (which lands you
+  // in the footer). Jump to the top instantly on every switch. 'instant'
+  // avoids the smooth-scroll animation from html { scroll-behavior: smooth }.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [showStudioPage]);
+
   return (
     <>
       {/* Mobile Menu Overlay */}
@@ -292,7 +300,7 @@ function App() {
       {/* Logo */}
       <div className="logo-container">
         <img src={logoImg} alt="Copper Studio Logo" className="main-center-logo" />
-        <h2 className="hero-subtitle">From logo to website. Everything your brand needs</h2>
+        <h2 className="hero-subtitle">From brand identity to custom websites, <i>all under one roof.</i></h2>
       </div>
 
       {/* Bottom Bar */}

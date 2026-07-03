@@ -161,3 +161,16 @@
     padding: 16px;
   }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  .booking-title {
+    font-size: 38px;
+    line-height: 1.15;
+  }
+  .booking-lead {
+    margin-bottom: 24px;
+  }
+}

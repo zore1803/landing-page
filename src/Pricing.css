@@ -209,17 +209,23 @@
 }
 
 .pricing-cta-btn {
-  width: 100%;
+  width: 250px;
+  height: 52px;
   background-color: #070815;
   color: #FFFFFF;
   border: none;
-  border-radius: 50px;
-  padding: 16px 24px;
-  font-size: 16px;
-  font-weight: 700;
+  border-radius: 20px;
+  padding: 0;
+  margin: 0 auto;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -317,13 +323,15 @@
 }
 
 .custom-plan-btn {
+  width: 250px;
+  height: 52px;
   background: #070815;
   color: #FFFFFF;
   font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 26px;
-  padding: 13px 40px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  padding: 0;
   border-radius: 20px;
   border: none;
   cursor: pointer;
@@ -331,6 +339,10 @@
   position: relative;
   z-index: 2;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .custom-plan-btn:hover {
@@ -343,5 +355,51 @@
     text-align: center;
     gap: 20px;
     padding: 30px;
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  .pricing-section .global-container {
+    padding: 0 20px;
+  }
+  /* minmax(0,..) lets the single column shrink below its content's
+     intrinsic min-width instead of forcing the card to overflow */
+  .pricing-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* Long tokens like "PowerPoint/Presentation" must be able to wrap.
+     Inside the flex rows the text span needs min-width:0 to shrink,
+     and overflow-wrap:anywhere lets the token itself break. */
+  .feature-text,
+  .subitem-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .plan-desc {
+    overflow-wrap: anywhere;
+  }
+  .pricing-title {
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+  .pricing-subtitle {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+  /* Fixed 250px buttons could overflow the narrowed cards */
+  .pricing-cta-btn,
+  .custom-plan-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+  .custom-plan-title {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+  .custom-plan-desc {
+    font-size: 15px;
   }
 }

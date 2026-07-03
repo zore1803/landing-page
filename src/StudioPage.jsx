@@ -270,19 +270,27 @@ const StudioPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="studio-section">
-        <span className="section-label">7 - HAVE SOME DOUBTS?</span>
+      <section className="studio-section faq-section-container">
         <div className="studio-faq-section">
           <div className="faq-left-panel">
+            <span className="faq-label">HAVE SOME DOUBTS?</span>
             <h2>Frequently Asked Questions</h2>
             <p>Everything you need to know about our design, branding and web development processes. Can't find the answer you're looking for? Reach out to our team directly.</p>
+            <div className="faq-contact-link">
+              <strong>Get in Touch</strong>
+              <div className="faq-contact-btn">
+                <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 4L1 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </div>
           </div>
           <div className="faq-right-panel">
-            <div className="faq-row active">
+            <div className="faq-row active faq-row-first">
               <h4>What service does Copper Studio offer?</h4>
               <div className="faq-icon">-</div>
             </div>
-            <div style={{paddingBottom: '24px', color: '#504F4F', borderBottom: '1px solid rgba(0,0,0,0.25)', fontSize: '18px', lineHeight: '1.6'}}>
+            <div className="studio-faq-answer">
               We offer end-to-end branding, identity design and web development. This includes everything from logo systems and typography guidelines to custom merchandise, packaging design and high-performance web development (built with modern frameworks for top-tier speed).
             </div>
             <div className="faq-row">

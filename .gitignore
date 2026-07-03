@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Oversized project SVGs (embedded images push these over GitHub's file-size
+# limit). Kept out of git until optimized. See ProjectsSection.jsx imports.
+src/assets/projects/qodenext.svg
+src/assets/projects/datacircles.svg

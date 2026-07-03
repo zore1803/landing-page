@@ -156,3 +156,24 @@
     position: static;
   }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  .faq-title {
+    font-size: 38px;
+  }
+  .faq-container {
+    gap: 40px;
+  }
+  .faq-description {
+    font-size: 15px;
+  }
+  .faq-contact-link {
+    font-size: 18px;
+  }
+  .faq-question {
+    font-size: 16px;
+  }
+}

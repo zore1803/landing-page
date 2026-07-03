@@ -9,8 +9,8 @@
 .footer-container {
   position: relative;
   width: 100%;
-  height: 71vw; /* roughly 1024/1440 */
-  max-height: 1024px;
+  height: 85vw; /* increased to make strips longer */
+  max-height: 1200px;
   background: #FFFFFF;
 }
 
@@ -247,7 +247,7 @@
 .footer-socials {
   display: flex;
   gap: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 120px; /* Increased to push legal text down */
 }
 
 /* Crazy good morphed hover animation for social icons */
@@ -257,9 +257,9 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-color: #1A1A1A;
+  background-color: #070815;
   color: #fff;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
@@ -397,5 +397,35 @@
   .ellipse-40 {
     bottom: -10%;
     width: 150vw;
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Let the tall stacked content drive the container height so nothing
+     is clipped by .footer-wrapper's overflow:hidden. The absolute
+     background layers (rect-145 / pleats / ellipses) are height:100%
+     and therefore stretch to match. */
+  .footer-container {
+    height: auto;
+    min-height: 100vh;
+  }
+  .footer-content {
+    position: relative;
+    top: 0;
+    padding: 60px 20px 140px 20px; /* bottom room for the marquee wordmark */
+  }
+  /* Scale the giant 1440px wordmark down to the screen width so it stays a
+     short band at the bottom (two copies keep the -50% loop seamless). */
+  .footer-large-text {
+    width: 100vw;
+  }
+  .footer-services {
+    font-size: 13px;
+  }
+  .footer-links a {
+    font-size: 18px;
   }
 }

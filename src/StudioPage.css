@@ -129,11 +129,22 @@
 }
 
 .studio-hero .hero-subtitle {
+  /* Reset the absolute positioning inherited from the global .hero-subtitle
+     rule (App.css) so it flows normally below the title inside the card
+     instead of being pushed 16vh down and clipped by the card. */
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: auto;
+
   font-family: 'DM Sans', sans-serif;
   font-size: 18px;
   font-weight: 300;
   color: #504F4F;
-  max-width: 760px;
+  /* Wide enough that the first line fits and only the <br/> breaks it,
+     so it renders as the intended two lines instead of wrapping to three. */
+  max-width: 940px;
   line-height: 1.5;
   margin: 0;
   text-shadow: none; /* Override global App.css glow */
@@ -633,36 +644,6 @@
   gap: 60px;
 }
 
-.faq-left {
-  flex: 1;
-}
-
-.faq-left h2 {
-  font-family: 'Zalando Sans', sans-serif;
-  font-size: 56px;
-  line-height: 1.1;
-  margin-bottom: 24px;
-}
-
-.faq-left p {
-  font-size: 18px;
-  color: #504F4F;
-  font-weight: 300;
-}
-
-.faq-right {
-  flex: 1;
-}
-
-.faq-item {
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  padding: 24px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 18px;
-  font-weight: 500;
-}
 
 /* FAQ Section */
 .studio-faq-section {
@@ -680,6 +661,18 @@
   font-size: 56px;
   font-weight: 600;
   line-height: 1.2;
+  margin: 0 0 24px 0;
+  color: #070815;
+}
+
+.faq-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: #D85000;
+  text-transform: uppercase;
+  display: block;
   margin-bottom: 24px;
 }
 
@@ -688,6 +681,32 @@
   font-weight: 300;
   color: #504F4F;
   line-height: 1.5;
+  margin: 0;
+}
+
+.faq-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  cursor: pointer;
+}
+
+.faq-contact-link strong {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #070815;
+}
+
+.faq-contact-btn {
+  width: 24px;
+  height: 24px;
+  background: #C55418;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .faq-right-panel {
@@ -702,6 +721,18 @@
   border-bottom: 1px solid rgba(0,0,0,0.25);
   cursor: pointer;
   transition: all 0.3s;
+}
+
+.faq-row-first {
+  border-top: 1px solid rgba(0,0,0,0.25);
+}
+
+.studio-faq-answer {
+  padding-bottom: 24px;
+  color: #504F4F;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .faq-row:hover {
@@ -724,9 +755,6 @@
   justify-content: center;
   color: white;
   font-size: 20px;
-}
-.faq-row.active .faq-icon {
-  background: #C55418;
 }
 
 /* Contact / Book a call */
@@ -876,4 +904,169 @@
   .process-header h2 { font-size: 40px; }
   .studio-projects-grid { grid-template-columns: repeat(2, 1fr); }
   .studio-projects-header .script-text { font-size: 80px; opacity: 0.1; }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  .studio-section {
+    padding: 60px 20px;
+  }
+  .section-label {
+    margin-bottom: 20px;
+  }
+
+  /* Hero */
+  .studio-hero {
+    padding: 14px 14px 30px 14px;
+  }
+  .studio-hero-card {
+    height: auto;
+    min-height: 360px;
+    padding: 48px 24px;
+  }
+  .studio-hero .hero-title {
+    font-size: 30px;
+  }
+  .studio-hero .hero-subtitle {
+    font-size: 15px;
+  }
+
+  /* Our Story */
+  .studio-story {
+    padding-top: 60px;
+  }
+  .story-content {
+    gap: 32px;
+    margin-top: 24px;
+  }
+  .story-left,
+  .story-right {
+    min-width: 0; /* allow flex children to shrink below content width */
+  }
+  .story-left h2 {
+    font-size: 26px;
+  }
+  /* "Storytelling" is one unbreakable script word — size it to fit */
+  .story-left .script-text {
+    font-size: 64px;
+    margin-left: 0;
+  }
+  .story-right {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  /* Our Belief */
+  .studio-belief {
+    padding: 60px 20px;
+  }
+  .belief-quote {
+    font-size: 24px;
+    margin: 32px auto 60px;
+  }
+  .belief-item {
+    margin-bottom: 28px;
+  }
+  /* Vertical hairline becomes a horizontal divider once stacked */
+  .belief-divider {
+    width: 100%;
+    height: 1px;
+    margin: 4px 0 28px 0;
+  }
+
+  /* What makes Copper different */
+  .different-grid {
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .diff-card {
+    height: 260px;
+    padding: 30px;
+  }
+  .diff-card h3 {
+    font-size: 26px;
+  }
+
+  /* Our Process */
+  /* Keep the pinned scroll animation on mobile (same behaviour as
+     desktop) — only adjust sizing/padding for the single column. Because
+     backdrop-filter can't frost through the JS-transformed wrapper on
+     mobile, make the frosted cards a bit more opaque so they still read
+     as glass over the title as they rise, instead of a sharp bleed. */
+  .process-label-absolute {
+    padding: 0 20px;
+    top: 88px;
+  }
+  .process-header h2 {
+    font-size: 30px;
+    text-align: center;
+  }
+  .process-header .cursive-accent {
+    font-size: 60px;
+    margin-top: -38px;
+  }
+  .process-glass-wrapper {
+    padding: 220px 0 80px 0;
+  }
+  .process-steps-grid {
+    gap: 20px;
+    padding: 0 16px;
+  }
+  .process-step {
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  /* FAQ (studio) */
+  .studio-faq {
+    flex-direction: column;
+    gap: 32px;
+    padding: 60px 20px;
+  }
+  .studio-faq-section {
+    gap: 32px;
+    margin-top: 24px;
+  }
+  .faq-left-panel h2 {
+    font-size: 34px;
+  }
+  .faq-left-panel p {
+    font-size: 15px;
+  }
+  .faq-row h4 {
+    font-size: 16px;
+    padding-right: 16px;
+  }
+  .studio-faq-answer {
+    font-size: 15px;
+  }
+
+  /* Contact */
+  .studio-contact {
+    padding: 40px 20px 80px;
+  }
+  .studio-contact-box {
+    margin: 40px auto 0;
+  }
+  .contact-box-left {
+    padding: 40px 28px;
+  }
+  .contact-box-left h2 {
+    font-size: 34px;
+  }
+  .contact-box-right {
+    padding: 24px;
+  }
+
+  /* Selected projects */
+  .studio-projects-grid {
+    gap: 16px;
+  }
+  .studio-projects-header h2 {
+    font-size: 34px;
+  }
+  .studio-projects-header .script-text {
+    font-size: 60px;
+  }
 }

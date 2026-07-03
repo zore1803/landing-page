@@ -273,3 +273,37 @@
     flex: 1 1 100% !important;
   }
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  .wall-section .global-container {
+    padding: 0 20px;
+  }
+  .wall-title {
+    font-size: 34px;
+  }
+  .bento-card {
+    padding: 28px 22px;
+  }
+  .bento-icon-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .bento-text {
+    font-size: 15px;
+  }
+  .bento-stat-4x {
+    font-size: 72px;
+    line-height: 90px;
+  }
+  .bento-stat-98 {
+    font-size: 60px;
+    line-height: 78px;
+  }
+  .bento-stat-subtitle {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}

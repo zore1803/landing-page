@@ -5,7 +5,7 @@
   position: relative;
   z-index: 10;
   background-color: #FFFFFF;
-  padding-bottom: 20px;
+  padding-bottom: 0; /* Remove extra padding so gap is exactly 95px (2.5cm) */
 }
 
 /* --- Trusted Brands Banner --- */
@@ -83,7 +83,6 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  margin-bottom: 60px;
 }
 
 .services-title {
@@ -120,7 +119,12 @@
   width: 400px;
   height: 0px;
   border-top: 1px solid rgba(0, 0, 0, 0.25);
-  margin: 80px 0;
+  margin-top: 95px;
+  margin-bottom: 78px;
+}
+
+.service-divider:first-child {
+  margin-bottom: 130px;
 }
 
 .service-block {
@@ -191,26 +195,11 @@
 .max-w-400 { max-width: 406px; }
 .max-w-600 { max-width: 589px; }
 
-/* Logo Text Mockup */
-.service-logo-text {
-  display: flex;
-  align-items: baseline;
-}
-
-.logo-copper {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 500;
-  font-size: 52px;
-  color: #101010;
-  letter-spacing: -0.02em;
-}
-
-.logo-suffix {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  font-size: 40px;
-  color: #231F20;
-  margin-left: 0px;
+/* Logo SVG styling */
+.service-logo-img {
+  height: 60px; /* Adjust as necessary to match original text height */
+  width: auto;
+  object-fit: contain;
 }
 
 /* Cards Grid */
@@ -364,5 +353,100 @@
   }
   .logo-suffix {
     font-size: 40px;
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Trusted brands banner */
+  .trusted-banner {
+    height: auto;
+    padding: 40px 20px;
+    gap: 24px;
+    margin-top: 30px;
+  }
+  .trusted-banner-title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .trusted-logo {
+    height: 48px;
+    max-width: 100px;
+  }
+  .trusted-marquee-track {
+    gap: 32px;
+  }
+
+  /* Main services container */
+  .services-main-container {
+    padding: 0 20px;
+    margin-top: 60px;
+  }
+  .services-title {
+    font-size: 34px;
+    line-height: 42px;
+  }
+  .services-subtitle {
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  /* Stack the Service 01 top row (number / logo / description) */
+  .service-top-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .service-desc-col {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .service-desc {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .service-logo-img {
+    height: 44px;
+  }
+
+  /* 4-up media cards become a scalable 2x2 grid */
+  .service-cards-grid.grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .grid-4 .s-card {
+    min-width: 0;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Empty placeholder cards for services 02 / 03 */
+  .grid-2 .s-card,
+  .grid-1 .s-card {
+    height: 220px;
+  }
+
+  /* Dividers must not exceed the viewport */
+  .service-divider {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+  .service-divider:first-child {
+    margin-bottom: 80px;
+  }
+
+  .service-more {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .service-cards-grid.grid-4 {
+    gap: 12px;
   }
 }

@@ -2,13 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import './ProjectsSection.css';
 import projectImg from './assets/brand-identity-brochure.png';
 import commonGroundsImg from './assets/common-grounds.jpg';
-import teaBoxesImg from './assets/Tea - Boxes 1.png';
+import dataCirclesImg from './assets/DataCirclesLaptop.png';
 import premiumGroupImg from './assets/image.png';
+import qodenextImg from './assets/QodenextImage.png';
 
 import proj1Svg from './assets/projects/Cottson Clothing.svg';
 import proj2Svg from './assets/projects/common ground.svg';
 import proj3Svg from './assets/projects/darjeeling garden.svg';
 import proj4Svg from './assets/projects/ELEVE45.svg';
+import projQodenextSvg from './assets/projects/qodenext.svg';
+import projDataCirclesSvg from './assets/projects/datacircles.svg';
 
 export default function ProjectsSection() {
   const sectionRef = useRef(null);
@@ -107,10 +110,34 @@ export default function ProjectsSection() {
   }, []);
 
   const projects = [
-    { title: "Cottson Clothing", tags: ["UI/UX", "Branding", "Development"], img: premiumGroupImg, svgUrl: proj1Svg },
-    { title: "Common Grounds", tags: ["Web Design"], img: commonGroundsImg, svgUrl: proj2Svg },
-    { title: "Darjeeling Garden", tags: ["Design", "Packaging", "Print"], img: teaBoxesImg, svgUrl: proj3Svg },
-    { title: "ELEVE45", tags: ["Development", "Creative"], img: projectImg, svgUrl: proj4Svg }
+    { 
+      title: "Cottson Clothing", 
+      subtitle: "Corporate Clothing Manufacturer",
+      tags: ["Brand Identity", "Company Portal", "Print Collateral", "Product Assets", "Website Design"], 
+      img: premiumGroupImg, 
+      svgUrl: proj1Svg 
+    },
+    { 
+      title: "Qodenext India Pvt. Ltd.", 
+      subtitle: "IT Services and IT Consulting",
+      tags: ["Brand Identity"], 
+      img: qodenextImg, 
+      svgUrl: projQodenextSvg 
+    },
+    { 
+      title: "Common Grounds", 
+      subtitle: "Café",
+      tags: ["Brand Identity", "Product Assets", "Environmental Branding"], 
+      img: commonGroundsImg, 
+      svgUrl: proj2Svg 
+    },
+    { 
+      title: "DataCircles", 
+      subtitle: "CRM + Invoicing Software",
+      tags: ["Brand Identity"], 
+      img: dataCirclesImg, 
+      svgUrl: projDataCirclesSvg 
+    }
   ];
 
   return (
@@ -131,11 +158,11 @@ export default function ProjectsSection() {
                 onClick={() => setActiveSvg(proj.svgUrl)}
                 style={{ cursor: 'pointer' }}
               >
-                <div className="project-card-image-wrapper">
-                  <img src={proj.img} alt={proj.title} className="project-card-image" />
-                </div>
+                <img src={proj.img} alt={proj.title} className="project-card-image" />
+                <div className="project-card-overlay"></div>
                 <div className="project-card-content">
                   <h4 className="project-card-title">{proj.title}</h4>
+                  <p className="project-card-subtitle">{proj.subtitle}</p>
                   <div className="project-tags">
                     {proj.tags.map((tag, tIdx) => (
                       <span className="project-tag" key={tIdx}>{tag}</span>

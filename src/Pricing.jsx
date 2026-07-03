@@ -140,7 +140,7 @@ const Pricing = () => {
           
           <div className="custom-plan-content">
             <span className="custom-plan-tag">HAVE A CUSTOM REQUIREMENT?</span>
-            <h3 className="custom-plan-title">Not Finding The Perfect Plan?</h3>
+            <h3 className="custom-plan-title">Let's Create Something That Fits Your Brand</h3>
             <p className="custom-plan-desc">
               Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.
             </p>

@@ -58,74 +58,85 @@
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px); /* Restored beautiful glass blur */
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Brighter glass edge */
   border-radius: 30px;
   opacity: 0;
   transform: translateY(180px);
   will-change: transform, opacity;
-  aspect-ratio: 1.2 / 1; /* Shorter card */
+  aspect-ratio: 1.1 / 1;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  padding: 16px; /* Glass border space around the image */
-}
-
-.project-card-image-wrapper {
-  width: 100%;
-  flex: 1; /* Take up remaining height */
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
 }
 
 .project-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
 }
 
 .project-card:hover .project-card-image {
   transform: scale(1.05);
 }
 
+.project-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  z-index: 1;
+}
+
 .project-card-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 24px 16px 12px 16px; /* Padding below the image */
+  gap: 8px;
+  padding: 30px;
   position: relative;
   z-index: 2;
+  margin-top: auto;
+  justify-content: flex-end;
 }
 
 .project-card-title {
   font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 26px; /* Slightly smaller for shorter card */
-  color: #101010;
+  font-weight: 700;
+  font-size: 28px;
+  color: #FFFFFF;
   margin: 0;
+}
+
+.project-card-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 8px 0;
 }
 
 .project-tags {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .project-tag {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  background: rgba(0, 0, 0, 0.05); /* Light grey for tags */
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #101010; /* Dark text for tags */
-  padding: 6px 16px;
+  background: #FFFFFF;
+  border: none;
+  color: #000000;
+  padding: 6px 14px;
   border-radius: 50px;
+  font-weight: 500;
 }
 
 .view-more-btn {
@@ -139,7 +150,7 @@
   align-items: center;
   justify-content: center;
   padding: 16px 0;
-  border: 1px solid #D85000; /* Match the orange/copper from the image */
+  border: 1px solid #D85000;
   border-radius: 50px;
   transition: background-color 0.3s ease, color 0.3s ease;
   background-color: transparent;
@@ -244,5 +255,56 @@
   }
   .projects-glass-wrapper {
     padding: 40px 20px;
+    box-sizing: border-box; /* keep the side padding inside the 100% width */
+  }
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE REFINEMENTS (added — desktop untouched)
+   ============================================================ */
+@media (max-width: 768px) {
+  .projects-section .global-container {
+    padding: 0 20px;
+  }
+  /* The title wraps to multiple lines on mobile; centre it so it stays
+     balanced under the centered "Projects" script (desktop is a single
+     line, so this only affects the wrapped mobile layout). */
+  .projects-header-wrapper {
+    padding: 0 20px;
+  }
+  .projects-header-wrapper .section-title {
+    text-align: center;
+  }
+  .cursive-accent {
+    font-size: 90px;
+    margin-top: -50px;
+  }
+  .project-card-title {
+    font-size: 24px;
+  }
+  .project-card-content {
+    padding: 24px;
+  }
+  /* Keep the See More button a comfortable touch target */
+  .view-more-btn {
+    padding: 16px 0;
+  }
+  /* Modal fits small screens; close button stays 44px+ tappable */
+  .project-svg-modal-overlay {
+    padding: 20px 12px;
+  }
+  .project-svg-modal-close {
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Keep the long "Testimonial" / "Projects" script accents on-screen */
+  .cursive-accent {
+    font-size: 68px;
+    margin-top: -38px;
   }
 }
