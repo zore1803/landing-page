@@ -124,7 +124,7 @@
   font-weight: 600;
   line-height: 1.15;
   color: #070815;
-  max-width: 900px;
+  max-width: 1200px; /* Increased to fit text on single line */
   margin-bottom: 24px;
 }
 
@@ -136,6 +136,7 @@
   max-width: 760px;
   line-height: 1.5;
   margin: 0;
+  text-shadow: none; /* Override global App.css glow */
 }
 
 /* OUR STORY */

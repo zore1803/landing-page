@@ -37,9 +37,9 @@ const StudioPage = () => {
           const viewportHeight = window.innerHeight;
           const wrapperHeight = glass.offsetHeight;
           
-          // We want the cards to stop sliding up before they hit the top navbar.
-          // By limiting the travel distance, we ensure glassY never reaches 0.
-          const travelDistance = viewportHeight * 0.8; 
+          // We want the cards to travel their full height so all rows become visible 
+          // while the background text remains frozen.
+          const travelDistance = wrapperHeight;
           const scrollDistance = travelDistance + viewportHeight;
           
           const targetHeight = scrollDistance + viewportHeight;
