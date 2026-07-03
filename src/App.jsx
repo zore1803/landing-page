@@ -8,6 +8,7 @@ import FAQ from './FAQ';
 import Booking from './Booking';
 import Footer from './Footer';
 import ServicesSection from './ServicesSection';
+import StudioPage from './StudioPage';
 
 import logoImg from './assets/logo.svg';
 import brand1 from './assets/logos/Group 79.svg';
@@ -182,17 +183,18 @@ function App() {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   
   const [activeSection, setActiveSection] = useState('home');
+  const [showStudioPage, setShowStudioPage] = useState(false);
 
   return (
     <>
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-nav-links">
-          <a href="#home" onClick={() => { toggleMobileMenu(); setActiveSection('home'); }}>Home</a>
-          <a href="#about" onClick={() => { toggleMobileMenu(); setActiveSection('about'); }}>Studio</a>
-          <a href="#services" onClick={() => { toggleMobileMenu(); setActiveSection('services'); }}>Services</a>
-          <a href="#projects" onClick={() => { toggleMobileMenu(); setActiveSection('projects'); }}>Projects</a>
-          <a href="#contact" onClick={() => { toggleMobileMenu(); setActiveSection('contact'); }}>Contact</a>
+          <a href="#home" onClick={() => { toggleMobileMenu(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
+          <a href="#about" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
+          <a href="#services" onClick={() => { toggleMobileMenu(); setActiveSection('services'); setShowStudioPage(false); window.location.hash = '#services'; }}>Services</a>
+          <a href="#projects" onClick={() => { toggleMobileMenu(); setActiveSection('projects'); setShowStudioPage(false); window.location.hash = '#projects'; }}>Projects</a>
+          <a href="#contact" onClick={() => { toggleMobileMenu(); setActiveSection('contact'); setShowStudioPage(false); window.location.hash = '#contact'; }}>Contact</a>
           <a href="#portal" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
           <button className="lets-talk-btn mobile-lets-talk">
              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -213,11 +215,11 @@ function App() {
         <div className="nav-divider desktop-only"></div>
 
         <div className="nav-links desktop-only">
-          <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={() => setActiveSection('home')}>Home</a>
-          <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => setActiveSection('about')}>Studio</a>
-          <a href="#services" className={activeSection === 'services' ? 'active' : ''} onClick={() => setActiveSection('services')}>Services</a>
-          <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => setActiveSection('projects')}>Projects</a>
-          <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={() => setActiveSection('contact')}>Contact</a>
+          <a href="#home" className={activeSection === 'home' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
+          <a href="#about" className={showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
+          <a href="#services" className={activeSection === 'services' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('services'); setShowStudioPage(false); window.location.hash = '#services'; }}>Services</a>
+          <a href="#projects" className={activeSection === 'projects' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('projects'); setShowStudioPage(false); window.location.hash = '#projects'; }}>Projects</a>
+          <a href="#contact" className={activeSection === 'contact' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('contact'); setShowStudioPage(false); window.location.hash = '#contact'; }}>Contact</a>
         </div>
 
         <div className="nav-divider desktop-only"></div>
@@ -255,8 +257,10 @@ function App() {
         </button>
       </nav>
 
-      <div className="landing-container" id="home">
-        {/* Background blobs / ellipses */}
+      {!showStudioPage ? (
+        <>
+          <div className="landing-container" id="home">
+            {/* Background blobs / ellipses */}
       <div className="blobs-container">
         <div className="ellipse ellipse-2"></div>
         <div className="ellipse ellipse-3"></div>
@@ -334,6 +338,10 @@ function App() {
 
       {/* Booking Section */}
       <Booking />
+        </>
+      ) : (
+        <StudioPage />
+      )}
 
       <Footer />
     </>
