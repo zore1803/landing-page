@@ -566,12 +566,12 @@
   z-index: 20 !important;
   opacity: 0;
   transform: translateY(350px) scale(0.75) rotateX(45deg);
-  will-change: transform, opacity;
+  /* will-change removed to fix production blur rendering bug */
   
   /* Glassmorphism */
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   border-radius: 24px;
