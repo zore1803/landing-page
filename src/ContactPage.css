@@ -3,78 +3,38 @@
 }
 
 /* ── Hero ── */
-/* Small top padding so the hero card rises up behind the fixed navbar,
-   letting the navbar float over the top edge of the gradient (intertwined
-   look) instead of sitting in a gap below it. */
 .contact-hero-wrap {
   width: 100%;
-  padding: 12px 18px 0;
+  padding: 12px 0 0;
   box-sizing: border-box;
 }
 
 .contact-hero-card {
   position: relative;
-  width: 100%;
+  width: calc(100% - 32px);
   max-width: 1406px;
   margin: 0 auto;
-  height: 807px;
-  border-radius: 25px;
+  min-height: 80vh;
+  border-radius: 24px;
   overflow: hidden;
   background: #FFFFFF;
 }
 
-.contact-ellipse {
+/* Background Image Container styles identical to services */
+.services-hero-bg-container {
   position: absolute;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.contact-ellipse-blue {
-  width: 671px;
-  height: 453px;
-  left: -206px;
-  top: -51px;
-  background: #4686B7;
-  filter: blur(100px);
-  animation: floatBlue 15s ease-in-out infinite;
-}
-
-.contact-ellipse-orange {
-  width: 582px;
-  height: 431px;
-  right: -206px;
-  top: 141px;
-  background: #EE7A1D;
-  filter: blur(150px);
-  animation: floatOrange 18s ease-in-out infinite;
-}
-
-@keyframes floatBlue {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(60px, 90px) scale(1.1); }
-  66% { transform: translate(-40px, 50px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes floatOrange {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-70px, -80px) scale(1.15); }
-  66% { transform: translate(50px, -40px) scale(0.85); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-.contact-strips-overlay {
-  position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
   z-index: 1;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.6) 0%,
-    transparent 1%,
-    transparent 7.333%,
-    rgba(0, 0, 0, 0.05) 8.333%
-  );
+}
+
+.services-hero-bg-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .contact-hero-content {

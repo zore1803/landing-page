@@ -1,9 +1,71 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 const ServicesHeroBg = () => {
+  const stripeAnimationCSS = useMemo(() => {
+    const TOTAL_TIME = 9; 
+    const FPS = 15;
+    const frames = TOTAL_TIME * FPS;
+    let css = '';
+    
+    for (let i = 0; i < 15; i++) { // SVG has 15 stripes
+      const d = Math.min(i, 14 - i);
+      const peaks = [
+        0.5 + i * 0.15,               
+        3.5 + (14 - i) * 0.15,        
+        6.5 + d * 0.15                
+      ];
+      if (d < 7) {
+        peaks.push(7.4 + (7 - d) * 0.15); 
+      }
+
+      let keyframes = `@keyframes svgComplexPulse${i} {\n`;
+      
+      for (let frame = 0; frame <= frames; frame++) {
+        const t = frame / FPS;
+        let maxBright = 0.2;
+        
+        peaks.forEach(peak => {
+          let bright = 0.2;
+          if (t >= peak - 0.2 && t <= peak) {
+            const progress = (t - (peak - 0.2)) / 0.2;
+            bright = 0.2 + progress * 0.8;
+          } else if (t > peak && t <= peak + 0.6) {
+            const progress = (t - peak) / 0.6;
+            bright = 1.0 - progress * 0.8;
+          }
+          if (bright > maxBright) maxBright = bright;
+        });
+        
+        const percent = ((t / TOTAL_TIME) * 100).toFixed(1);
+        keyframes += `  ${percent}% { opacity: ${maxBright.toFixed(2)}; }\n`;
+      }
+      keyframes += `}\n`;
+      css += keyframes;
+      
+      css += `.svg-stripe-${i} { animation: svgComplexPulse${i} 9s infinite linear; }\n`;
+    }
+    
+    // Add slow breathing animation for the colored blobs
+    css += `
+      @keyframes blobBreathe {
+        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+      }
+      .svg-blob { transform-origin: center; animation: blobBreathe 12s infinite ease-in-out; }
+      .svg-blob-orange { animation-delay: -3s; }
+      .svg-blob-copper { animation-delay: -6s; }
+      .svg-blob-light { animation-delay: -9s; }
+    `;
+    
+    return css;
+  }, []);
+
   return (
-    <svg className="services-hero-bg-svg" width="100%" height="100%" viewBox="0 0 1404 808" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <g clipPath="url(#clip0_35_97)">
+    <>
+      <style>{stripeAnimationCSS}</style>
+      <svg className="services-hero-bg-svg" width="100%" height="100%" viewBox="0 0 1404 808" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <g clipPath="url(#clip0_35_97)">
         <rect width="1404" height="808" rx="25" fill="white"/>
         
         {/* Animated Blobs */}
@@ -139,6 +201,7 @@ const ServicesHeroBg = () => {
         </clipPath>
       </defs>
     </svg>
+    </>
   );
 };
 
