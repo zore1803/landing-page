@@ -1,14 +1,18 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 import CoordinateSection from './CoordinateSection';
 import ProjectsSection from './ProjectsSection';
-import Pricing from './Pricing';
+import ServicePricing from './ServicePricing';
 import WallOfLove from './WallOfLove';
 import FAQ from './FAQ';
 import Booking from './Booking';
 import Footer from './Footer';
 import ServicesSection from './ServicesSection';
 import StudioPage from './StudioPage';
+import ServicesPage from './ServicesPage';
+import ServiceDetail from './ServiceDetail';
+import ContactPage from './ContactPage';
 
 import logoImg from './assets/logo.svg';
 import brand1 from './assets/logos/Group 79.svg';
@@ -72,7 +76,9 @@ const ServiceCard = ({ svgSrc, index }) => {
   );
 };
 
-function App() {
+function Home() {
+  const navigate = useNavigate();
+
   // Prevent downloading images/videos via right-click
   useEffect(() => {
     const handleContextMenu = (e) => {
@@ -200,9 +206,9 @@ function App() {
         <div className="mobile-nav-links">
           <a href="#home" onClick={() => { toggleMobileMenu(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
           <a href="#about" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
-          <a href="#services" onClick={() => { toggleMobileMenu(); setActiveSection('services'); setShowStudioPage(false); window.location.hash = '#services'; }}>Services</a>
+          <a href="/services" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/services'); }}>Services</a>
           <a href="#projects" onClick={() => { toggleMobileMenu(); setActiveSection('projects'); setShowStudioPage(false); window.location.hash = '#projects'; }}>Projects</a>
-          <a href="#contact" onClick={() => { toggleMobileMenu(); setActiveSection('contact'); setShowStudioPage(false); window.location.hash = '#contact'; }}>Contact</a>
+          <a href="/contact" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/contact'); }}>Contact</a>
           <a href="#portal" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
           <button className="lets-talk-btn mobile-lets-talk">
              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -225,9 +231,9 @@ function App() {
         <div className="nav-links desktop-only">
           <a href="#home" className={activeSection === 'home' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
           <a href="#about" className={showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
-          <a href="#services" className={activeSection === 'services' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('services'); setShowStudioPage(false); window.location.hash = '#services'; }}>Services</a>
+          <a href="/services" className={activeSection === 'services' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/services'); }}>Services</a>
           <a href="#projects" className={activeSection === 'projects' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('projects'); setShowStudioPage(false); window.location.hash = '#projects'; }}>Projects</a>
-          <a href="#contact" className={activeSection === 'contact' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('contact'); setShowStudioPage(false); window.location.hash = '#contact'; }}>Contact</a>
+          <a href="/contact" className={activeSection === 'contact' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/contact'); }}>Contact</a>
         </div>
 
         <div className="nav-divider desktop-only"></div>
@@ -336,7 +342,7 @@ function App() {
       <ProjectsSection />
 
       {/* Pricing Section */}
-      <Pricing />
+      <ServicePricing />
 
       {/* Testimonials / Wall Of Love Section */}
       <WallOfLove />
@@ -353,6 +359,17 @@ function App() {
 
       <Footer />
     </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/services" element={<ServicesPage />} />
+      <Route path="/services/:slug" element={<ServiceDetail />} />
+      <Route path="/contact" element={<ContactPage />} />
+    </Routes>
   );
 }
 
