@@ -284,6 +284,8 @@
 
 .grid-1 .s-card {
   width: 609px;
+  height: auto;
+  aspect-ratio: 500 / 314;
 }
 
 /* "Want To Know More?" */
@@ -424,9 +426,12 @@
   }
 
   /* Empty placeholder cards for services 02 / 03 */
-  .grid-2 .s-card,
-  .grid-1 .s-card {
+  .grid-2 .s-card {
     height: 220px;
+  }
+  .grid-1 .s-card {
+    height: auto;
+    aspect-ratio: 500 / 314;
   }
 
   /* Dividers must not exceed the viewport */

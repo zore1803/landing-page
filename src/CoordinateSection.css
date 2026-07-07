@@ -43,21 +43,23 @@
 }
 
 .coordinate-video-box {
+  display: block;
   width: 100%;
-  max-width: 1050px;
-  height: 485px;
-  background-color: #070815;
+  max-width: 900px; /* Increased slightly from 760px */
+  aspect-ratio: 1.55; /* Keeps the exact same cropping on the sides */
+  height: auto;
   border-radius: 25px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   overflow: hidden;
-  position: relative;
   cursor: pointer;
+  margin: 0 auto;
 }
 
 .coordinate-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Zooms video vertically, crops excess horizontal space */
+  display: block;
   transition: opacity 0.3s ease;
 }
 
@@ -78,8 +80,4 @@
   .section-subtitle {
     font-size: 15px;
     margin-bottom: 40px;
-  }
-  .coordinate-video-box {
-    height: 240px;
-  }
-}
+}}
