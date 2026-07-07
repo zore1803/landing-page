@@ -53,25 +53,33 @@ const StudioPage = () => {
           let progress = -rect.top / scrollDistance;
           progress = Math.max(0, Math.min(1, progress));
           
-          // Slide the whole wrapper up from below the viewport to exactly 0
+          // Slide the whole grid up from below the viewport to exactly 0.
+          // IMPORTANT: we deliberately do NOT transform the wrapper. A
+          // transformed ancestor establishes its own backdrop root, which stops
+          // the cards' backdrop-filter from frosting the heading behind them —
+          // that's why the glass looked flat/transparent in production. Instead
+          // we fold this global slide into each card's own transform, since an
+          // element's own transform does not break its own backdrop-filter.
           const glassY = viewportHeight - (progress * travelDistance);
-          glass.style.transform = `translateY(${glassY}px)`;
+          glass.style.transform = 'none';
 
           const cards = glass.querySelectorAll('.process-step');
 
           cards.forEach((card, i) => {
-            const startProgress = 0.05 + (i * 0.06); 
-            const endProgress = startProgress + 0.25; 
+            const startProgress = 0.05 + (i * 0.06);
+            const endProgress = startProgress + 0.25;
             let cardProgress = (progress - startProgress) / (endProgress - startProgress);
             cardProgress = Math.max(0, Math.min(1, cardProgress));
             const cardEase = 1 - Math.pow(1 - cardProgress, 3);
-            
-            const cardY = 350 - (cardEase * 350);
+
+            const cardY = glassY + (350 - (cardEase * 350));
             const scale = 0.75 + (cardEase * 0.25);
             const rotX = 45 - (cardEase * 45);
-            
+
             card.style.opacity = cardProgress;
-            card.style.transform = `translateY(${cardY}px) scale(${scale}) rotateX(${rotX}deg)`;
+            // perspective lives on the card itself (not the wrapper) so the
+            // wrapper stays transform-free and never becomes a backdrop root.
+            card.style.transform = `perspective(1000px) translateY(${cardY}px) scale(${scale}) rotateX(${rotX}deg)`;
           });
           
           ticking = false;

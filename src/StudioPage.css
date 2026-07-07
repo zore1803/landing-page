@@ -505,9 +505,10 @@
   z-index: 10 !important;
   width: 100%;
   padding: 250px 0 120px 0;
-  will-change: transform;
   text-align: center;
-  perspective: 1000px;
+  /* No transform / perspective / will-change here on purpose: any of those
+     would make this wrapper a backdrop root and stop the cards inside from
+     frosting the heading behind them. Perspective is applied per-card in JS. */
 }
 
 .process-header-container {
@@ -565,18 +566,14 @@
   position: relative;
   z-index: 20 !important;
   opacity: 0;
-  transform: translateY(350px) scale(0.75) rotateX(45deg);
-  /* will-change removed to fix production blur rendering bug */
-  
-  /* Glassmorphism.
-     The cards live inside .process-glass-wrapper, which is JS-transformed on
-     scroll. A transformed ancestor isolates its own compositing layer, so
-     backdrop-filter cannot reliably frost the background heading (which sits
-     in a sibling element outside the wrapper). Dev builds happen to render it
-     frosted; production builds don't, causing the text to bleed through sharp.
-     So we keep the blur for where it works, but make the card surface opaque
-     enough to read as frosted glass everywhere and hide the bleed regardless. */
-  background: rgba(255, 255, 255, 0.72) !important;
+  transform: perspective(1000px) translateY(350px) scale(0.75) rotateX(45deg);
+
+  /* Glassmorphism. The wrapper is now transform-free (see above), so the cards
+     are no longer trapped in an isolated backdrop root — backdrop-filter can
+     genuinely frost the heading painted behind them. That lets us keep the card
+     surface mostly transparent so the blur reads as real frosted glass rather
+     than a flat opaque panel. */
+  background: rgba(255, 255, 255, 0.35) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.7);
