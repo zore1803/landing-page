@@ -9,7 +9,7 @@
 export const pricingServices = [
   {
     key: 'brand',
-    label: 'Copper Brand',
+    label: 'CopperBrand',
     shortLabel: 'Brand',
     plans: [
       {
@@ -55,7 +55,7 @@ export const pricingServices = [
   },
   {
     key: 'web',
-    label: 'Copper Web',
+    label: 'CopperWeb',
     shortLabel: 'Web',
     plans: [
       {
@@ -101,7 +101,7 @@ export const pricingServices = [
   },
   {
     key: 'flow',
-    label: 'Copper Flow',
+    label: 'CopperFlow',
     shortLabel: 'Flow',
     plans: [
       {

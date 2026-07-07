@@ -10,7 +10,7 @@ const CheckIcon = () => (
   </svg>
 );
 
-const ServicePricing = ({ activeService, onServiceChange, showToggle = true }) => {
+const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hideTitle = false }) => {
   // Controlled when props are passed (services page), otherwise self-managed (home page).
   const [internalKey, setInternalKey] = useState('brand');
   const activeKey = activeService ?? internalKey;
@@ -22,13 +22,17 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true }) =
   return (
     <section className="pricing-section global-section" id="pricing">
       <div className="pricing-main-container global-container">
-        <h2 className="pricing-title">Pricing</h2>
-        <div className="pricing-header-text">
-          <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
-          <p className="pricing-subtitle">
-            Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
-          </p>
-        </div>
+        {!hideTitle && (
+          <>
+            <h2 className="pricing-title">Pricing</h2>
+            <div className="pricing-header-text">
+              <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
+              <p className="pricing-subtitle">
+                Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
+              </p>
+            </div>
+          </>
+        )}
 
         {/* Service toggle — hidden on individual service pages (locked to one service) */}
         {showToggle && (

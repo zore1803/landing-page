@@ -241,13 +241,35 @@
   font-size: 150px;
   line-height: 1;
   color: #EE7A1D;
-  margin: 0;
+  margin: -80px 0 0 0;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Dark Pricing Wrapper overrides */
 .dark-pricing-wrapper {
   margin-bottom: 120px;
   width: 100%;
+}
+
+.dark-pricing-wrapper .pricing-toggle {
+  background: #232328;
+  border-color: #232328;
+}
+
+.dark-pricing-wrapper .pricing-toggle-btn {
+  color: #8C8C8C;
+}
+
+.dark-pricing-wrapper .pricing-toggle-btn:hover {
+  color: #FFFFFF;
+}
+
+.dark-pricing-wrapper .pricing-toggle-btn.active {
+  background: #47474C;
+  color: #FFFFFF;
+}
   max-width: 1408px;
   padding: 0 24px;
   margin-left: auto;
