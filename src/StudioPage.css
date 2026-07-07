@@ -568,15 +568,9 @@
   opacity: 0;
   transform: perspective(1000px) translateY(350px) scale(0.75) rotateX(45deg);
 
-  /* Glassmorphism. The wrapper is now transform-free (see above), so the cards
-     are no longer trapped in an isolated backdrop root — backdrop-filter can
-     genuinely frost the heading painted behind them. That lets us keep the card
-     surface mostly transparent so the blur reads as real frosted glass rather
-     than a flat opaque panel. */
-  background: rgba(255, 255, 255, 0.35) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  /* Solid opaque cards (no glassmorphism). */
+  background: #FFFFFF;
+  border: 1px solid #ECE8E0;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   border-radius: 24px;
   padding: 40px 30px;
@@ -1020,7 +1014,7 @@
     padding: 0 16px;
   }
   .process-step {
-    background: rgba(255, 255, 255, 0.85);
+    background: #FFFFFF;
   }
 
   /* FAQ (studio) */
