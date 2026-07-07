@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './CoordinateSection.css';
 import dashboardVid from './assets/Dashboard 2.mp4';
 

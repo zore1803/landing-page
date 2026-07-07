@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.css';
 import footerText from './assets/footer/Group 70.svg';
-import navLogo from './assets/logo.svg';
 import footerMainLogo from './assets/Group 18.svg';
 
 const Footer = () => {

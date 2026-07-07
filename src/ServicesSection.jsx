@@ -12,8 +12,6 @@ import copperBrandLogo from './assets/logos/CopperBrand.svg';
 import copperWebLogo from './assets/logos/CopperWeb.svg';
 import copperFlowLogo from './assets/logos/CopperFlow.svg';
 
-import brandBrochureImg from './assets/brand-identity-brochure.png';
-import brandBrochureVid from './assets/brand-identity-brochure.mp4';
 import commonGroundsImg from './assets/common-grounds.jpg';
 import commonGroundsVid from './assets/Transform_this_static_café_sce.mp4';
 import dataCirclesImg from './assets/DataCirclesLaptop.png';

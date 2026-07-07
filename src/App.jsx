@@ -15,67 +15,6 @@ import ServiceDetail from './ServiceDetail';
 import ContactPage from './ContactPage';
 
 import logoImg from './assets/logo.svg';
-import brand1 from './assets/logos/Group 79.svg';
-import brand2 from './assets/logos/Group 80.svg';
-import brand3 from './assets/logos/Group 81.svg';
-import brand4 from './assets/logos/CC LOGO 500X500 FAVICON BLUE BG WHITE FONT BIG SIZE Background Removed 2.svg';
-import brand5 from './assets/logos/Group 82.svg';
-import brand7 from './assets/logos/DataCircles White Logo 2 (1).svg';
-
-import service1 from './assets/servicessvg/Service 1.svg';
-import service2 from './assets/servicessvg/Service 2.svg';
-import service3 from './assets/servicessvg/Service 3.svg';
-import service4 from './assets/servicessvg/Service 4.svg';
-import service5 from './assets/servicessvg/Service 7.svg';
-import service6 from './assets/servicessvg/Service 8.svg';
-
-const servicesList = [service1, service2, service3, service4, service5, service6];
-
-const ServiceCard = ({ svgSrc, index }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div 
-      ref={cardRef}
-      className={`service-card-wrapper ${isVisible ? 'is-visible' : ''}`} 
-      style={{ '--card-index': index + 1 }}
-      onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        const img = e.currentTarget.querySelector('.service-card-img');
-        if (img) {
-          img.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.02)`;
-        }
-      }}
-      onMouseLeave={(e) => {
-        const img = e.currentTarget.querySelector('.service-card-img');
-        if (img) {
-          img.style.transform = `translate(0px, 0px) scale(1)`;
-        }
-      }}
-    >
-      <img src={svgSrc} alt={`Service ${index + 1}`} className="service-card-img" />
-    </div>
-  );
-};
-
 function Home() {
   const navigate = useNavigate();
 
@@ -145,11 +84,9 @@ function Home() {
   }, []);
 
   // Intersection Observer for Trusted Brands Reveal
-  const [isTrustedVisible, setIsTrustedVisible] = useState(false);
   const trustedRef = useRef(null);
 
   // Intersection Observer for Services Reveal
-  const [isServicesVisible, setIsServicesVisible] = useState(false);
   const servicesRef = useRef(null);
 
   useEffect(() => {

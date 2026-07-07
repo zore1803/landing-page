@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ProjectsSection.css';
-import projectImg from './assets/brand-identity-brochure.png';
 import commonGroundsImg from './assets/common-grounds.jpg';
 import dataCirclesImg from './assets/DataCirclesLaptop.png';
 import premiumGroupImg from './assets/image.png';

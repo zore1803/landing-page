@@ -10,7 +10,6 @@ import step3Img from './assets/process/3 1.svg';
 import step4Img from './assets/process/4 1.svg';
 import step5Img from './assets/process/5 1.svg';
 import step6Img from './assets/process/6 2.svg';
-import calendlyImg from './assets/studio-calendly.png';
 
 import projImg1 from './assets/brand-identity-brochure.png';
 import projImg2 from './assets/common-grounds.jpg';
