@@ -15,24 +15,49 @@
 .contact-hero-card {
   position: relative;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1406px;
   margin: 0 auto;
-  height: 400px;
+  height: 807px;
   border-radius: 25px;
   overflow: hidden;
-  background: #F0EDE4;
+  background: #FFFFFF;
 }
 
-/* gradient that matches the screenshot: grey-blue left → warm orange right */
-.contact-hero-bg {
+.contact-ellipse {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-ellipse-blue {
+  width: 671px;
+  height: 453px;
+  left: -206px;
+  top: -51px;
+  background: #4686B7;
+  filter: blur(100px);
+}
+
+.contact-ellipse-orange {
+  width: 582px;
+  height: 431px;
+  right: -206px;
+  top: 141px;
+  background: #EE7A1D;
+  filter: blur(150px);
+}
+
+.contact-strips-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    #b8bec8 0%,
-    #c9b8a8 30%,
-    #d4855a 60%,
-    #ee7a1d 100%
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 1%,
+    transparent 7.333%,
+    rgba(0, 0, 0, 0.05) 8.333%
   );
 }
 
@@ -49,30 +74,29 @@
 }
 
 .contact-hero-title {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(28px, 4.5vw, 56px);
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 80px;
   font-weight: 600;
   color: #070815;
   line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 20px;
-  white-space: nowrap;
+  margin: 0;
 }
 
-.contact-hero-sub {
+.contact-hero-tag {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(14px, 1.4vw, 18px);
-  font-weight: 300;
-  color: #504F4F;
-  max-width: 600px;
-  line-height: 1.6;
-  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #C55418;
+  text-transform: uppercase;
 }
 
 /* Wrap the title before it can overflow the card on tablets */
 @media (max-width: 1024px) {
   .contact-hero-title {
-    white-space: normal;
+    font-size: 56px;
   }
 }
 
@@ -82,15 +106,17 @@
   }
 
   .contact-hero-card {
-    height: auto;
-    min-height: 280px;
+    height: 600px;
     border-radius: 16px;
   }
 
-  /* Nudge the hero content down so it clears the floating navbar which now
-     overlaps the top of the card. */
   .contact-hero-content {
     padding-top: 70px;
+  }
+  
+  .contact-hero-tag {
+    bottom: 30px;
+    left: 20px;
   }
 }
 

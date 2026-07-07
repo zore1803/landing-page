@@ -11,13 +11,14 @@ function ContactPage() {
       <Navbar activeSection="contact" />
 
       <div className="contact-page">
-        {/* Hero header */}
         <div className="contact-hero-wrap">
           <div className="contact-hero-card">
-            <div className="contact-hero-bg" />
+            <div className="contact-ellipse contact-ellipse-blue"></div>
+            <div className="contact-ellipse contact-ellipse-orange"></div>
+            <div className="contact-strips-overlay"></div>
             <div className="contact-hero-content">
-              <h1 className="contact-hero-title">Contact our friendly team</h1>
-              <p className="contact-hero-sub">Let us know how we can help. Our team is here to support your creative journey and brand evolution.</p>
+              <h1 className="contact-hero-title">Contact Us</h1>
+              <span className="contact-hero-tag">GET IN TOUCH</span>
             </div>
           </div>
         </div>
