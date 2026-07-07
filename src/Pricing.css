@@ -175,6 +175,8 @@
   font-weight: 600;
   color: #1A1A1A;
   line-height: 1.4;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .feature-sublist {
@@ -202,6 +204,8 @@
   font-size: 18px;
   color: #666666;
   line-height: 1.4;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .pricing-card-footer {
@@ -210,6 +214,7 @@
 
 .pricing-cta-btn {
   width: 250px;
+  max-width: 100%;
   height: 52px;
   background-color: #070815;
   color: #FFFFFF;
