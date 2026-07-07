@@ -6,14 +6,26 @@
 /* ── Hero Section ── */
 .services-hero-wrap {
   width: 100%;
-  min-height: 50vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 24px 60px;
-  background: #FFF;
+  background: #FFFFFF;
   position: relative;
   overflow: hidden;
+}
+
+/* Masked artwork container */
+.services-artwork-mask {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+  /* Slightly rounded if needed, but the gradient mask handles the fade */
 }
 
 /* ── Hero Background Blobs ── */
@@ -21,76 +33,98 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   z-index: 1;
-  overflow: hidden;
 }
 
 .services-ellipse {
   position: absolute;
   border-radius: 50%;
-  /* Using radial gradients instead of blur() to preserve performance */
   transform: scale(1.6);
 }
 
 .services-ellipse-5 {
-  width: calc(100vw * 715 / 1440);
+  width: 715px;
   height: 600px;
-  left: 112px;
-  top: -10px;
-  background: radial-gradient(closest-side, rgba(70, 134, 183, 0.9) 0%, rgba(70, 134, 183, 0) 100%);
-  transform: rotate(-18deg) scale(1.6);
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-18deg) scale(1.6);
+  background: radial-gradient(closest-side, rgba(70, 134, 183, 1) 0%, rgba(70, 134, 183, 0) 100%);
 }
 
 .services-ellipse-6 {
-  width: calc(100vw * 582 / 1440);
+  width: 582px;
   height: 431px;
-  right: -191px;
-  top: -144px;
-  background: radial-gradient(closest-side, rgba(238, 122, 29, 0.9) 0%, rgba(238, 122, 29, 0) 100%);
+  right: -50px;
+  top: 20%;
+  background: radial-gradient(closest-side, rgba(238, 122, 29, 1) 0%, rgba(238, 122, 29, 0) 100%);
 }
 
 .services-ellipse-7 {
-  width: calc(100vw * 582 / 1440);
+  width: 582px;
   height: 431px;
-  right: -284px;
-  top: -215px;
-  background: radial-gradient(closest-side, rgba(197, 84, 24, 0.9) 0%, rgba(197, 84, 24, 0) 100%);
+  right: 50px;
+  top: 60%;
+  background: radial-gradient(closest-side, rgba(197, 84, 24, 1) 0%, rgba(197, 84, 24, 0) 100%);
 }
 
 .services-ellipse-1 {
-  width: calc(100vw * 911 / 1440);
+  width: 911px;
   height: 411px;
-  left: 351px;
-  top: 76px;
-  background: radial-gradient(closest-side, rgba(240, 237, 228, 0.9) 0%, rgba(240, 237, 228, 0) 100%);
+  left: 20%;
+  top: 50%;
+  background: radial-gradient(closest-side, rgba(240, 237, 228, 0.8) 0%, rgba(240, 237, 228, 0) 100%);
 }
 
-.services-hero-content {
+.stripes-wrapper.services-stripes {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.services-hero-title-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   max-width: 1244px;
+  margin-top: -5vh; /* visually center it over the artwork */
 }
 
 .services-hero-title {
-  font-family: 'Zalando Sans', sans-serif;
-  font-weight: 600;
-  font-size: 56px;
-  line-height: 1.2;
-  color: rgba(7, 8, 21, 0.9);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 82px;
+  line-height: 1.1;
+  color: #070815;
   margin-bottom: 24px;
+  letter-spacing: -2px;
+}
+
+.services-hero-subtitle-wrap {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 0 24px 80px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .services-hero-sub {
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
-  font-size: 32px;
-  line-height: 1.3;
-  color: rgba(7, 8, 21, 0.5);
-  max-width: 1244px;
+  font-size: 28px;
+  line-height: 1.4;
+  color: #8C8C8C;
+  max-width: 960px;
   margin: 0 auto;
+}
+
+.services-hero-sub strong {
+  font-weight: 600;
+  color: #070815;
 }
 
 /* ── Service cards (New Layout) ── */

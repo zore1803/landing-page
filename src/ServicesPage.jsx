@@ -68,31 +68,39 @@ function ServicesPage() {
       <div className="services-page">
         {/* New Hero Section */}
         <div className="services-hero-wrap">
-          {/* Background blobs / ellipses for Services */}
-          <div className="services-blobs-container">
-            <div className="services-ellipse services-ellipse-5"></div>
-            <div className="services-ellipse services-ellipse-6"></div>
-            <div className="services-ellipse services-ellipse-7"></div>
-            <div className="services-ellipse services-ellipse-1"></div>
+          {/* Masked artwork container */}
+          <div className="services-artwork-mask">
+            {/* Background blobs / ellipses for Services */}
+            <div className="services-blobs-container">
+              <div className="services-ellipse services-ellipse-5"></div>
+              <div className="services-ellipse services-ellipse-6"></div>
+              <div className="services-ellipse services-ellipse-7"></div>
+              <div className="services-ellipse services-ellipse-1"></div>
+            </div>
+            
+            <style>{stripeAnimationCSS}</style>
+            <div className="stripes-wrapper services-stripes">
+              {stripes.map((_, index) => (
+                <div key={index} className="stripe-container">
+                  <div 
+                    className="stripe-auto"
+                    style={{ animation: `servicesComplexPulse${index} 9s infinite linear` }}
+                  ></div>
+                  <div className="stripe-hover"></div>
+                </div>
+              ))}
+            </div>
           </div>
           
-          <style>{stripeAnimationCSS}</style>
-          <div className="stripes-wrapper">
-            {stripes.map((_, index) => (
-              <div key={index} className="stripe-container">
-                <div 
-                  className="stripe-auto"
-                  style={{ animation: `servicesComplexPulse${index} 9s infinite linear` }}
-                ></div>
-                <div className="stripe-hover"></div>
-              </div>
-            ))}
+          <div className="services-hero-title-container">
+            <h1 className="services-hero-title">Services To Design<br/>Your Brand</h1>
           </div>
-          
-          <div className="services-hero-content">
-            <h1 className="services-hero-title">Services To Design Your Brand</h1>
-            <p className="services-hero-sub">From strategy and visual identity to websites and custom portals, we create thoughtful brand experience that helps your business stand out, connect and grow.</p>
-          </div>
+        </div>
+
+        <div className="services-hero-subtitle-wrap">
+          <p className="services-hero-sub">
+            From <strong>strategy and visual identity to websites and custom portals</strong>, we create thoughtful brand experience that helps your business stand out, connect and grow.
+          </p>
         </div>
 
         {/* Three clickable service cards */}
