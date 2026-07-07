@@ -36,6 +36,7 @@
   top: -51px;
   background: #4686B7;
   filter: blur(100px);
+  animation: floatBlue 15s ease-in-out infinite;
 }
 
 .contact-ellipse-orange {
@@ -45,6 +46,21 @@
   top: 141px;
   background: #EE7A1D;
   filter: blur(150px);
+  animation: floatOrange 18s ease-in-out infinite;
+}
+
+@keyframes floatBlue {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, 90px) scale(1.1); }
+  66% { transform: translate(-40px, 50px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes floatOrange {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-70px, -80px) scale(1.15); }
+  66% { transform: translate(50px, -40px) scale(0.85); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 .contact-strips-overlay {
