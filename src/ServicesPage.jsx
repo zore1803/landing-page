@@ -143,6 +143,7 @@ function ServicesPage() {
           </div>
 
           <div className="custom-req-banner">
+            <div className="custom-req-ellipse"></div>
             <div className="custom-req-content">
               <span className="custom-req-label">HAVE A CUSTOM REQUIREMENT?</span>
               <h2 className="custom-req-title">Let's Create Something That Fits Your Brand</h2>
