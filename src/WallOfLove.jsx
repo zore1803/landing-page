@@ -47,9 +47,26 @@ const useCountUp = (endValue, startValue = 0, duration = 1500) => {
 const WallOfLove = () => {
   const sectionRef = useRef(null);
   const wrapperRef = useRef(null);
+  const titleRef = useRef(null);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
   
   const { count: transparencyCount, ref: transparencyRef } = useCountUp(4, 1, 1500);
   const { count: satisfactionCount, ref: satisfactionRef } = useCountUp(98, 0, 1500);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsTitleVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
   
   useEffect(() => {
     let ticking = false;
@@ -122,9 +139,9 @@ const WallOfLove = () => {
     <section className="wall-section global-section" id="testimonials" ref={sectionRef}>
       <div className="wall-sticky-container">
         
-        <div className="wall-header-wrapper">
+        <div className="wall-header-wrapper" ref={titleRef}>
           <h2 className="wall-title">Why Do Our Clients Love Us</h2>
-          <div className="cursive-accent">Testimonial</div>
+          <div className={`cursive-accent ${isTitleVisible ? 'write-animation' : ''}`}>Testimonial</div>
         </div>
 
         <div className="wall-glass-wrapper" ref={wrapperRef}>
