@@ -10,6 +10,7 @@ import { services } from './servicesData';
 import ServicesHeroBg from './ServicesHeroBg';
 import './ContactPage.css';
 import './ServicesPage.css';
+import cardImg0 from './assets/servicessvg/card_img_0.png';
 
 function ServicesPage() {
   const [pricingService, setPricingService] = useState('brand');
@@ -113,7 +114,7 @@ function ServicesPage() {
                   {s.desc}
                 </p>
                 <div className="svc-card-image-placeholder">
-                  {/* Will hold the image, using CSS background for now */}
+                  <img src={cardImg0} alt={s.category} className="svc-card-real-img" />
                 </div>
                 <div className="svc-card-more new-more">
                   Get To Know More &rsaquo;

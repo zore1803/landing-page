@@ -157,11 +157,18 @@
 .svc-card-image-placeholder {
   width: 100%;
   height: 216px;
-  background: #101010; /* fallback */
+  background: transparent;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
   margin-bottom: 20px;
   transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.svc-card-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .svc-card.new-card:hover .svc-card-image-placeholder {
