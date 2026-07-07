@@ -12,6 +12,10 @@ import step4Img from './assets/process/4 1.svg';
 import step5Img from './assets/process/5 1.svg';
 import step6Img from './assets/process/6 2.svg';
 
+import connectionIcon from './assets/studio/connection.svg';
+import craftsmanshipIcon from './assets/studio/craftsmanship.svg';
+import characterIcon from './assets/studio/character.svg';
+
 import projImg1 from './assets/brand-identity-brochure.png';
 import projImg2 from './assets/common-grounds.jpg';
 import projImg3 from './assets/Tea - Boxes 1.png';
@@ -213,7 +217,7 @@ const StudioPage = () => {
         <div className="belief-grid">
           <div className="belief-item">
             <div className="belief-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></svg>
+              <img src={connectionIcon} alt="Connection" className="belief-icon-img" />
             </div>
             <h3>Connection</h3>
             <p>We close the gap between your business and people it's for.</p>
@@ -221,7 +225,7 @@ const StudioPage = () => {
           <div className="belief-divider"></div>
           <div className="belief-item">
             <div className="belief-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 12l-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L11 10"/><path d="M16 16l6-6"/><path d="M16 16l-6-6"/><path d="M22 10l-6-6"/></svg>
+              <img src={craftsmanshipIcon} alt="Craftsmanship" className="belief-icon-img" />
             </div>
             <h3>Craftsmanship</h3>
             <p>Every detail made deliberately, never assembled from a template.</p>
@@ -229,7 +233,7 @@ const StudioPage = () => {
           <div className="belief-divider"></div>
           <div className="belief-item">
             <div className="belief-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <img src={characterIcon} alt="Character" className="belief-icon-img" />
             </div>
             <h3>Character</h3>
             <p>Identities with enough personality to be unmistakably yours.</p>

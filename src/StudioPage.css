@@ -231,8 +231,11 @@
   justify-content: center;
   margin-bottom: 24px;
 }
-.belief-icon svg {
-  color: #FFFFFF;
+
+.belief-icon-img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
 .belief-item h3 {
