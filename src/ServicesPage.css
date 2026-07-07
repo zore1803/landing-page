@@ -81,7 +81,8 @@
   max-width: 1440px;
   padding: 0 40px;
   margin: 0 auto;
-  text-align: left;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .services-hero-sub strong {
