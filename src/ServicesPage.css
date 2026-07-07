@@ -127,7 +127,10 @@
 }
 
 .svc-card-logo-img {
-  height: 32px;
+  width: 310px;
+  height: 50px;
+  object-fit: contain;
+  object-position: left;
   display: block;
 }
 
