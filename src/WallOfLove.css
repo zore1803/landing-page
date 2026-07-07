@@ -307,3 +307,56 @@
     line-height: 26px;
   }
 }
+
+/* ============================================================
+   ISOLATED SVG TRACKING ANIMATION FOR TESTIMONIAL TEXT
+   ============================================================ */
+.testimonial-svg-container {
+  margin-top: -90px;
+  margin-bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.testimonial-svg {
+  width: 800px;
+  height: 200px;
+  overflow: visible;
+}
+
+.testimonial-svg text {
+  font-family: 'Sacramento', cursive;
+  font-size: 150px;
+  fill: #F69049; /* Fallback for browsers that don't animate */
+}
+
+/* Base state before animation triggers */
+.testimonial-svg text {
+  fill: transparent;
+  stroke: #F69049;
+  stroke-width: 1.5px;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+}
+
+.write-animation .testimonial-svg text {
+  animation: drawTestimonialOutline 2.5s ease-in-out forwards;
+}
+
+@keyframes drawTestimonialOutline {
+  0% {
+    stroke-dashoffset: 2000;
+    fill: transparent;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #F69049;
+  }
+}

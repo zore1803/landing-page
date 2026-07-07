@@ -48,20 +48,6 @@
   /* Removed rotation for a straight baseline as seen in the image */
 }
 
-.write-animation {
-  animation: writeText 2s cubic-bezier(0.42, 0, 0.58, 1) forwards;
-  clip-path: inset(0 100% 0 0); /* Start fully hidden on the right */
-}
-
-@keyframes writeText {
-  0% {
-    clip-path: inset(0 100% 0 0);
-  }
-  100% {
-    clip-path: inset(0 -20% 0 0); /* Expand slightly past 0 to avoid cutting off cursive tails */
-  }
-}
-
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
