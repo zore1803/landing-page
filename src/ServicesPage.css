@@ -69,10 +69,10 @@
   line-height: 1.4;
   color: #8C8C8C;
   width: 100%;
-  max-width: 1300px;
-  padding: 0 20px;
+  max-width: 1440px;
+  padding: 0 40px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 .services-hero-sub strong {
