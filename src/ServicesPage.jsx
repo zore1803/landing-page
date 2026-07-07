@@ -6,7 +6,6 @@ import WallOfLove from './WallOfLove';
 import FAQ from './FAQ';
 import Booking from './Booking';
 import Footer from './Footer';
-import GroupCardsSVG from './assets/servicessvg/Group 1000006064.svg';
 import { services } from './servicesData';
 import ServicesHeroBg from './ServicesHeroBg';
 import './ContactPage.css';
@@ -94,7 +93,34 @@ function ServicesPage() {
         </div>
 
         <div className="services-hero-subtitle-wrap">
-          <img src={GroupCardsSVG} alt="Copper Services" className="services-group-cards-svg" />
+          <p className="services-hero-sub">
+            From <strong>strategy and visual identity to websites and custom portals</strong>, we create thoughtful brand experience that helps your business stand out, connect and grow.
+          </p>
+        </div>
+
+        {/* Three clickable service cards */}
+        <div className="svc-cards-section">
+          <div className="svc-cards-grid new-layout">
+            {services.map((s) => (
+              <Link to={`/services/${s.slug}`} className="svc-card new-card" key={s.slug}>
+                <div className="svc-card-header">
+                  <h2 className="svc-card-name">
+                    <span className="svc-card-name-copper">{s.name}</span>
+                    <span className="svc-card-name-suffix">{s.suffix}</span>
+                  </h2>
+                </div>
+                <p className="svc-card-desc new-desc">
+                  {s.desc}
+                </p>
+                <div className="svc-card-image-placeholder">
+                  {/* Will hold the image, using CSS background for now */}
+                </div>
+                <div className="svc-card-more new-more">
+                  Get To Know More &rsaquo;
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Dark Container for Ecosystem, Pricing, See it in Action */}
