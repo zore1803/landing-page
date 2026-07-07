@@ -8,8 +8,6 @@ import qodenextImg from './assets/QodenextImage.png';
 
 import proj1Svg from './assets/projects/cottsonCompressed.png';
 import proj2Svg from './assets/projects/CommonGroungsCompressed.png';
-import proj3Svg from './assets/projects/darjeeling garden.svg';
-import proj4Svg from './assets/projects/ELEVE45.svg';
 import projQodenextSvg from './assets/projects/Qodenextcompress.png';
 import projDataCirclesSvg from './assets/projects/DataCirclesCompressed.png';
 
