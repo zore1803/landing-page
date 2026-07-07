@@ -3,6 +3,15 @@
   font-family: 'DM Sans', sans-serif;
 }
 
+/* ── Utility Container ── */
+.global-services-container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* ── Hero Section ── */
 .services-hero-wrap {
   width: calc(100% - 32px);
@@ -87,8 +96,11 @@
 }
 
 .svc-cards-grid.new-layout {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
   margin: 0 auto;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
@@ -168,7 +180,8 @@
 .services-dark-section {
   background: #070815;
   border-radius: 25px;
-  margin: 0 18px;
+  width: calc(100% - 32px);
+  margin: 0 auto;
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -178,6 +191,12 @@
 .ecosystem-header {
   text-align: center;
   margin-bottom: 80px;
+  width: 100%;
+  max-width: 1408px;
+  padding: 0 24px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .ecosystem-title {
@@ -200,6 +219,12 @@
 /* Dark Pricing Wrapper overrides */
 .dark-pricing-wrapper {
   margin-bottom: 120px;
+  width: 100%;
+  max-width: 1408px;
+  padding: 0 24px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 .dark-pricing-wrapper .pricing-section {
   background: transparent !important;
@@ -239,14 +264,16 @@
 
 /* Custom Requirement Banner */
 .custom-req-banner {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1360px; /* 1440px - 80px total padding */
   margin: 0 auto 120px;
-  background: rgba(255, 255, 255, 0.05); /* slightly visible box if needed, or transparent */
+  background: rgba(255, 255, 255, 0.05);
   padding: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 20px;
+  box-sizing: border-box;
 }
 
 .custom-req-content {
@@ -299,8 +326,11 @@
 
 /* See It In Action */
 .see-in-action-section {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1408px;
+  padding: 0 24px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .see-in-action-title {
@@ -351,8 +381,12 @@
 /* ── Services Testimonial Section ── */
 .services-testimonial-section {
   padding: 100px 0;
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1440px;
+  padding-left: 40px;
+  padding-right: 40px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .st-header {
