@@ -343,7 +343,7 @@
 }
 
 .write-animation .testimonial-svg text {
-  animation: drawTestimonialOutline 2.5s ease-in-out forwards;
+  animation: drawTestimonialOutline 4s ease-in-out forwards;
 }
 
 @keyframes drawTestimonialOutline {
