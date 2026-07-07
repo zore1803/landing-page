@@ -134,7 +134,10 @@
 }
 
 .svc-card-header {
+  height: 80px;
   margin-bottom: 16px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .svc-card-logo-img {
@@ -154,6 +157,7 @@
   margin-bottom: 30px;
   min-height: 84px;
   flex-grow: 1;
+  text-align: justify;
 }
 
 .svc-card-highlight {
