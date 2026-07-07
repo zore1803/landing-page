@@ -568,8 +568,15 @@
   transform: translateY(350px) scale(0.75) rotateX(45deg);
   /* will-change removed to fix production blur rendering bug */
   
-  /* Glassmorphism */
-  background: rgba(255, 255, 255, 0.4) !important;
+  /* Glassmorphism.
+     The cards live inside .process-glass-wrapper, which is JS-transformed on
+     scroll. A transformed ancestor isolates its own compositing layer, so
+     backdrop-filter cannot reliably frost the background heading (which sits
+     in a sibling element outside the wrapper). Dev builds happen to render it
+     frosted; production builds don't, causing the text to bleed through sharp.
+     So we keep the blur for where it works, but make the card surface opaque
+     enough to read as frosted glass everywhere and hide the bleed regardless. */
+  background: rgba(255, 255, 255, 0.72) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   border: 1px solid rgba(255, 255, 255, 0.7);
