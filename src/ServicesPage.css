@@ -68,9 +68,11 @@
   font-size: 32px;
   line-height: 1.4;
   color: #8C8C8C;
-  width: calc(100% - 32px);
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 20px;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .services-hero-sub strong {
