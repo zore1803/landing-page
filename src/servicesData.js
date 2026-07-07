@@ -10,7 +10,7 @@ export const services = [
     name: 'Copper',
     suffix: 'Brand',
     highlight: 'From first impressions to lasting recognition.',
-    desc: 'We build memorable brands through strategy,\nidentity, print, packaging, and cohesive visual\nsystems that inspire trust and support\nbusiness growth.',
+    desc: 'We build memorable brands through strategy, identity, print, packaging, and cohesive visual systems that inspire trust and support business growth.',
   },
   {
     slug: 'web-design',
@@ -20,7 +20,7 @@ export const services = [
     name: 'Copper',
     suffix: 'Web',
     highlight: 'From strategy and UX to launch and support.',
-    desc: 'We create high-performing websites that blend\nexceptional design, seamless functionality, and\nmeasurable business results.',
+    desc: 'We create high-performing websites that blend exceptional design, seamless functionality, and measurable business results.',
   },
   {
     slug: 'client-portal',
@@ -30,6 +30,6 @@ export const services = [
     name: 'Copper',
     suffix: 'Flow',
     highlight: 'Digital tools built around your business.',
-    desc: 'We design custom client, employee, and\nbusiness portals that streamline workflows,\ncentralize information, and improve efficiency.',
+    desc: 'We design custom client, employee, and business portals that streamline workflows, centralize information, and improve efficiency.',
   },
 ];
