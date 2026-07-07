@@ -5,14 +5,12 @@
 /* ── Hero ── */
 .contact-hero-wrap {
   width: 100%;
-  padding: 12px 0 0;
   box-sizing: border-box;
 }
 
 .contact-hero-card {
   position: relative;
   width: calc(100% - 32px);
-  max-width: 1406px;
   margin: 0 auto;
   min-height: 80vh;
   border-radius: 24px;
@@ -29,6 +27,9 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  /* Mask to fade out the bottom of the SVG so there is no hard edge */
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 .services-hero-bg-svg {
@@ -98,17 +99,16 @@
 
 /* ── Contact Methods Section ── */
 .contact-methods-section {
-  background: #fcf9f0;
-  background-image:
-    linear-gradient(to right, rgba(221,218,209,0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(221,218,209,0.25) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background: #FFFFFF;
   padding: 48px 18px 80px;
 }
 
 .contact-methods-inner {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .contact-methods-top {
@@ -148,30 +148,31 @@
 }
 
 .contact-card {
-  background: #f7f3ea;
-  border: 1px solid #dddad1;
-  border-radius: 8px;
-  padding: 32px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .contact-card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 .contact-card-icon {
-  width: 48px;
-  height: 48px;
-  background: #ffffff;
-  border: 1px solid #dddad1;
-  border-radius: 8px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 48px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
   flex-shrink: 0;
 }
 
@@ -183,25 +184,17 @@
 
 .contact-card-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #070815;
-  margin: 0 0 8px;
-}
-
-.contact-card-desc {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  color: #6b7280;
-  margin: 0 0 24px;
-  flex-grow: 1;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px;
 }
 
 .contact-card-link {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
-  font-weight: 700;
-  color: #EE7A1D;
+  font-weight: 500;
+  color: #C55418;
   text-decoration: none;
   transition: text-decoration 0.2s;
 }
@@ -268,13 +261,41 @@
 
 /* ── Get in Touch ── */
 .git-section {
+  width: 100%;
+  max-width: 1440px;
+  padding: 80px 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
   background: #ffffff;
-  padding: 80px 18px;
+}
+
+.git-header {
+  margin-bottom: 64px;
+}
+
+.git-tag {
+  display: block;
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #C55418;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.git-main-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 4.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #1c2635;
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .git-card {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: row;
   border-radius: 8px;
@@ -437,6 +458,15 @@
 }
 
 @media (max-width: 900px) {
+  .git-header {
+    margin-bottom: 40px;
+  }
+  
+  .git-main-title {
+    font-size: 3rem;
+    line-height: 1.15;
+  }
+
   .git-card {
     flex-direction: column;
   }
@@ -461,43 +491,6 @@
   }
 }
 
-/* ── Image placeholder section ── */
-.contact-img-section {
-  background: #ffffff;
-  padding: 60px 18px;
-}
-
-.contact-img-box {
-  max-width: 1280px;
-  margin: 0 auto;
-  height: 420px;
-  max-height: 60vh;
-  border: 2px solid #d0d5dd;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-}
-
-@media (max-width: 768px) {
-  .contact-img-section {
-    padding: 40px 16px;
-  }
-  .contact-img-box {
-    height: 260px;
-    border-radius: 10px;
-  }
-}
-
-.contact-img-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #9ca3af;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
 
 /* ── Social links inside Get in Touch ── */
 .git-social-row {

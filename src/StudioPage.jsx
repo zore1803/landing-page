@@ -3,6 +3,7 @@ import './StudioPage.css';
 import WallOfLove from './WallOfLove';
 import FAQ from './FAQ';
 import Booking from './Booking';
+import StudioHeroBg from './StudioHeroBg';
 
 import step1Img from './assets/process/1 1.svg';
 import step2Img from './assets/process/2 1.svg';
@@ -149,17 +150,12 @@ const StudioPage = () => {
 
   return (
     <div className="studio-page">
-      <div className="studio-bg">
-        <div className="bg-blur blur-1"></div>
-        <div className="bg-blur blur-2"></div>
-        <div className="bg-blur blur-3"></div>
-      </div>
-
       {/* Hero Section */}
       <section className="studio-hero">
         <div className="studio-hero-card">
-          <div className="hero-glow-orange"></div>
-          <div className="hero-glow-blue"></div>
+          <div className="services-hero-bg-container">
+            <StudioHeroBg />
+          </div>
           <div className="studio-hero-content">
             <h1 className="hero-title">Meet the Studio Behind the Brands</h1>
             <p className="hero-subtitle">

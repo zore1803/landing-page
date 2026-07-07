@@ -13,6 +13,7 @@ import StudioPage from './StudioPage';
 import ServicesPage from './ServicesPage';
 import ServiceDetail from './ServiceDetail';
 import ContactPage from './ContactPage';
+import ProjectsPage from './ProjectsPage';
 
 import logoImg from './assets/logo.svg';
 function Home() {
@@ -144,7 +145,7 @@ function Home() {
           <a href="#home" onClick={() => { toggleMobileMenu(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
           <a href="#about" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
           <a href="/services" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/services'); }}>Services</a>
-          <a href="#projects" onClick={() => { toggleMobileMenu(); setActiveSection('projects'); setShowStudioPage(false); window.location.hash = '#projects'; }}>Projects</a>
+          <a href="/projects" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/projects'); }}>Projects</a>
           <a href="/contact" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/contact'); }}>Contact</a>
           <a href="#portal" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
           <button className="lets-talk-btn mobile-lets-talk">
@@ -169,7 +170,7 @@ function Home() {
           <a href="#home" className={activeSection === 'home' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
           <a href="#about" className={showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
           <a href="/services" className={activeSection === 'services' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/services'); }}>Services</a>
-          <a href="#projects" className={activeSection === 'projects' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('projects'); setShowStudioPage(false); window.location.hash = '#projects'; }}>Projects</a>
+          <a href="/projects" className={activeSection === 'projects' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>Projects</a>
           <a href="/contact" className={activeSection === 'contact' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/contact'); }}>Contact</a>
         </div>
 
@@ -306,6 +307,7 @@ function App() {
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/services/:slug" element={<ServiceDetail />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/projects" element={<ProjectsPage />} />
     </Routes>
   );
 }

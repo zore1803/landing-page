@@ -15,7 +15,7 @@ function Navbar({ activeSection, setActiveSection }) {
           <a href="/#home" className={activeSection === 'home' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('home'); }}>Home</a>
           <a href="/#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('about'); }}>Studio</a>
           <Link to="/services" className={activeSection === 'services' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('services'); }}>Services</Link>
-          <a href="/#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('projects'); }}>Projects</a>
+          <Link to="/projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('projects'); }}>Projects</Link>
           <Link to="/contact" className={activeSection === 'contact' ? 'active' : ''} onClick={toggleMobileMenu}>Contact</Link>
           <a href="/#portal" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
           <button className="lets-talk-btn mobile-lets-talk">
@@ -42,7 +42,7 @@ function Navbar({ activeSection, setActiveSection }) {
           <a href="/#home" className={activeSection === 'home' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('home')}>Home</a>
           <a href="/#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('about')}>Studio</a>
           <Link to="/services" className={activeSection === 'services' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('services')}>Services</Link>
-          <a href="/#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('projects')}>Projects</a>
+          <Link to="/projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('projects')}>Projects</Link>
           <Link to="/contact" className={activeSection === 'contact' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('contact')}>Contact</Link>
         </div>
 

@@ -15,16 +15,6 @@
   box-sizing: border-box;
 }
 
-/* Clips the background blurs without making .studio-page a scroll
-   container (overflow-x:hidden would break position:sticky freezes). */
-.studio-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-  pointer-events: none;
-}
-
 /* Base text */
 .section-label {
   color: #D85000;
@@ -43,16 +33,7 @@
   line-height: 1;
 }
 
-/* Background Blurs mimicking the SVG */
-.studio-page .bg-blur {
-  position: absolute;
-  border-radius: 50%;
-  z-index: 0;
-  pointer-events: none;
-}
-.blur-1 { width: 500px; height: 500px; background: #E47317; filter: blur(225px); left: -200px; top: 700px; opacity: 0.4; }
-.blur-2 { width: 800px; height: 300px; background: #C55418; filter: blur(150px); right: -100px; top: 1200px; opacity: 0.3; }
-.blur-3 { width: 600px; height: 600px; background: #F0EDE4; filter: blur(100px); left: 30%; top: 200px; opacity: 0.5; }
+
 
 /* Sections general */
 .studio-section {
@@ -66,48 +47,36 @@
 
 /* HERO SECTION */
 .studio-hero {
-  padding: 18px 18px 40px 18px; /* 18px gap from top, left, right */
+  padding: 0;
+  background: #FFFFFF;
 }
 
 .studio-hero-card {
   position: relative;
-  width: 100%;
-  height: 400px; /* Exact height from Figma */
-  background: #F0EDE4;
-  border-radius: 25px;
+  width: calc(100% - 32px);
+  margin: 0 auto;
+  height: 808px;
+  background: #FFFFFF;
+  border-radius: 24px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 40px; /* Padding for mobile safety, centering handles vertical */
+  padding: 0 40px;
 }
 
-/* Orange radial glow anchored top-right (SVG ellipse #EE7A1D) */
-.hero-glow-orange {
+.services-hero-bg-container {
   position: absolute;
-  width: 1598px;
-  right: -590px;
-  top: -496px;
-  bottom: 0px;
-  background: #EE7A1D;
-  filter: blur(250px);
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
   pointer-events: none;
-}
-
-/* Faint blue glow bottom-left (SVG ellipse #6386AC) */
-.hero-glow-blue {
-  position: absolute;
-  width: 927px;
-  height: 520px;
-  left: -609px;
-  bottom: -282px;
-  background: #6386AC;
-  filter: blur(250px);
-  border-radius: 50%;
-  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 .studio-hero-content {

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import FAQ from './FAQ';
 import Booking from './Booking';
 import Footer from './Footer';
-import ServicesHeroBg from './ServicesHeroBg';
+import ContactHeroBg from './ContactHeroBg';
 import './ContactPage.css';
 
 function ContactPage() {
@@ -15,7 +15,7 @@ function ContactPage() {
         <div className="contact-hero-wrap">
           <div className="contact-hero-card">
             <div className="services-hero-bg-container">
-              <ServicesHeroBg />
+              <ContactHeroBg />
             </div>
             <div className="contact-hero-content">
               <h1 className="contact-hero-title">Contact Us</h1>
@@ -30,34 +30,30 @@ function ContactPage() {
             <div className="contact-cards-grid">
               <div className="contact-card">
                 <div className="contact-card-icon">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                  <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
-                <h3 className="contact-card-title">Chat to sales</h3>
-                <p className="contact-card-desc">Speak to our friendly team.</p>
-                <a className="contact-card-link" href="mailto:sales@thecopperstudio.com">sales@thecopperstudio.com</a>
+                <h3 className="contact-card-title">Chat to Sales</h3>
+                <a className="contact-card-link" href="mailto:ruchi@thecopperstudio.com">ruchi@thecopperstudio.com</a>
               </div>
               <div className="contact-card">
                 <div className="contact-card-icon">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                  <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
-                <h3 className="contact-card-title">Chat to support</h3>
-                <p className="contact-card-desc">We're here to help.</p>
-                <a className="contact-card-link" href="mailto:support@thecopperstudio.com">support@thecopperstudio.com</a>
+                <h3 className="contact-card-title">Chat to Support</h3>
+                <a className="contact-card-link" href="mailto:ruchi@thecopperstudio.com">ruchi@thecopperstudio.com</a>
               </div>
               <div className="contact-card">
                 <div className="contact-card-icon">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                  <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
-                <h3 className="contact-card-title">Visit us</h3>
-                <p className="contact-card-desc">Visit our office HQ.</p>
+                <h3 className="contact-card-title">Visit Us</h3>
                 <a className="contact-card-link" href="https://share.google/Bqenkvy3nbX5VUJ7p" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
               </div>
               <div className="contact-card">
                 <div className="contact-card-icon">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                  <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
-                <h3 className="contact-card-title">Call us</h3>
-                <p className="contact-card-desc">Mon-Fri from 8am to 5pm.</p>
+                <h3 className="contact-card-title">Call Us</h3>
                 <a className="contact-card-link" href="tel:+919820933877">+91 98209 33877</a>
               </div>
             </div>
@@ -66,11 +62,15 @@ function ContactPage() {
 
         {/* Get in Touch — map + contact details */}
         <div className="git-section">
+          <div className="git-header">
+            <span className="git-tag">VISIT US</span>
+            <h2 className="git-main-title">We are always<br/>ready to help you and<br/>answer your questions</h2>
+          </div>
           <div className="git-card">
             {/* Left: map */}
             <a
               className="git-map-wrap"
-              href="https://www.google.com/maps/search/?api=1&query=Centura+Square+IT+Park,+Rd+Number+27,+Wagle+Industrial+Estate,+Thane+West,+Thane,+Maharashtra+400604"
+              href="https://www.google.com/maps/search/?api=1&query=The+Copper+Studio,+Thane"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open location in Google Maps"
@@ -78,7 +78,7 @@ function ContactPage() {
               <iframe
                 className="git-map-iframe"
                 title="Copper Studio Location"
-                src="https://www.google.com/maps?q=Centura+Square+IT+Park,+Rd+Number+27,+Wagle+Industrial+Estate,+Thane+West,+Thane,+Maharashtra+400604&output=embed"
+                src="https://www.google.com/maps?q=The+Copper+Studio,+Centura+Square+IT+Park,+Thane&output=embed"
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -145,12 +145,6 @@ function ContactPage() {
           </div>
         </div>
 
-        {/* Image section — content to be added later */}
-        <div className="contact-img-section">
-          <div className="contact-img-box">
-            <span className="contact-img-label">IMAGES</span>
-          </div>
-        </div>
 
         {/* End section — same as home page */}
         <FAQ />
