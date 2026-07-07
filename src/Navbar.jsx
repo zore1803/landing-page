@@ -12,8 +12,8 @@ function Navbar({ activeSection, setActiveSection }) {
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-nav-links">
-          <a href="/#home" className={activeSection === 'home' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('home'); }}>Home</a>
-          <a href="/#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('about'); }}>Studio</a>
+          <Link to="/" className={activeSection === 'home' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('home'); }}>Home</Link>
+          <Link to="/studio" className={activeSection === 'about' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('about'); }}>Studio</Link>
           <Link to="/services" className={activeSection === 'services' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('services'); }}>Services</Link>
           <Link to="/projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('projects'); }}>Projects</Link>
           <Link to="/contact" className={activeSection === 'contact' ? 'active' : ''} onClick={toggleMobileMenu}>Contact</Link>
@@ -39,8 +39,8 @@ function Navbar({ activeSection, setActiveSection }) {
         <div className="nav-divider desktop-only"></div>
 
         <div className="nav-links desktop-only">
-          <a href="/#home" className={activeSection === 'home' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('home')}>Home</a>
-          <a href="/#about" className={activeSection === 'about' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('about')}>Studio</a>
+          <Link to="/" className={activeSection === 'home' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('home')}>Home</Link>
+          <Link to="/studio" className={activeSection === 'about' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('about')}>Studio</Link>
           <Link to="/services" className={activeSection === 'services' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('services')}>Services</Link>
           <Link to="/projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('projects')}>Projects</Link>
           <Link to="/contact" className={activeSection === 'contact' ? 'active' : ''} onClick={() => setActiveSection && setActiveSection('contact')}>Contact</Link>

@@ -14,7 +14,6 @@ import ServicesPage from './ServicesPage';
 import ServiceDetail from './ServiceDetail';
 import ContactPage from './ContactPage';
 import ProjectsPage from './ProjectsPage';
-import Navbar from './Navbar';
 
 import logoImg from './assets/logo.svg';
 function Home() {
@@ -31,9 +30,21 @@ function Home() {
     return () => document.removeEventListener('contextmenu', handleContextMenu);
   }, []);
 
-  // Jump to top instantly on mount
+  // Check URL hash on mount and on hashchange to correctly open the Studio page
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    const handleHash = () => {
+      if (window.location.hash === '#about') {
+        setShowStudioPage(true);
+        setActiveSection('about');
+      } else if (window.location.hash === '#home' || window.location.hash === '') {
+        setShowStudioPage(false);
+        setActiveSection('home');
+      }
+    };
+
+    handleHash(); // Check on mount
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
   // 14 stripes based on the Figma spec (Rectangle 89 through 102)
@@ -129,9 +140,93 @@ function Home() {
     };
   }, []);
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  
+  const [activeSection, setActiveSection] = useState(window.location.hash === '#about' ? 'about' : 'home');
+  const [showStudioPage, setShowStudioPage] = useState(window.location.hash === '#about');
+
+  // Toggling between the landing page and the Studio page swaps the whole
+  // document, but the browser keeps the old scroll position (which lands you
+  // in the footer). Jump to the top instantly on every switch. 'instant'
+  // avoids the smooth-scroll animation from html { scroll-behavior: smooth }.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [showStudioPage]);
+
   return (
     <>
-      <Navbar activeSection="home" />
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-nav-links">
+          <a href="#home" onClick={() => { toggleMobileMenu(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
+          <a href="#about" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
+          <a href="/services" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/services'); }}>Services</a>
+          <a href="/projects" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/projects'); }}>Projects</a>
+          <a href="/contact" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); navigate('/contact'); }}>Contact</a>
+          <a href="#portal" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
+          <button className="lets-talk-btn mobile-lets-talk">
+             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Let's Talk &rsaquo;
+          </button>
+        </div>
+      </div>
+
+      {/* Navigation Bar */}
+      <nav className="navbar">
+        <div className="nav-logo">
+          <img src={logoImg} alt="Copper Studio Logo" className="nav-logo-icon" />
+        </div>
+        
+        <div className="nav-divider desktop-only"></div>
+
+        <div className="nav-links desktop-only">
+          <a href="#home" className={activeSection === 'home' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('home'); setShowStudioPage(false); window.location.hash = '#home'; }}>Home</a>
+          <a href="#about" className={showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); setActiveSection('about'); setShowStudioPage(true); }}>Studio</a>
+          <a href="/services" className={activeSection === 'services' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/services'); }}>Services</a>
+          <a href="/projects" className={activeSection === 'projects' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>Projects</a>
+          <a href="/contact" className={activeSection === 'contact' && !showStudioPage ? 'active' : ''} onClick={(e) => { e.preventDefault(); navigate('/contact'); }}>Contact</a>
+        </div>
+
+        <div className="nav-divider desktop-only"></div>
+
+        <div className="nav-action desktop-only">
+          <a href="#portal" className="client-portal-link">Client Portal</a>
+          <a href="#contact" className="lets-talk-link">
+            <span className="lets-talk-icon-wrap">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4" y="5" width="16" height="15" rx="3.5" ry="3.5"></rect>
+                <line x1="16" y1="3" x2="16" y2="7"></line>
+                <line x1="8" y1="3" x2="8" y2="7"></line>
+                <line x1="4" y1="11" x2="20" y2="11"></line>
+                <circle cx="9" cy="15.5" r="1.5" fill="currentColor" stroke="none"></circle>
+              </svg>
+            </span>
+            Let's Talk
+          </a>
+        </div>
+
+        {/* Hamburger Menu Button */}
+        <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
+          {isMobileMenuOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          )}
+        </button>
+      </nav>
+
+      {!showStudioPage ? (
         <>
           <div className="landing-container" id="home">
             {/* Background blobs / ellipses */}
@@ -213,21 +308,10 @@ function Home() {
       {/* Booking Section */}
       <Booking />
         </>
+      ) : (
+        <StudioPage />
+      )}
 
-      <Footer />
-    </>
-  );
-}
-
-function StudioRoute() {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, []);
-
-  return (
-    <>
-      <Navbar activeSection="about" />
-      <StudioPage />
       <Footer />
     </>
   );
@@ -237,7 +321,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/studio" element={<StudioRoute />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/services/:slug" element={<ServiceDetail />} />
       <Route path="/contact" element={<ContactPage />} />
