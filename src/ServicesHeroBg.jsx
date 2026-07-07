@@ -1,0 +1,145 @@
+import React from 'react';
+
+const ServicesHeroBg = () => {
+  return (
+    <svg className="services-hero-bg-svg" width="100%" height="100%" viewBox="0 0 1404 808" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <g clipPath="url(#clip0_35_97)">
+        <rect width="1404" height="808" rx="25" fill="white"/>
+        
+        {/* Animated Blobs */}
+        <g filter="url(#filter0_f_35_97)" className="svg-blob svg-blob-blue">
+          <ellipse cx="510.762" cy="280.89" rx="357.688" ry="189.343" transform="rotate(-18.0573 510.762 280.89)" fill="#4686B7"/>
+        </g>
+        <g filter="url(#filter1_f_35_97)" className="svg-blob svg-blob-orange">
+          <ellipse cx="1304" cy="71.5" rx="291" ry="215.5" fill="#EE7A1D"/>
+        </g>
+        <g filter="url(#filter2_f_35_97)" className="svg-blob svg-blob-copper">
+          <ellipse cx="1397" cy="0.5" rx="291" ry="215.5" fill="#C55418"/>
+        </g>
+        <g filter="url(#filter3_f_35_97)" className="svg-blob svg-blob-light">
+          <ellipse cx="806.5" cy="281.5" rx="455.5" ry="205.5" fill="#F0EDE4"/>
+        </g>
+
+        {/* Stripes */}
+        <rect className="svg-stripe svg-stripe-0" x="-16" width="96.0613" height="846" fill="url(#paint0_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-1" x="80.0615" width="95.1286" height="846" fill="url(#paint2_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-2" x="175.19" width="96.0613" height="846" fill="url(#paint4_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-3" x="271.251" width="96.0613" height="846" fill="url(#paint5_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-4" x="366.38" width="96.0613" height="846" fill="url(#paint8_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-5" x="462.441" width="95.1286" height="846" fill="url(#paint1_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-6" x="557.57" width="96.0613" height="846" fill="url(#paint3_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-7" x="653.631" width="96.0613" height="846" fill="url(#paint6_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-8" x="749.692" width="95.1286" height="846" fill="url(#paint7_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-9" x="844.821" width="96.0613" height="846" fill="url(#paint9_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-10" x="940.882" width="95.1286" height="846" fill="url(#paint10_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-11" x="1036.01" width="96.0613" height="846" fill="url(#paint11_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-12" x="1132.07" width="95.1286" height="846" fill="url(#paint12_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-13" x="1227.2" width="96.0613" height="846" fill="url(#paint13_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+        <rect className="svg-stripe svg-stripe-14" x="1323" width="96.0613" height="846" fill="url(#paint14_linear_35_97)" style={{ mixBlendMode: 'overlay' }}/>
+      </g>
+      
+      <defs>
+        <filter id="filter0_f_35_97" x="15.6069" y="-80.5613" width="990.31" height="722.902" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_35_97"/>
+        </filter>
+        <filter id="filter1_f_35_97" x="763" y="-394" width="1082" height="931" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="125" result="effect1_foregroundBlur_35_97"/>
+        </filter>
+        <filter id="filter2_f_35_97" x="856" y="-465" width="1082" height="931" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="125" result="effect1_foregroundBlur_35_97"/>
+        </filter>
+        <filter id="filter3_f_35_97" x="201" y="-74" width="1211" height="711" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+          <feGaussianBlur stdDeviation="75" result="effect1_foregroundBlur_35_97"/>
+        </filter>
+        <linearGradient id="paint0_linear_35_97" x1="-16" y1="423" x2="80.0613" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_35_97" x1="462.441" y1="423" x2="557.57" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_35_97" x1="80.0615" y1="423" x2="175.19" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint3_linear_35_97" x1="557.57" y1="423" x2="653.631" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint4_linear_35_97" x1="175.19" y1="423" x2="271.252" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint5_linear_35_97" x1="271.251" y1="423" x2="367.312" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint6_linear_35_97" x1="653.631" y1="423" x2="749.692" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint7_linear_35_97" x1="749.692" y1="423" x2="844.821" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint8_linear_35_97" x1="366.38" y1="423" x2="462.441" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint9_linear_35_97" x1="844.821" y1="423" x2="940.882" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint10_linear_35_97" x1="940.882" y1="423" x2="1036.01" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint11_linear_35_97" x1="1036.01" y1="423" x2="1132.07" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint12_linear_35_97" x1="1132.07" y1="423" x2="1227.2" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint13_linear_35_97" x1="1227.2" y1="423" x2="1323.26" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <linearGradient id="paint14_linear_35_97" x1="1323" y1="423" x2="1419.06" y2="423" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#D9D9D9" stopOpacity="0"/>
+          <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+          <stop offset="1" stopColor="white"/>
+        </linearGradient>
+        <clipPath id="clip0_35_97">
+          <rect width="1404" height="808" rx="25" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export default ServicesHeroBg;

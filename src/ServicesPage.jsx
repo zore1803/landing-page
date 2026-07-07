@@ -7,12 +7,72 @@ import FAQ from './FAQ';
 import Booking from './Booking';
 import Footer from './Footer';
 import { services } from './servicesData';
-import servicesHeroBg from './assets/services-hero-bg.svg';
+import ServicesHeroBg from './ServicesHeroBg';
 import './ContactPage.css';
 import './ServicesPage.css';
 
 function ServicesPage() {
   const [pricingService, setPricingService] = useState('brand');
+
+  const stripeAnimationCSS = useMemo(() => {
+    const TOTAL_TIME = 9; 
+    const FPS = 15;
+    const frames = TOTAL_TIME * FPS;
+    let css = '';
+    
+    for (let i = 0; i < 15; i++) { // SVG has 15 stripes
+      const d = Math.min(i, 14 - i);
+      const peaks = [
+        0.5 + i * 0.15,               
+        3.5 + (14 - i) * 0.15,        
+        6.5 + d * 0.15                
+      ];
+      if (d < 7) {
+        peaks.push(7.4 + (7 - d) * 0.15); 
+      }
+
+      let keyframes = `@keyframes svgComplexPulse${i} {\n`;
+      
+      for (let frame = 0; frame <= frames; frame++) {
+        const t = frame / FPS;
+        let maxBright = 0.2;
+        
+        peaks.forEach(peak => {
+          let bright = 0.2;
+          if (t >= peak - 0.2 && t <= peak) {
+            const progress = (t - (peak - 0.2)) / 0.2;
+            bright = 0.2 + progress * 0.8;
+          } else if (t > peak && t <= peak + 0.6) {
+            const progress = (t - peak) / 0.6;
+            bright = 1.0 - progress * 0.8;
+          }
+          if (bright > maxBright) maxBright = bright;
+        });
+        
+        const percent = ((t / TOTAL_TIME) * 100).toFixed(1);
+        keyframes += `  ${percent}% { opacity: ${maxBright.toFixed(2)}; }\n`;
+      }
+      keyframes += `}\n`;
+      css += keyframes;
+      
+      css += `.svg-stripe-${i} { animation: svgComplexPulse${i} 9s infinite linear; }\n`;
+    }
+    
+    // Add slow breathing animation for the colored blobs
+    css += `
+      @keyframes blobBreathe {
+        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+      }
+      .svg-blob { transform-origin: center; animation: blobBreathe 12s infinite ease-in-out; }
+      .svg-blob-orange { animation-delay: -3s; }
+      .svg-blob-copper { animation-delay: -6s; }
+      .svg-blob-light { animation-delay: -9s; }
+    `;
+    
+    return css;
+  }, []);
 
   return (
     <>
@@ -21,8 +81,11 @@ function ServicesPage() {
       <div className="services-page">
         {/* New Hero Section */}
         <div className="services-hero-wrap">
-          {/* Background image container */}
-          <img src={servicesHeroBg} alt="Services Background" className="services-hero-bg-img" />
+          <style>{stripeAnimationCSS}</style>
+          {/* Animated SVG background container */}
+          <div className="services-hero-bg-container">
+            <ServicesHeroBg />
+          </div>
           
           <div className="services-hero-title-container">
             <h1 className="services-hero-title">Services To Design<br/>Your Brand</h1>
