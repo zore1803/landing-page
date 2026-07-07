@@ -1,0 +1,530 @@
+.services-page {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Hero Section ── */
+.services-hero-wrap {
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 60px;
+  background: #FFF;
+  position: relative;
+  overflow: hidden;
+}
+
+/* We could add the vertical stripes background here if needed */
+.services-hero-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Abstracting the gradient background */
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F1E8 100%);
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.services-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 1244px;
+}
+
+.services-hero-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1.2;
+  color: rgba(7, 8, 21, 0.9);
+  margin-bottom: 24px;
+}
+
+.services-hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.3;
+  color: rgba(7, 8, 21, 0.5);
+  max-width: 1244px;
+  margin: 0 auto;
+}
+
+/* ── Service cards (New Layout) ── */
+.svc-cards-section {
+  background: #FFFFFF;
+  padding: 60px 24px 100px;
+}
+
+.svc-cards-grid.new-layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.svc-card.new-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.svc-card.new-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.svc-card-header {
+  margin-bottom: 16px;
+}
+
+.svc-card-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.svc-card-name-copper {
+  color: #000;
+  font-weight: 400;
+}
+
+.svc-card-name-suffix {
+  color: #000;
+  font-weight: 400;
+}
+
+.svc-card-desc.new-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #C55418;
+  font-weight: 300;
+  margin-bottom: 30px;
+  min-height: 84px;
+}
+
+.svc-card-image-placeholder {
+  width: 100%;
+  height: 216px;
+  background: #101010; /* fallback */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.svc-card.new-card:hover .svc-card-image-placeholder {
+  transform: scale(1.02);
+}
+
+.svc-card-more.new-more {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #070815;
+  letter-spacing: -0.13px;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Dark Container ── */
+.services-dark-section {
+  background: #070815;
+  border-radius: 25px;
+  margin: 0 18px;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ecosystem Header */
+.ecosystem-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.ecosystem-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  color: #FFFFFF;
+  margin: 0 0 10px;
+}
+
+.ecosystem-subtitle {
+  font-family: 'Sacramento', cursive;
+  font-weight: 400;
+  font-size: 150px;
+  line-height: 1;
+  color: #EE7A1D;
+  margin: 0;
+}
+
+/* Dark Pricing Wrapper overrides */
+.dark-pricing-wrapper {
+  margin-bottom: 120px;
+}
+.dark-pricing-wrapper .pricing-section {
+  background: transparent !important;
+  padding: 0 !important;
+}
+.dark-pricing-wrapper .pricing-tier {
+  background: #070815 !important;
+  border: 1px solid #C55418 !important;
+}
+.dark-pricing-wrapper .pricing-tier.popular {
+  background: #070815 !important;
+  border: 1px solid #EE7A1D !important;
+}
+.dark-pricing-wrapper .tier-title {
+  color: #FFF !important;
+}
+.dark-pricing-wrapper .tier-desc {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.dark-pricing-wrapper .features-title {
+  color: #FFF !important;
+}
+.dark-pricing-wrapper .pricing-feature {
+  color: #FFF !important;
+}
+.dark-pricing-wrapper .pricing-feature.dimmed {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+.dark-pricing-wrapper .popular-badge {
+  background: #C55418 !important;
+  color: #FFF !important;
+}
+.dark-pricing-wrapper .tier-action .start-btn {
+  background: #FFF !important;
+  color: #070815 !important;
+}
+
+/* Custom Requirement Banner */
+.custom-req-banner {
+  max-width: 1280px;
+  margin: 0 auto 120px;
+  background: rgba(255, 255, 255, 0.05); /* slightly visible box if needed, or transparent */
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+}
+
+.custom-req-content {
+  max-width: 832px;
+}
+
+.custom-req-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #D85000;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.custom-req-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  color: #FFFFFF;
+  margin: 0 0 16px;
+}
+
+.custom-req-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.custom-req-action .book-meeting-btn {
+  background: #070815;
+  color: #FFFFFF;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 14px 46px;
+  border-radius: 20px;
+  border: 1px solid #C55418;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-req-action .book-meeting-btn:hover {
+  background: #C55418;
+}
+
+/* See It In Action */
+.see-in-action-section {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.see-in-action-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  color: #FFFFFF;
+  margin: 0 0 40px;
+}
+
+.see-in-action-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  margin-bottom: 40px;
+}
+
+.action-box {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #D9D9D9;
+  border-radius: 25px;
+  transition: transform 0.3s ease;
+}
+
+.action-box:hover {
+  transform: scale(1.02);
+}
+
+.see-in-action-footer {
+  text-align: right;
+}
+
+.see-more-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.see-more-link:hover {
+  color: #FFF;
+}
+
+/* ── Services Testimonial Section ── */
+.services-testimonial-section {
+  padding: 100px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.st-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.st-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  color: #070815;
+  margin: 0 0 10px;
+}
+
+.st-subtitle {
+  font-family: 'Sacramento', cursive;
+  font-size: 150px;
+  line-height: 1;
+  font-weight: 400;
+  color: #EE7A1D;
+  margin: 0;
+}
+
+.st-grid {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Blocks */
+.st-metrics-block, .st-right-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.st-testimonial-block.dark-card {
+  flex: 1.5;
+  background: #070815;
+  border-radius: 25px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Cards */
+.st-metric-card, .st-testimonial-block {
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.light-card {
+  background: #F0EDE4;
+  border: 1px solid rgba(152, 151, 149, 0.8);
+}
+
+.light-border-card {
+  border: 1px solid rgba(152, 151, 149, 0.8);
+}
+
+.dark-card {
+  background: #070815;
+}
+
+.highlight-metric {
+  background: #F0EDE4; /* As per design, mostly white/off-white with orange text */
+}
+
+/* Texts and elements */
+.st-metric-icon {
+  margin-bottom: 20px;
+}
+
+.st-metric-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: #070815;
+}
+.dark-card .st-metric-title {
+  color: #FFF;
+}
+
+.st-metric-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #504F4F;
+  margin: 0;
+}
+
+.st-metric-value {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 100px;
+  line-height: 1;
+  color: #EE7A1D;
+  margin-bottom: 10px;
+}
+.st-satisfaction-card .st-metric-value {
+  font-size: 80px;
+}
+
+.st-testimonial-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #FFFFFF;
+  margin: 0 0 30px;
+}
+.st-testimonial-text.dark-text {
+  color: #070815;
+}
+
+.st-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.st-author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: #FFF;
+}
+.bg-orange {
+  background: #EE7A1D;
+}
+
+.st-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.st-author-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #FFF;
+}
+.st-author-name.dark-text {
+  color: #070815;
+}
+
+.st-author-role {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.st-testimonial-block.light-border-card .st-author-role {
+  color: #504F4F;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .svc-cards-grid.new-layout,
+  .see-in-action-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .st-grid {
+    flex-direction: column;
+  }
+  .custom-req-banner {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .svc-cards-grid.new-layout,
+  .see-in-action-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-hero-title {
+    font-size: 40px;
+  }
+  .services-hero-sub {
+    font-size: 20px;
+  }
+  .ecosystem-title {
+    font-size: 32px;
+  }
+  .ecosystem-subtitle {
+    font-size: 80px;
+  }
+  .st-metric-value {
+    font-size: 60px;
+  }
+}
