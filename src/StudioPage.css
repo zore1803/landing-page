@@ -494,7 +494,7 @@
   margin: 0 auto;
   max-width: 1440px;
   padding: 0 40px;
-  z-index: 1; /* stays behind the cards */
+  z-index: 0 !important; /* stays strictly behind the cards */
 }
 
 .process-glass-wrapper {
@@ -502,7 +502,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 10 !important;
   width: 100%;
   padding: 250px 0 120px 0;
   will-change: transform;
@@ -516,7 +516,7 @@
   left: 0;
   width: 100%;
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -563,6 +563,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  z-index: 20 !important;
   opacity: 0;
   transform: translateY(350px) scale(0.75) rotateX(45deg);
   will-change: transform, opacity;
