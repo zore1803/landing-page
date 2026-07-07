@@ -15,6 +15,11 @@ import brandLogo from './assets/logos/CopperBrand.svg';
 import webLogo from './assets/logos/CopperWeb.svg';
 import flowLogo from './assets/logos/CopperFlow.svg';
 
+import commonGroundsImg from './assets/common-grounds.jpg';
+import dataCirclesImg from './assets/DataCirclesLaptop.png';
+import premiumGroupImg from './assets/image.png';
+import qodenextImg from './assets/QodenextImage.png';
+
 const getLogo = (suffix) => {
   if (suffix === 'Brand') return brandLogo;
   if (suffix === 'Web') return webLogo;
@@ -157,10 +162,18 @@ function ServicesPage() {
           <div className="see-in-action-section">
             <h2 className="see-in-action-title">See It In Action</h2>
             <div className="see-in-action-grid">
-              <div className="action-box"></div>
-              <div className="action-box"></div>
-              <div className="action-box"></div>
-              <div className="action-box"></div>
+              <div className="action-box">
+                <img src={commonGroundsImg} alt="Common Grounds Project" className="action-box-img" />
+              </div>
+              <div className="action-box">
+                <img src={dataCirclesImg} alt="Data Circles Project" className="action-box-img" />
+              </div>
+              <div className="action-box">
+                <img src={premiumGroupImg} alt="Premium Group Project" className="action-box-img" />
+              </div>
+              <div className="action-box">
+                <img src={qodenextImg} alt="Qodenext Project" className="action-box-img" />
+              </div>
             </div>
             <div className="see-in-action-footer">
               <Link to="/#projects" className="see-more-link">Want to See More Projects? &rsaquo;</Link>
