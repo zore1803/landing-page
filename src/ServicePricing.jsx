@@ -10,7 +10,7 @@ const CheckIcon = () => (
   </svg>
 );
 
-const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hideTitle = false }) => {
+const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hideTitle = false, hideCustomBanner = false }) => {
   // Controlled when props are passed (services page), otherwise self-managed (home page).
   const [internalKey, setInternalKey] = useState('brand');
   const activeKey = activeService ?? internalKey;
@@ -94,19 +94,21 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
           ))}
         </div>
 
-        <div className="custom-plan-banner">
-          <div className="ellipse-orange"></div>
-          <div className="ellipse-blue"></div>
-          
-          <div className="custom-plan-content">
-            <span className="custom-plan-tag">HAVE A CUSTOM REQUIREMENT?</span>
-            <h3 className="custom-plan-title">Not Finding The Perfect Plan?</h3>
-            <p className="custom-plan-desc">
-              Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.
-            </p>
+        {!hideCustomBanner && (
+          <div className="custom-plan-banner">
+            <div className="ellipse-orange"></div>
+            <div className="ellipse-blue"></div>
+            
+            <div className="custom-plan-content">
+              <span className="custom-req-tag">HAVE A CUSTOM REQUIREMENT?</span>
+              <h3 className="custom-plan-title">Not Finding The Perfect Plan?</h3>
+              <p className="custom-plan-desc">
+                Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.
+              </p>
+            </div>
+            <button className="custom-plan-btn">Book A Meeting</button>
           </div>
-          <button className="custom-plan-btn">Book A Meeting</button>
-        </div>
+        )}
       </div>
     </section>
   );

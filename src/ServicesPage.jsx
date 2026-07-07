@@ -139,7 +139,7 @@ function ServicesPage() {
           </div>
 
           <div className="dark-pricing-wrapper">
-            <ServicePricing activeService={pricingService} onServiceChange={setPricingService} showToggle={true} hideTitle={true} />
+            <ServicePricing activeService={pricingService} onServiceChange={setPricingService} showToggle={true} hideTitle={true} hideCustomBanner={true} />
           </div>
 
           <div className="custom-req-banner">
