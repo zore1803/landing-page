@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './StudioPage.css';
 import WallOfLove from './WallOfLove';
 import FAQ from './FAQ';
@@ -22,6 +22,23 @@ const studioProjects = [projImg1, projImg2, projImg3, projImg4];
 const StudioPage = () => {
   const processSectionRef = useRef(null);
   const processWrapperRef = useRef(null);
+  const titleRef = useRef(null);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsTitleVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -253,9 +270,13 @@ const StudioPage = () => {
           </div>
 
           <div className="process-header-container">
-            <div className="process-header">
+            <div className="process-header" ref={titleRef}>
               <h2>Here's how we work together.</h2>
-              <div className="cursive-accent">Process</div>
+              <div className={`global-cursive-svg-container ${isTitleVisible ? 'write-animation-global' : ''}`}>
+                <svg viewBox="0 0 800 200" className="global-cursive-svg">
+                  <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">Process</text>
+                </svg>
+              </div>
             </div>
           </div>
 

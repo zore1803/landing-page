@@ -875,3 +875,57 @@ img, video {
     top: calc(100% + 6vh);
   }
 }
+
+/* ============================================================
+   GLOBAL SVG TRACKING ANIMATION FOR CURSIVE TEXT
+   ============================================================ */
+.global-cursive-svg-container {
+  margin-top: -90px;
+  margin-bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.global-cursive-svg {
+  width: 800px;
+  height: 200px;
+  overflow: visible;
+}
+
+.global-cursive-svg text {
+  font-family: 'Sacramento', cursive;
+  font-size: 150px;
+  fill: #F69049; /* Fallback */
+}
+
+/* Base state before animation triggers */
+.global-cursive-svg text {
+  fill: transparent;
+  stroke: #F69049;
+  stroke-width: 1.5px;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+}
+
+.write-animation .global-cursive-svg text,
+.write-animation-global .global-cursive-svg text {
+  animation: drawCursiveOutline 4s ease-in-out forwards;
+}
+
+@keyframes drawCursiveOutline {
+  0% {
+    stroke-dashoffset: 2000;
+    fill: transparent;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #F69049;
+  }
+}

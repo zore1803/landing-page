@@ -13,7 +13,24 @@ import projDataCirclesSvg from './assets/projects/DataCirclesCompressed.png';
 export default function ProjectsSection() {
   const sectionRef = useRef(null);
   const wrapperRef = useRef(null);
+  const titleRef = useRef(null);
   const [activeSvg, setActiveSvg] = useState(null);
+  const [isTitleVisible, setIsTitleVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsTitleVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (activeSvg) {
@@ -141,9 +158,13 @@ export default function ProjectsSection() {
     <section className="projects-section" id="projects" ref={sectionRef}>
       <div className="projects-sticky-container">
 
-        <div className="projects-header-wrapper">
+        <div className="projects-header-wrapper" ref={titleRef}>
           <h2 className="section-title">Take A Look At What We Have Created!</h2>
-          <div className="cursive-accent">Projects</div>
+          <div className={`global-cursive-svg-container ${isTitleVisible ? 'write-animation-global' : ''}`}>
+            <svg viewBox="0 0 800 200" className="global-cursive-svg">
+              <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">Projects</text>
+            </svg>
+          </div>
         </div>
 
         <div className="projects-glass-wrapper" ref={wrapperRef}>
