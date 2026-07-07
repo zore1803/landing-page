@@ -209,12 +209,12 @@ img, video {
   left: 50%;
   transform: translateX(-50%);
   background: #FFFFFF;
-  padding: 9px 15px;
+  padding: 10px 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  height: 54px;
+  height: 60px;
   z-index: 100;
   box-sizing: border-box;
   border-radius: 18px;
@@ -225,12 +225,17 @@ img, video {
 .nav-logo {
   display: flex;
   align-items: center;
-  height: 32px;
+}
+
+.nav-logo a {
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo-icon {
-  height: 32px;
+  height: 40px;
   width: auto;
+  display: block;
   object-fit: contain;
   filter: invert(1) contrast(1.5);
 }
