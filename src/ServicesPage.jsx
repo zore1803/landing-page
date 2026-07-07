@@ -11,6 +11,16 @@ import ServicesHeroBg from './ServicesHeroBg';
 import './ContactPage.css';
 import './ServicesPage.css';
 import cardImg0 from './assets/servicessvg/card_img_0.png';
+import brandLogo from './assets/logos/CopperBrand.svg';
+import webLogo from './assets/logos/CopperWeb.svg';
+import flowLogo from './assets/logos/CopperFlow.svg';
+
+const getLogo = (suffix) => {
+  if (suffix === 'Brand') return brandLogo;
+  if (suffix === 'Web') return webLogo;
+  if (suffix === 'Flow') return flowLogo;
+  return brandLogo;
+};
 
 function ServicesPage() {
   const [pricingService, setPricingService] = useState('brand');
@@ -105,10 +115,7 @@ function ServicesPage() {
             {services.map((s) => (
               <Link to={`/services/${s.slug}`} className="svc-card new-card" key={s.slug}>
                 <div className="svc-card-header">
-                  <h2 className="svc-card-name">
-                    <span className="svc-card-name-copper">{s.name}</span>
-                    <span className="svc-card-name-suffix">{s.suffix}</span>
-                  </h2>
+                  <img src={getLogo(s.suffix)} alt={`Copper${s.suffix} Logo`} className="svc-card-logo-img" />
                 </div>
                 <p className="svc-card-desc new-desc">
                   {s.desc}

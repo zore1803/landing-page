@@ -126,22 +126,9 @@
   margin-bottom: 16px;
 }
 
-.svc-card-name {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-}
-
-.svc-card-name-copper {
-  color: #000;
-  font-weight: 400;
-}
-
-.svc-card-name-suffix {
-  color: #000;
-  font-weight: 400;
+.svc-card-logo-img {
+  height: 32px;
+  display: block;
 }
 
 .svc-card-desc.new-desc {
@@ -152,6 +139,7 @@
   font-weight: 300;
   margin-bottom: 30px;
   min-height: 84px;
+  flex-grow: 1;
 }
 
 .svc-card-image-placeholder {
