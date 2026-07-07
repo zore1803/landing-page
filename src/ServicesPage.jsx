@@ -176,7 +176,15 @@ function ServicesPage() {
               </div>
             </div>
             <div className="see-in-action-footer">
-              <Link to="/#projects" className="see-more-link">Want to See More Projects? &rsaquo;</Link>
+              <Link to="/#projects" className="see-more-link">
+                <span className="see-more-grey">Want to</span>
+                <span className="see-more-white">See More Projects?</span>
+                <span className="see-more-arrow-circle">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 2L9 6L4 10" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </Link>
             </div>
           </div>
         </div>

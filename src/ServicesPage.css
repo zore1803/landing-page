@@ -434,17 +434,46 @@
 }
 
 .see-more-link {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
 }
 
 .see-more-link:hover {
-  color: #FFF;
+  opacity: 0.8;
+}
+
+.see-more-grey {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  color: #8C8C8C;
+  font-weight: 400;
+  margin-right: 6px;
+}
+
+.see-more-white {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  color: #FFFFFF;
+  font-weight: 700;
+  margin-right: 18px;
+}
+
+.see-more-arrow-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #C55418;
+  color: #FFFFFF;
+  transition: background 0.3s ease;
+}
+
+.see-more-link:hover .see-more-arrow-circle {
+  background: #E47317;
 }
 
 /* ── Services Testimonial Section ── */
