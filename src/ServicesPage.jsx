@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import ServicePricing from './ServicePricing';
-import ServicesTestimonial from './ServicesTestimonial';
+import WallOfLove from './WallOfLove';
 import FAQ from './FAQ';
 import Booking from './Booking';
 import Footer from './Footer';
@@ -160,7 +160,7 @@ function ServicesPage() {
         </div>
 
         {/* Testimonials */}
-        <ServicesTestimonial />
+        <WallOfLove />
 
         {/* End section */}
         <FAQ />
