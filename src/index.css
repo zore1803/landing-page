@@ -43,20 +43,24 @@ h1, h2, h3, h4, h5, h6, .title-font {
 /* --- Global Layout System --- */
 .global-section {
   width: 100%;
-  padding: 120px 20px;
+  padding: 120px 0;
   box-sizing: border-box;
 }
 
 .global-container {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1440px;
+  padding: 0 40px;
   margin: 0 auto;
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .global-section {
-    padding: 80px 16px;
+    padding: 80px 0;
+  }
+  .global-container {
+    padding: 0 20px;
   }
 }
 
