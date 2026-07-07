@@ -118,13 +118,13 @@ function ServicesPage() {
                   <img src={getLogo(s.suffix)} alt={`Copper${s.suffix} Logo`} className="svc-card-logo-img" />
                 </div>
                 <p className="svc-card-desc new-desc">
-                  {s.desc}
+                  <span className="svc-card-highlight">{s.highlight}</span> {s.desc}
                 </p>
                 <div className="svc-card-image-placeholder">
                   <img src={cardImg0} alt={s.category} className="svc-card-real-img" />
                 </div>
                 <div className="svc-card-more new-more">
-                  Get To Know More &rsaquo;
+                  <span className="more-grey">Get To </span><span className="more-orange">Know More &rsaquo;</span>
                 </div>
               </Link>
             ))}
