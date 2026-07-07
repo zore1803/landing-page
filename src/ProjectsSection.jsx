@@ -6,12 +6,12 @@ import dataCirclesImg from './assets/DataCirclesLaptop.png';
 import premiumGroupImg from './assets/image.png';
 import qodenextImg from './assets/QodenextImage.png';
 
-import proj1Svg from './assets/projects/Cottson Clothing.svg';
-import proj2Svg from './assets/projects/common ground.svg';
+import proj1Svg from './assets/projects/cottsonCompressed.png';
+import proj2Svg from './assets/projects/CommonGroungsCompressed.png';
 import proj3Svg from './assets/projects/darjeeling garden.svg';
 import proj4Svg from './assets/projects/ELEVE45.svg';
-import projQodenextSvg from './assets/projects/qodenext.svg';
-import projDataCirclesSvg from './assets/projects/datacircles.svg';
+import projQodenextSvg from './assets/projects/Qodenextcompress.png';
+import projDataCirclesSvg from './assets/projects/DataCirclesCompressed.png';
 
 export default function ProjectsSection() {
   const sectionRef = useRef(null);
