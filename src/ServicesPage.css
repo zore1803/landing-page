@@ -230,6 +230,11 @@
   background: transparent !important;
   padding: 0 !important;
 }
+.dark-pricing-wrapper .global-container {
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
 .dark-pricing-wrapper .pricing-tier {
   background: #070815 !important;
   border: 1px solid #C55418 !important;
