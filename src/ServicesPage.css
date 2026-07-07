@@ -245,12 +245,40 @@
   position: relative;
   z-index: 2;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+  transform: translateX(100px); /* Shift right to overlap 'The Copper' correctly */
 }
 
 /* Dark Pricing Wrapper overrides */
 .dark-pricing-wrapper {
   margin-bottom: 120px;
   width: 100%;
+}
+
+.dark-pricing-wrapper .pricing-section {
+  background-color: transparent !important;
+  padding: 0;
+}
+
+.dark-pricing-wrapper .pricing-card::before {
+  background-color: #070815;
+}
+
+.dark-pricing-wrapper .plan-name,
+.dark-pricing-wrapper .features-title,
+.dark-pricing-wrapper .feature-text {
+  color: #FFFFFF;
+}
+
+.dark-pricing-wrapper .plan-desc {
+  color: #8C8C8C;
+}
+
+.dark-pricing-wrapper .pricing-card-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-pricing-wrapper .feature-subitem .bullet {
+  color: #8C8C8C;
 }
 
 .dark-pricing-wrapper .pricing-toggle {
