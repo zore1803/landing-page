@@ -16,15 +16,55 @@
   overflow: hidden;
 }
 
-/* We could add the vertical stripes background here if needed */
-.services-hero-wrap::before {
-  content: '';
+/* ── Hero Background Blobs ── */
+.services-blobs-container {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  /* Abstracting the gradient background */
-  background: linear-gradient(180deg, #FFFFFF 0%, #F5F1E8 100%);
-  z-index: 0;
-  opacity: 0.5;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.services-ellipse {
+  position: absolute;
+  border-radius: 50%;
+  /* Using radial gradients instead of blur() to preserve performance */
+  transform: scale(1.6);
+}
+
+.services-ellipse-5 {
+  width: calc(100vw * 715 / 1440);
+  height: 600px;
+  left: 112px;
+  top: -10px;
+  background: radial-gradient(closest-side, rgba(70, 134, 183, 0.9) 0%, rgba(70, 134, 183, 0) 100%);
+  transform: rotate(-18deg) scale(1.6);
+}
+
+.services-ellipse-6 {
+  width: calc(100vw * 582 / 1440);
+  height: 431px;
+  right: -191px;
+  top: -144px;
+  background: radial-gradient(closest-side, rgba(238, 122, 29, 0.9) 0%, rgba(238, 122, 29, 0) 100%);
+}
+
+.services-ellipse-7 {
+  width: calc(100vw * 582 / 1440);
+  height: 431px;
+  right: -284px;
+  top: -215px;
+  background: radial-gradient(closest-side, rgba(197, 84, 24, 0.9) 0%, rgba(197, 84, 24, 0) 100%);
+}
+
+.services-ellipse-1 {
+  width: calc(100vw * 911 / 1440);
+  height: 411px;
+  left: 351px;
+  top: 76px;
+  background: radial-gradient(closest-side, rgba(240, 237, 228, 0.9) 0%, rgba(240, 237, 228, 0) 100%);
 }
 
 .services-hero-content {
