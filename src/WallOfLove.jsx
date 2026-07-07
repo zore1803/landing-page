@@ -141,11 +141,7 @@ const WallOfLove = () => {
         
         <div className="wall-header-wrapper" ref={titleRef}>
           <h2 className="wall-title">Why Do Our Clients Love Us</h2>
-          <div className={`cursive-accent ${isTitleVisible ? 'write-animation' : ''}`}>
-            <svg viewBox="0 0 800 200" className="cursive-svg">
-              <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">Testimonial</text>
-            </svg>
-          </div>
+          <div className={`cursive-accent ${isTitleVisible ? 'write-animation' : ''}`}>Testimonial</div>
         </div>
 
         <div className="wall-glass-wrapper" ref={wrapperRef}>
