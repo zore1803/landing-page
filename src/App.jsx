@@ -30,6 +30,23 @@ function Home() {
     return () => document.removeEventListener('contextmenu', handleContextMenu);
   }, []);
 
+  // Check URL hash on mount and on hashchange to correctly open the Studio page
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#about') {
+        setShowStudioPage(true);
+        setActiveSection('about');
+      } else if (window.location.hash === '#home' || window.location.hash === '') {
+        setShowStudioPage(false);
+        setActiveSection('home');
+      }
+    };
+
+    handleHash(); // Check on mount
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   // 14 stripes based on the Figma spec (Rectangle 89 through 102)
   const stripes = Array.from({ length: 14 });
   console.log("Logo path loaded as:", logoImg);
@@ -126,8 +143,8 @@ function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   
-  const [activeSection, setActiveSection] = useState('home');
-  const [showStudioPage, setShowStudioPage] = useState(false);
+  const [activeSection, setActiveSection] = useState(window.location.hash === '#about' ? 'about' : 'home');
+  const [showStudioPage, setShowStudioPage] = useState(window.location.hash === '#about');
 
   // Toggling between the landing page and the Studio page swaps the whole
   // document, but the browser keeps the old scroll position (which lands you
