@@ -10,7 +10,7 @@ export const services = [
     name: 'Copper',
     suffix: 'Brand',
     highlight: 'From first impressions to lasting recognition.',
-    desc: 'We believe great brands are built through consistency at every touchpoint. By combining strategy, visual identity, print, packaging, and branded assets, we create unified brand experiences that people remember and businesses grow with.',
+    desc: 'We build memorable brands through strategy,\nidentity, print, packaging, and cohesive visual\nsystems that inspire trust and support\nbusiness growth.',
   },
   {
     slug: 'web-design',
@@ -19,8 +19,8 @@ export const services = [
     category: 'Web Design & Development',
     name: 'Copper',
     suffix: 'Web',
-    highlight: 'We take care of everything your website needs,',
-    desc: 'from custom design and development to secure hosting, routine maintenance, and continuous optimization—so you can focus on growing your business while your website performs at its best.',
+    highlight: 'From strategy and UX to launch and support.',
+    desc: 'We create high-performing websites that blend\nexceptional design, seamless functionality, and\nmeasurable business results.',
   },
   {
     slug: 'client-portal',
@@ -29,7 +29,7 @@ export const services = [
     category: 'Client Portal',
     name: 'Copper',
     suffix: 'Flow',
-    highlight: 'Custom Portals Built Around Your Business.',
-    desc: 'Every business works differently, and your portal should too. We design and develop custom client, employee, and business portals that simplify workflows, centralize information, and create secure, intuitive experiences tailored to the way your team and customers work.',
+    highlight: 'Digital tools built around your business.',
+    desc: 'We design custom client, employee, and\nbusiness portals that streamline workflows,\ncentralize information, and improve efficiency.',
   },
 ];

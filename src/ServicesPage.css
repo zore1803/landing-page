@@ -157,10 +157,12 @@
   margin-bottom: 30px;
   min-height: 84px;
   flex-grow: 1;
-  text-align: justify;
+  text-align: left;
+  white-space: pre-wrap;
 }
 
 .svc-card-highlight {
+  display: block;
   color: #C55418;
   font-weight: 400;
 }
