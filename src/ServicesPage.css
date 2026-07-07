@@ -241,7 +241,7 @@
   font-size: 150px;
   line-height: 1;
   color: #EE7A1D;
-  margin: -80px 0 0 0;
+  margin: -35px 0 0 0;
   position: relative;
   z-index: 2;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
@@ -298,52 +298,7 @@
   background: #47474C;
   color: #FFFFFF;
 }
-  max-width: 1408px;
-  padding: 0 24px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-}
-.dark-pricing-wrapper .pricing-section {
-  background: transparent !important;
-  padding: 0 !important;
-}
-.dark-pricing-wrapper .global-container {
-  max-width: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-.dark-pricing-wrapper .pricing-tier {
-  background: #070815 !important;
-  border: 1px solid #C55418 !important;
-}
-.dark-pricing-wrapper .pricing-tier.popular {
-  background: #070815 !important;
-  border: 1px solid #EE7A1D !important;
-}
-.dark-pricing-wrapper .tier-title {
-  color: #FFF !important;
-}
-.dark-pricing-wrapper .tier-desc {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-.dark-pricing-wrapper .features-title {
-  color: #FFF !important;
-}
-.dark-pricing-wrapper .pricing-feature {
-  color: #FFF !important;
-}
-.dark-pricing-wrapper .pricing-feature.dimmed {
-  color: rgba(255, 255, 255, 0.5) !important;
-}
-.dark-pricing-wrapper .popular-badge {
-  background: #C55418 !important;
-  color: #FFF !important;
-}
-.dark-pricing-wrapper .tier-action .start-btn {
-  background: #FFF !important;
-  color: #070815 !important;
-}
+
 
 /* Custom Requirement Banner */
 .custom-req-banner {
