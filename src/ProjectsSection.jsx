@@ -5,10 +5,10 @@ import dataCirclesImg from './assets/DataCirclesLaptop.webp';
 import premiumGroupImg from './assets/image.webp';
 import qodenextImg from './assets/QodenextImage.webp';
 
-import proj1Svg from './assets/projects/cottsonCompressed.webp';
-import proj2Svg from './assets/projects/CommonGroungsCompressed.webp';
-import projQodenextSvg from './assets/projects/Qodenextcompress.webp';
-import projDataCirclesSvg from './assets/projects/DataCirclesCompressed.webp';
+import proj1Svg from './assets/projects/cottsonCompressed-hq.webp';
+import proj2Svg from './assets/projects/CommonGroungsCompressed-hq.webp';
+import projQodenextSvg from './assets/projects/Qodenextcompress-hq.webp';
+import projDataCirclesSvg from './assets/projects/DataCirclesCompressed-hq.webp';
 
 export default function ProjectsSection() {
   const sectionRef = useRef(null);

@@ -5,10 +5,10 @@ import Footer from './Footer';
 import ProjectsHeroBg from './ProjectsHeroBg';
 import './ProjectsPage.css';
 
-import cottsonFull from './assets/projects/cottsonCompressed.webp';
-import dataCirclesFull from './assets/projects/DataCirclesCompressed.webp';
-import qodenextFull from './assets/projects/Qodenextcompress.webp';
-import commonGroundsFull from './assets/projects/CommonGroungsCompressed.webp';
+import cottsonFull from './assets/projects/cottsonCompressed-hq.webp';
+import dataCirclesFull from './assets/projects/DataCirclesCompressed-hq.webp';
+import qodenextFull from './assets/projects/Qodenextcompress-hq.webp';
+import commonGroundsFull from './assets/projects/CommonGroungsCompressed-hq.webp';
 
 import cottsonThumb from './assets/image.webp';
 import dataCirclesThumb from './assets/DataCirclesLaptop.webp';
