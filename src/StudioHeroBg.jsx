@@ -72,14 +72,14 @@ const StudioHeroBg = () => {
 <path d="M-35.4111 474.641C-160.553 257.889 -86.2881 -19.2696 130.463 -144.411C347.215 -269.553 624.374 -195.288 749.516 21.4634C874.657 238.215 800.393 515.374 583.641 640.516C366.89 765.657 89.7304 691.393 -35.4111 474.641Z" fill="url(#paint1_radial_45_279)"/>
 </g>
 <rect className="svg-stripe svg-stripe-0" x="-16" width="96.0613" height="800" fill="url(#paint2_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-1" x="462.441" width="95.1286" height="800" fill="url(#paint3_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-2" x="80.0615" width="95.1286" height="800" fill="url(#paint4_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-3" x="557.569" width="96.0613" height="800" fill="url(#paint5_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-4" x="175.19" width="96.0613" height="800" fill="url(#paint6_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-5" x="271.251" width="96.0613" height="800" fill="url(#paint7_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-6" x="653.631" width="96.0613" height="800" fill="url(#paint8_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-7" x="749.692" width="95.1286" height="800" fill="url(#paint9_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
-<rect className="svg-stripe svg-stripe-8" x="366.38" width="96.0613" height="800" fill="url(#paint10_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-1" x="80.0615" width="95.1286" height="800" fill="url(#paint4_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-2" x="175.19" width="96.0613" height="800" fill="url(#paint6_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-3" x="271.251" width="96.0613" height="800" fill="url(#paint7_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-4" x="366.38" width="96.0613" height="800" fill="url(#paint10_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-5" x="462.441" width="95.1286" height="800" fill="url(#paint3_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-6" x="557.569" width="96.0613" height="800" fill="url(#paint5_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-7" x="653.631" width="96.0613" height="800" fill="url(#paint8_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+<rect className="svg-stripe svg-stripe-8" x="749.692" width="95.1286" height="800" fill="url(#paint9_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
 <rect className="svg-stripe svg-stripe-9" x="844.82" width="96.0613" height="800" fill="url(#paint11_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
 <rect className="svg-stripe svg-stripe-10" x="940.882" width="95.1286" height="800" fill="url(#paint12_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
 <rect className="svg-stripe svg-stripe-11" x="1036.01" width="96.0613" height="800" fill="url(#paint13_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
