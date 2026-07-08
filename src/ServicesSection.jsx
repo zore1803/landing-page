@@ -80,7 +80,10 @@ export default function ServicesSection() {
                   playsInline 
                   disablePictureInPicture
                   controlsList="nodownload noplaybackrate"
-                />
+                  aria-hidden="true"
+                >
+                  <track kind="captions" srcLang="en" label="English" default />
+                </video>
               </div>
               <div className="s-card">
                 <img src={commonGroundsImg} alt="Common Grounds" className="s-card-img" />
@@ -92,7 +95,10 @@ export default function ServicesSection() {
                   playsInline 
                   disablePictureInPicture
                   controlsList="nodownload noplaybackrate"
-                />
+                  aria-hidden="true"
+                >
+                  <track kind="captions" srcLang="en" label="English" default />
+                </video>
               </div>
               <div className="s-card">
                 <img src={dataCirclesImg} alt="DataCircles" className="s-card-img" />

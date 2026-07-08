@@ -179,7 +179,7 @@ export default function ProjectsSection() {
                 <img src={proj.img} alt={proj.title} className="project-card-image" />
                 <div className="project-card-overlay"></div>
                 <div className="project-card-content">
-                  <h4 className="project-card-title">{proj.title}</h4>
+                  <h3 className="project-card-title">{proj.title}</h3>
                   <p className="project-card-subtitle">{proj.subtitle}</p>
                   <div className="project-tags">
                     {proj.tags.map((tag, tIdx) => (

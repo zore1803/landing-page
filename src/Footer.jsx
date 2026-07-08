@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import footerText from './assets/footer/Group 70.svg';
 import footerMainLogo from './assets/Group 18.svg';
@@ -43,11 +44,11 @@ const Footer = () => {
           <div className="footer-divider"></div>
 
           <div className="footer-links">
-            <a href="#about">Studio</a>
-            <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-            <a href="#portal">Client Portal</a>
+            <Link to="/studio">Studio</Link>
+            <Link to="/services">Services</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/contact">Contact</Link>
+            <a href="/#portal">Client Portal</a>
           </div>
 
           <div className="footer-socials">
