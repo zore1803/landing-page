@@ -5,7 +5,7 @@ import Footer from './Footer';
 import ProjectsHeroBg from './ProjectsHeroBg';
 import './ProjectsPage.css';
 
-import cottsonFull from './assets/projects/cottson-clothing-hq.jpg';
+import cottsonFull from './assets/projects/cottson-clothing-hq.webp';
 import dataCirclesFull from './assets/projects/DataCirclesCompressed-hq.webp';
 import qodenextFull from './assets/projects/Qodenextcompress-hq.webp';
 import commonGroundsFull from './assets/projects/CommonGroungsCompressed-hq.webp';
