@@ -187,7 +187,6 @@ export default function BrandServicePage() {
               <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
               <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
               <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '600ms' }}></div>
             </div>
           </div>
         </div>
