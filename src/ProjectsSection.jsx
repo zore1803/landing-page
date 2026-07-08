@@ -205,6 +205,7 @@ export default function ProjectsSection() {
       {/* SVG Modal Overlay */}
       {activeSvg && (
         <div className="project-svg-modal-overlay" onClick={() => setActiveSvg(null)}>
+          {isImageLoading && <div className="copper-loader"></div>}
           <div className="project-svg-modal-content" onClick={e => e.stopPropagation()}>
             <button className="project-svg-modal-close" onClick={() => setActiveSvg(null)}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -212,7 +213,6 @@ export default function ProjectsSection() {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            {isImageLoading && <div className="copper-loader"></div>}
             <img 
               src={activeSvg} 
               alt="Project Presentation" 

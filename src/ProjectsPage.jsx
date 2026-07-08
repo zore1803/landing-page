@@ -197,8 +197,8 @@ export default function ProjectsPage() {
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
           </div>
+          {isImageLoading && <div className="copper-loader"></div>}
           <div className="pp-modal-content" onClick={(e) => e.stopPropagation()}>
-            {isImageLoading && <div className="copper-loader"></div>}
             <img 
               src={activeFullImage} 
               alt="Project Full Case Study" 
