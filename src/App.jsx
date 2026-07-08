@@ -4,12 +4,12 @@ import './App.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const StudioPage = lazy(() => import('./StudioPage'));
-const ServicesPage = lazy(() => import('./ServicesPage'));
-const ServiceDetail = lazy(() => import('./ServiceDetail'));
-const ContactPage = lazy(() => import('./ContactPage'));
-const ProjectsPage = lazy(() => import('./ProjectsPage'));
-const BrandServicePage = lazy(() => import('./BrandServicePage'));
+import StudioPage from './StudioPage';
+import ServicesPage from './ServicesPage';
+import ServiceDetail from './ServiceDetail';
+import ContactPage from './ContactPage';
+import ProjectsPage from './ProjectsPage';
+import BrandServicePage from './BrandServicePage';
 
 import CoordinateSectionComponent from './CoordinateSection';
 import ProjectsSectionComponent from './ProjectsSection';
@@ -248,7 +248,6 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/studio" element={<StudioRoute />} />
@@ -258,7 +257,6 @@ function App() {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/copper-brand" element={<BrandServicePage />} />
       </Routes>
-    </Suspense>
     </>
   );
 }
