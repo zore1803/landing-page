@@ -930,35 +930,31 @@ img, video {
   }
 }
 
-/* Premium SVG Copper Loader */
+/* Hardware Accelerated Copper Loader */
 .copper-loader-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
+  transform: translate(-50%, -50%) translateZ(0);
+  width: 50px;
+  height: 50px;
   z-index: 10000;
+  will-change: transform;
 }
 
 .copper-spinner {
-  animation: spinCopperSvg 2s linear infinite;
   width: 100%;
   height: 100%;
+  border: 4px solid rgba(200, 80, 0, 0.2);
+  border-top-color: #C85000;
+  border-radius: 50%;
+  animation: spinnerRotate 1s infinite linear;
+  transform: translateZ(0);
+  will-change: transform;
+  box-sizing: border-box;
 }
 
-.copper-spinner .path {
-  stroke: #C85000;
-  stroke-linecap: round;
-  animation: dashCopperSvg 1.5s ease-in-out infinite;
-}
-
-@keyframes spinCopperSvg {
+@keyframes spinnerRotate {
+  0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-@keyframes dashCopperSvg {
-  0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
-  50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
-  100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
 }

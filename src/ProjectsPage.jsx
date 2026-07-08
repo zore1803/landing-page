@@ -199,9 +199,7 @@ export default function ProjectsPage() {
           </div>
           {isImageLoading && (
             <div className="copper-loader-container">
-              <svg className="copper-spinner" viewBox="0 0 50 50">
-                <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="4"></circle>
-              </svg>
+              <div className="copper-spinner"></div>
             </div>
           )}
           <div className="pp-modal-content" onClick={(e) => e.stopPropagation()}>
