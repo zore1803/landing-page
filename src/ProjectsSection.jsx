@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ProjectsSection.css';
 import commonGroundsImg from './assets/common-grounds.webp';
 import dataCirclesImg from './assets/DataCirclesLaptop.webp';
@@ -11,6 +12,7 @@ import projQodenextSvg from './assets/projects/qodenext-hq.webp';
 import projDataCirclesSvg from './assets/projects/datacircles-hq.webp';
 
 export default function ProjectsSection() {
+  const navigate = useNavigate();
   const sectionRef = useRef(null);
   const wrapperRef = useRef(null);
   const titleRef = useRef(null);
@@ -195,7 +197,7 @@ export default function ProjectsSection() {
             ))}
           </div>
 
-          <div className="view-more-btn">
+          <div className="view-more-btn" onClick={() => navigate('/projects')}>
             See More Projects <span className="arrow-icon">&rsaquo;</span>
           </div>
         </div>
