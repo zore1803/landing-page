@@ -134,7 +134,6 @@
 
 .filter-pill:hover {
   background: #f9f9f9;
-  transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-color: #070815;
 }
@@ -163,7 +162,7 @@
 }
 
 .pp-card-item:hover {
-  transform: translateY(-8px);
+  /* Removed transform jump as per user request */
 }
 
 .pp-card-image {

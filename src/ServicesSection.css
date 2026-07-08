@@ -224,7 +224,7 @@
 }
 
 .s-card:hover {
-  transform: translateY(-5px);
+  /* Removed transform jump as per user request */
 }
 
 .interactive-media-card {

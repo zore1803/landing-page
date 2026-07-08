@@ -163,7 +163,6 @@
 
 .contact-card:hover {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  transform: translateY(-8px);
 }
 
 .contact-card-icon {
