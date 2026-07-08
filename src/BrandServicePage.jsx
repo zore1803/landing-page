@@ -240,7 +240,7 @@ export default function BrandServicePage() {
                     </tr>
                     {section.features.map((feature, fIdx) => (
                       <tr key={`${sIdx}-${fIdx}`}>
-                        <td><div className="cp-feature-name reveal-up">{feature.name}</div></td>
+                        <td><div className="cp-feature-name reveal-right">{feature.name}</div></td>
                         <td className="cp-check">
                           {feature.plans[0] && (
                             <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>

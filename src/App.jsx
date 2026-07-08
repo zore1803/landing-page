@@ -261,7 +261,7 @@ function GlobalScrollReveal() {
     );
 
     const observeElements = () => {
-      document.querySelectorAll('.reveal-up:not(.is-revealed)').forEach(el => {
+      document.querySelectorAll('.reveal-up:not(.is-revealed), .reveal-right:not(.is-revealed)').forEach(el => {
         observer.observe(el);
       });
     };
