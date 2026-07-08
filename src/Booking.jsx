@@ -1,8 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Booking.css';
 
 const Booking = () => {
+  const sectionRef = useRef(null);
+  const [hasIntersected, setHasIntersected] = useState(false);
+
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasIntersected(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '200px' }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasIntersected) return;
+
     // 1. Dynamically append the Calendly widget script if not present
     const scriptId = 'calendly-script';
     let script = document.getElementById(scriptId);
@@ -49,7 +72,7 @@ const Booking = () => {
         script.removeEventListener('load', initCalendly);
       }
     };
-  }, []);
+  }, [hasIntersected]);
 
   const points = [
     'A tailored brand & website roadmap built around your business',
@@ -58,7 +81,7 @@ const Booking = () => {
   ];
 
   return (
-    <section className="booking-section global-section" id="contact">
+    <section className="booking-section global-section" id="contact" ref={sectionRef}>
       <div className="booking-container global-container">
         <div className="booking-card">
           <div className="booking-info">

@@ -168,7 +168,13 @@ function Home() {
       
       {/* Logo */}
       <div className="logo-container">
-        <img src={logoImg} alt="Copper Studio Logo" className="main-center-logo" />
+        <img 
+          src={logoImg} 
+          alt="Copper Studio Logo" 
+          className="main-center-logo" 
+          fetchPriority="high"
+          loading="eager"
+        />
         <h2 className="hero-subtitle">From brand identity to custom websites, <i>all under one roof.</i></h2>
       </div>
 
