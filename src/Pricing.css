@@ -258,15 +258,13 @@
 .custom-plan-banner {
   margin-top: 60px;
   background: #F0EDE4;
-  border: 0.5px solid #C55418;
   border-radius: 40px;
   padding: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  overflow: hidden; /* Contains the blurred ellipses */
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
 .ellipse-orange {
@@ -280,16 +278,7 @@
   pointer-events: none;
 }
 
-.ellipse-blue {
-  position: absolute;
-  width: 472px;
-  height: 201px;
-  left: -136px;
-  bottom: -88px;
-  background: #6386AC;
-  filter: blur(200px);
-  pointer-events: none;
-}
+
 
 .custom-plan-content {
   display: flex;
@@ -333,9 +322,9 @@
   background: #070815;
   color: #FFFFFF;
   font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 23px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
   padding: 0;
   border-radius: 20px;
   border: none;

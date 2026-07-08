@@ -1,20 +1,24 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo, Suspense, lazy } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
-import CoordinateSection from './CoordinateSection';
-import ProjectsSection from './ProjectsSection';
-import ServicePricing from './ServicePricing';
-import WallOfLove from './WallOfLove';
-import FAQ from './FAQ';
-import Booking from './Booking';
-import Footer from './Footer';
-import ServicesSection from './ServicesSection';
-import StudioPage from './StudioPage';
-import ServicesPage from './ServicesPage';
-import ServiceDetail from './ServiceDetail';
-import ContactPage from './ContactPage';
-import ProjectsPage from './ProjectsPage';
 import Navbar from './Navbar';
+import Footer from './Footer';
+
+const StudioPage = lazy(() => import('./StudioPage'));
+const ServicesPage = lazy(() => import('./ServicesPage'));
+const ServiceDetail = lazy(() => import('./ServiceDetail'));
+const ContactPage = lazy(() => import('./ContactPage'));
+const ProjectsPage = lazy(() => import('./ProjectsPage'));
+const BrandServicePage = lazy(() => import('./BrandServicePage'));
+
+// Lazy loaded components
+const CoordinateSection = lazy(() => import('./CoordinateSection'));
+const ProjectsSection = lazy(() => import('./ProjectsSection'));
+const ServicePricing = lazy(() => import('./ServicePricing'));
+const WallOfLove = lazy(() => import('./WallOfLove'));
+const FAQ = lazy(() => import('./FAQ'));
+const Booking = lazy(() => import('./Booking'));
+const ServicesSection = lazy(() => import('./ServicesSection'));
 
 import logoImg from './assets/logo.svg';
 function Home() {
@@ -192,26 +196,16 @@ function Home() {
       </div>
     </div>
 
-      {/* New Services and Trusted Brands Section */}
-      <ServicesSection />
-
-      {/* Coordinate Section */}
-      <CoordinateSection />
-
-      {/* Projects Section */}
-      <ProjectsSection />
-
-      {/* Pricing Section */}
-      <ServicePricing />
-
-      {/* Testimonials / Wall Of Love Section */}
-      <WallOfLove />
-
-      {/* FAQ Section */}
-      <FAQ />
-
-      {/* Booking Section */}
-      <Booking />
+      {/* Lazy-loaded offscreen sections */}
+      <Suspense fallback={null}>
+        <ServicesSection />
+        <CoordinateSection />
+        <ProjectsSection />
+        <ServicePricing />
+        <WallOfLove />
+        <FAQ />
+        <Booking />
+      </Suspense>
         </>
 
       <Footer />
@@ -235,14 +229,17 @@ function StudioRoute() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/studio" element={<StudioRoute />} />
-      <Route path="/services" element={<ServicesPage />} />
-      <Route path="/services/:slug" element={<ServiceDetail />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/projects" element={<ProjectsPage />} />
-    </Routes>
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/studio" element={<StudioRoute />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/copper-brand" element={<BrandServicePage />} />
+      </Routes>
+    </Suspense>
   );
 }
 
