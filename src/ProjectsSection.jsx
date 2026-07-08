@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ProjectsSection.css';
-import commonGroundsImg from './assets/common-grounds.jpg';
-import dataCirclesImg from './assets/DataCirclesLaptop.png';
-import premiumGroupImg from './assets/image.png';
-import qodenextImg from './assets/QodenextImage.png';
+import commonGroundsImg from './assets/common-grounds.webp';
+import dataCirclesImg from './assets/DataCirclesLaptop.webp';
+import premiumGroupImg from './assets/image.webp';
+import qodenextImg from './assets/QodenextImage.webp';
 
-import proj1Svg from './assets/projects/cottsonCompressed.png';
-import proj2Svg from './assets/projects/CommonGroungsCompressed.png';
-import projQodenextSvg from './assets/projects/Qodenextcompress.png';
-import projDataCirclesSvg from './assets/projects/DataCirclesCompressed.png';
+import proj1Svg from './assets/projects/cottsonCompressed.webp';
+import proj2Svg from './assets/projects/CommonGroungsCompressed.webp';
+import projQodenextSvg from './assets/projects/Qodenextcompress.webp';
+import projDataCirclesSvg from './assets/projects/DataCirclesCompressed.webp';
 
 export default function ProjectsSection() {
   const sectionRef = useRef(null);

@@ -13,15 +13,15 @@ import copperBrandLogo from './assets/logos/CopperBrand.svg';
 import copperWebLogo from './assets/logos/CopperWeb.svg';
 import copperFlowLogo from './assets/logos/CopperFlow.svg';
 
-import commonGroundsImg from './assets/common-grounds.jpg';
+import commonGroundsImg from './assets/common-grounds.webp';
 import commonGroundsVid from './assets/Transform_this_static_café_sce.mp4';
-import dataCirclesImg from './assets/DataCirclesLaptop.png';
-import dataCirclesDashboardImg from './assets/datacirclesdashboard.png';
-import dataCirclesWebImg from './assets/DataCircles_web.png';
-import cottsonWebImg from './assets/Cottson_web.png';
-import premiumGroupImg from './assets/image.png';
+import dataCirclesImg from './assets/DataCirclesLaptop.webp';
+import dataCirclesDashboardImg from './assets/datacirclesdashboard.webp';
+import dataCirclesWebImg from './assets/DataCircles_web.webp';
+import cottsonWebImg from './assets/Cottson_web.webp';
+import premiumGroupImg from './assets/image.webp';
 import premiumGroupVid from './assets/Create_a_premium_micro_animati (3).mp4';
-import qodenextImg from './assets/QodenextImage.png';
+import qodenextImg from './assets/QodenextImage.webp';
 
 export default function ServicesSection() {
   const logos = [brand1, brand2, brand3, brand4, brand5, brand7];

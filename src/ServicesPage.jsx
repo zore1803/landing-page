@@ -10,15 +10,15 @@ import { services } from './servicesData';
 import ServicesHeroBg from './ServicesHeroBg';
 import './ContactPage.css';
 import './ServicesPage.css';
-import cardImg0 from './assets/servicessvg/card_img_0.png';
+import cardImg0 from './assets/servicessvg/card_img_0.webp';
 import brandLogo from './assets/logos/CopperBrand.svg';
 import webLogo from './assets/logos/CopperWeb.svg';
 import flowLogo from './assets/logos/CopperFlow.svg';
 
-import commonGroundsImg from './assets/common-grounds.jpg';
-import dataCirclesImg from './assets/DataCirclesLaptop.png';
-import premiumGroupImg from './assets/image.png';
-import qodenextImg from './assets/QodenextImage.png';
+import commonGroundsImg from './assets/common-grounds.webp';
+import dataCirclesImg from './assets/DataCirclesLaptop.webp';
+import premiumGroupImg from './assets/image.webp';
+import qodenextImg from './assets/QodenextImage.webp';
 
 const getLogo = (suffix) => {
   if (suffix === 'Brand') return brandLogo;

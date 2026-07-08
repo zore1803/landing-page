@@ -5,15 +5,15 @@ import Footer from './Footer';
 import ProjectsHeroBg from './ProjectsHeroBg';
 import './ProjectsPage.css';
 
-import cottsonFull from './assets/projects/cottsonCompressed.png';
-import dataCirclesFull from './assets/projects/DataCirclesCompressed.png';
-import qodenextFull from './assets/projects/Qodenextcompress.png';
-import commonGroundsFull from './assets/projects/CommonGroungsCompressed.png';
+import cottsonFull from './assets/projects/cottsonCompressed.webp';
+import dataCirclesFull from './assets/projects/DataCirclesCompressed.webp';
+import qodenextFull from './assets/projects/Qodenextcompress.webp';
+import commonGroundsFull from './assets/projects/CommonGroungsCompressed.webp';
 
-import cottsonThumb from './assets/image.png';
-import dataCirclesThumb from './assets/DataCirclesLaptop.png';
-import qodenextThumb from './assets/QodenextImage.png';
-import commonGroundsThumb from './assets/common-grounds.jpg';
+import cottsonThumb from './assets/image.webp';
+import dataCirclesThumb from './assets/DataCirclesLaptop.webp';
+import qodenextThumb from './assets/QodenextImage.webp';
+import commonGroundsThumb from './assets/common-grounds.webp';
 
 const allProjects = [
   {

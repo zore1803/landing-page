@@ -16,10 +16,10 @@ import connectionIcon from './assets/studio/connection.svg';
 import craftsmanshipIcon from './assets/studio/craftsmanship.svg';
 import characterIcon from './assets/studio/character.svg';
 
-import projImg1 from './assets/brand-identity-brochure.png';
-import projImg2 from './assets/common-grounds.jpg';
-import projImg3 from './assets/Tea - Boxes 1.png';
-import projImg4 from './assets/image.png';
+import projImg1 from './assets/brand-identity-brochure.webp';
+import projImg2 from './assets/common-grounds.webp';
+import projImg3 from './assets/Tea - Boxes 1.webp';
+import projImg4 from './assets/image.webp';
 
 const studioProjects = [projImg1, projImg2, projImg3, projImg4];
 
