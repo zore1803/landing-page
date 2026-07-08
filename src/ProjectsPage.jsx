@@ -135,8 +135,8 @@ export default function ProjectsPage() {
             <ProjectsHeroBg />
           </div>
           <div className="projects-hero-content">
-            <h1 className="projects-hero-title">Take A Look At What We Have Created!</h1>
-            <p className="projects-hero-subtitle">
+            <h1 className="projects-hero-title reveal-up">Take A Look At What We Have Created!</h1>
+            <p className="projects-hero-subtitle reveal-up" style={{ transitionDelay: '100ms' }}>
               A collection of work that reflects <strong>our approach, our process and the impact we've helped create</strong> for brands and businesses.
             </p>
           </div>
@@ -144,10 +144,10 @@ export default function ProjectsPage() {
 
         {/* Filter Section */}
         <div className="projects-filter-section global-container">
-          <div className="filter-header">
+          <div className="filter-header reveal-up" style={{ transitionDelay: '200ms' }}>
             <span className="filter-label">FILTER BY INDUSTRY</span>
           </div>
-          <div className="filter-pills">
+          <div className="filter-pills reveal-up" style={{ transitionDelay: '300ms' }}>
             {filters.map(f => (
               <button 
                 key={f}
@@ -163,17 +163,17 @@ export default function ProjectsPage() {
         {/* Projects Grid */}
         <div className="projects-grid-section global-container">
           <div className="pp-grid">
-            {filteredProjects.map(proj => (
+            {filteredProjects.map((proj, idx) => (
               <div 
                 key={proj.id} 
-                className="pp-card-item" 
+                className="pp-card-item reveal-up" 
                 onClick={() => { 
                   if(proj.fullImage) {
                     setIsImageLoading(true);
                     setActiveFullImage(proj.fullImage); 
                   }
                 }}
-                style={{ cursor: proj.fullImage ? 'pointer' : 'default' }}
+                style={{ cursor: proj.fullImage ? 'pointer' : 'default', transitionDelay: `${(idx % 3) * 100}ms` }}
               >
                 <div className="pp-card-image">
                   {proj.image ? (
