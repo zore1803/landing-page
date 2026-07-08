@@ -15,6 +15,7 @@ export default function ProjectsSection() {
   const wrapperRef = useRef(null);
   const titleRef = useRef(null);
   const [activeSvg, setActiveSvg] = useState(null);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const [isTitleVisible, setIsTitleVisible] = useState(false);
 
   useEffect(() => {
@@ -173,7 +174,10 @@ export default function ProjectsSection() {
               <div 
                 className="project-card" 
                 key={idx}
-                onClick={() => setActiveSvg(proj.svgUrl)}
+                onClick={() => {
+                  setIsImageLoading(true);
+                  setActiveSvg(proj.svgUrl);
+                }}
                 style={{ cursor: 'pointer' }}
               >
                 <img src={proj.img} alt={proj.title} className="project-card-image" />
@@ -208,7 +212,14 @@ export default function ProjectsSection() {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            <img src={activeSvg} alt="Project Presentation" className="project-svg-full" />
+            {isImageLoading && <div className="copper-loader"></div>}
+            <img 
+              src={activeSvg} 
+              alt="Project Presentation" 
+              className="project-svg-full" 
+              style={{ display: isImageLoading ? 'none' : 'block' }}
+              onLoad={() => setIsImageLoading(false)}
+            />
           </div>
         </div>
       )}

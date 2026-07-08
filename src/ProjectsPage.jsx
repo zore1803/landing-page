@@ -106,6 +106,7 @@ const filters = [
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [activeFullImage, setActiveFullImage] = useState(null);
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   React.useEffect(() => {
     if (activeFullImage) {
@@ -162,7 +163,12 @@ export default function ProjectsPage() {
               <div 
                 key={proj.id} 
                 className="pp-card-item" 
-                onClick={() => { if(proj.fullImage) setActiveFullImage(proj.fullImage); }}
+                onClick={() => { 
+                  if(proj.fullImage) {
+                    setIsImageLoading(true);
+                    setActiveFullImage(proj.fullImage); 
+                  }
+                }}
                 style={{ cursor: proj.fullImage ? 'pointer' : 'default' }}
               >
                 <div className="pp-card-image">
@@ -192,7 +198,14 @@ export default function ProjectsPage() {
             </svg>
           </div>
           <div className="pp-modal-content" onClick={(e) => e.stopPropagation()}>
-            <img src={activeFullImage} alt="Project Full Case Study" className="pp-modal-full" />
+            {isImageLoading && <div className="copper-loader"></div>}
+            <img 
+              src={activeFullImage} 
+              alt="Project Full Case Study" 
+              className="pp-modal-full"
+              style={{ display: isImageLoading ? 'none' : 'block' }}
+              onLoad={() => setIsImageLoading(false)}
+            />
           </div>
         </div>
       )}

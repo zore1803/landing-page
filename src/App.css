@@ -929,3 +929,23 @@ img, video {
     fill: #F69049;
   }
 }
+
+/* Copper Loader */
+.copper-loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(200, 80, 0, 0.2);
+  border-top-color: #C85000;
+  border-radius: 50%;
+  animation: spinCopper 1s linear infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+@keyframes spinCopper {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
