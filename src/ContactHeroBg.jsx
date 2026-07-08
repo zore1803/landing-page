@@ -45,18 +45,7 @@ const ContactHeroBg = () => {
       css += `.svg-stripe-${i} { animation: svgComplexPulse${i} 9s infinite linear; }\n`;
     }
     
-    // Add slow breathing animation for the colored blobs
-    css += `
-      @keyframes blobBreathe {
-        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
-        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-      }
-      .svg-blob { transform-origin: center; animation: blobBreathe 12s infinite ease-in-out; }
-      .svg-blob-orange { animation-delay: -3s; }
-      .svg-blob-copper { animation-delay: -6s; }
-      .svg-blob-light { animation-delay: -9s; }
-    `;
+    // Removed slow breathing animation for the colored blobs due to heavy GPU lag with feGaussianBlur
     
     return css;
   }, []);

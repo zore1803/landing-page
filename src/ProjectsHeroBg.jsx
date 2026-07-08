@@ -45,17 +45,7 @@ const ProjectsHeroBg = () => {
       css += `.pb-stripe-${i} { animation: pbComplexPulse${i} 9s infinite linear; }\n`;
     }
     
-    // Add slow breathing animation for the colored blobs
-    css += `
-      @keyframes pbBlobBreathe {
-        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
-        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-      }
-      .pb-blob { transform-origin: center; animation: pbBlobBreathe 12s infinite ease-in-out; }
-      .pb-blob-1 { animation-delay: -3s; }
-      .pb-blob-2 { animation-delay: -7s; }
-    `;
+    // Removed slow breathing animation for the colored blobs due to heavy GPU lag with feGaussianBlur
     
     return css;
   }, []);
