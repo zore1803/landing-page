@@ -234,31 +234,46 @@ export default function BrandServicePage() {
                 {compareSections.map((section, sIdx) => (
                   <React.Fragment key={sIdx}>
                     <tr className="cp-section-row">
-                      <td colSpan="4">
+                      <td>
                         <div className="cp-section-title reveal-up">{section.title}</div>
                       </td>
+                      <td></td>
+                      <td className="cp-highlight-col"></td>
+                      <td></td>
                     </tr>
                     {section.features.map((feature, fIdx) => (
                       <tr key={`${sIdx}-${fIdx}`}>
                         <td><div className="cp-feature-name reveal-right">{feature.name}</div></td>
                         <td className="cp-check">
-                          {feature.plans[0] && (
+                          {feature.plans[0] ? (
                             <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>
                               <span className="cp-dot cp-dot-grey"></span>
+                            </div>
+                          ) : (
+                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>
+                              <span className="cp-dash">-</span>
                             </div>
                           )}
                         </td>
                         <td className="cp-check cp-highlight-col">
-                          {feature.plans[1] && (
+                          {feature.plans[1] ? (
                             <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '200ms' }}>
                               <span className="cp-dot cp-dot-orange"></span>
+                            </div>
+                          ) : (
+                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '200ms' }}>
+                              <span className="cp-dash">-</span>
                             </div>
                           )}
                         </td>
                         <td className="cp-check">
-                          {feature.plans[2] && (
+                          {feature.plans[2] ? (
                             <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '300ms' }}>
                               <span className="cp-dot cp-dot-grey"></span>
+                            </div>
+                          ) : (
+                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '300ms' }}>
+                              <span className="cp-dash">-</span>
                             </div>
                           )}
                         </td>
