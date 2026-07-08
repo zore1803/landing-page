@@ -1,0 +1,18 @@
+# Copper Studio
+
+Welcome to the Copper Studio website. We are a creative agency specializing in Brand Identity, Custom Website Design & Development, and Custom Client Portals.
+
+## Navigation & Links
+- [Home](https://www.thecopperstudio.com/) - Main landing page showcasing our latest work.
+- [Studio](https://www.thecopperstudio.com/studio) - Learn more about our agency and our story.
+- [Services](https://www.thecopperstudio.com/services) - Detailed view of the design and development services we offer.
+- [Projects](https://www.thecopperstudio.com/projects) - Our portfolio of past successful client work across various industries.
+- [Contact](https://www.thecopperstudio.com/contact) - Get in touch with us to start a new project.
+
+## Contact Information
+- Email Support: [support@thecopperstudio.com](mailto:support@thecopperstudio.com)
+- WhatsApp: [Message Us](https://wa.me/919820933877)
+- Instagram: [@the_copperstudio](https://www.instagram.com/the_copperstudio/)
+- LinkedIn: [The Copper Studio](https://www.linkedin.com/company/thecopperstudio)
+
+This file helps AI agents effectively navigate and understand the context of the Copper Studio website.
