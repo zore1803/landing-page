@@ -18,8 +18,8 @@ function ContactPage() {
               <ContactHeroBg />
             </div>
             <div className="contact-hero-content">
-              <h1 className="contact-hero-title">Contact Us</h1>
-              <span className="contact-hero-tag">GET IN TOUCH</span>
+              <h1 className="contact-hero-title reveal-up">Contact Us</h1>
+              <span className="contact-hero-tag reveal-up" style={{ transitionDelay: '100ms' }}>GET IN TOUCH</span>
             </div>
           </div>
         </div>
@@ -28,28 +28,28 @@ function ContactPage() {
         <div className="contact-methods-section">
           <div className="contact-methods-inner">
             <div className="contact-cards-grid">
-              <div className="contact-card">
+              <div className="contact-card reveal-up" style={{ transitionDelay: '200ms' }}>
                 <div className="contact-card-icon">
                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
                 <h3 className="contact-card-title">Chat to Sales</h3>
                 <a className="contact-card-link" href="mailto:ruchi@thecopperstudio.com">ruchi@thecopperstudio.com</a>
               </div>
-              <div className="contact-card">
+              <div className="contact-card reveal-up" style={{ transitionDelay: '300ms' }}>
                 <div className="contact-card-icon">
                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
                 <h3 className="contact-card-title">Chat to Support</h3>
                 <a className="contact-card-link" href="mailto:ruchi@thecopperstudio.com">ruchi@thecopperstudio.com</a>
               </div>
-              <div className="contact-card">
+              <div className="contact-card reveal-up" style={{ transitionDelay: '400ms' }}>
                 <div className="contact-card-icon">
                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
                 <h3 className="contact-card-title">Visit Us</h3>
                 <a className="contact-card-link" href="https://share.google/Bqenkvy3nbX5VUJ7p" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
               </div>
-              <div className="contact-card">
+              <div className="contact-card reveal-up" style={{ transitionDelay: '500ms' }}>
                 <div className="contact-card-icon">
                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
                 </div>
@@ -62,14 +62,15 @@ function ContactPage() {
 
         {/* Get in Touch — map + contact details */}
         <div className="git-section">
-          <div className="git-header">
+          <div className="git-header reveal-up">
             <span className="git-tag">VISIT US</span>
             <h2 className="git-main-title">We are always<br/>ready to help you and<br/>answer your questions</h2>
           </div>
           <div className="git-card">
             {/* Left: map */}
             <a
-              className="git-map-wrap"
+              className="git-map-wrap reveal-up"
+              style={{ transitionDelay: '200ms' }}
               href="https://www.google.com/maps/search/?api=1&query=The+Copper+Studio,+Thane"
               target="_blank"
               rel="noopener noreferrer"
@@ -90,15 +91,15 @@ function ContactPage() {
 
             {/* Right: details */}
             <div className="git-details">
-              <div className="git-heading-block">
+              <div className="git-heading-block reveal-up" style={{ transitionDelay: '300ms' }}>
                 <h2 className="git-title">Get in Touch</h2>
                 <p className="git-desc">Have a question or just want to say hello? We'd love to hear from you. Reach out and we'll get back to you as soon as possible.</p>
               </div>
 
-              <div className="git-divider" />
+              <div className="git-divider reveal-up" style={{ transitionDelay: '400ms' }} />
 
               <div className="git-contact-group">
-                <div className="git-info-row">
+                <div className="git-info-row reveal-up" style={{ transitionDelay: '500ms' }}>
                   <div className="git-info-icon">
                     <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                       <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -108,7 +109,7 @@ function ContactPage() {
                   <p className="git-address">No. 721, Floor 7th, Centura Square IT Park, Rd Number 27, Wagle Industrial Estate, Thane West, Thane, Maharashtra 400604</p>
                 </div>
 
-                <div className="git-info-row">
+                <div className="git-info-row reveal-up" style={{ transitionDelay: '600ms' }}>
                   <div className="git-info-icon">
                     <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                       <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" strokeLinecap="round" strokeLinejoin="round"/>
@@ -119,7 +120,7 @@ function ContactPage() {
                   </div>
                 </div>
 
-                <div className="git-info-row">
+                <div className="git-info-row reveal-up" style={{ transitionDelay: '700ms' }}>
                   <div className="git-info-icon">
                     <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -133,9 +134,9 @@ function ContactPage() {
                 </div>
               </div>
 
-              <div className="git-divider" />
+              <div className="git-divider reveal-up" style={{ transitionDelay: '800ms' }} />
 
-              <div className="git-info-row git-social-row">
+              <div className="git-info-row git-social-row reveal-up" style={{ transitionDelay: '900ms' }}>
                 <a className="git-social-link" href="https://www.instagram.com/the_copperstudio/" target="_blank" rel="noopener noreferrer">
                   <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" strokeLinecap="round" strokeLinejoin="round"/>
