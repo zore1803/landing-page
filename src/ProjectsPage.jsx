@@ -7,8 +7,8 @@ import './ProjectsPage.css';
 
 import cottsonFull from './assets/projects/cottson-clothing-hq.webp';
 import dataCirclesFull from './assets/projects/datacircles-hq.webp';
-import qodenextFull from './assets/projects/Qodenextcompress-hq.webp';
-import commonGroundsFull from './assets/projects/CommonGroungsCompressed-hq.webp';
+import qodenextFull from './assets/projects/qodenext-hq.webp';
+import commonGroundsFull from './assets/projects/commongrounds-hq.webp';
 
 import cottsonThumb from './assets/image.webp';
 import dataCirclesThumb from './assets/DataCirclesLaptop.webp';
