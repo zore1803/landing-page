@@ -47,7 +47,7 @@ function ServicesPage() {
           </div>
         </div>
 
-        <div className="services-hero-subtitle-wrap">
+        <div className="services-hero-subtitle-wrap reveal-up">
           <p className="services-hero-sub">
             From <strong>strategy and visual identity to websites and custom portals</strong>, we create thoughtful brand experience that helps your business stand out, connect and grow.
           </p>
@@ -56,8 +56,8 @@ function ServicesPage() {
         {/* Three clickable service cards */}
         <div className="svc-cards-section">
           <div className="svc-cards-grid new-layout">
-            {services.map((s) => (
-              <Link to={`/services/${s.slug}`} className="svc-card new-card" key={s.slug}>
+            {services.map((s, i) => (
+              <Link to={`/services/${s.slug}`} className="svc-card new-card reveal-up" key={s.slug} style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="svc-card-header">
                   <img src={getLogo(s.suffix)} alt={`Copper${s.suffix} Logo`} className="svc-card-logo-img" />
                 </div>
@@ -77,7 +77,7 @@ function ServicesPage() {
 
         {/* Dark Container for Ecosystem, Pricing, See it in Action */}
         <div className="services-dark-section">
-          <div className="ecosystem-header">
+          <div className="ecosystem-header reveal-up">
             <h2 className="ecosystem-title">Discover The CopperEcosystem</h2>
             <h3 className="ecosystem-subtitle">Services</h3>
           </div>
@@ -86,31 +86,31 @@ function ServicesPage() {
             <ServicePricing activeService={pricingService} onServiceChange={setPricingService} showToggle={true} hideTitle={true} hideCustomBanner={true} />
           </div>
 
-          <div className="custom-req-banner">
+          <div className="custom-req-banner reveal-up">
             <div className="custom-req-ellipse"></div>
-            <div className="custom-req-content">
+            <div className="custom-req-content reveal-up" style={{ transitionDelay: '100ms' }}>
               <span className="custom-req-label">HAVE A CUSTOM REQUIREMENT?</span>
               <h2 className="custom-req-title">Let's Create Something That Fits Your Brand</h2>
               <p className="custom-req-desc">Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.</p>
             </div>
-            <div className="custom-req-action">
+            <div className="custom-req-action reveal-up" style={{ transitionDelay: '200ms' }}>
               <button className="book-meeting-btn" onClick={() => window.location.href = '#contact'}>Book A Meeting</button>
             </div>
           </div>
 
           <div className="see-in-action-section">
-            <h2 className="see-in-action-title">See It In Action</h2>
+            <h2 className="see-in-action-title reveal-up">See It In Action</h2>
             <div className="see-in-action-grid">
-              <div className="action-box">
+              <div className="action-box reveal-up" style={{ transitionDelay: '100ms' }}>
                 <img src={commonGroundsImg} alt="Common Grounds Project" className="action-box-img" />
               </div>
-              <div className="action-box">
+              <div className="action-box reveal-up" style={{ transitionDelay: '200ms' }}>
                 <img src={dataCirclesImg} alt="Data Circles Project" className="action-box-img" />
               </div>
-              <div className="action-box">
+              <div className="action-box reveal-up" style={{ transitionDelay: '300ms' }}>
                 <img src={premiumGroupImg} alt="Premium Group Project" className="action-box-img" />
               </div>
-              <div className="action-box">
+              <div className="action-box reveal-up" style={{ transitionDelay: '400ms' }}>
                 <img src={qodenextImg} alt="Qodenext Project" className="action-box-img" />
               </div>
             </div>
