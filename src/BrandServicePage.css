@@ -251,6 +251,26 @@
   width: 100%;
   overflow-x: auto;
   background: transparent;
+  padding-bottom: 16px; /* Space for scrollbar */
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #EE7A1D #f1f1f1;
+}
+
+/* Chrome, Safari, Edge */
+.cp-table-container::-webkit-scrollbar {
+  height: 8px;
+}
+.cp-table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+.cp-table-container::-webkit-scrollbar-thumb {
+  background: #EE7A1D;
+  border-radius: 8px;
+}
+.cp-table-container::-webkit-scrollbar-thumb:hover {
+  background: #c55418;
 }
 
 .cp-table {
