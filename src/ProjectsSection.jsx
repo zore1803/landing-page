@@ -5,7 +5,7 @@ import dataCirclesImg from './assets/DataCirclesLaptop.webp';
 import premiumGroupImg from './assets/image.webp';
 import qodenextImg from './assets/QodenextImage.webp';
 
-import proj1Svg from './assets/projects/cottsonCompressed-hq.webp';
+import proj1Svg from './assets/projects/cottson-clothing-hq.jpg';
 import proj2Svg from './assets/projects/CommonGroungsCompressed-hq.webp';
 import projQodenextSvg from './assets/projects/Qodenextcompress-hq.webp';
 import projDataCirclesSvg from './assets/projects/DataCirclesCompressed-hq.webp';
