@@ -109,6 +109,10 @@ export default function ProjectsPage() {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
+  React.useEffect(() => {
     if (activeFullImage) {
       document.body.style.overflow = 'hidden';
     } else {

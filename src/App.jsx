@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo, Suspense, lazy } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -234,9 +234,21 @@ function StudioRoute() {
   );
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
-    <Suspense fallback={null}>
+    <>
+      <ScrollToTop />
+      <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/studio" element={<StudioRoute />} />
@@ -247,6 +259,7 @@ function App() {
         <Route path="/copper-brand" element={<BrandServicePage />} />
       </Routes>
     </Suspense>
+    </>
   );
 }
 
