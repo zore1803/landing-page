@@ -17,7 +17,7 @@ function Navbar({ activeSection, setActiveSection }) {
           <Link to="/services" className={activeSection === 'services' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('services'); }}>Services</Link>
           <Link to="/projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('projects'); }}>Projects</Link>
           <Link to="/contact" className={activeSection === 'contact' ? 'active' : ''} onClick={toggleMobileMenu}>Contact</Link>
-          <a href="https://portal.thecopperstudio.com" target="_blank" rel="noopener noreferrer" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
+          <a href="https://portal.thecopperstudio.com" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
           <button className="lets-talk-btn mobile-lets-talk">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -49,7 +49,7 @@ function Navbar({ activeSection, setActiveSection }) {
         <div className="nav-divider desktop-only"></div>
 
         <div className="nav-action desktop-only">
-          <a href="https://portal.thecopperstudio.com" target="_blank" rel="noopener noreferrer" className="client-portal-link">Client Portal</a>
+          <a href="https://portal.thecopperstudio.com" className="client-portal-link">Client Portal</a>
           <Link to="/contact" className="lets-talk-link">
             <span className="lets-talk-icon-wrap">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
