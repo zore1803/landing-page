@@ -24,8 +24,8 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
       <div className="pricing-main-container global-container">
         {!hideTitle && (
           <>
-            <h2 className="pricing-title">Pricing</h2>
-            <div className="pricing-header-text">
+            <h2 className="pricing-title reveal-up">Pricing</h2>
+            <div className="pricing-header-text reveal-up" style={{ transitionDelay: '100ms' }}>
               <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
               <p className="pricing-subtitle">
                 Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
@@ -54,7 +54,7 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
 
         <div className="pricing-grid">
           {plans.map((plan, index) => (
-            <div key={index} className={`pricing-card ${plan.name === 'Advance' ? 'popular-card' : ''}`}>
+            <div key={index} className={`pricing-card reveal-up ${plan.name === 'Advance' ? 'popular-card' : ''}`} style={{ transitionDelay: `${200 + index * 100}ms` }}>
               {plan.name === 'Advance' && (
                 <div className="popular-banner">MOST POPULAR!</div>
               )}
@@ -95,7 +95,7 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
         </div>
 
         {!hideCustomBanner && (
-          <div className="custom-plan-banner">
+          <div className="custom-plan-banner reveal-up" style={{ transitionDelay: '300ms' }}>
             <div className="ellipse-orange"></div>
             
             <div className="custom-plan-content">

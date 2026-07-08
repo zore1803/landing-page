@@ -50,7 +50,7 @@ const FAQ = () => {
   return (
     <section className="faq-section global-section" id="faq">
       <div className="faq-container global-container">
-        <div className="faq-sidebar">
+        <div className="faq-sidebar reveal-up">
           <div className="faq-tag">HAVE SOME DOUBTS?</div>
           <h2 className="faq-title">Frequently Asked<br/>Questions</h2>
           <p className="faq-description">
@@ -69,13 +69,14 @@ const FAQ = () => {
 
         <div className="faq-list">
           {faqData.map((item, index) => (
-            <FAQItem
-              key={index}
-              question={item.question}
-              answer={item.answer}
-              isOpen={openIndex === index}
-              onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-            />
+            <div key={index} className="reveal-up" style={{ transitionDelay: `${index * 100}ms` }}>
+              <FAQItem
+                question={item.question}
+                answer={item.answer}
+                isOpen={openIndex === index}
+                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+              />
+            </div>
           ))}
         </div>
       </div>

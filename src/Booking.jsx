@@ -84,7 +84,7 @@ const Booking = () => {
     <section className="booking-section global-section" id="contact" ref={sectionRef}>
       <div className="booking-container global-container">
         <div className="booking-card">
-          <div className="booking-info">
+          <div className="booking-info reveal-up">
             <h2 className="booking-title">Excited? Let's Talk Today</h2>
             <p className="booking-lead">
               Book a discovery call with us. We'd love to hear about your business, understand your goals, and explore how Copper Studio can create the right solution for you.
@@ -123,7 +123,7 @@ const Booking = () => {
             <p className="booking-signoff">Talk to you soon.</p>
           </div>
 
-          <div className="booking-widget">
+          <div className="booking-widget reveal-up" style={{ transitionDelay: '200ms' }}>
             <div
               id="calendly-inline-container"
               className="calendly-inline-widget-wrapper"

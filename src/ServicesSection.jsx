@@ -29,7 +29,7 @@ export default function ServicesSection() {
   return (
     <div className="services-wrapper">
       {/* Trusted Brands Banner */}
-      <div className="trusted-banner">
+      <div className="trusted-banner reveal-up">
         <h3 className="trusted-banner-title">Brands Who Trusted Us With Their Vision</h3>
         <div className="trusted-marquee">
           <div className="trusted-marquee-track">
@@ -46,7 +46,7 @@ export default function ServicesSection() {
 
       {/* Main Services Area */}
       <div className="services-main-container">
-        <div className="services-header">
+        <div className="services-header reveal-up">
           <h2 className="services-title">Services To Design Your Brand</h2>
           <p className="services-subtitle">
             From strategy and visual identity to websites and ongoing support, we create thoughtful brand experience that helps your business stand out, connect and grow.
@@ -57,7 +57,7 @@ export default function ServicesSection() {
           <div className="service-divider"></div>
 
           {/* Service 01 */}
-          <div className="service-block block-01">
+          <div className="service-block block-01 reveal-up">
             <div className="service-top-row">
               <div className="service-number text-orange">01 - BRAND IDENITY</div>
               <div className="service-logo-text">
@@ -120,7 +120,7 @@ export default function ServicesSection() {
           <div className="service-divider"></div>
 
           {/* Service 02 */}
-          <div className="service-block block-02">
+          <div className="service-block block-02 reveal-up" style={{ transitionDelay: '100ms' }}>
             <div className="service-split-layout">
               <div className="service-left-col">
                 <div className="service-number text-light-orange">02 - WEB DESIGN & DEVELOPMENT</div>
@@ -153,7 +153,7 @@ export default function ServicesSection() {
           <div className="service-divider"></div>
 
           {/* Service 03 */}
-          <div className="service-block block-03">
+          <div className="service-block block-03 reveal-up" style={{ transitionDelay: '200ms' }}>
             <div className="service-split-layout">
               <div className="service-left-col">
                 <div className="service-number text-light-orange">03 - CLIENT PORTAL</div>

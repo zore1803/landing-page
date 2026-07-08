@@ -244,10 +244,49 @@ function ScrollToTop() {
   return null;
 }
 
+function GlobalScrollReveal() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const observeElements = () => {
+      document.querySelectorAll('.reveal-up:not(.is-revealed)').forEach(el => {
+        observer.observe(el);
+      });
+    };
+
+    observeElements();
+    
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <>
       <ScrollToTop />
+      <GlobalScrollReveal />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/studio" element={<StudioRoute />} />

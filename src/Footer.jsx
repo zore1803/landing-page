@@ -32,7 +32,7 @@ const Footer = () => {
 
         {/* Footer Top Content */}
         <div className="footer-content global-container">
-          <div className="footer-brand">
+          <div className="footer-brand reveal-up">
             <img src={footerMainLogo} alt="Copper Studio Logo" className="footer-main-logo" />
             <div className="footer-services">
               <span>&#8226; LOGO & BRAND DESIGN</span>
@@ -41,9 +41,9 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="footer-divider"></div>
+          <div className="footer-divider reveal-up" style={{ transitionDelay: '100ms' }}></div>
 
-          <div className="footer-links">
+          <div className="footer-links reveal-up" style={{ transitionDelay: '200ms' }}>
             <Link to="/studio">Studio</Link>
             <Link to="/services">Services</Link>
             <Link to="/projects">Projects</Link>
@@ -51,7 +51,7 @@ const Footer = () => {
             <a href="/#portal">Client Portal</a>
           </div>
 
-          <div className="footer-socials">
+          <div className="footer-socials reveal-up" style={{ transitionDelay: '300ms' }}>
             <a href="mailto:support@thecopperstudio.com" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Email Support">
               <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M34.9166 19.292L25.551 25.2576C25.2332 25.4422 24.8722 25.5394 24.5047 25.5394C24.1371 25.5394 23.7761 25.4422 23.4583 25.2576L14.0833 19.292" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
