@@ -48,7 +48,7 @@ const Footer = () => {
             <Link to="/services">Services</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/contact">Contact</Link>
-            <a href="/#portal">Client Portal</a>
+            <a href="https://portal.thecopperstudio.com" target="_blank" rel="noopener noreferrer">Client Portal</a>
           </div>
 
           <div className="footer-socials reveal-up" style={{ transitionDelay: '300ms' }}>
