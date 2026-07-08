@@ -184,7 +184,11 @@ function Home() {
           <div className="scroll-text">scroll to explore</div>
         
         <div className="bottom-center-pill">
-          <a href="#projects" className="view-projects-btn">
+          <a 
+            href="/projects" 
+            className="view-projects-btn" 
+            onClick={(e) => { e.preventDefault(); navigate('/projects'); }}
+          >
             View Projects
           </a>
           <a href="#contact" className="lets-talk-dark-btn">
