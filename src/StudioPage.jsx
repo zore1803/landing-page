@@ -189,9 +189,9 @@ const StudioPage = () => {
 
       {/* Our Story */}
       <section className="studio-section studio-story">
-        <span className="section-label">1 - OUR STORY</span>
+        <span className="section-label reveal-up">1 - OUR STORY</span>
         <div className="story-content">
-          <div className="story-left">
+          <div className="story-left reveal-up" style={{ transitionDelay: '100ms' }}>
             <h2>
               Born from the love for creativity,<br/>
               an eye for detail and a deep<br/>
@@ -199,7 +199,7 @@ const StudioPage = () => {
             </h2>
             <div className="script-text">Storytelling</div>
           </div>
-          <div className="story-right">
+          <div className="story-right reveal-up" style={{ transitionDelay: '200ms' }}>
             <p>Behind every business is a journey of ambition, countless hours of hard work, and a vision that deserves to be seen and remembered. Yet too often, those stories are hidden behind generic branding that fails to capture what makes a business truly unique.</p>
             <p>To us, storytelling is more than a creative process—it's an art form that builds trust, evokes emotion, and creates lasting connections. That belief is at the heart of everything we do at Copper Studio. Through thoughtful branding, strategic design, and purposeful digital experiences, we transform businesses into brands with character, clarity, and meaning.</p>
           </div>
@@ -208,30 +208,30 @@ const StudioPage = () => {
 
       {/* Our Belief */}
       <section className="studio-section studio-belief">
-        <div className="belief-label-container">
+        <div className="belief-label-container reveal-up">
           <span className="section-label">2 - OUR BELIEF</span>
         </div>
-        <h2 className="belief-quote">
+        <h2 className="belief-quote reveal-up" style={{ transitionDelay: '100ms' }}>
           <span className="text-light-gray">Inspired by the enduring</span> <span className="text-dark-bold">qualities of copper, our beliefs are rooted in connection, craftsmanship, and thoughtful design,</span> <span className="text-light-gray">guiding how we create brands that grow stronger, connect deeper, and stand the test of time.</span>
         </h2>
         <div className="belief-grid">
-          <div className="belief-item">
+          <div className="belief-item reveal-up" style={{ transitionDelay: '200ms' }}>
             <div className="belief-icon">
               <img src={connectionIcon} alt="Connection" className="belief-icon-img" />
             </div>
             <h3>Connection</h3>
             <p>We close the gap between your business and people it's for.</p>
           </div>
-          <div className="belief-divider"></div>
-          <div className="belief-item">
+          <div className="belief-divider reveal-up" style={{ transitionDelay: '300ms' }}></div>
+          <div className="belief-item reveal-up" style={{ transitionDelay: '400ms' }}>
             <div className="belief-icon">
               <img src={craftsmanshipIcon} alt="Craftsmanship" className="belief-icon-img" />
             </div>
             <h3>Craftsmanship</h3>
             <p>Every detail made deliberately, never assembled from a template.</p>
           </div>
-          <div className="belief-divider"></div>
-          <div className="belief-item">
+          <div className="belief-divider reveal-up" style={{ transitionDelay: '500ms' }}></div>
+          <div className="belief-item reveal-up" style={{ transitionDelay: '600ms' }}>
             <div className="belief-icon">
               <img src={characterIcon} alt="Character" className="belief-icon-img" />
             </div>
@@ -243,21 +243,21 @@ const StudioPage = () => {
 
       {/* What makes Copper different */}
       <section className="studio-section">
-        <span className="section-label">3 - WHAT MAKES COPPER DIFFERENT?</span>
+        <span className="section-label reveal-up">3 - WHAT MAKES COPPER DIFFERENT?</span>
         <div className="different-grid">
-          <div className="diff-card card-cream">
+          <div className="diff-card card-cream reveal-up" style={{ transitionDelay: '100ms' }}>
             <div className="diff-card-ellipse-1"></div>
             <div className="diff-card-ellipse-2"></div>
             <h3>A dedicated client portal for complete project transparency.</h3>
           </div>
-          <div className="diff-card card-black">
+          <div className="diff-card card-black reveal-up" style={{ transitionDelay: '200ms' }}>
             <div className="diff-card-ellipse-3"></div>
             <div className="diff-card-ellipse-4"></div>
             <div className="diff-card-ellipse-5"></div>
             <h3>Branding, website, and company portals,</h3>
             <h3 style={{ marginTop: 'auto' }}><span className="diff-highlight">all under one roof.</span></h3>
           </div>
-          <div className="diff-card card-orange">
+          <div className="diff-card card-orange reveal-up" style={{ transitionDelay: '300ms' }}>
             <div className="diff-card-ellipse-6"></div>
             <div className="diff-card-ellipse-7"></div>
             <h3 style={{ marginTop: 'auto' }}>Ongoing hosting & maintenance, and support beyond launch.</h3>
@@ -339,14 +339,14 @@ const StudioPage = () => {
 
       {/* Selected Projects */}
       <section className="studio-section">
-        <span className="section-label">6 - SELECTED PROJECTS</span>
-        <div className="studio-projects-header">
+        <span className="section-label reveal-up">6 - SELECTED PROJECTS</span>
+        <div className="studio-projects-header reveal-up" style={{ transitionDelay: '100ms' }}>
           <h2>Work we're proud of</h2>
           <div className="script-text">Projects</div>
         </div>
         <div className="studio-projects-grid">
           {studioProjects.map((img, i) => (
-            <div className="studio-project-card" key={i}>
+            <div className="studio-project-card reveal-up" key={i} style={{ transitionDelay: `${200 + i * 100}ms` }}>
               <img src={img} alt={`Project ${i + 1}`} />
             </div>
           ))}

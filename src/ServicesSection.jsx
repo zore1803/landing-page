@@ -57,20 +57,20 @@ export default function ServicesSection() {
           <div className="service-divider"></div>
 
           {/* Service 01 */}
-          <div className="service-block block-01 reveal-up">
+          <div className="service-block block-01">
             <div className="service-top-row">
-              <div className="service-number text-orange">01 - BRAND IDENITY</div>
-              <div className="service-logo-text">
+              <div className="service-number text-orange reveal-up">01 - BRAND IDENITY</div>
+              <div className="service-logo-text reveal-up" style={{ transitionDelay: '100ms' }}>
                 <img src={copperBrandLogo} alt="CopperBrand" className="service-logo-img" />
               </div>
-              <div className="service-desc-col">
+              <div className="service-desc-col reveal-up" style={{ transitionDelay: '200ms' }}>
                 <p className="service-desc">
                   <span className="desc-highlight text-orange">From first impressions to lasting recognition.</span> We believe great brands are built through consistency at every touchpoint. By combining strategy, visual identity, print, packaging, and branded assets, we create unified brand experiences that people remember and businesses grow with.
                 </p>
               </div>
             </div>
             <div className="service-cards-grid grid-4">
-              <div className="s-card">
+              <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
                 <img src={premiumGroupImg} alt="Cottson Clothing" className="s-card-img" />
                 <video 
                   src={premiumGroupVid} 
@@ -85,7 +85,7 @@ export default function ServicesSection() {
                   <track kind="captions" srcLang="en" label="English" default />
                 </video>
               </div>
-              <div className="s-card">
+              <div className="s-card reveal-up" style={{ transitionDelay: '400ms' }}>
                 <img src={commonGroundsImg} alt="Common Grounds" className="s-card-img" />
                 <video 
                   src={commonGroundsVid} 
@@ -100,14 +100,14 @@ export default function ServicesSection() {
                   <track kind="captions" srcLang="en" label="English" default />
                 </video>
               </div>
-              <div className="s-card">
+              <div className="s-card reveal-up" style={{ transitionDelay: '500ms' }}>
                 <img src={dataCirclesImg} alt="DataCircles" className="s-card-img" />
               </div>
-              <div className="s-card">
+              <div className="s-card reveal-up" style={{ transitionDelay: '600ms' }}>
                 <img src={qodenextImg} alt="Qodenext India Pvt. Ltd." className="s-card-img" />
               </div>
             </div>
-            <Link to="/copper-brand" className="service-more" style={{textDecoration: 'none'}}>
+            <Link to="/copper-brand" className="service-more reveal-up" style={{textDecoration: 'none', transitionDelay: '700ms'}}>
               Want To <strong>Know More?</strong>
               <div className="more-arrow-btn">
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,27 +120,27 @@ export default function ServicesSection() {
           <div className="service-divider"></div>
 
           {/* Service 02 */}
-          <div className="service-block block-02 reveal-up" style={{ transitionDelay: '100ms' }}>
+          <div className="service-block block-02">
             <div className="service-split-layout">
               <div className="service-left-col">
-                <div className="service-number text-light-orange">02 - WEB DESIGN & DEVELOPMENT</div>
-                <div className="service-logo-text">
+                <div className="service-number text-light-orange reveal-up">02 - WEB DESIGN & DEVELOPMENT</div>
+                <div className="service-logo-text reveal-up" style={{ transitionDelay: '100ms' }}>
                   <img src={copperWebLogo} alt="CopperWeb" className="service-logo-img" />
                 </div>
-                <p className="service-desc max-w-400">
+                <p className="service-desc max-w-400 reveal-up" style={{ transitionDelay: '200ms' }}>
                   <span className="desc-highlight text-light-orange">We take care of everything your website needs,</span> from custom design and development to secure hosting, routine maintenance, and continuous optimization—so you can focus on growing your business while your website performs at its best.
                 </p>
               </div>
               <div className="service-right-col grid-2">
-                <div className="s-card">
+                <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
                   <img src={dataCirclesWebImg} alt="DataCircles Web" className="s-card-img" />
                 </div>
-                <div className="s-card">
+                <div className="s-card reveal-up" style={{ transitionDelay: '400ms' }}>
                   <img src={cottsonWebImg} alt="Cottson Web" className="s-card-img" />
                 </div>
               </div>
             </div>
-            <div className="service-more">
+            <div className="service-more reveal-up" style={{ transitionDelay: '500ms' }}>
               Want To <strong>Know More?</strong>
               <div className="more-arrow-btn">
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -153,24 +153,24 @@ export default function ServicesSection() {
           <div className="service-divider"></div>
 
           {/* Service 03 */}
-          <div className="service-block block-03 reveal-up" style={{ transitionDelay: '200ms' }}>
+          <div className="service-block block-03">
             <div className="service-split-layout">
               <div className="service-left-col">
-                <div className="service-number text-light-orange">03 - CLIENT PORTAL</div>
-                <div className="service-logo-text">
+                <div className="service-number text-light-orange reveal-up">03 - CLIENT PORTAL</div>
+                <div className="service-logo-text reveal-up" style={{ transitionDelay: '100ms' }}>
                   <img src={copperFlowLogo} alt="CopperFlow" className="service-logo-img" />
                 </div>
-                <p className="service-desc max-w-600">
+                <p className="service-desc max-w-600 reveal-up" style={{ transitionDelay: '200ms' }}>
                   <span className="desc-highlight text-light-orange">Custom Portals Built Around Your Business.</span> Every business works differently, and your portal should too. We design and develop custom client, employee, and business portals that simplify workflows, centralize information, and create secure, intuitive experiences tailored to the way your team and customers work.
                 </p>
               </div>
               <div className="service-right-col grid-1">
-                <div className="s-card">
+                <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
                   <img src={dataCirclesDashboardImg} alt="CopperFlow Dashboard" className="s-card-img" />
                 </div>
               </div>
             </div>
-            <div className="service-more">
+            <div className="service-more reveal-up" style={{ transitionDelay: '400ms' }}>
               Want To <strong>Know More?</strong>
               <div className="more-arrow-btn">
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">

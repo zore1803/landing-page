@@ -99,11 +99,11 @@ export default function BrandServicePage() {
           </div>
 
           <div className="bs-subsection">
-            <h3 className="bs-sub-title"><strong>Brand Identity Design</strong> <span className="font-regular">& Strategy</span></h3>
-            <p className="bs-sub-desc">
+            <h3 className="bs-sub-title reveal-up"><strong>Brand Identity Design</strong> <span className="font-regular">& Strategy</span></h3>
+            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
               Build a distinctive brand foundation with strategy, visual identity, and design systems that create consistency, recognition, and long-term growth.
             </p>
-            <div className="bs-tags-container">
+            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
               <span className="bs-skill-tag">Brand Strategy</span>
               <span className="bs-skill-tag">Logo Design</span>
               <span className="bs-skill-tag">Brand Guidelines</span>
@@ -114,20 +114,20 @@ export default function BrandServicePage() {
               <span className="bs-skill-tag">Visual Assets</span>
             </div>
             <div className="bs-grid-identity">
-              <div className="bs-card bg-light-blue"></div>
-              <div className="bs-card bg-dark"></div>
-              <div className="bs-card bg-light-gray"></div>
+              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
             </div>
           </div>
 
           <div className="bs-section-divider"></div>
 
           <div className="bs-subsection">
-            <h3 className="bs-sub-title"><strong>Corporate Branding</strong> <span className="font-regular">&</span> <strong>Business Assets</strong></h3>
-            <p className="bs-sub-desc">
+            <h3 className="bs-sub-title reveal-up"><strong>Corporate Branding</strong> <span className="font-regular">&</span> <strong>Business Assets</strong></h3>
+            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
               Equip your business with professional stationery, corporate communication, and digital assets that ensure a consistent brand experience across every touchpoint.
             </p>
-            <div className="bs-tags-container">
+            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
               <span className="bs-skill-tag">Visiting Card</span>
               <span className="bs-skill-tag">Letterhead</span>
               <span className="bs-skill-tag">Envelope Design</span>
@@ -137,20 +137,20 @@ export default function BrandServicePage() {
               <span className="bs-skill-tag">Employee ID Card</span>
             </div>
             <div className="bs-grid-corporate">
-              <div className="bs-card bg-light-blue"></div>
-              <div className="bs-card bg-dark"></div>
-              <div className="bs-card bg-light-gray"></div>
+              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
             </div>
           </div>
 
           <div className="bs-section-divider"></div>
 
           <div className="bs-subsection">
-            <h3 className="bs-sub-title"><strong>Marketing</strong> <span className="font-regular">Collateral &</span> <strong>Social Media</strong> <span className="font-regular">Design</span></h3>
-            <p className="bs-sub-desc">
+            <h3 className="bs-sub-title reveal-up"><strong>Marketing</strong> <span className="font-regular">Collateral &</span> <strong>Social Media</strong> <span className="font-regular">Design</span></h3>
+            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
               Expand your brand with impactful marketing materials and social media assets designed to engage audiences and communicate with clarity.
             </p>
-            <div className="bs-tags-container">
+            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
               <span className="bs-skill-tag">Brochure/Catalogue Design</span>
               <span className="bs-skill-tag">Flyer/Poster Design</span>
               <span className="bs-skill-tag">Social Media Template & Banner</span>
@@ -159,31 +159,35 @@ export default function BrandServicePage() {
               <span className="bs-skill-tag">Newsletter Design</span>
             </div>
             <div className="bs-grid-marketing">
-              <div className="bs-card bg-light-blue"></div>
-              <div className="bs-card bg-light-gray"></div>
-              <div className="bs-card bg-dark"></div>
+              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '600ms' }}></div>
+              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '700ms' }}></div>
+              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '800ms' }}></div>
             </div>
           </div>
 
           <div className="bs-section-divider"></div>
 
           <div className="bs-subsection">
-            <h3 className="bs-sub-title"><strong>Packaging, Environmental & Merchandise</strong> <span className="font-regular">Design</span></h3>
-            <p className="bs-sub-desc">
+            <h3 className="bs-sub-title reveal-up"><strong>Packaging, Environmental & Merchandise</strong> <span className="font-regular">Design</span></h3>
+            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
               Bring your brand to life through packaging, retail experiences, signage, and branded merchandise that leave a lasting impression.
             </p>
-            <div className="bs-tags-container">
-              <span className="bs-skill-tag">Product Packaging Design</span>
-              <span className="bs-skill-tag">Label Design</span>
-              <span className="bs-skill-tag">Exhibition & Trade Show Design</span>
+            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
+              <span className="bs-skill-tag">Label & Box Design</span>
+              <span className="bs-skill-tag">Carry Bag/Tote Design</span>
               <span className="bs-skill-tag">Signage & Wayfinding</span>
-              <span className="bs-skill-tag">Promotional Assets</span>
-              <span className="bs-skill-tag">Brand Environment Design</span>
+              <span className="bs-skill-tag">Office Branding (Wall Graphics)</span>
+              <span className="bs-skill-tag">T-Shirt/Uniform Design</span>
+              <span className="bs-skill-tag">Mug/Bottle Branding</span>
             </div>
             <div className="bs-grid-packaging">
-              <div className="bs-card bg-light-blue"></div>
-              <div className="bs-card bg-dark"></div>
-              <div className="bs-card bg-light-blue"></div>
+              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '600ms' }}></div>
             </div>
           </div>
         </div>
