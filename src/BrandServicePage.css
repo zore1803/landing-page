@@ -251,8 +251,6 @@
   width: 100%;
   overflow-x: auto;
   background: transparent;
-  display: flex;
-  justify-content: center;
 }
 
 .cp-table {
