@@ -199,8 +199,8 @@ export default function BrandServicePage() {
       {/* Compare Plans */}
       <div className="compare-plans-section">
         <div className="compare-plans-inner">
-          <h2 className="cp-title">Compare Plans</h2>
-          <p className="cp-subtitle">Every plan includes the core research tools. Pick the one that matches how many shops, products, and advertisers you track.</p>
+          <h2 className="cp-title reveal-up">Compare Plans</h2>
+          <p className="cp-subtitle reveal-up" style={{ transitionDelay: '100ms' }}>Every plan includes the core research tools. Pick the one that matches how many shops, products, and advertisers you track.</p>
           
           <div className="cp-table-container">
             <table className="cp-table">
@@ -208,23 +208,23 @@ export default function BrandServicePage() {
                 <tr>
                   <th className="cp-feature-col"></th>
                   <th className="cp-plan-col">
-                    <div className="cp-plan-name">Essential</div>
-                    <div className="cp-plan-desc">Build a clear, professional brand identity ready for launch</div>
-                    <div className="cp-btn-wrap-light">
+                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '200ms' }}>Essential</div>
+                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '300ms' }}>Build a clear, professional brand identity ready for launch</div>
+                    <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '400ms' }}>
                       <button className="cp-btn-light">Get Started</button>
                     </div>
                   </th>
                   <th className="cp-plan-col cp-highlight-col">
-                    <div className="cp-plan-name">Advance</div>
-                    <div className="cp-plan-desc">Strengthen your brand with business, communication and digital assets</div>
-                    <div className="cp-btn-wrap-dark">
+                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '300ms' }}>Advance</div>
+                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '400ms' }}>Strengthen your brand with business, communication and digital assets</div>
+                    <div className="cp-btn-wrap-dark reveal-up" style={{ transitionDelay: '500ms' }}>
                       <button className="cp-btn-dark">Get Started</button>
                     </div>
                   </th>
                   <th className="cp-plan-col">
-                    <div className="cp-plan-name">Premium</div>
-                    <div className="cp-plan-desc">Scale your brand with marketing, packaging and promotional solutions</div>
-                    <div className="cp-btn-wrap-light">
+                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '400ms' }}>Premium</div>
+                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '500ms' }}>Scale your brand with marketing, packaging and promotional solutions</div>
+                    <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '600ms' }}>
                       <button className="cp-btn-light">Get Started</button>
                     </div>
                   </th>
@@ -235,29 +235,29 @@ export default function BrandServicePage() {
                   <React.Fragment key={sIdx}>
                     <tr className="cp-section-row">
                       <td colSpan="4">
-                        <div className="cp-section-title">{section.title}</div>
+                        <div className="cp-section-title reveal-up">{section.title}</div>
                       </td>
                     </tr>
                     {section.features.map((feature, fIdx) => (
                       <tr key={`${sIdx}-${fIdx}`}>
-                        <td className="cp-feature-name">{feature.name}</td>
+                        <td><div className="cp-feature-name reveal-up">{feature.name}</div></td>
                         <td className="cp-check">
                           {feature.plans[0] && (
-                            <div className="cp-dot-wrap">
+                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>
                               <span className="cp-dot cp-dot-grey"></span>
                             </div>
                           )}
                         </td>
                         <td className="cp-check cp-highlight-col">
                           {feature.plans[1] && (
-                            <div className="cp-dot-wrap">
+                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '200ms' }}>
                               <span className="cp-dot cp-dot-orange"></span>
                             </div>
                           )}
                         </td>
                         <td className="cp-check">
                           {feature.plans[2] && (
-                            <div className="cp-dot-wrap">
+                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '300ms' }}>
                               <span className="cp-dot cp-dot-grey"></span>
                             </div>
                           )}
