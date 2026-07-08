@@ -11,14 +11,13 @@ const ContactPage = lazy(() => import('./ContactPage'));
 const ProjectsPage = lazy(() => import('./ProjectsPage'));
 const BrandServicePage = lazy(() => import('./BrandServicePage'));
 
-// Lazy loaded components
-const CoordinateSection = lazy(() => import('./CoordinateSection'));
-const ProjectsSection = lazy(() => import('./ProjectsSection'));
-const ServicePricing = lazy(() => import('./ServicePricing'));
-const WallOfLove = lazy(() => import('./WallOfLove'));
-const FAQ = lazy(() => import('./FAQ'));
-const Booking = lazy(() => import('./Booking'));
-const ServicesSection = lazy(() => import('./ServicesSection'));
+import CoordinateSectionComponent from './CoordinateSection';
+import ProjectsSectionComponent from './ProjectsSection';
+import ServicePricingComponent from './ServicePricing';
+import WallOfLoveComponent from './WallOfLove';
+import FAQComponent from './FAQ';
+import BookingComponent from './Booking';
+import ServicesSectionComponent from './ServicesSection';
 
 import logoImg from './assets/logo.svg';
 function Home() {
@@ -196,16 +195,14 @@ function Home() {
       </div>
     </div>
 
-      {/* Lazy-loaded offscreen sections */}
-      <Suspense fallback={null}>
-        <ServicesSection />
-        <CoordinateSection />
-        <ProjectsSection />
-        <ServicePricing />
-        <WallOfLove />
-        <FAQ />
-        <Booking />
-      </Suspense>
+      {/* Offscreen sections without Suspense to prevent hydration blocking */}
+      <ServicesSectionComponent />
+      <CoordinateSectionComponent />
+      <ProjectsSectionComponent />
+      <ServicePricingComponent />
+      <WallOfLoveComponent />
+      <FAQComponent />
+      <BookingComponent />
         </>
 
       <Footer />
