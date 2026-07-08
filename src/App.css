@@ -930,6 +930,23 @@ img, video {
   }
 }
 
+/* Mobile: the cursive SVG is a fixed 800px wide, which overflows narrow
+   screens. Scale it down to fit and keep it centred. Applies to every
+   section that uses the global cursive (Projects, Studio, Testimonials). */
+@media (max-width: 768px) {
+  .global-cursive-svg-container {
+    margin-top: -30px;
+  }
+  .global-cursive-svg {
+    width: 95%;
+    max-width: 460px;
+    height: auto;
+  }
+  .global-cursive-svg text {
+    font-size: 135px;
+  }
+}
+
 /* Hardware Accelerated Copper Loader */
 .copper-loader-container {
   position: absolute;

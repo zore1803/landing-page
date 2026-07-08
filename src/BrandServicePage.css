@@ -476,18 +476,152 @@
 }
 
 @media (max-width: 768px) {
-  .bs-content-section, .compare-plans-section, .bs-brands-section {
-    padding: 60px 20px;
+  /* Hero */
+  .bs-hero-card {
+    min-height: 68vh;
   }
-  
+  .bs-hero-title {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    line-height: 1.15;
+  }
+  .bs-hero-content {
+    padding: 0 20px;
+  }
+
+  /* Section spacing: section provides the side padding, inner drops its 40px.
+     box-sizing keeps the 100%-wide sections from overflowing once padding is added. */
+  .bs-content-section, .compare-plans-section, .bs-brands-section {
+    padding: 48px 20px;
+    box-sizing: border-box;
+  }
+  .bs-content-inner, .compare-plans-inner, .bs-brands-inner {
+    padding: 0;
+  }
+
+  /* Content header */
+  .bs-tag {
+    margin-bottom: 16px;
+  }
+  .bs-main-logo {
+    width: auto;
+    height: auto;
+    max-width: min(100%, 320px);
+    margin: 0 0 28px;
+  }
+  .bs-desc {
+    font-size: 1.0625rem;
+    margin-bottom: 56px;
+  }
+
+  /* Subsections */
+  .bs-subsection {
+    margin-bottom: 56px;
+  }
+  .bs-sub-title {
+    font-size: 24px;
+  }
+  .bs-sub-desc {
+    font-size: 15px;
+    margin: 0 0 24px;
+  }
+  .bs-tags-container {
+    gap: 8px;
+    margin-top: 20px;
+    margin-bottom: 28px;
+  }
+  .bs-skill-tag {
+    padding: 7px 16px;
+  }
+
+  /* Divider: was a fixed 400px width that overflowed narrow screens */
+  .bs-section-divider {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 56px;
+  }
+
+  /* Grids: force a single column (the 1200px auto-fit minmax(280px) rule
+     overflows containers narrower than 280px) */
+  .bs-grid-identity, .bs-grid-corporate, .bs-grid-marketing, .bs-grid-packaging {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .bs-card {
+    height: 220px;
+  }
+
+  /* Compare plans */
+  .cp-title {
+    font-size: 34px;
+    line-height: 42px;
+  }
+  .cp-subtitle {
+    margin-bottom: 28px;
+  }
+  .cp-table-container {
+    padding: 0;
+  }
+
+  /* Fit the comparison table within the viewport instead of horizontal-scrolling
+     the plan columns off-screen. Feature name + 3 compact check columns. */
+  .cp-table {
+    min-width: 0;
+  }
+  .cp-feature-col {
+    width: 43%;
+  }
+  .cp-plan-col {
+    width: 19%;
+    padding: 12px 2px;
+  }
+  .cp-plan-name {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 0;
+  }
+  /* Descriptions and CTAs live in the pricing section above; hide here to keep
+     the comparison header compact on mobile. */
+  .cp-plan-desc,
+  .cp-btn-wrap-light,
+  .cp-btn-wrap-dark {
+    display: none;
+  }
+  .cp-section-row td {
+    padding-top: 28px;
+  }
+  .cp-section-title {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .cp-feature-name {
+    font-size: 13px;
+    padding: 12px 8px 12px 0;
+  }
+  .cp-check {
+    padding: 12px 0;
+  }
+  .cp-dot {
+    width: 16px;
+    height: 16px;
+  }
+  .cp-dot::after {
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+  }
+  .cp-dash {
+    font-size: 16px;
+  }
+
   .bs-grid-3 {
     grid-template-columns: 1fr;
   }
-  
+
   .bs-medium-card {
     width: 100%;
   }
-  
+
   .bs-brands-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -496,18 +630,31 @@
     width: 100%;
     height: 300px;
   }
-  
-  .cp-table-container {
-    padding: 16px;
-  }
 }
 
 @media (max-width: 480px) {
+  .bs-hero-title {
+    font-size: clamp(1.75rem, 9vw, 2.25rem);
+  }
+  .bs-desc {
+    font-size: 1rem;
+    margin-bottom: 44px;
+  }
+  .bs-sub-title {
+    font-size: 22px;
+  }
+  .bs-card {
+    height: 200px;
+  }
+  .cp-title {
+    font-size: 30px;
+    line-height: 38px;
+  }
   .bs-brands-grid {
     grid-template-columns: 1fr;
   }
   .bs-brand-box {
-    height: 300px;
+    height: 260px;
   }
 }
 
