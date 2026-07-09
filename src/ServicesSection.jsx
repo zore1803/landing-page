@@ -67,7 +67,7 @@ export default function ServicesSection() {
                 <p className="service-desc max-w-400 reveal-up" style={{ transitionDelay: '200ms' }}>
                   <span className="desc-highlight text-orange">From first impressions to lasting recognition.</span> We believe great brands are built through consistency at every touchpoint. By combining strategy, visual identity, print, packaging, and branded assets, we create unified brand experiences that people remember and businesses grow with.
                 </p>
-                <Link to="/copper-brand" className="service-more reveal-up" style={{textDecoration: 'none', transitionDelay: '700ms'}}>
+                <Link to="/services/copperbrand" className="service-more reveal-up" style={{textDecoration: 'none', transitionDelay: '700ms'}}>
                   Want To <strong>Know More?</strong>
                   <div className="more-arrow-btn">
                     <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">

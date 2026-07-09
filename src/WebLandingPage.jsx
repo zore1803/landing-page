@@ -122,7 +122,7 @@ export default function WebLandingPage() {
         </div>
       </section>
 
-      <BrandProjectsSection />
+      <BrandProjectsSection web />
       
       <div className="bl-pricing-wrapper">
         <ServicePricingComponent activeService="web" showToggle={false} />

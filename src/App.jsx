@@ -370,8 +370,8 @@ function App() {
           <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/copper-brand" element={<BrandServicePage />} />
-          <Route path="/copper-web" element={<WebServicePage />} />
+          <Route path="/services/copperbrand" element={<BrandServicePage />} />
+          <Route path="/services/copperweb" element={<WebServicePage />} />
           <Route path="/copperbrand" element={<BrandLandingPage />} />
           <Route path="/copperweb" element={<WebLandingPage />} />
           <Route path="/terms-and-conditions" element={<TermsConditions />} />

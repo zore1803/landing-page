@@ -17,8 +17,9 @@ import proj2Svg from './assets/projects/commongrounds-hq.webp';
 import projQodenextSvg from './assets/projects/qodenext-hq.webp';
 import projDataCirclesSvg from './assets/projects/datacircles-hq.webp';
 import projNittyGritty from './assets/nittygritty.png';
+import facilitiesImg from './assets/facilities-tours.png';
 
-export default function BrandProjectsSection() {
+export default function BrandProjectsSection({ web = false }) {
   const navigate = useNavigate();
   const [activeSvg, setActiveSvg] = useState(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
@@ -49,15 +50,19 @@ export default function BrandProjectsSection() {
           <div className="bp-card" onClick={() => handleCardClick(projNittyGritty)} style={{ cursor: 'pointer' }}><img src={img3} alt="Project 3" /></div>
           
           {/* Bottom Row */}
-          <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img4} alt="Project 4" /></div>
+          {web ? (
+            <div className="bp-card" onClick={() => handleCardClick(facilitiesImg)} style={{ cursor: 'pointer' }}><img src={facilitiesImg} alt="Facilities Tours and Travels" /></div>
+          ) : (
+            <div className="bp-card" onClick={() => handleCardClick(proj2Svg)} style={{ cursor: 'pointer' }}><img src={img4} alt="Project 4" /></div>
+          )}
           <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img5} alt="Project 5" /></div>
           
           {/* Bottom Right Complex Cell */}
           <div className="bp-complex-cell">
-            <div className="bp-tall" onClick={() => handleCardClick(img6)} style={{ cursor: 'pointer' }}><img src={img6} alt="Project 6" /></div>
+            <div className="bp-tall" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img6} alt="Project 6" /></div>
             <div className="bp-small-col">
-              <div className="bp-small" onClick={() => handleCardClick(img7)} style={{ cursor: 'pointer' }}><img src={img7} alt="Project 7" /></div>
-              <div className="bp-small" onClick={() => handleCardClick(img8)} style={{ cursor: 'pointer' }}><img src={img8} alt="Project 8" /></div>
+              <div className="bp-small" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img7} alt="Project 7" /></div>
+              <div className="bp-small" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img8} alt="Project 8" /></div>
             </div>
           </div>
         </div>
