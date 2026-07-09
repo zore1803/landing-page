@@ -21,7 +21,8 @@
   font-weight: 600;
   font-size: 56px;
   color: #070815;
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
+  max-width: 1280px;
 }
 
 .section-subtitle {
@@ -29,13 +30,14 @@
   font-weight: 300;
   font-size: 18px;
   color: #504F4F;
-  max-width: 100%;
-  margin: 0 0 60px 0;
-  line-height: 1.6;
+  max-width: 1280px;
+  margin: 0 0 40px 0;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .subtitle-italic {
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   display: inline-block;
   margin-bottom: 5px;
@@ -45,8 +47,8 @@
 .coordinate-video-box {
   display: block;
   width: 100%;
-  max-width: 900px; /* Increased slightly from 760px */
-  aspect-ratio: 1.55; /* Keeps the exact same cropping on the sides */
+  max-width: 1404px;
+  aspect-ratio: 1404 / 600;
   height: auto;
   border-radius: 25px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);

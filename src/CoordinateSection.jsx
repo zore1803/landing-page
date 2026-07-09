@@ -9,8 +9,7 @@ export default function CoordinateSection() {
         <h2 className="section-title reveal-up">How Do We Co-ordinate?</h2>
         <p className="section-subtitle reveal-up" style={{ transitionDelay: '100ms' }}>
           <span className="subtitle-italic">Stay connected to your project from start to finish.</span><br/>
-          Our client portal gives you a dedicated space to track progress, view project timelines, access upcoming meetings, share files, and download every deliverable.<br/>
-          With lifetime access, your portal remains available long after your project is complete, giving you a permanent home for everything we've created together.
+          Our client portal gives you a dedicated space to track progress, view project timelines, access upcoming meetings, share files, and download every deliverable. With lifetime access, your portal remains available long after your project is complete, giving you a permanent home for everything we've created together.
         </p>
         <div 
           className="coordinate-video-box reveal-up"

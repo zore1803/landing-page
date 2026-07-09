@@ -69,6 +69,7 @@
 .bento-card {
   border-radius: 25px;
   padding: 40px 32px;
+  height: 293px;
   opacity: 0;
   transform: translateY(180px);
   will-change: transform, opacity;
@@ -163,10 +164,14 @@
 .bento-stat-desc {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   color: #070815;
   margin: 0;
   line-height: 21px;
+}
+
+.bento-stat-desc strong {
+  font-weight: 600;
 }
 
 .bento-dark .bento-stat-desc {
@@ -180,7 +185,7 @@
   font-weight: 300;
   font-size: 16px;
   line-height: 21px;
-  margin: 0 0 40px 0;
+  margin: 0 0 48px 0;
 }
 
 .dark-text {
@@ -253,6 +258,7 @@
   font-weight: 300;
   color: rgba(152, 151, 149, 0.8);
   line-height: 18px;
+  align-self: flex-end;
 }
 
 .author-company.dark-text, .bento-beige .author-company {
@@ -265,6 +271,7 @@
   }
   .bento-card {
     flex: 1 1 45% !important;
+    height: auto;
   }
 }
 

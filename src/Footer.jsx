@@ -44,7 +44,7 @@ const Footer = () => {
           <div className="footer-divider reveal-up" style={{ transitionDelay: '100ms' }}></div>
 
           <div className="footer-links reveal-up" style={{ transitionDelay: '200ms' }}>
-            <Link to="/studio">Studio</Link>
+            <Link to="/studio">About Us</Link>
             <Link to="/services">Services</Link>
             <Link to="/projects">Projects</Link>
             <Link to="/contact">Contact</Link>

@@ -47,7 +47,7 @@ export default function BrandLandingPage() {
           </button>
         </nav>
         <div className="brand-landing-hero-content">
-          <h1 className="bl-hero-title">Lorem ipsum dolor sit amet, consectetur</h1>
+          <h1 className="bl-hero-title">More than a logo.<br/>A brand people remember</h1>
           <p className="bl-hero-subtitle">From strategy and visual identity to websites and custom portals, we create thoughtful brand experience that helps your business stand out</p>
           <div className="bl-hero-btn-wrapper">
             <button className="bl-hero-main-btn">Book A Meeting</button>

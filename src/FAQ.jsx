@@ -21,7 +21,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
   );
 };
 
-const FAQ = () => {
+const FAQ = ({ label = 'HAVE SOME DOUBTS?' }) => {
   const [openIndex, setOpenIndex] = useState(0);
 
   const faqData = [
@@ -51,7 +51,7 @@ const FAQ = () => {
     <section className="faq-section global-section" id="faq">
       <div className="faq-container global-container">
         <div className="faq-sidebar reveal-up">
-          <div className="faq-tag">HAVE SOME DOUBTS?</div>
+          <div className="faq-tag">{label}</div>
           <h2 className="faq-title">Frequently Asked<br/>Questions</h2>
           <p className="faq-description">
             Everything you need to know about our design, branding and web development processes. Can't find the answer you're looking for? Reach out to our team directly.

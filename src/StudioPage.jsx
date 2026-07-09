@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './StudioPage.css';
 import WallOfLove from './WallOfLove';
 import FAQ from './FAQ';
@@ -16,10 +17,10 @@ import connectionIcon from './assets/studio/connection.svg';
 import craftsmanshipIcon from './assets/studio/craftsmanship.svg';
 import characterIcon from './assets/studio/character.svg';
 
-import projImg1 from './assets/brand-identity-brochure.webp';
-import projImg2 from './assets/common-grounds.webp';
-import projImg3 from './assets/Tea - Boxes 1.webp';
-import projImg4 from './assets/image.webp';
+import projImg1 from './assets/projects/cottsonclothing.png';
+import projImg2 from './assets/projects/datacircles.png';
+import projImg3 from './assets/projects/qodenext.png';
+import projImg4 from './assets/projects/commongrounds.png';
 
 const studioProjects = [projImg1, projImg2, projImg3, projImg4];
 
@@ -77,6 +78,40 @@ const StudioPage = () => {
           const rect = section.getBoundingClientRect();
           let progress = -rect.top / scrollDistance;
           progress = Math.max(0, Math.min(1, progress));
+
+          // Header choreography:
+          //   1. Starts centered in the viewport and HOLDS there as scrolling begins.
+          //   2. Slides up to its resting "marked" spot (CSS padding-top) as the
+          //      step cards start arriving.
+          //   3. Parks at that spot; from there the natural section un-pin carries
+          //      it up together with the cards.
+          if (titleRef.current) {
+            const headerH = titleRef.current.offsetHeight;
+            const cardTopViewport = 40;   // .process-header-container `top`
+            const restFromCardTop = 120;  // .process-header-container `padding-top`
+            // translateY that places the header block centered in the viewport
+            // (positive = below its resting/marked position).
+            const centerOffset =
+              (viewportHeight / 2 - headerH / 2) - (cardTopViewport + restFromCardTop);
+
+            const holdCenterUntil = 0.12; // stay centered through the first bit of scroll
+            const reachMarkedAt = 0.45;   // fully settled at the marked spot by here
+
+            let ty;
+            if (progress <= holdCenterUntil) {
+              ty = centerOffset;
+            } else if (progress <= reachMarkedAt) {
+              const t = (progress - holdCenterUntil) / (reachMarkedAt - holdCenterUntil);
+              const ease = 1 - Math.pow(1 - t, 2);
+              ty = centerOffset * (1 - ease);
+            } else {
+              // Once settled, ride up in lockstep with the cards (they move up at
+              // `travelDistance` per unit progress via glassY), so header and data
+              // scroll away together instead of the header staying pinned behind.
+              ty = -(progress - reachMarkedAt) * travelDistance;
+            }
+            titleRef.current.style.transform = `translateY(${ty}px)`;
+          }
 
           // Slide the whole grid up from below the viewport to exactly 0.
           // IMPORTANT: we deliberately do NOT transform the wrapper. A
@@ -248,7 +283,7 @@ const StudioPage = () => {
           <div className="diff-card card-cream reveal-up" style={{ transitionDelay: '100ms' }}>
             <div className="diff-card-ellipse-1"></div>
             <div className="diff-card-ellipse-2"></div>
-            <h3>A dedicated client portal for complete project transparency.</h3>
+            <h3>A dedicated<br/><strong>client portal</strong> for complete project transparency.</h3>
           </div>
           <div className="diff-card card-black reveal-up" style={{ transitionDelay: '200ms' }}>
             <div className="diff-card-ellipse-3"></div>
@@ -260,7 +295,7 @@ const StudioPage = () => {
           <div className="diff-card card-orange reveal-up" style={{ transitionDelay: '300ms' }}>
             <div className="diff-card-ellipse-6"></div>
             <div className="diff-card-ellipse-7"></div>
-            <h3 style={{ marginTop: 'auto' }}>Ongoing hosting & maintenance, and support beyond launch.</h3>
+            <h3 style={{ marginTop: 'auto' }}>Ongoing<br/><strong>hosting &amp;<br/>maintenance,</strong> and<br/>support beyond launch.</h3>
           </div>
         </div>
       </section>
@@ -341,8 +376,7 @@ const StudioPage = () => {
       <section className="studio-section">
         <span className="section-label reveal-up">6 - SELECTED PROJECTS</span>
         <div className="studio-projects-header reveal-up" style={{ transitionDelay: '100ms' }}>
-          <h2>Work we're proud of</h2>
-          <div className="script-text">Projects</div>
+          <h2>Work We Are Proud Of</h2>
         </div>
         <div className="studio-projects-grid">
           {studioProjects.map((img, i) => (
@@ -351,10 +385,18 @@ const StudioPage = () => {
             </div>
           ))}
         </div>
+        <Link to="/projects" className="studio-projects-more reveal-up">
+          <span>Want to <strong>See More Projects?</strong></span>
+          <span className="studio-projects-more-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 6l6 6-6 6" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+        </Link>
       </section>
 
       {/* FAQ Section */}
-      <FAQ />
+      <FAQ label="7 - HAVE SOME DOUBTS?" />
 
       {/* Contact */}
       <Booking />

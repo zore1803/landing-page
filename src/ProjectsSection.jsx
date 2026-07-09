@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProjectsSection.css';
-import commonGroundsImg from './assets/common-grounds.webp';
-import dataCirclesImg from './assets/DataCirclesLaptop.webp';
-import premiumGroupImg from './assets/image.webp';
-import qodenextImg from './assets/QodenextImage.webp';
+import commonGroundsImg from './assets/projects/commongrounds.png';
+import dataCirclesImg from './assets/projects/datacircles.png';
+import premiumGroupImg from './assets/projects/cottsonclothing.png';
+import qodenextImg from './assets/projects/qodenext.png';
 
 import proj1Svg from './assets/projects/cottson-clothing-hq.webp';
 import proj2Svg from './assets/projects/commongrounds-hq.webp';
@@ -76,7 +76,6 @@ export default function ProjectsSection() {
       progress = Math.max(0, Math.min(1, progress));
 
       const cards = glass.querySelectorAll('.project-card');
-      const btn = glass.querySelector('.view-more-btn');
 
       // Glass wrapper rises through the pinned viewport.
       const glassY = viewportHeight - progress * wrapperHeight;
@@ -94,17 +93,6 @@ export default function ProjectsSection() {
         card.style.transform = `translateY(${cardY}px)`;
         card.style.opacity = cardEase;
       });
-
-      // Button enters last, just before the section unpins.
-      if (btn) {
-        const btnStart = 0.62;
-        let btnProgress = (progress - btnStart) / 0.2;
-        btnProgress = Math.max(0, Math.min(1, btnProgress));
-        const btnEase = 1 - Math.pow(1 - btnProgress, 3);
-        const btnY = 60 - btnEase * 60;
-        btn.style.transform = `translateY(${btnY}px)`;
-        btn.style.opacity = btnEase;
-      }
 
       ticking = false;
     };
@@ -197,8 +185,8 @@ export default function ProjectsSection() {
             ))}
           </div>
 
-          <div className="view-more-btn" onClick={() => navigate('/projects')}>
-            See More Projects <span className="arrow-icon">&rsaquo;</span>
+          <div className="view-more-link" onClick={() => navigate('/projects')}>
+            See more projects <span className="arrow-icon">&rarr;</span>
           </div>
         </div>
 
