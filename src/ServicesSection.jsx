@@ -140,14 +140,14 @@ export default function ServicesSection() {
                 </div>
               </div>
             </div>
-            <div className="service-more reveal-up" style={{ transitionDelay: '500ms' }}>
+            <Link to="/copper-web" className="service-more reveal-up" style={{textDecoration: 'none', transitionDelay: '500ms'}}>
               Want To <strong>Know More?</strong>
               <div className="more-arrow-btn">
                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L5 4L1 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className="service-divider"></div>

@@ -1,0 +1,135 @@
+.brand-projects-section {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bp-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1.2;
+  color: #070815;
+  margin-bottom: 60px;
+}
+
+.bp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+}
+
+.bp-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #f0f0f0;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.bp-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bp-complex-cell {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.bp-tall {
+  flex: 1 1 46.75%;
+  height: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #f0f0f0;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.bp-small-col {
+  flex: 1 1 43.25%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100%;
+}
+
+.bp-small {
+  flex: 1;
+  width: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #f0f0f0;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.bp-card:hover, .bp-tall:hover, .bp-small:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.bp-tall img, .bp-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bp-view-more-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.bp-view-more-btn {
+  width: 100%;
+  height: 42px;
+  background: transparent;
+  border: 1px solid #070815;
+  border-radius: 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #070815;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.bp-view-more-btn:hover {
+  background: #070815;
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .bp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bp-grid {
+    grid-template-columns: 1fr;
+  }
+  .bp-title {
+    font-size: 36px;
+    text-align: center;
+  }
+}

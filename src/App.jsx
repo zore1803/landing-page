@@ -10,6 +10,8 @@ import ServiceDetail from './ServiceDetail';
 import ContactPage from './ContactPage';
 import ProjectsPage from './ProjectsPage';
 import BrandServicePage from './BrandServicePage';
+import WebServicePage from './WebServicePage';
+import BrandLandingPage from './BrandLandingPage';
 
 import CoordinateSectionComponent from './CoordinateSection';
 import ProjectsSectionComponent from './ProjectsSection';
@@ -18,8 +20,10 @@ import WallOfLoveComponent from './WallOfLove';
 import FAQComponent from './FAQ';
 import BookingComponent from './Booking';
 import ServicesSectionComponent from './ServicesSection';
+import HomepageHeroBg from './HomepageHeroBg';
 
 import logoImg from './assets/logo.svg';
+
 function Home() {
   const navigate = useNavigate();
 
@@ -41,59 +45,7 @@ function Home() {
 
   // 14 stripes based on the Figma spec (Rectangle 89 through 102)
   const stripes = Array.from({ length: 14 });
-  console.log("Logo path loaded as:", logoImg);
 
-  // Generate the complex 3-stage wave animation for the hero stripes
-  const stripeAnimationCSS = useMemo(() => {
-    const TOTAL_TIME = 9; // seconds loop
-    const FPS = 15;
-    const frames = TOTAL_TIME * FPS;
-    let css = '';
-    
-    for (let i = 0; i < 14; i++) {
-      const d = Math.min(i, 13 - i);
-      // Define the peak hit times for this specific stripe
-      const peaks = [
-        0.5 + i * 0.15,               // Phase 1: Left to right
-        3.5 + (13 - i) * 0.15,        // Phase 2: Right to left
-        6.5 + d * 0.15                // Phase 3a: Outside to inside
-      ];
-      if (d < 6) {
-        peaks.push(7.4 + (6 - d) * 0.15); // Phase 3b: Repel back
-      }
-
-      let keyframes = `@keyframes complexPulse${i} {\n`;
-      
-      // Calculate brightness smoothly over time for a perfect collision blend
-      for (let frame = 0; frame <= frames; frame++) {
-        const t = frame / FPS;
-        let maxBright = 0.2;
-        
-        peaks.forEach(peak => {
-          let bright = 0.2;
-          if (t >= peak - 0.2 && t <= peak) {
-            const progress = (t - (peak - 0.2)) / 0.2;
-            bright = 0.2 + progress * 1.0;
-          } else if (t > peak && t <= peak + 0.6) {
-            const progress = (t - peak) / 0.6;
-            bright = 1.2 - progress * 1.0;
-          }
-          if (bright > maxBright) maxBright = bright;
-        });
-        
-        const percent = ((t / TOTAL_TIME) * 100).toFixed(1);
-        const progress = (maxBright - 0.2) / 1.0;
-        const saturate = (0.5 + progress * 0.6).toFixed(2);
-        
-        keyframes += `  ${percent}% { filter: brightness(${maxBright.toFixed(2)}) saturate(${saturate}); }\n`;
-      }
-      keyframes += `}\n`;
-      css += keyframes;
-    }
-    return css;
-  }, []);
-
-  // Intersection Observer for Trusted Brands Reveal
   const trustedRef = useRef(null);
 
   // Intersection Observer for Services Reveal
@@ -138,33 +90,8 @@ function Home() {
         <>
           <div className="landing-container" id="home">
             {/* Background blobs / ellipses */}
-      <div className="blobs-container">
-        <div className="ellipse ellipse-2"></div>
-        <div className="ellipse ellipse-3"></div>
-        <div className="ellipse ellipse-4"></div>
-        <div className="ellipse ellipse-5"></div>
-        <div className="ellipse ellipse-9"></div>
-        <div className="ellipse ellipse-1"></div>
-        <div className="ellipse ellipse-8"></div>
-        <div className="ellipse ellipse-6"></div>
-        <div className="ellipse ellipse-7"></div>
-      </div>
-
-
-
-      {/* Stripes overlay (Group 12 -> Group 105) */}
-      <style>{stripeAnimationCSS}</style>
-      <div className="stripes-wrapper">
-        {stripes.map((_, index) => (
-          <div key={index} className="stripe-container">
-            <div 
-              className="stripe-auto"
-              style={{ animation: `complexPulse${index} 9s infinite linear` }}
-            ></div>
-            <div className="stripe-hover"></div>
-          </div>
-        ))}
-      </div>
+      {/* Homepage Background SVG with animated stripes */}
+      <HomepageHeroBg />
       
       {/* Logo */}
       <div className="logo-container">
@@ -295,6 +222,8 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/copper-brand" element={<BrandServicePage />} />
+        <Route path="/copper-web" element={<WebServicePage />} />
+        <Route path="/copper-brand-landingpage" element={<BrandLandingPage />} />
       </Routes>
     </>
   );

@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6, .title-font {
 .global-container {
   width: 100%;
   max-width: 1440px;
-  padding: 0 40px;
+  padding: 0 40px;  /* this is the horizontal spacing */
   margin: 0 auto;
   box-sizing: border-box;
 }

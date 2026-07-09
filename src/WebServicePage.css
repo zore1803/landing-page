@@ -1,0 +1,666 @@
+.web-service-page {
+  width: 100%;
+  background: #ffffff;
+}
+
+.ws-hero-wrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ws-hero-card {
+  position: relative;
+  width: calc(100% - 32px);
+  margin: 0 auto;
+  min-height: 100vh;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ws-hero-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Match the gradient fade out */
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+.ws-hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.ws-hero-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  color: #070815;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* Content Section */
+.ws-content-section {
+  width: 100%;
+  padding: 60px 0;
+  background: #ffffff;
+}
+
+.ws-content-inner {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ws-tag {
+  display: block;
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #C55418;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+
+.ws-main-logo {
+  display: block;
+  height: 80px;
+  margin: 0 0 40px;
+}
+
+.ws-main-title {
+  display: none;
+}
+
+.ws-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem;
+  color: #4b5563;
+  line-height: 1.6;
+  /*max-width: 1100px;*/
+  margin-bottom: 141px;
+}
+
+.ws-desc .desc-highlight {
+  font-weight: 600;
+}
+
+.text-orange {
+  color: #C55418;
+}
+
+.italic-text {
+  font-style: italic;
+}
+
+.ws-subsection {
+  margin-bottom: 80px;
+}
+
+.ws-section-divider {
+  width: 400px;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0 auto 80px;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.ws-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.ws-skill-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 8px 20px;
+  border-radius: 40px;
+  background: #ffffff;
+}
+
+.ws-sub-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px;
+}
+
+.ws-sub-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0 0 32px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.ws-grid-identity {
+  display: grid;
+  grid-template-columns: 604fr 332fr 290fr;
+  gap: 24px;
+}
+
+.ws-grid-corporate {
+  display: grid;
+  grid-template-columns: 564fr 300fr 360fr;
+  gap: 24px;
+}
+
+.ws-grid-marketing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ws-grid-packaging {
+  display: grid;
+  grid-template-columns: 435fr 435fr 435fr;
+  gap: 24px;
+}
+
+.ws-card {
+  border-radius: 12px;
+  height: 290px;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .ws-grid-identity, .ws-grid-corporate, .ws-grid-marketing, .ws-grid-packaging {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+.bg-light-blue { background: #b8c4ce; }
+.bg-dark { background: #0b0e14; }
+.bg-light-gray { background: #cfd4d8; }
+
+.ws-large-card {
+  min-height: 400px;
+}
+
+.ws-medium-card {
+  width: 40%;
+  min-height: 280px;
+}
+
+/* Compare Plans */
+/* Compare Plans */
+.compare-plans-section {
+  width: 100%;
+  padding: 80px 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compare-plans-inner {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.cp-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 68px;
+  color: #070815;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.cp-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: -0.32px;
+  color: #504F4F;
+  text-align: center;
+  margin: 0 0 40px;
+}
+
+.cp-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: transparent;
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari, Edge */
+.cp-table-container::-webkit-scrollbar {
+  display: none;
+}
+
+.cp-table {
+  width: 100%;
+  max-width: 1280px;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
+  margin: 0 auto;
+}
+
+.cp-feature-col {
+  width: 376.46px;
+  padding: 0;
+}
+
+.cp-plan-col {
+  width: 301.18px;
+  padding: 24px 12px;
+  vertical-align: bottom;
+  position: relative;
+}
+
+.cp-highlight-col {
+  background: #F9FBFF;
+}
+
+.cp-table th.cp-highlight-col {
+  border-radius: 24px 24px 0 0;
+}
+
+.cp-plan-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+  letter-spacing: -0.32px;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+.cp-plan-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 300;
+  letter-spacing: -0.24px;
+  color: #504F4F;
+  margin: 0 auto 12px;
+  max-width: 240px;
+  min-height: 34px;
+}
+
+.cp-table th.cp-highlight-col .cp-plan-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.cp-btn-wrap-light {
+  width: 110px;
+  height: 42px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.15) 100%);
+  border-radius: 12px;
+  padding: 1px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.cp-btn-light {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #FFFFFF 0%, #FDFDFD 100%);
+  border-radius: 11px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #070815;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-btn-wrap-dark {
+  width: 110px;
+  height: 42px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.5) 100%), linear-gradient(90deg, rgba(238, 122, 29, 0.2) 0%, #EE7A1D 100%);
+  border-radius: 12px;
+  padding: 1px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.cp-btn-dark {
+  width: 100%;
+  height: 100%;
+  background: #EE7A1D;
+  border-radius: 11px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-section-row td {
+  padding: 40px 0 0 0;
+  text-align: left;
+}
+
+.cp-section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.36px;
+  color: #000000;
+}
+
+.cp-table tbody tr:not(.cp-section-row) {
+  border-bottom: 0.8px solid rgba(0, 0, 0, 0.1);
+  height: 52.8px;
+}
+
+.cp-feature-name {
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: -0.32px;
+  padding: 16px 0;
+}
+
+.cp-check {
+  padding: 16px 0;
+  text-align: center;
+}
+
+.cp-dot-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cp-dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  /* Basic checkmark using CSS */
+  position: relative;
+}
+.cp-dot::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid currentcolor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.cp-dot-grey { color: #504F4F; }
+.cp-dot-orange { color: #C55418; }
+
+/* Brands Section */
+.ws-brands-section {
+  width: 100%;
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.ws-brands-inner {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ws-brands-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0 0 40px;
+  color: #070815;
+}
+
+.ws-brands-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ws-brand-box {
+  background: #e5e7eb;
+  border-radius: 12px;
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .ws-medium-card {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero */
+  .ws-hero-card {
+    min-height: 68vh;
+  }
+  .ws-hero-title {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    line-height: 1.15;
+  }
+  .ws-hero-content {
+    padding: 0 20px;
+  }
+
+  /* Section spacing: section provides the side padding, inner drops its 40px.
+     box-sizing keeps the 100%-wide sections from overflowing once padding is added. */
+  .ws-content-section, .compare-plans-section, .ws-brands-section {
+    padding: 48px 20px;
+    box-sizing: border-box;
+  }
+  .ws-content-inner, .compare-plans-inner, .ws-brands-inner {
+    padding: 0;
+  }
+
+  /* Content header */
+  .ws-tag {
+    margin-bottom: 16px;
+  }
+  .ws-main-logo {
+    width: auto;
+    height: auto;
+    max-width: min(100%, 320px);
+    margin: 0 0 28px;
+  }
+  .ws-desc {
+    font-size: 1.0625rem;
+    margin-bottom: 56px;
+  }
+
+  /* Subsections */
+  .ws-subsection {
+    margin-bottom: 56px;
+  }
+  .ws-sub-title {
+    font-size: 24px;
+  }
+  .ws-sub-desc {
+    font-size: 15px;
+    margin: 0 0 24px;
+  }
+  .ws-tags-container {
+    gap: 8px;
+    margin-top: 20px;
+    margin-bottom: 28px;
+  }
+  .ws-skill-tag {
+    padding: 7px 16px;
+  }
+
+  /* Divider: was a fixed 400px width that overflowed narrow screens */
+  .ws-section-divider {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 56px;
+  }
+
+  /* Grids: force a single column (the 1200px auto-fit minmax(280px) rule
+     overflows containers narrower than 280px) */
+  .ws-grid-identity, .ws-grid-corporate, .ws-grid-marketing, .ws-grid-packaging {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .ws-card {
+    height: 220px;
+  }
+
+  /* Compare plans */
+  .cp-title {
+    font-size: 34px;
+    line-height: 42px;
+  }
+  .cp-subtitle {
+    margin-bottom: 28px;
+  }
+  .cp-table-container {
+    padding: 0;
+  }
+
+  /* Fit the comparison table within the viewport instead of horizontal-scrolling
+     the plan columns off-screen. Feature name + 3 compact check columns. */
+  .cp-table {
+    min-width: 0;
+  }
+  .cp-feature-col {
+    width: 43%;
+  }
+  .cp-plan-col {
+    width: 19%;
+    padding: 12px 2px;
+  }
+  .cp-plan-name {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 0;
+  }
+  /* Descriptions and CTAs live in the pricing section above; hide here to keep
+     the comparison header compact on mobile. */
+  .cp-plan-desc,
+  .cp-btn-wrap-light,
+  .cp-btn-wrap-dark {
+    display: none;
+  }
+  .cp-section-row td {
+    padding-top: 28px;
+  }
+  .cp-section-title {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .cp-feature-name {
+    font-size: 13px;
+    padding: 12px 8px 12px 0;
+  }
+  .cp-check {
+    padding: 12px 0;
+  }
+  .cp-dot {
+    width: 16px;
+    height: 16px;
+  }
+  .cp-dot::after {
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+  }
+  .cp-dash {
+    font-size: 16px;
+  }
+
+  .ws-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .ws-medium-card {
+    width: 100%;
+  }
+
+  .ws-brands-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ws-brand-box {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ws-hero-title {
+    font-size: clamp(1.75rem, 9vw, 2.25rem);
+  }
+  .ws-desc {
+    font-size: 1rem;
+    margin-bottom: 44px;
+  }
+  .ws-sub-title {
+    font-size: 22px;
+  }
+  .ws-card {
+    height: 200px;
+  }
+  .cp-title {
+    font-size: 30px;
+    line-height: 38px;
+  }
+  .ws-brands-grid {
+    grid-template-columns: 1fr;
+  }
+  .ws-brand-box {
+    height: 260px;
+  }
+}
+
+.cp-dash {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.2);
+}

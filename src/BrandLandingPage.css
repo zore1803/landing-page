@@ -1,0 +1,291 @@
+.brand-landing-page {
+  width: 100%;
+  background: #ffffff;
+}
+
+.bl-hero-wrapper {
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.brand-landing-hero {
+  position: relative;
+  width: 100%;
+  min-height: max(calc(100vh - 32px), 900px);
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: transparent; /* Removed dark background to fix edge bleed on zoom */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bl-hero-bg-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.brand-landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.bl-logo-img {
+  height: 40px;
+  filter: brightness(0) invert(1);
+}
+
+.bl-lets-talk-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px 12px 4px 16px;
+  gap: 10px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid #FFFFFF;
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0px 0px 16px rgba(0, 0, 0, 0.08));
+}
+
+.bl-lets-talk-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.brand-landing-hero-content {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bl-hero-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 87px;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+}
+
+.bl-hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+}
+
+.bl-hero-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto;
+  width: 250px;
+}
+
+.bl-hero-main-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 40px;
+  background: rgba(7, 8, 21, 0.1);
+  border: 1px solid #FFFFFF;
+  border-radius: 15px;
+  color: #FFFFFF;
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.42px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bl-hero-main-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bl-hero-btn-subtext {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bl-trusted-banner-glass {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 52px; /* Balanced padding on left and right */
+  margin: 0 80px 80px 80px;
+  height: 180px;
+  background: rgba(7, 8, 21, 0.15);
+  border: 2px solid #FFFFFF;
+  border-radius: 15px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(20px);
+}
+
+.bl-trusted-text {
+  font-family: 'Zalando Sans', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+  width: 288px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.bl-trusted-logos-viewport {
+  flex: 1; /* Take up the rest of the card width */
+  margin-left: 40px; /* Space between text and logos */
+  overflow: hidden;
+  /* Fade edges so logos cleanly disappear before hitting the text */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.bl-trusted-logos-track {
+  display: flex;
+  align-items: center;
+  gap: 60px; /* Spacing between logos */
+  width: max-content;
+  animation: blScrollMarquee 25s linear infinite;
+}
+
+@keyframes blScrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 30px)); } /* Shift exactly half the track width (including the gap between sets) */
+}
+
+.bl-trusted-logo-img {
+  max-width: 75px;
+  max-height: 75px;
+  object-fit: contain;
+}
+
+/* Individual Logo Overrides for Custom Sizing */
+.bl-trusted-logo-img.logo-1 { max-width: 65px; }
+.bl-trusted-logo-img.logo-2 { max-width: 75px; }
+.bl-trusted-logo-img.logo-3 { max-width: 115px; }
+.bl-trusted-logo-img.logo-4 { max-width: 75px; }
+.bl-trusted-logo-img.logo-dc { max-width: 110px; } /* Example: slightly larger for DataCircles */
+.bl-trusted-logo-img.logo-nitty { max-width: 110px; } /* Example: wider for Nitty Gritty text */
+
+/* Studio Belief Overrides for Brand Landing Page */
+.brand-landing-page .studio-belief {
+  padding: 120px 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.brand-landing-page .studio-belief .belief-quote {
+  font-size: 24px;
+  line-height: 1.5;
+  max-width: 100%; /* Allows it to span full container width, touching right side */
+  margin: 0 0 60px 0;
+  text-align: center;
+  text-align-last: center;
+}
+
+.brand-landing-page .studio-belief .belief-grid {
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.brand-landing-page .studio-belief .belief-item {
+  flex: 1;
+}
+
+
+/* Pricing Wrapper */
+.bl-pricing-wrapper {
+  padding: 0 18px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.bl-pricing-wrapper .pricing-section {
+  background: #070815 !important;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 40px; /* spacing before Wall of Love */
+}
+
+.bl-pricing-wrapper .pricing-title,
+.bl-pricing-wrapper .pricing-subtitle-italic {
+  color: #FFFFFF !important;
+}
+
+.bl-pricing-wrapper .pricing-subtitle {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Dark Mode Pricing Cards */
+.bl-pricing-wrapper .pricing-card::before {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  /* Retain the original orange border from Pricing.css or make it subtle white */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.bl-pricing-wrapper .pricing-card:hover::before {
+  border-color: #E06D20 !important;
+}
+
+.bl-pricing-wrapper .plan-name,
+.bl-pricing-wrapper .features-title,
+.bl-pricing-wrapper .feature-text,
+.bl-pricing-wrapper .custom-plan-title {
+  color: #FFFFFF !important;
+}
+
+.bl-pricing-wrapper .plan-desc,
+.bl-pricing-wrapper .subitem-text,
+.bl-pricing-wrapper .custom-plan-desc {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.bl-pricing-wrapper .pricing-cta-btn,
+.bl-pricing-wrapper .custom-plan-btn {
+  background-color: #FFFFFF !important;
+  color: #070815 !important;
+}
+
+.bl-pricing-wrapper .pricing-cta-btn:hover,
+.bl-pricing-wrapper .custom-plan-btn:hover {
+  background-color: #C55418 !important;
+  color: #FFFFFF !important;
+}
+
+.bl-pricing-wrapper .custom-plan-banner {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
