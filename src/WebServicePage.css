@@ -207,6 +207,263 @@
   min-height: 280px;
 }
 
+/* Features Grid */
+.ws-features-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.ws-feature-card {
+  position: relative;
+  width: 300px;
+  height: 583px;
+  background: #F0EDE4;
+  border-radius: 25px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.ws-feature-title {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 32px;
+  font-family: 'Zalando Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 39px;
+  color: #070815;
+  margin: 0;
+  z-index: 2;
+}
+
+.ws-feature-desc {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #504F4F;
+  margin: 0;
+  z-index: 2;
+}
+
+.ws-feature-desc strong {
+  font-weight: 700;
+}
+
+.text-white {
+  color: #FFFFFF !important;
+}
+
+@keyframes spin-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-flip-cw {
+  from { transform: scaleY(-1) rotate(0deg); }
+  to { transform: scaleY(-1) rotate(360deg); }
+}
+
+/* Card 1 */
+.ws-fc-1 .ws-circle-1 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 50px;
+  top: 181px;
+  background: radial-gradient(70% 70% at 35% 35%, #F0EDE4 0%, #E47317 67.79%, #C55418 87.08%, #8D3118 100%);
+  border-radius: 50%;
+  animation: spin-cw 15s linear infinite;
+}
+
+/* Card 2 */
+.ws-fc-2 .ws-circle-2 {
+  position: absolute;
+  height: 300px;
+  left: 0px;
+  right: 0px;
+  bottom: -47px;
+  background: radial-gradient(100% 100% at 50% 0%, #F0EDE4 0%, #E47317 30%, #C55418 70%, #8D3118 100%);
+  transform: scaleY(-1);
+  border-radius: 50%;
+  animation: spin-flip-cw 15s linear infinite;
+}
+.ws-fc-2 .ws-circle-3 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: -32px;
+  top: -70px;
+  background: radial-gradient(100% 100% at 50% 0%, #F0EDE4 0%, #E47317 30%, #C55418 70%, #8D3118 100%);
+  border-radius: 50%;
+  animation: spin-cw 15s linear infinite;
+}
+
+/* Card 3 */
+.ws-fc-3 .ws-circle-4 {
+  position: absolute;
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  left: 10%;
+  top: 110px;
+  border-radius: 50%;
+  /* Smooth conic gradient so rotation is visible without being blocky */
+  background: conic-gradient(from 0deg, #C55418 0%, #D6611B 50%, #C55418 100%);
+  -webkit-mask: radial-gradient(transparent 52%, black 53%);
+  mask: radial-gradient(transparent 52%, black 53%);
+  animation: spin-cw 15s linear infinite;
+}
+
+/* Card 4 */
+.ws-fc-4 .ws-vector {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.ws-sunburst-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 100px;
+  background: #C55418;
+  border-radius: 20px;
+  transform-origin: center center;
+}
+
+.ws-sunburst-line:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg) translateY(-80px); }
+.ws-sunburst-line:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg) translateY(-80px); }
+.ws-sunburst-line:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateY(-80px); }
+.ws-sunburst-line:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg) translateY(-80px); }
+.ws-sunburst-line:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg) translateY(-80px); }
+.ws-sunburst-line:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg) translateY(-80px); }
+.ws-sunburst-line:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg) translateY(-80px); }
+.ws-sunburst-line:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg) translateY(-80px); }
+
+/* Every Website Comes With */
+.ws-every-website-section {
+  width: 100%;
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.ws-every-website-inner {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 40px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ws-every-title {
+  font-family: 'Zalando Sans', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #070815;
+  margin: 0 0 40px;
+}
+
+.ws-every-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.ws-every-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  width: 300px;
+  height: 230px;
+  border-radius: 25px;
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 280px;
+  max-width: 320px;
+}
+
+.ws-every-card-dark {
+  background: #EE7A1D;
+}
+
+.ws-every-card-light {
+  background: rgba(244, 242, 235, 0.75);
+}
+
+.ws-every-icon {
+  width: 25px;
+  height: 25px;
+  margin-bottom: auto; /* Pushes the rest of the content to the bottom */
+}
+
+.ws-every-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ws-every-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+  color: #222222;
+  margin: 0;
+}
+
+.ws-every-heading.text-white {
+  color: #FFFFFF;
+}
+
+.ws-every-line {
+  width: 100%;
+  height: 0;
+  margin: 21px 0 7px 0;
+}
+
+.ws-every-line-dark {
+  border-top: 0.5px solid #FFFFFF;
+}
+
+.ws-every-line-light {
+  border-top: 0.5px solid #EE7A1D;
+}
+
+.ws-every-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.44;
+  color: #504F4F;
+  margin: 0;
+}
+
+.ws-every-desc.text-white {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 /* Compare Plans */
 /* Compare Plans */
 .compare-plans-section {
@@ -250,14 +507,24 @@
 .cp-table-container {
   width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   background: transparent;
-  /* Hide scrollbar for Firefox */
-  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  padding-bottom: 15px; /* Give room for the scrollbar */
 }
 
-/* Hide scrollbar for Chrome, Safari, Edge */
+/* Custom scrollbar to make it draggable if touchpad fails */
 .cp-table-container::-webkit-scrollbar {
-  display: none;
+  height: 6px;
+}
+.cp-table-container::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+.cp-table-container::-webkit-scrollbar-thumb {
+  background: #EE7A1D;
+  border-radius: 4px;
 }
 
 .cp-table {

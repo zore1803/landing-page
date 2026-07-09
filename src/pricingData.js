@@ -60,7 +60,7 @@ export const pricingServices = [
     plans: [
       {
         name: 'Essential',
-        desc: 'A clean, responsive website that gets your brand online.',
+        desc: 'A strong foundation for brands ready to get started',
         features: [
           { text: 'Custom Responsive Design' },
           { text: 'Up to 5 Pages' },
@@ -73,7 +73,7 @@ export const pricingServices = [
       },
       {
         name: 'Advance',
-        desc: 'A content-managed site built to grow with your business.',
+        desc: 'Perfect for growing businesses ready to elevate their digital presence',
         features: [
           { text: 'Essential Kit' },
           { text: 'Up to 12 Pages' },
@@ -86,7 +86,7 @@ export const pricingServices = [
       },
       {
         name: 'Ultimate',
-        desc: 'A fully custom platform with commerce and ongoing care.',
+        desc: 'The most comprehensive solution for brands that want it all',
         features: [
           { text: 'Essential Kit' },
           { text: 'Advance Kit' },

@@ -6,6 +6,7 @@ import Booking from './Booking';
 import ServicePricing from './ServicePricing';
 import ContactHeroBg from './ContactHeroBg';
 import copperWebLogo from './assets/logos/CopperWeb.svg';
+import fourthCardSvg from './assets/fourthcard.svg';
 
 import './WebServicePage.css';
 
@@ -16,56 +17,33 @@ export default function WebServicePage() {
 
   const compareSections = [
     {
-      title: "Brand Identity Design & Strategy",
+      title: "Design & Build",
       features: [
-        { name: "Brand Voice & Tone Guidelines", plans: [true, true, true] },
-        { name: "Target Audience Definition", plans: [true, true, true] },
-        { name: "Competitor Analysis", plans: [true, true, true] },
-        { name: "Logo System", plans: [true, true, true] },
-        { name: "Typography System", plans: [true, true, true] },
-        { name: "Color System", plans: [true, true, true] },
-        { name: "Brand Illustrations", plans: [true, true, true] },
-        { name: "Pattern & Texture Library", plans: [true, true, true] },
-        { name: "Brand Guidelines", plans: [true, true, true] }
+        { name: "Custom Responsive Design", plans: [true, true, true] },
+        { name: "Mobile & Tablet Optimization", plans: [true, true, true] },
+        { name: "Content Management System (CMS)", plans: [false, true, true] },
+        { name: "Blog / News Section", plans: [false, true, true] },
+        { name: "E-commerce / Product Catalogue", plans: [false, false, true] },
+        { name: "Secure Checkout", plans: [false, false, true] }
       ]
     },
     {
-      title: "Corporate Branding & Business Assets",
+      title: "Marketing & Analytics",
       features: [
-        { name: "Business Stationery", plans: [false, true, true] },
-        { name: "Visiting Card", plans: [false, true, true] },
-        { name: "Letterhead", plans: [false, true, true] },
-        { name: "Envelope", plans: [false, true, true] },
-        { name: "Invoice & Quotation Template", plans: [false, true, true] },
-        { name: "Stamp/Seal Design", plans: [false, true, true] },
-        { name: "Employee ID Card", plans: [false, true, true] },
-        { name: "Email Signature", plans: [false, true, true] }
+        { name: "Contact Form Integration", plans: [true, true, true] },
+        { name: "Basic On-Page SEO Setup", plans: [true, true, true] },
+        { name: "Advanced SEO Optimization", plans: [false, true, true] },
+        { name: "Google Analytics Integration", plans: [false, true, true] }
       ]
     },
     {
-      title: "Marketing Collateral & Social Media Design",
+      title: "Hosting, Support & Advanced",
       features: [
-        { name: "Brochure/Catalogue Design", plans: [false, true, true] },
-        { name: "Flyer/Leaflet Design", plans: [false, true, true] },
-        { name: "Banner/Standee Design", plans: [false, true, true] },
-        { name: "Social Media Post Design", plans: [false, true, true] },
-        { name: "Reel/Story Template", plans: [false, true, true] },
-        { name: "Presentation Template", plans: [false, true, true] },
-        { name: "Virtual Meeting Background", plans: [false, true, true] },
-        { name: "Newsletter Template", plans: [false, true, true] }
-      ]
-    },
-    {
-      title: "Packaging, Environmental & Merchandise Design",
-      features: [
-        { name: "Product Packaging", plans: [false, false, true] },
-        { name: "Product Label Design", plans: [false, false, true] },
-        { name: "Hand Tag Design", plans: [false, false, true] },
-        { name: "Merchandise Design", plans: [false, false, true] },
-        { name: "Uniform/Apparel Design", plans: [false, false, true] },
-        { name: "Signage & Wayfinding", plans: [false, false, true] },
-        { name: "Voucher/Coupon Design", plans: [false, false, true] },
-        { name: "Exhibition/Trade Show Booth", plans: [false, false, true] }
+        { name: "Domain & Hosting Setup", plans: [true, true, true] },
+        { name: "Performance & Speed Optimization", plans: [false, true, true] },
+        { name: "Third-Party API Integrations", plans: [false, false, true] },
+        { name: "Ongoing Maintenance & Support", plans: [false, false, true] },
+        { name: "Priority Support", plans: [false, false, true] }
       ]
     }
   ];
@@ -98,95 +76,34 @@ export default function WebServicePage() {
             </p>
           </div>
 
-          <div className="ws-subsection">
-            <h3 className="ws-sub-title reveal-up"><strong>Content Management System</strong> <span className="font-regular">(CMS)</span></h3>
-            <p className="ws-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
-              Manage your own website through a built-in content management system. Update text and images, and publish new posts, without needing a developer.
-            </p>
-            <div className="ws-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
-              <span className="ws-skill-tag">Brand Strategy</span>
-              <span className="ws-skill-tag">Logo Design</span>
-              <span className="ws-skill-tag">Brand Guidelines</span>
-              <span className="ws-skill-tag">Typography System</span>
-              <span className="ws-skill-tag">Color Palette</span>
-              <span className="ws-skill-tag">Brand Illustrations</span>
-              <span className="ws-skill-tag">Icons & Favicon</span>
-              <span className="ws-skill-tag">Visual Assets</span>
+          <div className="ws-features-grid">
+            {/* Card 1 */}
+            <div className="ws-feature-card ws-fc-1 reveal-up">
+              <h3 className="ws-feature-title">Content Management System(CMS)</h3>
+              <div className="ws-circle-1"></div>
+              <p className="ws-feature-desc">Manage your website through a <strong>built-in content management system</strong>. Update text and images, and publish new posts without a developer.</p>
             </div>
-            <div className="ws-grid-identity">
-              <div className="ws-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="ws-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="ws-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
-            </div>
-          </div>
 
-          <div className="ws-section-divider"></div>
-
-          <div className="ws-subsection">
-            <h3 className="ws-sub-title reveal-up"><strong>Third Party</strong> <span className="font-regular">Integrations</span></h3>
-            <p className="ws-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
-              Connect the tools your business runs on, booking calendars, live chat, analytics, or newsletters, directly into your website.
-            </p>
-            <div className="ws-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
-              <span className="ws-skill-tag">Visiting Card</span>
-              <span className="ws-skill-tag">Letterhead</span>
-              <span className="ws-skill-tag">Envelope Design</span>
-              <span className="ws-skill-tag">Invoice & Quotation</span>
-              <span className="ws-skill-tag">Email Signature</span>
-              <span className="ws-skill-tag">Presentation Template</span>
-              <span className="ws-skill-tag">Employee ID Card</span>
+            {/* Card 2 */}
+            <div className="ws-feature-card ws-fc-2 reveal-up" style={{ transitionDelay: '100ms' }}>
+              <h3 className="ws-feature-title text-white">Third Party Integrations</h3>
+              <div className="ws-circle-2"></div>
+              <div className="ws-circle-3"></div>
+              <p className="ws-feature-desc text-white">Connects the <strong>tools your business runs on</strong>, booking calendars, live chat, analytics or newsletter or directly into your website</p>
             </div>
-            <div className="ws-grid-corporate">
-              <div className="ws-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="ws-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="ws-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
-            </div>
-          </div>
 
-          <div className="ws-section-divider"></div>
-
-          <div className="ws-subsection">
-            <h3 className="ws-sub-title reveal-up"><strong>SEO</strong> <span className="font-regular">Setup</span></h3>
-            <p className="ws-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
-              On-page SEO is built into every website, giving your business a strong foundation to be found by customers on search engines.
-            </p>
-            <div className="ws-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
-              <span className="ws-skill-tag">Brochure/Catalogue Design</span>
-              <span className="ws-skill-tag">Flyer/Poster Design</span>
-              <span className="ws-skill-tag">Social Media Template & Banner</span>
-              <span className="ws-skill-tag">Presentation Design</span>
-              <span className="ws-skill-tag">Digital Marketing Assets</span>
-              <span className="ws-skill-tag">Newsletter Design</span>
+            {/* Card 3 */}
+            <div className="ws-feature-card ws-fc-3 reveal-up" style={{ transitionDelay: '200ms' }}>
+              <h3 className="ws-feature-title">SEO Setup</h3>
+              <div className="ws-circle-4"></div>
+              <p className="ws-feature-desc"><strong>On page SEO</strong> is built into every website, giving your business a strong foundation to be found by customer on search engines</p>
             </div>
-            <div className="ws-grid-marketing">
-              <div className="ws-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="ws-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="ws-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
-              <div className="ws-card bg-light-gray reveal-up" style={{ transitionDelay: '600ms' }}></div>
-              <div className="ws-card bg-light-blue reveal-up" style={{ transitionDelay: '700ms' }}></div>
-              <div className="ws-card bg-dark reveal-up" style={{ transitionDelay: '800ms' }}></div>
-            </div>
-          </div>
 
-          <div className="ws-section-divider"></div>
-
-          <div className="ws-subsection">
-            <h3 className="ws-sub-title reveal-up"><strong>Hosting</strong> <span className="font-regular">& Fast-Loading</span></h3>
-            <p className="ws-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
-              Every website launches with the first year of hosting, an SSL certificate, and a performance-optimised build engineered to load quickly.
-            </p>
-            <div className="ws-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
-              <span className="ws-skill-tag">Label & Box Design</span>
-              <span className="ws-skill-tag">Carry Bag/Tote Design</span>
-              <span className="ws-skill-tag">Signage & Wayfinding</span>
-              <span className="ws-skill-tag">Office Branding (Wall Graphics)</span>
-              <span className="ws-skill-tag">T-Shirt/Uniform Design</span>
-              <span className="ws-skill-tag">Mug/Bottle Branding</span>
-            </div>
-            <div className="ws-grid-packaging">
-              <div className="ws-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="ws-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="ws-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+            {/* Card 4 */}
+            <div className="ws-feature-card ws-fc-4 reveal-up" style={{ transitionDelay: '300ms' }}>
+              <h3 className="ws-feature-title">Hosting & Fast-Loading</h3>
+              <img src={fourthCardSvg} alt="Hosting & Fast-Loading" className="ws-vector" />
+              <p className="ws-feature-desc">Every website launches with the first year of hosting, an SSL certificate and a <strong>performance optimized</strong> build engineered to load quickly</p>
             </div>
           </div>
         </div>
@@ -194,6 +111,79 @@ export default function WebServicePage() {
 
       {/* Pricing */}
       <ServicePricing activeService="web" showToggle={false} />
+
+      {/* Every Website Comes With */}
+      <div className="ws-every-website-section">
+        <div className="ws-every-website-inner">
+          <h2 className="ws-every-title reveal-up">Every Website Comes With</h2>
+          
+          <div className="ws-every-grid">
+            {/* Card 1 */}
+            <div className="ws-every-card ws-every-card-dark reveal-up">
+              <div className="ws-every-icon">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.5 18C15.5376 18 18 15.5376 18 12.5C18 9.46243 15.5376 7 12.5 7C9.46243 7 7 9.46243 7 12.5C7 15.5376 9.46243 18 12.5 18Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M4 21L7.5 17.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12.5 7L16 3.5C16.3314 3.16863 16.8686 3.16863 17.2 3.5L21.5 7.8C21.8314 8.13137 21.8314 8.66863 21.5 9L18 12.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div className="ws-every-content">
+                <h4 className="ws-every-heading text-white">Custom Figma Design</h4>
+                <div className="ws-every-line ws-every-line-dark"></div>
+                <p className="ws-every-desc text-white">Approved before development begins</p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="ws-every-card ws-every-card-light reveal-up" style={{ transitionDelay: '100ms' }}>
+              <div className="ws-every-icon">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="6" width="17" height="13" rx="2" stroke="#070815" strokeWidth="2"/>
+                  <path d="M4 11H21" stroke="#070815" strokeWidth="2"/>
+                  <circle cx="7.5" cy="15.5" r="1" fill="#070815"/>
+                </svg>
+              </div>
+              <div className="ws-every-content">
+                <h4 className="ws-every-heading">First Year Hosting</h4>
+                <div className="ws-every-line ws-every-line-light"></div>
+                <p className="ws-every-desc">Includes SSL certificate and domain setup</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="ws-every-card ws-every-card-light reveal-up" style={{ transitionDelay: '200ms' }}>
+              <div className="ws-every-icon">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="5" y="6" width="15" height="9" rx="1" stroke="#070815" strokeWidth="2"/>
+                  <path d="M3 18H22" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M11 15V18" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M14 15V18" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <div className="ws-every-content">
+                <h4 className="ws-every-heading">Responsive Design</h4>
+                <div className="ws-every-line ws-every-line-light"></div>
+                <p className="ws-every-desc">Across desktop, tablet and mobile</p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="ws-every-card ws-every-card-light reveal-up" style={{ transitionDelay: '300ms' }}>
+              <div className="ws-every-icon">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11.5" cy="11.5" r="5.5" stroke="#070815" strokeWidth="2"/>
+                  <path d="M20 20L15.5 15.5" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <div className="ws-every-content">
+                <h4 className="ws-every-heading">Hosting & Fast-Loading</h4>
+                <div className="ws-every-line ws-every-line-light"></div>
+                <p className="ws-every-desc">Optimized for search visibility</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Compare Plans */}
       <div className="compare-plans-section">
@@ -208,21 +198,21 @@ export default function WebServicePage() {
                   <th className="cp-feature-col"></th>
                   <th className="cp-plan-col">
                     <div className="cp-plan-name reveal-up" style={{ transitionDelay: '200ms' }}>Essential</div>
-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '300ms' }}>Build a clear, professional brand identity ready for launch</div>
+                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '300ms' }}>A strong foundation for brands ready to get started</div>
                     <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '400ms' }}>
                       <button className="cp-btn-light">Get Started</button>
                     </div>
                   </th>
                   <th className="cp-plan-col cp-highlight-col">
                     <div className="cp-plan-name reveal-up" style={{ transitionDelay: '300ms' }}>Advance</div>
-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '400ms' }}>Strengthen your brand with business, communication and digital assets</div>
+                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '400ms' }}>Perfect for growing businesses ready to elevate their digital presence</div>
                     <div className="cp-btn-wrap-dark reveal-up" style={{ transitionDelay: '500ms' }}>
                       <button className="cp-btn-dark">Get Started</button>
                     </div>
                   </th>
                   <th className="cp-plan-col">
-                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '400ms' }}>Premium</div>
-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '500ms' }}>Scale your brand with marketing, packaging and promotional solutions</div>
+                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '400ms' }}>Ultimate</div>
+                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '500ms' }}>The most comprehensive solution for brands that want it all</div>
                     <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '600ms' }}>
                       <button className="cp-btn-light">Get Started</button>
                     </div>

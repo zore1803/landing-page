@@ -12,6 +12,7 @@ import ProjectsPage from './ProjectsPage';
 import BrandServicePage from './BrandServicePage';
 import WebServicePage from './WebServicePage';
 import BrandLandingPage from './BrandLandingPage';
+import WebLandingPage from './WebLandingPage';
 
 import CoordinateSectionComponent from './CoordinateSection';
 import ProjectsSectionComponent from './ProjectsSection';
@@ -224,6 +225,7 @@ function App() {
         <Route path="/copper-brand" element={<BrandServicePage />} />
         <Route path="/copper-web" element={<WebServicePage />} />
         <Route path="/copper-brand-landingpage" element={<BrandLandingPage />} />
+        <Route path="/copper-web-landing" element={<WebLandingPage />} />
       </Routes>
     </>
   );

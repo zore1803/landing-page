@@ -1,0 +1,32 @@
+<svg width="300" height="583" viewBox="0 0 300 583" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-group {
+  transform-origin: 149.5px 237.5px;
+  animation: spin 15s linear infinite;
+}
+</style>
+<g clip-path="url(#clip0_79_5441)">
+<rect width="300" height="583" rx="25" fill="#F0EDE4"/>
+<g class="spin-group">
+<path d="M149.5 59V130.4M149.5 344.6V416M49 237.5H-18M317 237.5H250M268.063 363.849L220.688 313.363M268.063 112.549L220.688 163.036M30.9363 363.849L78.3125 313.363M30.9363 112.549L78.3125 163.036" stroke="url(#paint0_radial_79_5441)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_79_5441" x="-47" y="30" width="393" height="415" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_79_5441"/>
+</filter>
+<radialGradient id="paint0_radial_79_5441" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(149.5 237.5) rotate(90) scale(178.5 167.5)">
+<stop stop-color="#C55418"/>
+<stop offset="1" stop-color="#EE7A1D"/>
+</radialGradient>
+<clipPath id="clip0_79_5441">
+<rect width="300" height="583" rx="25" fill="white"/>
+</clipPath>
+</defs>
+</svg>

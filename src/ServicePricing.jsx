@@ -26,10 +26,21 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
           <>
             <h2 className="pricing-title reveal-up">Pricing</h2>
             <div className="pricing-header-text reveal-up" style={{ transitionDelay: '100ms' }}>
-              <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
-              <p className="pricing-subtitle">
-                Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
-              </p>
+              {activeKey === 'web' ? (
+                <>
+                  <p className="pricing-subtitle-italic">Find The Perfect Website Package For Your Brand</p>
+                  <p className="pricing-subtitle">
+                    Every business has different needs. Explore our website packages to find the right combination of design, development, and ongoing support for your brand.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
+                  <p className="pricing-subtitle">
+                    Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
+                  </p>
+                </>
+              )}
             </div>
           </>
         )}

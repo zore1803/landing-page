@@ -1,0 +1,34 @@
+<svg width="300" height="583" viewBox="0 0 300 583" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_f_84_5496)">
+<path d="M300 480C300 397.157 232.843 330 150 330C67.1573 330 2.03558e-05 397.157 1.31134e-05 480C5.87108e-06 562.843 67.1573 630 150 630C232.843 630 300 562.843 300 480Z" fill="url(#paint0_radial_84_5496)"/>
+<path d="M150 629.5C232.567 629.5 299.5 562.567 299.5 480C299.5 397.433 232.567 330.5 150 330.5C67.4335 330.5 0.500029 397.433 0.500013 480C0.500006 562.567 67.4334 629.5 150 629.5Z" stroke="black"/>
+</g>
+<g filter="url(#filter1_f_84_5496)">
+<path d="M368 130C368 240.457 278.457 330 168 330C57.5431 330 -32 240.457 -32 130C-32 19.5431 57.5431 -70 168 -70C278.457 -70 368 19.5431 368 130Z" fill="url(#paint1_radial_84_5496)"/>
+<path d="M168 -69.5C278.181 -69.5 367.5 19.8192 367.5 130C367.5 240.181 278.181 329.5 168 329.5C57.8192 329.5 -31.5 240.181 -31.5 130C-31.5 19.8192 57.8192 -69.5 168 -69.5Z" stroke="black"/>
+</g>
+<defs>
+<filter id="filter0_f_84_5496" x="-100" y="230" width="500" height="500" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="0" result="effect1_foregroundBlur_84_5496"/>
+</filter>
+<filter id="filter1_f_84_5496" x="-132" y="-170" width="600" height="600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="0" result="effect1_foregroundBlur_84_5496"/>
+</filter>
+<radialGradient id="paint0_radial_84_5496" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(150 630) rotate(-90) scale(300)">
+<stop stop-color="#F0EDE4"/>
+<stop offset="0.3" stop-color="#E47317"/>
+<stop offset="0.7" stop-color="#C55418"/>
+<stop offset="1" stop-color="#8D3118"/>
+</radialGradient>
+<radialGradient id="paint1_radial_84_5496" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(168 -70) rotate(90) scale(400)">
+<stop stop-color="#F0EDE4"/>
+<stop offset="0.3" stop-color="#E47317"/>
+<stop offset="0.7" stop-color="#C55418"/>
+<stop offset="1" stop-color="#8D3118"/>
+</radialGradient>
+</defs>
+</svg>
