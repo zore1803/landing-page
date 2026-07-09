@@ -130,14 +130,14 @@ export default function ServicesSection() {
                 <p className="service-desc max-w-400 reveal-up" style={{ transitionDelay: '200ms' }}>
                   <span className="desc-highlight text-light-orange">We take care of everything your website needs,</span> from custom design and development to secure hosting, routine maintenance, and continuous optimization—so you can focus on growing your business while your website performs at its best.
                 </p>
-                <div className="service-more reveal-up" style={{ transitionDelay: '500ms' }}>
+                <Link to="/services/copperweb" className="service-more reveal-up" style={{textDecoration: 'none', transitionDelay: '500ms'}}>
                   Want To <strong>Know More?</strong>
                   <div className="more-arrow-btn">
                     <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M1 1L5 4L1 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
-                </div>
+                </Link>
               </div>
               <div className="service-right-col grid-2">
                 <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>

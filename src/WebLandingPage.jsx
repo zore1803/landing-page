@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './WebLandingPage.css';
 import logoImg from './assets/logo.svg';
 import BrandLandingHeroBg from './BrandLandingHeroBg';
@@ -46,7 +47,7 @@ export default function WebLandingPage() {
             <BrandLandingHeroBg />
           </div>
         <nav className="brand-landing-nav">
-          <img src={logoImg} alt="Logo" className="bl-logo-img" />
+          <Link to="/"><img src={logoImg} alt="Logo" className="bl-logo-img" /></Link>
           <button className="bl-lets-talk-btn" onClick={handleCalendlyPopup}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="4" y="5" width="16" height="15" rx="3.5" ry="3.5"></rect>
