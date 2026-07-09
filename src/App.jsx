@@ -372,8 +372,8 @@ function App() {
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/copper-brand" element={<BrandServicePage />} />
           <Route path="/copper-web" element={<WebServicePage />} />
-          <Route path="/copper-brand-landingpage" element={<BrandLandingPage />} />
-          <Route path="/copper-web-landing" element={<WebLandingPage />} />
+          <Route path="/copperbrand" element={<BrandLandingPage />} />
+          <Route path="/copperweb" element={<WebLandingPage />} />
           <Route path="/terms-and-conditions" element={<TermsConditions />} />
         </Routes>
       </ErrorBoundary>
