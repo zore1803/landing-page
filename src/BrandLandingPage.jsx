@@ -32,6 +32,9 @@ export default function BrandLandingPage() {
       window.Calendly.initPopupWidget({
         url: 'https://calendly.com/thecopperstudio/30min?hide_gdpr_banner=1&hide_event_type_details=1&hide_landing_page_details=1&background_color=ffffff&text_color=070815&primary_color=ee7a1d'
       });
+    } else {
+      // Fallback in case adblocker blocks the script or it hasn't loaded yet
+      window.open('https://calendly.com/thecopperstudio/30min', '_blank');
     }
   };
 
