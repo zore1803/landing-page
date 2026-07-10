@@ -78,7 +78,7 @@ const Footer = () => {
 
           <div className="footer-legal">
             <div className="legal-links">
-              <a href="#terms">Terms & Conditions</a>
+              <Link to="/terms-and-conditions">Terms & Conditions</Link>
               <span className="separator"></span>
               <a href="#privacy">Privacy Policy</a>
               <span className="separator"></span>

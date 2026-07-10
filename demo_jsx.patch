@@ -1,0 +1,2901 @@
+﻿diff --git a/src/App.jsx b/src/App.jsx
+index cb4e43f..2b6a390 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -1,33 +1,24 @@
+-import React, { useEffect, useRef, useState, useMemo, Suspense, lazy } from 'react';
+-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
++import React, { useEffect, useMemo } from 'react';
++import { Routes, Route } from 'react-router-dom';
+ import './App.css';
+-import Navbar from './Navbar';
++import './Home_Responsive.css';
++import CoordinateSection from './CoordinateSection';
++import ProjectsSection from './ProjectsSection';
++import ServicePricing from './ServicePricing';
++import WallOfLove from './WallOfLove';
++import FAQ from './FAQ';
++import Booking from './Booking';
+ import Footer from './Footer';
+-
++import ServicesSection from './ServicesSection';
+ import StudioPage from './StudioPage';
+ import ServicesPage from './ServicesPage';
+ import ServiceDetail from './ServiceDetail';
+ import ContactPage from './ContactPage';
+ import ProjectsPage from './ProjectsPage';
+-import BrandServicePage from './BrandServicePage';
+-import WebServicePage from './WebServicePage';
+-import BrandLandingPage from './BrandLandingPage';
+-import WebLandingPage from './WebLandingPage';
+-
+-import CoordinateSectionComponent from './CoordinateSection';
+-import ProjectsSectionComponent from './ProjectsSection';
+-import ServicePricingComponent from './ServicePricing';
+-import WallOfLoveComponent from './WallOfLove';
+-import FAQComponent from './FAQ';
+-import BookingComponent from './Booking';
+-import ServicesSectionComponent from './ServicesSection';
+-import HomepageHeroBg from './HomepageHeroBg';
++import Navbar from './Navbar';
+ 
+ import logoImg from './assets/logo.svg';
+-
+ function Home() {
+-  const navigate = useNavigate();
+-
+   // Prevent downloading images/videos via right-click
+   useEffect(() => {
+     const handleContextMenu = (e) => {
+@@ -47,42 +38,54 @@ function Home() {
+   // 14 stripes based on the Figma spec (Rectangle 89 through 102)
+   const stripes = Array.from({ length: 14 });
+ 
+-  const trustedRef = useRef(null);
+-
+-  // Intersection Observer for Services Reveal
+-  const servicesRef = useRef(null);
+-
+-  useEffect(() => {
+-    // Trusted Brands Observer
+-    const trustedObserver = new IntersectionObserver(
+-      ([entry]) => {
+-        if (entry.isIntersecting) {
+-          setIsTrustedVisible(true);
+-        }
+-      },
+-      { threshold: 0.3 }
+-    );
+-    if (trustedRef.current) {
+-      trustedObserver.observe(trustedRef.current);
+-    }
++  // Generate the complex 3-stage wave animation for the hero stripes
++  const stripeAnimationCSS = useMemo(() => {
++    const TOTAL_TIME = 9; // seconds loop
++    const FPS = 15;
++    const frames = TOTAL_TIME * FPS;
++    let css = '';
++    
++    for (let i = 0; i < 14; i++) {
++      const d = Math.min(i, 13 - i);
++      // Define the peak hit times for this specific stripe
++      const peaks = [
++        0.5 + i * 0.15,               // Phase 1: Left to right
++        3.5 + (13 - i) * 0.15,        // Phase 2: Right to left
++        6.5 + d * 0.15                // Phase 3a: Outside to inside
++      ];
++      if (d < 6) {
++        peaks.push(7.4 + (6 - d) * 0.15); // Phase 3b: Repel back
++      }
+ 
+-    // Services Observer
+-    const servicesObserver = new IntersectionObserver(
+-      ([entry]) => {
+-        if (entry.isIntersecting) {
+-          setIsServicesVisible(true);
+-        }
+-      },
+-      { threshold: 0.1 } // Lower threshold so it triggers as soon as the grid starts coming up
+-    );
+-    if (servicesRef.current) {
+-      servicesObserver.observe(servicesRef.current);
++      let keyframes = `@keyframes complexPulse${i} {\n`;
++      
++      // Calculate brightness smoothly over time for a perfect collision blend
++      for (let frame = 0; frame <= frames; frame++) {
++        const t = frame / FPS;
++        let maxBright = 0.2;
++        
++        peaks.forEach(peak => {
++          let bright = 0.2;
++          if (t >= peak - 0.2 && t <= peak) {
++            const progress = (t - (peak - 0.2)) / 0.2;
++            bright = 0.2 + progress * 1.0;
++          } else if (t > peak && t <= peak + 0.6) {
++            const progress = (t - peak) / 0.6;
++            bright = 1.2 - progress * 1.0;
++          }
++          if (bright > maxBright) maxBright = bright;
++        });
++        
++        const percent = ((t / TOTAL_TIME) * 100).toFixed(1);
++        const progress = (maxBright - 0.2) / 1.0;
++        const saturate = (0.5 + progress * 0.6).toFixed(2);
++        
++        keyframes += `  ${percent}% { filter: brightness(${maxBright.toFixed(2)}) saturate(${saturate}); }\n`;
++      }
++      keyframes += `}\n`;
++      css += keyframes;
+     }
+-
+-    return () => {
+-      trustedObserver.disconnect();
+-      servicesObserver.disconnect();
+-    };
++    return css;
+   }, []);
+ 
+   return (
+@@ -91,18 +94,37 @@ function Home() {
+         <>
+           <div className="landing-container" id="home">
+             {/* Background blobs / ellipses */}
+-      {/* Homepage Background SVG with animated stripes */}
+-      <HomepageHeroBg />
++      <div className="blobs-container">
++        <div className="ellipse ellipse-2"></div>
++        <div className="ellipse ellipse-3"></div>
++        <div className="ellipse ellipse-4"></div>
++        <div className="ellipse ellipse-5"></div>
++        <div className="ellipse ellipse-9"></div>
++        <div className="ellipse ellipse-1"></div>
++        <div className="ellipse ellipse-8"></div>
++        <div className="ellipse ellipse-6"></div>
++        <div className="ellipse ellipse-7"></div>
++      </div>
++
++
++
++      {/* Stripes overlay (Group 12 -> Group 105) */}
++      <style>{stripeAnimationCSS}</style>
++      <div className="stripes-wrapper">
++        {stripes.map((_, index) => (
++          <div key={index} className="stripe-container">
++            <div 
++              className="stripe-auto"
++              style={{ animation: `complexPulse${index} 9s infinite linear` }}
++            ></div>
++            <div className="stripe-hover"></div>
++          </div>
++        ))}
++      </div>
+       
+       {/* Logo */}
+       <div className="logo-container">
+-        <img 
+-          src={logoImg} 
+-          alt="Copper Studio Logo" 
+-          className="main-center-logo" 
+-          fetchPriority="high"
+-          loading="eager"
+-        />
++        <img src={logoImg} alt="Copper Studio Logo" className="main-center-logo" />
+         <h2 className="hero-subtitle">From brand identity to custom websites, <i>all under one roof.</i></h2>
+       </div>
+ 
+@@ -112,11 +134,7 @@ function Home() {
+           <div className="scroll-text">scroll to explore</div>
+         
+         <div className="bottom-center-pill">
+-          <a 
+-            href="/projects" 
+-            className="view-projects-btn" 
+-            onClick={(e) => { e.preventDefault(); navigate('/projects'); }}
+-          >
++          <a href="#projects" className="view-projects-btn">
+             View Projects
+           </a>
+           <a href="#contact" className="lets-talk-dark-btn">
+@@ -133,14 +151,26 @@ function Home() {
+       </div>
+     </div>
+ 
+-      {/* Offscreen sections without Suspense to prevent hydration blocking */}
+-      <ServicesSectionComponent />
+-      <CoordinateSectionComponent />
+-      <ProjectsSectionComponent />
+-      <ServicePricingComponent />
+-      <WallOfLoveComponent />
+-      <FAQComponent />
+-      <BookingComponent />
++      {/* New Services and Trusted Brands Section */}
++      <ServicesSection />
++
++      {/* Coordinate Section */}
++      <CoordinateSection />
++
++      {/* Projects Section */}
++      <ProjectsSection />
++
++      {/* Pricing Section */}
++      <ServicePricing />
++
++      {/* Testimonials / Wall Of Love Section */}
++      <WallOfLove />
++
++      {/* FAQ Section */}
++      <FAQ />
++
++      {/* Booking Section */}
++      <Booking />
+         </>
+ 
+       <Footer />
+@@ -162,72 +192,16 @@ function StudioRoute() {
+   );
+ }
+ 
+-function ScrollToTop() {
+-  const { pathname } = useLocation();
+-
+-  useEffect(() => {
+-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+-  }, [pathname]);
+-
+-  return null;
+-}
+-
+-function GlobalScrollReveal() {
+-  const { pathname } = useLocation();
+-
+-  useEffect(() => {
+-    const observer = new IntersectionObserver(
+-      (entries) => {
+-        entries.forEach(entry => {
+-          if (entry.isIntersecting) {
+-            entry.target.classList.add('is-revealed');
+-            observer.unobserve(entry.target);
+-          }
+-        });
+-      },
+-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+-    );
+-
+-    const observeElements = () => {
+-      document.querySelectorAll('.reveal-up:not(.is-revealed), .reveal-right:not(.is-revealed)').forEach(el => {
+-        observer.observe(el);
+-      });
+-    };
+-
+-    observeElements();
+-    
+-    const mutationObserver = new MutationObserver(() => {
+-      observeElements();
+-    });
+-    mutationObserver.observe(document.body, { childList: true, subtree: true });
+-
+-    return () => {
+-      observer.disconnect();
+-      mutationObserver.disconnect();
+-    };
+-  }, [pathname]);
+-
+-  return null;
+-}
+-
+ function App() {
+   return (
+-    <>
+-      <ScrollToTop />
+-      <GlobalScrollReveal />
+-      <Routes>
+-        <Route path="/" element={<Home />} />
+-        <Route path="/studio" element={<StudioRoute />} />
+-        <Route path="/services" element={<ServicesPage />} />
+-        <Route path="/services/:slug" element={<ServiceDetail />} />
+-        <Route path="/contact" element={<ContactPage />} />
+-        <Route path="/projects" element={<ProjectsPage />} />
+-        <Route path="/copper-brand" element={<BrandServicePage />} />
+-        <Route path="/copper-web" element={<WebServicePage />} />
+-        <Route path="/copper-brand-landingpage" element={<BrandLandingPage />} />
+-        <Route path="/copper-web-landing" element={<WebLandingPage />} />
+-      </Routes>
+-    </>
++    <Routes>
++      <Route path="/" element={<Home />} />
++      <Route path="/studio" element={<StudioRoute />} />
++      <Route path="/services" element={<ServicesPage />} />
++      <Route path="/services/:slug" element={<ServiceDetail />} />
++      <Route path="/contact" element={<ContactPage />} />
++      <Route path="/projects" element={<ProjectsPage />} />
++    </Routes>
+   );
+ }
+ 
+diff --git a/src/Booking.jsx b/src/Booking.jsx
+index 8bf7fc1..3701b4a 100644
+--- a/src/Booking.jsx
++++ b/src/Booking.jsx
+@@ -1,31 +1,8 @@
+-import React, { useEffect, useRef, useState } from 'react';
++import React, { useEffect } from 'react';
+ import './Booking.css';
+ 
+ const Booking = () => {
+-  const sectionRef = useRef(null);
+-  const [hasIntersected, setHasIntersected] = useState(false);
+-
+-  useEffect(() => {
+-    const observer = new IntersectionObserver(
+-      ([entry]) => {
+-        if (entry.isIntersecting) {
+-          setHasIntersected(true);
+-          observer.disconnect();
+-        }
+-      },
+-      { threshold: 0.1, rootMargin: '200px' }
+-    );
+-    
+-    if (sectionRef.current) {
+-      observer.observe(sectionRef.current);
+-    }
+-    
+-    return () => observer.disconnect();
+-  }, []);
+-
+   useEffect(() => {
+-    if (!hasIntersected) return;
+-
+     // 1. Dynamically append the Calendly widget script if not present
+     const scriptId = 'calendly-script';
+     let script = document.getElementById(scriptId);
+@@ -72,7 +49,7 @@ const Booking = () => {
+         script.removeEventListener('load', initCalendly);
+       }
+     };
+-  }, [hasIntersected]);
++  }, []);
+ 
+   const points = [
+     'A tailored brand & website roadmap built around your business',
+@@ -81,10 +58,10 @@ const Booking = () => {
+   ];
+ 
+   return (
+-    <section className="booking-section global-section" id="contact" ref={sectionRef}>
++    <section className="booking-section global-section" id="contact">
+       <div className="booking-container global-container">
+         <div className="booking-card">
+-          <div className="booking-info reveal-up">
++          <div className="booking-info">
+             <h2 className="booking-title">Excited? Let's Talk Today</h2>
+             <p className="booking-lead">
+               Book a discovery call with us. We'd love to hear about your business, understand your goals, and explore how Copper Studio can create the right solution for you.
+@@ -123,7 +100,7 @@ const Booking = () => {
+             <p className="booking-signoff">Talk to you soon.</p>
+           </div>
+ 
+-          <div className="booking-widget reveal-up" style={{ transitionDelay: '200ms' }}>
++          <div className="booking-widget">
+             <div
+               id="calendly-inline-container"
+               className="calendly-inline-widget-wrapper"
+diff --git a/src/BrandLandingHeroBg.jsx b/src/BrandLandingHeroBg.jsx
+deleted file mode 100644
+index 5cdbfc3..0000000
+--- a/src/BrandLandingHeroBg.jsx
++++ /dev/null
+@@ -1,185 +0,0 @@
+-import React, { useMemo } from 'react';
+-
+-const BrandLandingHeroBg = () => {
+-  const stripeAnimationCSS = useMemo(() => {
+-    const TOTAL_TIME = 9; 
+-    const FPS = 15;
+-    const frames = TOTAL_TIME * FPS;
+-    let css = '';
+-    
+-    for (let i = 0; i < 15; i++) {
+-      const d = Math.min(i, 14 - i);
+-      const peaks = [
+-        0.5 + i * 0.15,               
+-        3.5 + (14 - i) * 0.15,        
+-        6.5 + d * 0.15                
+-      ];
+-      if (d < 7) {
+-        peaks.push(7.4 + (7 - d) * 0.15); 
+-      }
+-
+-      let keyframes = `@keyframes svgComplexPulse${i} {\n`;
+-      
+-      for (let frame = 0; frame <= frames; frame++) {
+-        const t = frame / FPS;
+-        let maxBright = 0.2;
+-        
+-        peaks.forEach(peak => {
+-          let bright = 0.2;
+-          if (t >= peak - 0.2 && t <= peak) {
+-            const progress = (t - (peak - 0.2)) / 0.2;
+-            bright = 0.2 + progress * 0.8;
+-          } else if (t > peak && t <= peak + 0.6) {
+-            const progress = (t - peak) / 0.6;
+-            bright = 1.0 - progress * 0.8;
+-          }
+-          if (bright > maxBright) maxBright = bright;
+-        });
+-        
+-        const percent = ((t / TOTAL_TIME) * 100).toFixed(1);
+-        keyframes += `  ${percent}% { opacity: ${maxBright.toFixed(2)}; }\n`;
+-      }
+-      keyframes += `}\n`;
+-      css += keyframes;
+-      
+-      css += `.svg-stripe-${i} { animation: svgComplexPulse${i} 9s infinite linear; }\n`;
+-    }
+-    
+-    return css;
+-  }, []);
+-
+-  return (
+-    <>
+-      <style>{stripeAnimationCSS}</style>
+-      <svg className="services-hero-bg-svg" width="100%" height="100%" viewBox="0 0 1404 1100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+-<g clipPath="url(#clip0_71_1074)">
+-<rect width="1404" height="1100" rx="25" fill="white"/>
+-<g filter="url(#filter0_f_71_1074)">
+-<path d="M802.5 713C387.458 713 51 376.542 51 -38.5C51 -453.542 387.458 -790 802.5 -790C1217.54 -790 1554 -453.542 1554 -38.4999C1554 376.542 1217.54 713 802.5 713Z" fill="url(#paint0_radial_71_1074)"/>
+-</g>
+-<g filter="url(#filter1_f_71_1074)">
+-<path d="M-41.3738 399.684C55.1017 303.209 211.626 303.316 308.233 399.923C404.84 496.53 404.947 653.054 308.471 749.53C211.996 846.005 55.4716 845.898 -41.1355 749.291C-137.743 652.684 -137.849 496.16 -41.3738 399.684Z" fill="url(#paint1_radial_71_1074)"/>
+-</g>
+-<rect className="svg-stripe svg-stripe-0" width="93.982" height="1100" fill="url(#paint2_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-1" x="93.9824" width="93.0696" height="1100" fill="url(#paint4_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-2" x="187.051" width="93.982" height="1100" fill="url(#paint6_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-3" x="281.033" width="93.982" height="1100" fill="url(#paint7_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-4" x="374.104" width="93.982" height="1100" fill="url(#paint10_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-5" x="468.086" width="93.0696" height="1100" fill="url(#paint3_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-6" x="561.154" width="93.982" height="1100" fill="url(#paint5_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-7" x="655.137" width="93.982" height="1100" fill="url(#paint8_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-8" x="749.119" width="93.0696" height="1100" fill="url(#paint9_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-9" x="842.188" width="93.982" height="1100" fill="url(#paint11_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-10" x="936.17" width="93.0696" height="1100" fill="url(#paint12_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-11" x="1029.24" width="93.982" height="1100" fill="url(#paint13_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-12" x="1123.22" width="93.0696" height="1100" fill="url(#paint14_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-13" x="1216.29" width="93.982" height="1100" fill="url(#paint15_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-14" x="1310.02" width="93.982" height="1100" fill="url(#paint16_linear_71_1074)" style={{ mixBlendMode: 'overlay' }}/>
+-</g>
+-<defs>
+-<filter id="filter0_f_71_1074" x="-49" y="-890" width="1703" height="1703" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-<feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-<feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_71_1074"/>
+-</filter>
+-<filter id="filter1_f_71_1074" x="-213.66" y="227.397" width="694.418" height="694.419" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-<feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-<feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_71_1074"/>
+-</filter>
+-<radialGradient id="paint0_radial_71_1074" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1554 -38.4999) rotate(-180) scale(1503 1503)">
+-<stop stopColor="#F0EDE4"/>
+-<stop offset="0.677885" stopColor="#E47317"/>
+-<stop offset="0.870809" stopColor="#C55418"/>
+-<stop offset="1" stopColor="#8D3118"/>
+-</radialGradient>
+-<radialGradient id="paint1_radial_71_1074" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-41.1355 749.291) rotate(-45) scale(494.082 494.756)">
+-<stop offset="0.322115" stopColor="#F0EDE4"/>
+-<stop offset="0.870809" stopColor="#4686B7"/>
+-<stop offset="1" stopColor="#4686B7"/>
+-</radialGradient>
+-<linearGradient id="paint2_linear_71_1074" x1="0" y1="550" x2="93.982" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint3_linear_71_1074" x1="468.086" y1="550" x2="561.156" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint4_linear_71_1074" x1="93.9824" y1="550" x2="187.052" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint5_linear_71_1074" x1="561.154" y1="550" x2="655.136" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint6_linear_71_1074" x1="187.051" y1="550" x2="281.033" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint7_linear_71_1074" x1="281.033" y1="550" x2="375.015" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint8_linear_71_1074" x1="655.137" y1="550" x2="749.119" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint9_linear_71_1074" x1="749.119" y1="550" x2="842.189" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint10_linear_71_1074" x1="374.104" y1="550" x2="468.086" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint11_linear_71_1074" x1="842.188" y1="550" x2="936.17" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint12_linear_71_1074" x1="936.17" y1="550" x2="1029.24" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint13_linear_71_1074" x1="1029.24" y1="550" x2="1123.22" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint14_linear_71_1074" x1="1123.22" y1="550" x2="1216.29" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint15_linear_71_1074" x1="1216.29" y1="550" x2="1310.28" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<linearGradient id="paint16_linear_71_1074" x1="1310.02" y1="550" x2="1404" y2="550" gradientUnits="userSpaceOnUse">
+-<stop stopColor="#D9D9D9" stopOpacity="0"/>
+-<stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-<stop offset="1" stopColor="white"/>
+-</linearGradient>
+-<clipPath id="clip0_71_1074">
+-<rect width="1404" height="1100" rx="25" fill="white"/>
+-</clipPath>
+-</defs>
+-</svg>
+-    </>
+-  );
+-};
+-
+-export default BrandLandingHeroBg;
+diff --git a/src/BrandLandingPage.jsx b/src/BrandLandingPage.jsx
+deleted file mode 100644
+index a4e9332..0000000
+--- a/src/BrandLandingPage.jsx
++++ /dev/null
+@@ -1,126 +0,0 @@
+-import React, { useEffect } from 'react';
+-import './BrandLandingPage.css';
+-import logoImg from './assets/logo.svg';
+-import BrandLandingHeroBg from './BrandLandingHeroBg';
+-
+-import BrandProjectsSection from './BrandProjectsSection';
+-import ServicePricingComponent from './ServicePricing';
+-import WallOfLoveComponent from './WallOfLove';
+-import FAQComponent from './FAQ';
+-import BookingComponent from './Booking';
+-import Footer from './Footer';
+-
+-import logo79 from './assets/logos/Group 79.svg';
+-import logo80 from './assets/logos/Group 80.svg';
+-import logo81 from './assets/logos/Group 81.svg';
+-import logo82 from './assets/logos/Group 82.svg';
+-import logoDC from './assets/logos/DataCircles White Logo 2 (1).svg';
+-import nittygrittyLogo from './assets/nittygrittylogo.png';
+-
+-import connectionIcon from './assets/studio/connection.svg';
+-import craftsmanshipIcon from './assets/studio/craftsmanship.svg';
+-import characterIcon from './assets/studio/character.svg';
+-
+-export default function BrandLandingPage() {
+-  useEffect(() => {
+-    window.scrollTo(0, 0);
+-  }, []);
+-
+-  return (
+-    <div className="brand-landing-page">
+-      <div className="bl-hero-wrapper">
+-        <div className="brand-landing-hero">
+-          <div className="bl-hero-bg-wrapper">
+-            <BrandLandingHeroBg />
+-          </div>
+-        <nav className="brand-landing-nav">
+-          <img src={logoImg} alt="Logo" className="bl-logo-img" />
+-          <button className="bl-lets-talk-btn">
+-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+-              <rect x="4" y="5" width="16" height="15" rx="3.5" ry="3.5"></rect>
+-              <line x1="16" y1="3" x2="16" y2="7"></line>
+-              <line x1="8" y1="3" x2="8" y2="7"></line>
+-              <line x1="4" y1="11" x2="20" y2="11"></line>
+-              <circle cx="9" cy="15.5" r="1.5" fill="currentColor" stroke="none"></circle>
+-            </svg>
+-            Let's Talk
+-          </button>
+-        </nav>
+-        <div className="brand-landing-hero-content">
+-          <h1 className="bl-hero-title">Lorem ipsum dolor sit amet, consectetur</h1>
+-          <p className="bl-hero-subtitle">From strategy and visual identity to websites and custom portals, we create thoughtful brand experience that helps your business stand out</p>
+-          <div className="bl-hero-btn-wrapper">
+-            <button className="bl-hero-main-btn">Book A Meeting</button>
+-            <span className="bl-hero-btn-subtext">Free 30 Mins Video Call</span>
+-          </div>
+-        </div>
+-        <div className="bl-trusted-banner-glass">
+-          <div className="bl-trusted-text">Brand Who Have<br/>Trusted Us</div>
+-          <div className="bl-trusted-logos-viewport">
+-            <div className="bl-trusted-logos-track">
+-              {/* Original Set */}
+-              <img src={logo79} alt="Trusted Brand" className="bl-trusted-logo-img logo-1" />
+-              <img src={logo80} alt="Trusted Brand" className="bl-trusted-logo-img logo-2" />
+-              <img src={logo81} alt="Trusted Brand" className="bl-trusted-logo-img logo-3" />
+-              <img src={logo82} alt="Trusted Brand" className="bl-trusted-logo-img logo-4" />
+-              <img src={logoDC} alt="DataCircles" className="bl-trusted-logo-img logo-dc" />
+-              <img src={nittygrittyLogo} alt="Nitty Gritty" className="bl-trusted-logo-img logo-nitty" />
+-              {/* Duplicated Set for infinite loop */}
+-              <img src={logo79} alt="Trusted Brand" className="bl-trusted-logo-img logo-1" />
+-              <img src={logo80} alt="Trusted Brand" className="bl-trusted-logo-img logo-2" />
+-              <img src={logo81} alt="Trusted Brand" className="bl-trusted-logo-img logo-3" />
+-              <img src={logo82} alt="Trusted Brand" className="bl-trusted-logo-img logo-4" />
+-              <img src={logoDC} alt="DataCircles" className="bl-trusted-logo-img logo-dc" />
+-              <img src={nittygrittyLogo} alt="Nitty Gritty" className="bl-trusted-logo-img logo-nitty" />
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+-      </div>
+-
+-      {/* Our Belief */}
+-      <section className="studio-section studio-belief">
+-        <h2 className="belief-quote reveal-up" style={{ transitionDelay: '100ms' }}>
+-          <span className="text-light-gray">Inspired by the enduring</span> <span className="text-dark-bold">qualities of copper, our beliefs are rooted in connection, craftsmanship, and thoughtful design,</span> <span className="text-light-gray">guiding how we create brands that grow stronger, connect deeper, and stand the test of time.</span>
+-        </h2>
+-        <div className="belief-grid">
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '200ms' }}>
+-            <div className="belief-icon">
+-              <img src={connectionIcon} alt="Connection" className="belief-icon-img" />
+-            </div>
+-            <h3>Connection</h3>
+-            <p>We close the gap between your business and people it's for.</p>
+-          </div>
+-          <div className="belief-divider reveal-up" style={{ transitionDelay: '300ms' }}></div>
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '400ms' }}>
+-            <div className="belief-icon">
+-              <img src={craftsmanshipIcon} alt="Craftsmanship" className="belief-icon-img" />
+-            </div>
+-            <h3>Craftsmanship</h3>
+-            <p>Every detail made deliberately, never assembled from a template.</p>
+-          </div>
+-          <div className="belief-divider reveal-up" style={{ transitionDelay: '500ms' }}></div>
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '600ms' }}>
+-            <div className="belief-icon">
+-              <img src={characterIcon} alt="Character" className="belief-icon-img" />
+-            </div>
+-            <h3>Character</h3>
+-            <p>Identities with enough personality to be unmistakably yours.</p>
+-          </div>
+-        </div>
+-      </section>
+-
+-      <BrandProjectsSection />
+-      
+-      <div className="bl-pricing-wrapper">
+-        <ServicePricingComponent activeService="brand" showToggle={false} />
+-      </div>
+-
+-      <WallOfLoveComponent />
+-      <FAQComponent />
+-      <BookingComponent />
+-      <Footer />
+-
+-    </div>
+-  );
+-}
+diff --git a/src/BrandProjectsSection.jsx b/src/BrandProjectsSection.jsx
+deleted file mode 100644
+index 26e74dc..0000000
+--- a/src/BrandProjectsSection.jsx
++++ /dev/null
+@@ -1,99 +0,0 @@
+-import React, { useState, useEffect } from 'react';
+-import { useNavigate } from 'react-router-dom';
+-import './BrandProjectsSection.css';
+-import './ProjectsSection.css';
+-//images "Take A Look At What We Have Created!" 
+-import img1 from './assets/image.webp';
+-import img2 from './assets/QodenextImage.webp';
+-import img3 from './assets/nittygritty21.png';
+-import img4 from './assets/common-grounds.webp';
+-import img5 from './assets/project-4.png';
+-import img6 from './assets/project-6.png'; 
+-import img7 from './assets/project-7.png'; 
+-import img8 from './assets/last-project.png'; 
+-
+-import proj1Svg from './assets/projects/cottson-clothing-hq.webp';
+-import proj2Svg from './assets/projects/commongrounds-hq.webp';
+-import projQodenextSvg from './assets/projects/qodenext-hq.webp';
+-import projDataCirclesSvg from './assets/projects/datacircles-hq.webp';
+-import projNittyGritty from './assets/nittygritty.png';
+-
+-export default function BrandProjectsSection() {
+-  const navigate = useNavigate();
+-  const [activeSvg, setActiveSvg] = useState(null);
+-  const [isImageLoading, setIsImageLoading] = useState(true);
+-
+-  useEffect(() => {
+-    if (activeSvg) {
+-      document.body.style.overflow = 'hidden';
+-    } else {
+-      document.body.style.overflow = '';
+-    }
+-    return () => { document.body.style.overflow = ''; };
+-  }, [activeSvg]);
+-
+-  const handleCardClick = (src) => {
+-    setIsImageLoading(true);
+-    setActiveSvg(src);
+-  };
+-
+-  return (
+-    <section className="brand-projects-section global-section">
+-      <div className="global-container">
+-        <h2 className="bp-title">Take A Look At What We Have Created!</h2>
+-        
+-        <div className="bp-grid">
+-          {/* Top Row */}
+-          <div className="bp-card" onClick={() => handleCardClick(proj1Svg)} style={{ cursor: 'pointer' }}><img src={img1} alt="Project 1" /></div>
+-          <div className="bp-card" onClick={() => handleCardClick(projQodenextSvg)} style={{ cursor: 'pointer' }}><img src={img2} alt="Project 2" /></div>
+-          <div className="bp-card" onClick={() => handleCardClick(projNittyGritty)} style={{ cursor: 'pointer' }}><img src={img3} alt="Project 3" /></div>
+-          
+-          {/* Bottom Row */}
+-          <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img4} alt="Project 4" /></div>
+-          <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img5} alt="Project 5" /></div>
+-          
+-          {/* Bottom Right Complex Cell */}
+-          <div className="bp-complex-cell">
+-            <div className="bp-tall" onClick={() => handleCardClick(img6)} style={{ cursor: 'pointer' }}><img src={img6} alt="Project 6" /></div>
+-            <div className="bp-small-col">
+-              <div className="bp-small" onClick={() => handleCardClick(img7)} style={{ cursor: 'pointer' }}><img src={img7} alt="Project 7" /></div>
+-              <div className="bp-small" onClick={() => handleCardClick(img8)} style={{ cursor: 'pointer' }}><img src={img8} alt="Project 8" /></div>
+-            </div>
+-          </div>
+-        </div>
+-
+-        <div className="bp-view-more-container">
+-          <button className="bp-view-more-btn" onClick={() => { window.scrollTo(0, 0); navigate('/projects'); }}>
+-            See More Projects &gt;
+-          </button>
+-        </div>
+-      </div>
+-
+-      {/* SVG Modal Overlay */}
+-      {activeSvg && (
+-        <div className="project-svg-modal-overlay" onClick={() => setActiveSvg(null)}>
+-          {isImageLoading && (
+-            <div className="copper-loader-container">
+-              <div className="copper-spinner"></div>
+-            </div>
+-          )}
+-          <div className="project-svg-modal-content" onClick={e => e.stopPropagation()}>
+-            <button className="project-svg-modal-close" onClick={() => setActiveSvg(null)}>
+-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+-                <line x1="18" y1="6" x2="6" y2="18"></line>
+-                <line x1="6" y1="6" x2="18" y2="18"></line>
+-              </svg>
+-            </button>
+-            <img 
+-              src={activeSvg} 
+-              alt="Project Presentation" 
+-              className="project-svg-full" 
+-              style={{ display: isImageLoading ? 'none' : 'block' }}
+-              onLoad={() => setIsImageLoading(false)}
+-            />
+-          </div>
+-        </div>
+-      )}
+-    </section>
+-  );
+-}
+diff --git a/src/BrandServicePage.jsx b/src/BrandServicePage.jsx
+deleted file mode 100644
+index 83a7053..0000000
+--- a/src/BrandServicePage.jsx
++++ /dev/null
+@@ -1,308 +0,0 @@
+-import React, { useEffect } from 'react';
+-import Navbar from './Navbar';
+-import Footer from './Footer';
+-import FAQ from './FAQ';
+-import Booking from './Booking';
+-import ServicePricing from './ServicePricing';
+-import ContactHeroBg from './ContactHeroBg';
+-import copperBrandLogo from './assets/logos/CopperBrand.svg';
+-
+-import './BrandServicePage.css';
+-
+-export default function BrandServicePage() {
+-  useEffect(() => {
+-    window.scrollTo(0, 0);
+-  }, []);
+-
+-  const compareSections = [
+-    {
+-      title: "Brand Identity Design & Strategy",
+-      features: [
+-        { name: "Brand Voice & Tone Guidelines", plans: [true, true, true] },
+-        { name: "Target Audience Definition", plans: [true, true, true] },
+-        { name: "Competitor Analysis", plans: [true, true, true] },
+-        { name: "Logo System", plans: [true, true, true] },
+-        { name: "Typography System", plans: [true, true, true] },
+-        { name: "Color System", plans: [true, true, true] },
+-        { name: "Brand Illustrations", plans: [true, true, true] },
+-        { name: "Pattern & Texture Library", plans: [true, true, true] },
+-        { name: "Brand Guidelines", plans: [true, true, true] }
+-      ]
+-    },
+-    {
+-      title: "Corporate Branding & Business Assets",
+-      features: [
+-        { name: "Business Stationery", plans: [false, true, true] },
+-        { name: "Visiting Card", plans: [false, true, true] },
+-        { name: "Letterhead", plans: [false, true, true] },
+-        { name: "Envelope", plans: [false, true, true] },
+-        { name: "Invoice & Quotation Template", plans: [false, true, true] },
+-        { name: "Stamp/Seal Design", plans: [false, true, true] },
+-        { name: "Employee ID Card", plans: [false, true, true] },
+-        { name: "Email Signature", plans: [false, true, true] }
+-      ]
+-    },
+-    {
+-      title: "Marketing Collateral & Social Media Design",
+-      features: [
+-        { name: "Brochure/Catalogue Design", plans: [false, true, true] },
+-        { name: "Flyer/Leaflet Design", plans: [false, true, true] },
+-        { name: "Banner/Standee Design", plans: [false, true, true] },
+-        { name: "Social Media Post Design", plans: [false, true, true] },
+-        { name: "Reel/Story Template", plans: [false, true, true] },
+-        { name: "Presentation Template", plans: [false, true, true] },
+-        { name: "Virtual Meeting Background", plans: [false, true, true] },
+-        { name: "Newsletter Template", plans: [false, true, true] }
+-      ]
+-    },
+-    {
+-      title: "Packaging, Environmental & Merchandise Design",
+-      features: [
+-        { name: "Product Packaging", plans: [false, false, true] },
+-        { name: "Product Label Design", plans: [false, false, true] },
+-        { name: "Hand Tag Design", plans: [false, false, true] },
+-        { name: "Merchandise Design", plans: [false, false, true] },
+-        { name: "Uniform/Apparel Design", plans: [false, false, true] },
+-        { name: "Signage & Wayfinding", plans: [false, false, true] },
+-        { name: "Voucher/Coupon Design", plans: [false, false, true] },
+-        { name: "Exhibition/Trade Show Booth", plans: [false, false, true] }
+-      ]
+-    }
+-  ];
+-
+-  return (
+-    <div className="brand-service-page">
+-      <Navbar activeSection="services" />
+-      
+-      {/* Hero Section */}
+-      <div className="bs-hero-wrap">
+-        <div className="bs-hero-card">
+-          <div className="bs-hero-bg">
+-            <ContactHeroBg />
+-          </div>
+-          <div className="bs-hero-content">
+-            <h1 className="bs-hero-title">Services To Design<br/>Your Brand</h1>
+-          </div>
+-        </div>
+-      </div>
+-
+-      {/* Content Section */}
+-      <div className="bs-content-section">
+-        <div className="bs-content-inner">
+-          <div className="bs-content-header">
+-            <span className="bs-tag">BRAND IDENTITY</span>
+-            <img src={copperBrandLogo} alt="Copper Brand" className="bs-main-logo" />
+-            <p className="bs-desc">
+-              <span className="desc-highlight text-orange italic-text">From first impressions to lasting recognition. </span>
+-              We believe great brands are built through consistency at every touchpoint. By combining strategy, visual identity, print, packaging, and branded assets, we create unified brand experiences that people remember and businesses grow with.
+-            </p>
+-          </div>
+-
+-          <div className="bs-subsection">
+-            <h3 className="bs-sub-title reveal-up"><strong>Brand Identity Design</strong> <span className="font-regular">& Strategy</span></h3>
+-            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
+-              Build a distinctive brand foundation with strategy, visual identity, and design systems that create consistency, recognition, and long-term growth.
+-            </p>
+-            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
+-              <span className="bs-skill-tag">Brand Strategy</span>
+-              <span className="bs-skill-tag">Logo Design</span>
+-              <span className="bs-skill-tag">Brand Guidelines</span>
+-              <span className="bs-skill-tag">Typography System</span>
+-              <span className="bs-skill-tag">Color Palette</span>
+-              <span className="bs-skill-tag">Brand Illustrations</span>
+-              <span className="bs-skill-tag">Icons & Favicon</span>
+-              <span className="bs-skill-tag">Visual Assets</span>
+-            </div>
+-            <div className="bs-grid-identity">
+-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+-            </div>
+-          </div>
+-
+-          <div className="bs-section-divider"></div>
+-
+-          <div className="bs-subsection">
+-            <h3 className="bs-sub-title reveal-up"><strong>Corporate Branding</strong> <span className="font-regular">&</span> <strong>Business Assets</strong></h3>
+-            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
+-              Equip your business with professional stationery, corporate communication, and digital assets that ensure a consistent brand experience across every touchpoint.
+-            </p>
+-            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
+-              <span className="bs-skill-tag">Visiting Card</span>
+-              <span className="bs-skill-tag">Letterhead</span>
+-              <span className="bs-skill-tag">Envelope Design</span>
+-              <span className="bs-skill-tag">Invoice & Quotation</span>
+-              <span className="bs-skill-tag">Email Signature</span>
+-              <span className="bs-skill-tag">Presentation Template</span>
+-              <span className="bs-skill-tag">Employee ID Card</span>
+-            </div>
+-            <div className="bs-grid-corporate">
+-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+-            </div>
+-          </div>
+-
+-          <div className="bs-section-divider"></div>
+-
+-          <div className="bs-subsection">
+-            <h3 className="bs-sub-title reveal-up"><strong>Marketing</strong> <span className="font-regular">Collateral &</span> <strong>Social Media</strong> <span className="font-regular">Design</span></h3>
+-            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
+-              Expand your brand with impactful marketing materials and social media assets designed to engage audiences and communicate with clarity.
+-            </p>
+-            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
+-              <span className="bs-skill-tag">Brochure/Catalogue Design</span>
+-              <span className="bs-skill-tag">Flyer/Poster Design</span>
+-              <span className="bs-skill-tag">Social Media Template & Banner</span>
+-              <span className="bs-skill-tag">Presentation Design</span>
+-              <span className="bs-skill-tag">Digital Marketing Assets</span>
+-              <span className="bs-skill-tag">Newsletter Design</span>
+-            </div>
+-            <div className="bs-grid-marketing">
+-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '600ms' }}></div>
+-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '700ms' }}></div>
+-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '800ms' }}></div>
+-            </div>
+-          </div>
+-
+-          <div className="bs-section-divider"></div>
+-
+-          <div className="bs-subsection">
+-            <h3 className="bs-sub-title reveal-up"><strong>Packaging, Environmental & Merchandise</strong> <span className="font-regular">Design</span></h3>
+-            <p className="bs-sub-desc reveal-up" style={{ transitionDelay: '100ms' }}>
+-              Bring your brand to life through packaging, retail experiences, signage, and branded merchandise that leave a lasting impression.
+-            </p>
+-            <div className="bs-tags-container reveal-up" style={{ transitionDelay: '200ms' }}>
+-              <span className="bs-skill-tag">Label & Box Design</span>
+-              <span className="bs-skill-tag">Carry Bag/Tote Design</span>
+-              <span className="bs-skill-tag">Signage & Wayfinding</span>
+-              <span className="bs-skill-tag">Office Branding (Wall Graphics)</span>
+-              <span className="bs-skill-tag">T-Shirt/Uniform Design</span>
+-              <span className="bs-skill-tag">Mug/Bottle Branding</span>
+-            </div>
+-            <div className="bs-grid-packaging">
+-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
+-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
+-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+-
+-      {/* Pricing */}
+-      <ServicePricing activeService="brand" showToggle={false} />
+-
+-      {/* Compare Plans */}
+-      <div className="compare-plans-section">
+-        <div className="compare-plans-inner">
+-          <h2 className="cp-title reveal-up">Compare Plans</h2>
+-          <p className="cp-subtitle reveal-up" style={{ transitionDelay: '100ms' }}>Every plan includes the core research tools. Pick the one that matches how many shops, products, and advertisers you track.</p>
+-          
+-          <div className="cp-table-container">
+-            <table className="cp-table">
+-              <thead>
+-                <tr>
+-                  <th className="cp-feature-col"></th>
+-                  <th className="cp-plan-col">
+-                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '200ms' }}>Essential</div>
+-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '300ms' }}>Build a clear, professional brand identity ready for launch</div>
+-                    <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '400ms' }}>
+-                      <button className="cp-btn-light">Get Started</button>
+-                    </div>
+-                  </th>
+-                  <th className="cp-plan-col cp-highlight-col">
+-                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '300ms' }}>Advance</div>
+-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '400ms' }}>Strengthen your brand with business, communication and digital assets</div>
+-                    <div className="cp-btn-wrap-dark reveal-up" style={{ transitionDelay: '500ms' }}>
+-                      <button className="cp-btn-dark">Get Started</button>
+-                    </div>
+-                  </th>
+-                  <th className="cp-plan-col">
+-                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '400ms' }}>Premium</div>
+-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '500ms' }}>Scale your brand with marketing, packaging and promotional solutions</div>
+-                    <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '600ms' }}>
+-                      <button className="cp-btn-light">Get Started</button>
+-                    </div>
+-                  </th>
+-                </tr>
+-              </thead>
+-              <tbody>
+-                {compareSections.map((section, sIdx) => (
+-                  <React.Fragment key={sIdx}>
+-                    <tr className="cp-section-row">
+-                      <td>
+-                        <div className="cp-section-title reveal-up">{section.title}</div>
+-                      </td>
+-                      <td></td>
+-                      <td className="cp-highlight-col"></td>
+-                      <td></td>
+-                    </tr>
+-                    {section.features.map((feature, fIdx) => (
+-                      <tr key={`${sIdx}-${fIdx}`}>
+-                        <td><div className="cp-feature-name reveal-right">{feature.name}</div></td>
+-                        <td className="cp-check">
+-                          {feature.plans[0] ? (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>
+-                              <span className="cp-dot cp-dot-grey"></span>
+-                            </div>
+-                          ) : (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>
+-                              <span className="cp-dash">-</span>
+-                            </div>
+-                          )}
+-                        </td>
+-                        <td className="cp-check cp-highlight-col">
+-                          {feature.plans[1] ? (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '200ms' }}>
+-                              <span className="cp-dot cp-dot-orange"></span>
+-                            </div>
+-                          ) : (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '200ms' }}>
+-                              <span className="cp-dash">-</span>
+-                            </div>
+-                          )}
+-                        </td>
+-                        <td className="cp-check">
+-                          {feature.plans[2] ? (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '300ms' }}>
+-                              <span className="cp-dot cp-dot-grey"></span>
+-                            </div>
+-                          ) : (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '300ms' }}>
+-                              <span className="cp-dash">-</span>
+-                            </div>
+-                          )}
+-                        </td>
+-                      </tr>
+-                    ))}
+-                  </React.Fragment>
+-                ))}
+-              </tbody>
+-            </table>
+-          </div>
+-        </div>
+-      </div>
+-
+-      {/* Brands We've Helped Grow */}
+-      <div className="bs-brands-section">
+-        <div className="bs-brands-inner">
+-          <span className="bs-tag">BRANDS & PARTNERS</span>
+-          <h2 className="bs-brands-title">Brands We've Helped Grow</h2>
+-          <div className="bs-brands-grid">
+-            <div className="bs-brand-box"></div>
+-            <div className="bs-brand-box"></div>
+-            <div className="bs-brand-box"></div>
+-            <div className="bs-brand-box"></div>
+-          </div>
+-        </div>
+-      </div>
+-
+-      <FAQ />
+-      <Booking />
+-      <Footer />
+-    </div>
+-  );
+-}
+diff --git a/src/ContactHeroBg.jsx b/src/ContactHeroBg.jsx
+index 2bee7ef..9a5c709 100644
+--- a/src/ContactHeroBg.jsx
++++ b/src/ContactHeroBg.jsx
+@@ -45,7 +45,18 @@ const ContactHeroBg = () => {
+       css += `.svg-stripe-${i} { animation: svgComplexPulse${i} 9s infinite linear; }\n`;
+     }
+     
+-    // Removed slow breathing animation for the colored blobs due to heavy GPU lag with feGaussianBlur
++    // Add slow breathing animation for the colored blobs
++    css += `
++      @keyframes blobBreathe {
++        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
++        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++      }
++      .svg-blob { transform-origin: center; animation: blobBreathe 12s infinite ease-in-out; }
++      .svg-blob-orange { animation-delay: -3s; }
++      .svg-blob-copper { animation-delay: -6s; }
++      .svg-blob-light { animation-delay: -9s; }
++    `;
+     
+     return css;
+   }, []);
+diff --git a/src/ContactPage.jsx b/src/ContactPage.jsx
+index d12ffd5..61afe3c 100644
+--- a/src/ContactPage.jsx
++++ b/src/ContactPage.jsx
+@@ -18,8 +18,8 @@ function ContactPage() {
+               <ContactHeroBg />
+             </div>
+             <div className="contact-hero-content">
+-              <h1 className="contact-hero-title reveal-up">Contact Us</h1>
+-              <span className="contact-hero-tag reveal-up" style={{ transitionDelay: '100ms' }}>GET IN TOUCH</span>
++              <h1 className="contact-hero-title">Contact Us</h1>
++              <span className="contact-hero-tag">GET IN TOUCH</span>
+             </div>
+           </div>
+         </div>
+@@ -28,28 +28,28 @@ function ContactPage() {
+         <div className="contact-methods-section">
+           <div className="contact-methods-inner">
+             <div className="contact-cards-grid">
+-              <div className="contact-card reveal-up" style={{ transitionDelay: '200ms' }}>
++              <div className="contact-card">
+                 <div className="contact-card-icon">
+                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                 </div>
+                 <h3 className="contact-card-title">Chat to Sales</h3>
+                 <a className="contact-card-link" href="mailto:ruchi@thecopperstudio.com">ruchi@thecopperstudio.com</a>
+               </div>
+-              <div className="contact-card reveal-up" style={{ transitionDelay: '300ms' }}>
++              <div className="contact-card">
+                 <div className="contact-card-icon">
+                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                 </div>
+                 <h3 className="contact-card-title">Chat to Support</h3>
+                 <a className="contact-card-link" href="mailto:ruchi@thecopperstudio.com">ruchi@thecopperstudio.com</a>
+               </div>
+-              <div className="contact-card reveal-up" style={{ transitionDelay: '400ms' }}>
++              <div className="contact-card">
+                 <div className="contact-card-icon">
+                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                 </div>
+                 <h3 className="contact-card-title">Visit Us</h3>
+                 <a className="contact-card-link" href="https://share.google/Bqenkvy3nbX5VUJ7p" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
+               </div>
+-              <div className="contact-card reveal-up" style={{ transitionDelay: '500ms' }}>
++              <div className="contact-card">
+                 <div className="contact-card-icon">
+                   <svg fill="none" stroke="#000000" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path></svg>
+                 </div>
+@@ -62,15 +62,14 @@ function ContactPage() {
+ 
+         {/* Get in Touch ΓÇö map + contact details */}
+         <div className="git-section">
+-          <div className="git-header reveal-up">
++          <div className="git-header">
+             <span className="git-tag">VISIT US</span>
+             <h2 className="git-main-title">We are always<br/>ready to help you and<br/>answer your questions</h2>
+           </div>
+           <div className="git-card">
+             {/* Left: map */}
+             <a
+-              className="git-map-wrap reveal-up"
+-              style={{ transitionDelay: '200ms' }}
++              className="git-map-wrap"
+               href="https://www.google.com/maps/search/?api=1&query=The+Copper+Studio,+Thane"
+               target="_blank"
+               rel="noopener noreferrer"
+@@ -91,15 +90,15 @@ function ContactPage() {
+ 
+             {/* Right: details */}
+             <div className="git-details">
+-              <div className="git-heading-block reveal-up" style={{ transitionDelay: '300ms' }}>
++              <div className="git-heading-block">
+                 <h2 className="git-title">Get in Touch</h2>
+                 <p className="git-desc">Have a question or just want to say hello? We'd love to hear from you. Reach out and we'll get back to you as soon as possible.</p>
+               </div>
+ 
+-              <div className="git-divider reveal-up" style={{ transitionDelay: '400ms' }} />
++              <div className="git-divider" />
+ 
+               <div className="git-contact-group">
+-                <div className="git-info-row reveal-up" style={{ transitionDelay: '500ms' }}>
++                <div className="git-info-row">
+                   <div className="git-info-icon">
+                     <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                       <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" strokeLinecap="round" strokeLinejoin="round"/>
+@@ -109,7 +108,7 @@ function ContactPage() {
+                   <p className="git-address">No. 721, Floor 7th, Centura Square IT Park, Rd Number 27, Wagle Industrial Estate, Thane West, Thane, Maharashtra 400604</p>
+                 </div>
+ 
+-                <div className="git-info-row reveal-up" style={{ transitionDelay: '600ms' }}>
++                <div className="git-info-row">
+                   <div className="git-info-icon">
+                     <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                       <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" strokeLinecap="round" strokeLinejoin="round"/>
+@@ -120,7 +119,7 @@ function ContactPage() {
+                   </div>
+                 </div>
+ 
+-                <div className="git-info-row reveal-up" style={{ transitionDelay: '700ms' }}>
++                <div className="git-info-row">
+                   <div className="git-info-icon">
+                     <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+@@ -134,9 +133,9 @@ function ContactPage() {
+                 </div>
+               </div>
+ 
+-              <div className="git-divider reveal-up" style={{ transitionDelay: '800ms' }} />
++              <div className="git-divider" />
+ 
+-              <div className="git-info-row git-social-row reveal-up" style={{ transitionDelay: '900ms' }}>
++              <div className="git-info-row git-social-row">
+                 <a className="git-social-link" href="https://www.instagram.com/the_copperstudio/" target="_blank" rel="noopener noreferrer">
+                   <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" strokeLinecap="round" strokeLinejoin="round"/>
+diff --git a/src/CoordinateSection.jsx b/src/CoordinateSection.jsx
+index 5af6baf..0a0e37e 100644
+--- a/src/CoordinateSection.jsx
++++ b/src/CoordinateSection.jsx
+@@ -6,15 +6,17 @@ export default function CoordinateSection() {
+   return (
+     <section className="coordinate-section">
+       <div className="global-container flex-col-center">
+-        <h2 className="section-title reveal-up">How Do We Co-ordinate?</h2>
+-        <p className="section-subtitle reveal-up" style={{ transitionDelay: '100ms' }}>
+-          <span className="subtitle-italic">Stay connected to your project from start to finish.</span><br/>
+-          Our client portal gives you a dedicated space to track progress, view project timelines, access upcoming meetings, share files, and download every deliverable.<br/>
++        <h2 className="section-title">How Do We Co-ordinate?</h2>
++        <p className="section-subtitle">
++          <span className="subtitle-italic">Stay connected to your project from start to finish.</span>
++        </p>
++        <p className="subtitle-para">
++          Our client portal gives you a dedicated space to track progress, view project timelines, access upcoming meetings, share files, and download every deliverable.
++          
+           With lifetime access, your portal remains available long after your project is complete, giving you a permanent home for everything we've created together.
+         </p>
+         <div 
+-          className="coordinate-video-box reveal-up"
+-          style={{ transitionDelay: '200ms' }}
++          className="coordinate-video-box"
+           onMouseEnter={(e) => {
+             const vid = e.currentTarget.querySelector('video');
+             if (vid) vid.play();
+diff --git a/src/FAQ.jsx b/src/FAQ.jsx
+index f7664a0..72b4763 100644
+--- a/src/FAQ.jsx
++++ b/src/FAQ.jsx
+@@ -50,7 +50,7 @@ const FAQ = () => {
+   return (
+     <section className="faq-section global-section" id="faq">
+       <div className="faq-container global-container">
+-        <div className="faq-sidebar reveal-up">
++        <div className="faq-sidebar">
+           <div className="faq-tag">HAVE SOME DOUBTS?</div>
+           <h2 className="faq-title">Frequently Asked<br/>Questions</h2>
+           <p className="faq-description">
+@@ -69,14 +69,13 @@ const FAQ = () => {
+ 
+         <div className="faq-list">
+           {faqData.map((item, index) => (
+-            <div key={index} className="reveal-up" style={{ transitionDelay: `${index * 100}ms` }}>
+-              <FAQItem
+-                question={item.question}
+-                answer={item.answer}
+-                isOpen={openIndex === index}
+-                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+-              />
+-            </div>
++            <FAQItem
++              key={index}
++              question={item.question}
++              answer={item.answer}
++              isOpen={openIndex === index}
++              onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
++            />
+           ))}
+         </div>
+       </div>
+diff --git a/src/Footer.jsx b/src/Footer.jsx
+index 35b3798..dc07157 100644
+--- a/src/Footer.jsx
++++ b/src/Footer.jsx
+@@ -1,5 +1,4 @@
+ import React from 'react';
+-import { Link } from 'react-router-dom';
+ import './Footer.css';
+ import footerText from './assets/footer/Group 70.svg';
+ import footerMainLogo from './assets/Group 18.svg';
+@@ -32,7 +31,7 @@ const Footer = () => {
+ 
+         {/* Footer Top Content */}
+         <div className="footer-content global-container">
+-          <div className="footer-brand reveal-up">
++          <div className="footer-brand">
+             <img src={footerMainLogo} alt="Copper Studio Logo" className="footer-main-logo" />
+             <div className="footer-services">
+               <span>&#8226; LOGO & BRAND DESIGN</span>
+@@ -41,34 +40,34 @@ const Footer = () => {
+             </div>
+           </div>
+ 
+-          <div className="footer-divider reveal-up" style={{ transitionDelay: '100ms' }}></div>
++          <div className="footer-divider"></div>
+ 
+-          <div className="footer-links reveal-up" style={{ transitionDelay: '200ms' }}>
+-            <Link to="/studio">Studio</Link>
+-            <Link to="/services">Services</Link>
+-            <Link to="/projects">Projects</Link>
+-            <Link to="/contact">Contact</Link>
+-            <a href="https://portal.thecopperstudio.com">Client Portal</a>
++          <div className="footer-links">
++            <a href="#about">Studio</a>
++            <a href="#services">Services</a>
++            <a href="#projects">Projects</a>
++            <a href="#contact">Contact</a>
++            <a href="/#contact">Client Portal</a>
+           </div>
+ 
+-          <div className="footer-socials reveal-up" style={{ transitionDelay: '300ms' }}>
+-            <a href="mailto:support@thecopperstudio.com" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Email Support">
++          <div className="footer-socials">
++            <a href="mailto:support@thecopperstudio.com" className="social-icon" target="_blank" rel="noopener noreferrer">
+               <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M34.9166 19.292L25.551 25.2576C25.2332 25.4422 24.8722 25.5394 24.5047 25.5394C24.1371 25.5394 23.7761 25.4422 23.4583 25.2576L14.0833 19.292" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                 <path d="M32.8333 16.167H16.1666C15.0161 16.167 14.0833 17.0997 14.0833 18.2503V30.7503C14.0833 31.9009 15.0161 32.8337 16.1666 32.8337H32.8333C33.9839 32.8337 34.9166 31.9009 34.9166 30.7503V18.2503C34.9166 17.0997 33.9839 16.167 32.8333 16.167Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+               </svg>
+             </a>
+-            <a href="https://wa.me/919820933877" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
++            <a href="https://wa.me/919820933877" className="social-icon" target="_blank" rel="noopener noreferrer">
+               <svg width="50" height="50" viewBox="95 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path fillRule="evenodd" clipRule="evenodd" d="M110.646 24.5C110.646 19.61 114.61 15.6458 119.5 15.6458C124.39 15.6458 128.354 19.61 128.354 24.5C128.354 29.39 124.39 33.3542 119.5 33.3542C117.758 33.3542 116.137 32.8523 114.769 31.9855C114.514 31.8243 114.202 31.7811 113.913 31.8673L110.914 32.7624L112.043 30.1201C112.177 29.8078 112.15 29.4501 111.971 29.1616C111.131 27.8083 110.646 26.2124 110.646 24.5ZM119.5 13.5625C113.459 13.5625 108.563 18.4594 108.563 24.5C108.563 26.4147 109.055 28.217 109.922 29.7841L108.126 33.9865C107.967 34.358 108.037 34.7878 108.306 35.0893C108.575 35.3908 108.994 35.5096 109.381 35.394L114.068 33.9953C115.669 34.913 117.525 35.4375 119.5 35.4375C125.541 35.4375 130.438 30.5406 130.438 24.5C130.438 18.4594 125.541 13.5625 119.5 13.5625ZM121.888 26.7733L120.519 27.7376C119.878 27.3724 119.169 26.8626 118.458 26.1516C117.719 25.4124 117.171 24.6493 116.767 23.9493L117.637 23.2108C118.01 22.894 118.112 22.3597 117.882 21.9274L116.774 19.844C116.625 19.5635 116.355 19.3665 116.043 19.3089C115.73 19.2513 115.409 19.3396 115.169 19.5485L114.841 19.8354C114.05 20.5251 113.583 21.6586 113.97 22.8064C114.372 23.9961 115.229 25.8687 116.985 27.6247C118.874 29.5139 120.793 30.2578 121.915 30.5468C122.819 30.7795 123.675 30.4675 124.278 29.9762L124.894 29.4742C125.158 29.2595 125.3 28.9296 125.275 28.5905C125.25 28.2515 125.061 27.9458 124.769 27.7718L123.021 26.7301C122.668 26.5198 122.224 26.5367 121.888 26.7733Z" fill="white"/>
+               </svg>
+             </a>
+-            <a href="https://www.instagram.com/the_copperstudio/" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
++            <a href="https://www.instagram.com/the_copperstudio/" className="social-icon" target="_blank" rel="noopener noreferrer">
+               <svg width="50" height="50" viewBox="190 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path fillRule="evenodd" clipRule="evenodd" d="M205.125 20.3333C205.125 18.952 205.674 17.6272 206.65 16.6505C207.627 15.6737 208.952 15.125 210.333 15.125H218.667C220.048 15.125 221.373 15.6737 222.35 16.6505C223.326 17.6272 223.875 18.952 223.875 20.3333V28.6667C223.875 30.048 223.326 31.3728 222.35 32.3495C221.373 33.3263 220.048 33.875 218.667 33.875H210.333C208.952 33.875 207.627 33.3263 206.65 32.3495C205.674 31.3728 205.125 30.048 205.125 28.6667V20.3333ZM210.333 17.2083C209.505 17.2083 208.71 17.5376 208.124 18.1236C207.538 18.7097 207.208 19.5045 207.208 20.3333V28.6667C207.208 29.4955 207.538 30.2903 208.124 30.8764C208.71 31.4624 209.505 31.7917 210.333 31.7917H218.667C219.495 31.7917 220.29 31.4624 220.876 30.8764C221.462 30.2903 221.792 29.4955 221.792 28.6667V20.3333C221.792 19.5045 221.462 18.7097 220.876 18.1236C220.29 17.5376 219.495 17.2083 218.667 17.2083H210.333ZM218.247 19.5146C218.247 19.2383 218.357 18.9734 218.552 18.778C218.747 18.5827 219.012 18.4729 219.289 18.4729H219.299C219.575 18.4729 219.84 18.5827 220.036 18.778C220.231 18.9734 220.341 19.2383 220.341 19.5146C220.341 19.7909 220.231 20.0558 220.036 20.2512C219.84 20.4465 219.575 20.5562 219.299 20.5562H219.289C219.012 20.5562 218.747 20.4465 218.552 20.2512C218.357 20.0558 218.247 19.7909 218.247 19.5146ZM214.5 21.375C213.671 21.375 212.876 21.7042 212.29 22.2903C211.704 22.8763 211.375 23.6712 211.375 24.5C211.375 25.3288 211.704 26.1237 212.29 26.7097C212.876 27.2958 213.671 27.625 214.5 27.625C215.329 27.625 216.124 27.2958 216.71 26.7097C217.296 26.1237 217.625 25.3288 217.625 24.5C217.625 23.6712 217.296 22.8763 216.71 22.2903C216.124 21.7042 215.329 21.375 214.5 21.375ZM209.292 24.5C209.292 23.1187 209.84 21.7939 210.817 20.8172C211.794 19.8404 213.119 19.2917 214.5 19.2917C215.881 19.2917 217.206 19.8404 218.183 20.8172C219.16 21.7939 219.708 23.1187 219.708 24.5C219.708 25.8813 219.16 27.2061 218.183 28.1828C217.206 29.1596 215.881 29.7083 214.5 29.7083C213.119 29.7083 211.794 29.1596 210.817 28.1828C209.84 27.2061 209.292 25.8813 209.292 24.5Z" fill="white"/>
+               </svg>
+             </a>
+-            <a href="https://www.linkedin.com/company/thecopperstudio" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
++            <a href="https://www.linkedin.com/company/thecopperstudio" className="social-icon" target="_blank" rel="noopener noreferrer">
+               <svg width="50" height="50" viewBox="285 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path fillRule="evenodd" clipRule="evenodd" d="M310.031 20.1625V21.9302C310.401 21.3662 310.911 20.908 311.512 20.6005C312.112 20.293 312.782 20.1467 313.456 20.176C317.055 20.176 317.833 22.426 317.833 25.3531V31.3125H314.5V26.0292C314.5 24.7688 314.246 23.1479 312.283 23.1479C310.38 23.1479 310.055 24.5198 310.055 25.9354V31.3125H306.732V20.1625H310.031ZM304.5 17.3604C304.5 17.6906 304.402 18.0134 304.219 18.2882C304.036 18.563 303.775 18.7776 303.471 18.9052C303.166 19.0318 302.831 19.0649 302.508 19.0003C302.185 18.9357 301.888 18.7765 301.655 18.5427C301.422 18.3088 301.264 18.0113 301.199 17.6875C301.135 17.3637 301.168 17.0281 301.294 16.7229C301.42 16.4178 301.633 16.1567 301.907 15.9724C302.181 15.7882 302.503 15.6891 302.833 15.6875C303.053 15.6876 303.27 15.731 303.472 15.8152C303.675 15.8994 303.859 16.0228 304.014 16.1782C304.169 16.3336 304.291 16.518 304.375 16.7209C304.458 16.9237 304.501 17.1411 304.5 17.3604Z" fill="white"/>
+                 <path d="M304.5 20.1758H301.167V31.3122H304.5V20.1758Z" fill="white"/>
+diff --git a/src/HomepageHeroBg.jsx b/src/HomepageHeroBg.jsx
+deleted file mode 100644
+index e3ded8d..0000000
+--- a/src/HomepageHeroBg.jsx
++++ /dev/null
+@@ -1,230 +0,0 @@
+-import React, { useMemo } from 'react';
+-
+-const HomepageHeroBg = () => {
+-  const stripeAnimationCSS = useMemo(() => {
+-    const TOTAL_TIME = 9; 
+-    const FPS = 15;
+-    const frames = TOTAL_TIME * FPS;
+-    let css = '';
+-    
+-    // We have 14 stripes
+-    for (let i = 0; i < 14; i++) {
+-      const d = Math.min(i, 13 - i);
+-      const peaks = [
+-        0.5 + i * 0.15,               
+-        3.5 + (13 - i) * 0.15,        
+-        6.5 + d * 0.15                
+-      ];
+-      if (d < 6) {
+-        peaks.push(7.4 + (6 - d) * 0.15); 
+-      }
+-
+-      let keyframes = `@keyframes homeSvgPulse${i} {\n`;
+-      
+-      for (let frame = 0; frame <= frames; frame++) {
+-        const t = frame / FPS;
+-        let maxBright = 0.2;
+-        
+-        peaks.forEach(peak => {
+-          let bright = 0.2;
+-          if (t >= peak - 0.2 && t <= peak) {
+-            const progress = (t - (peak - 0.2)) / 0.2;
+-            bright = 0.2 + progress * 0.8;
+-          } else if (t > peak && t <= peak + 0.6) {
+-            const progress = (t - peak) / 0.6;
+-            bright = 1.0 - progress * 0.8;
+-          }
+-          if (bright > maxBright) maxBright = bright;
+-        });
+-        
+-        const percent = ((t / TOTAL_TIME) * 100).toFixed(1);
+-        // Instead of brightness filter which SVG doesn't support well natively, 
+-        // we just animate opacity to reveal the bright gradient.
+-        keyframes += `  ${percent}% { opacity: ${maxBright.toFixed(2)}; }\n`;
+-      }
+-      keyframes += `}\n`;
+-      css += keyframes;
+-      
+-      css += `.home-stripe-${i} { animation: homeSvgPulse${i} 9s infinite linear; }\n`;
+-    }
+-    
+-    return css;
+-  }, []);
+-
+-  return (
+-    <>
+-      <style>{stripeAnimationCSS}</style>
+-      <svg className="homepage-hero-bg" width="100%" height="100%" viewBox="0 0 1393 578" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+-        <g clipPath="url(#clip0_74_2032)">
+-          <rect y="-84" width="1404" height="662" rx="25" fill="white"/>
+-          <rect x="-15.3828" y="-179.506" width="1337.4" height="952.757" fill="#070815"/>
+-          <g filter="url(#filter0_f_74_2032)">
+-            <ellipse cx="1027.71" cy="263.344" rx="672.425" ry="569.512" fill="#C55418"/>
+-          </g>
+-          <g filter="url(#filter1_f_74_2032)">
+-            <ellipse cx="102.431" cy="473.827" rx="440.988" ry="473.585" fill="#8D3118"/>
+-          </g>
+-          <g filter="url(#filter2_f_74_2032)">
+-            <ellipse cx="355.29" cy="773.251" rx="535.519" ry="352.977" fill="#8D3118"/>
+-          </g>
+-          <g filter="url(#filter3_f_74_2032)">
+-            <ellipse cx="149.93" cy="-224.677" rx="516.426" ry="454.027" fill="#0B0722"/>
+-          </g>
+-          <g filter="url(#filter4_f_74_2032)">
+-            <ellipse cx="-19.5739" cy="-396.973" rx="516.426" ry="454.027" fill="#070815"/>
+-          </g>
+-          <g filter="url(#filter5_f_74_2032)">
+-            <circle cx="1161.36" cy="-0.223907" r="305.944" fill="#EE7A1D"/>
+-          </g>
+-          <g filter="url(#filter6_f_74_2032)">
+-            <ellipse cx="-33.0776" cy="689.431" rx="219.795" ry="269.156" fill="#EE7A1D"/>
+-          </g>
+-          <g filter="url(#filter7_f_74_2032)">
+-            <circle cx="736.671" cy="716.905" r="305.944" fill="#5A1A14"/>
+-          </g>
+-          <g filter="url(#filter8_f_74_2032)">
+-            <circle cx="1228.42" cy="695.484" r="305.944" fill="#5A1A14"/>
+-          </g>
+-          <g>
+-            <rect className="home-stripe-0" x="-18.1777" y="-179.506" width="96.0613" height="952.757" fill="url(#paint0_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-1" x="77.8828" y="-179.506" width="95.1286" height="952.757" fill="url(#paint2_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-2" x="173.014" y="-179.506" width="96.0613" height="952.757" fill="url(#paint4_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-3" x="269.074" y="-179.506" width="96.0613" height="952.757" fill="url(#paint5_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-4" x="364.203" y="-179.506" width="96.0613" height="952.757" fill="url(#paint8_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-5" x="460.264" y="-179.506" width="95.1286" height="952.757" fill="url(#paint1_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-6" x="555.393" y="-179.506" width="96.0613" height="952.757" fill="url(#paint3_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-7" x="651.453" y="-179.506" width="96.0613" height="952.757" fill="url(#paint6_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-8" x="747.516" y="-179.506" width="95.1286" height="952.757" fill="url(#paint7_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-9" x="842.643" y="-179.506" width="96.0613" height="952.757" fill="url(#paint9_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-10" x="938.705" y="-179.506" width="95.1286" height="952.757" fill="url(#paint10_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-11" x="1033.83" y="-179.506" width="96.0613" height="952.757" fill="url(#paint11_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-12" x="1129.89" y="-179.506" width="95.1286" height="952.757" fill="url(#paint12_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-            <rect className="home-stripe-13" x="1225.02" y="-179.506" width="96.0613" height="952.757" fill="url(#paint13_linear_74_2032)" style={{ mixBlendMode: 'overlay' }}/>
+-          </g>
+-        </g>
+-        <defs>
+-          <filter id="filter0_f_74_2032" x="5.28906" y="-656.168" width="2044.85" height="1839.02" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="175" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter1_f_74_2032" x="-688.557" y="-349.758" width="1581.98" height="1647.17" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="175" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter2_f_74_2032" x="-530.229" y="70.2744" width="1771.04" height="1405.95" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="175" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter3_f_74_2032" x="-866.496" y="-1178.7" width="2032.85" height="1908.05" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter4_f_74_2032" x="-1036" y="-1351" width="2032.85" height="1908.05" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter5_f_74_2032" x="505.416" y="-656.168" width="1311.89" height="1311.89" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="175" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter6_f_74_2032" x="-602.873" y="70.2744" width="1139.59" height="1238.31" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="175" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter7_f_74_2032" x="80.7266" y="60.9609" width="1311.89" height="1311.89" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="175" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <filter id="filter8_f_74_2032" x="572.473" y="39.54" width="1311.89" height="1311.89" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+-            <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+-            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+-            <feGaussianBlur stdDeviation="175" result="effect1_foregroundBlur_74_2032"/>
+-          </filter>
+-          <linearGradient id="paint0_linear_74_2032" x1="-18.1777" y1="296.873" x2="77.8835" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint1_linear_74_2032" x1="460.264" y1="296.873" x2="555.392" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint2_linear_74_2032" x1="77.8828" y1="296.873" x2="173.011" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint3_linear_74_2032" x1="555.393" y1="296.873" x2="651.454" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint4_linear_74_2032" x1="173.014" y1="296.873" x2="269.075" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint5_linear_74_2032" x1="269.074" y1="296.873" x2="365.135" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint6_linear_74_2032" x1="651.453" y1="296.873" x2="747.514" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint7_linear_74_2032" x1="747.516" y1="296.873" x2="842.644" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint8_linear_74_2032" x1="364.203" y1="296.873" x2="460.264" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint9_linear_74_2032" x1="842.643" y1="296.873" x2="938.704" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint10_linear_74_2032" x1="938.705" y1="296.873" x2="1033.83" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint11_linear_74_2032" x1="1033.83" y1="296.873" x2="1129.9" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint12_linear_74_2032" x1="1129.89" y1="296.873" x2="1225.02" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <linearGradient id="paint13_linear_74_2032" x1="1225.02" y1="296.873" x2="1321.08" y2="296.873" gradientUnits="userSpaceOnUse">
+-            <stop stopColor="#D9D9D9" stopOpacity="0"/>
+-            <stop offset="0.95" stopColor="#060606" stopOpacity="0.77"/>
+-            <stop offset="1" stopColor="white"/>
+-          </linearGradient>
+-          <clipPath id="clip0_74_2032">
+-            <rect y="-84" width="1404" height="662" rx="25" fill="white"/>
+-          </clipPath>
+-        </defs>
+-      </svg>
+-    </>
+-  );
+-};
+-
+-export default HomepageHeroBg;
+diff --git a/src/Navbar.jsx b/src/Navbar.jsx
+index cc51e2a..f546ee3 100644
+--- a/src/Navbar.jsx
++++ b/src/Navbar.jsx
+@@ -1,4 +1,4 @@
+-import React, { useState } from 'react';
++import React, { useEffect, useState } from 'react';
+ import { Link } from 'react-router-dom';
+ import logoImg from './assets/logo.svg';
+ 
+@@ -7,24 +7,34 @@ function Navbar({ activeSection, setActiveSection }) {
+ 
+   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+ 
++  useEffect(() => {
++    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
++    document.body.style.touchAction = isMobileMenuOpen ? 'none' : '';
++
++    return () => {
++      document.body.style.overflow = '';
++      document.body.style.touchAction = '';
++    };
++  }, [isMobileMenuOpen]);
++
+   return (
+     <>
+       {/* Mobile Menu Overlay */}
+-      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
++      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`} aria-hidden={!isMobileMenuOpen}>
+         <div className="mobile-nav-links">
+           <Link to="/" className={activeSection === 'home' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('home'); }}>Home</Link>
+           <Link to="/studio" className={activeSection === 'about' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('about'); }}>Studio</Link>
+           <Link to="/services" className={activeSection === 'services' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('services'); }}>Services</Link>
+           <Link to="/projects" className={activeSection === 'projects' ? 'active' : ''} onClick={() => { toggleMobileMenu(); if(setActiveSection) setActiveSection('projects'); }}>Projects</Link>
+           <Link to="/contact" className={activeSection === 'contact' ? 'active' : ''} onClick={toggleMobileMenu}>Contact</Link>
+-          <a href="https://portal.thecopperstudio.com" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
+-          <button className="lets-talk-btn mobile-lets-talk">
++          <a href="/#contact" className="client-portal-btn mobile-client-portal" onClick={toggleMobileMenu}>Client Portal</a>
++          <Link to="/contact" className="lets-talk-btn mobile-lets-talk" onClick={toggleMobileMenu}>
+             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M12 20h9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+               <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+             </svg>
+             Let's Talk &rsaquo;
+-          </button>
++          </Link>
+         </div>
+       </div>
+ 
+@@ -49,7 +59,7 @@ function Navbar({ activeSection, setActiveSection }) {
+         <div className="nav-divider desktop-only"></div>
+ 
+         <div className="nav-action desktop-only">
+-          <a href="https://portal.thecopperstudio.com" className="client-portal-link">Client Portal</a>
++          <a href="/#contact" className="client-portal-link">Client Portal</a>
+           <Link to="/contact" className="lets-talk-link">
+             <span className="lets-talk-icon-wrap">
+               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+@@ -65,7 +75,7 @@ function Navbar({ activeSection, setActiveSection }) {
+         </div>
+ 
+         {/* Hamburger Menu Button */}
+-        <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
++        <button className="mobile-menu-btn" onClick={toggleMobileMenu} aria-label="Toggle mobile menu" aria-expanded={isMobileMenuOpen}>
+           {isMobileMenuOpen ? (
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+               <line x1="18" y1="6" x2="6" y2="18"></line>
+diff --git a/src/ProjectsHeroBg.jsx b/src/ProjectsHeroBg.jsx
+index 03cbfd6..d468ec8 100644
+--- a/src/ProjectsHeroBg.jsx
++++ b/src/ProjectsHeroBg.jsx
+@@ -45,7 +45,17 @@ const ProjectsHeroBg = () => {
+       css += `.pb-stripe-${i} { animation: pbComplexPulse${i} 9s infinite linear; }\n`;
+     }
+     
+-    // Removed slow breathing animation for the colored blobs due to heavy GPU lag with feGaussianBlur
++    // Add slow breathing animation for the colored blobs
++    css += `
++      @keyframes pbBlobBreathe {
++        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
++        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++      }
++      .pb-blob { transform-origin: center; animation: pbBlobBreathe 12s infinite ease-in-out; }
++      .pb-blob-1 { animation-delay: -3s; }
++      .pb-blob-2 { animation-delay: -7s; }
++    `;
+     
+     return css;
+   }, []);
+diff --git a/src/ProjectsPage.jsx b/src/ProjectsPage.jsx
+index bba0b68..8e08621 100644
+--- a/src/ProjectsPage.jsx
++++ b/src/ProjectsPage.jsx
+@@ -5,15 +5,15 @@ import Footer from './Footer';
+ import ProjectsHeroBg from './ProjectsHeroBg';
+ import './ProjectsPage.css';
+ 
+-import cottsonFull from './assets/projects/cottson-clothing-hq.webp';
+-import dataCirclesFull from './assets/projects/datacircles-hq.webp';
+-import qodenextFull from './assets/projects/qodenext-hq.webp';
+-import commonGroundsFull from './assets/projects/commongrounds-hq.webp';
++import cottsonFull from './assets/projects/cottsonCompressed.png';
++import dataCirclesFull from './assets/projects/DataCirclesCompressed.png';
++import qodenextFull from './assets/projects/Qodenextcompress.png';
++import commonGroundsFull from './assets/projects/CommonGroungsCompressed.png';
+ 
+-import cottsonThumb from './assets/image.webp';
+-import dataCirclesThumb from './assets/DataCirclesLaptop.webp';
+-import qodenextThumb from './assets/QodenextImage.webp';
+-import commonGroundsThumb from './assets/common-grounds.webp';
++import cottsonThumb from './assets/image.png';
++import dataCirclesThumb from './assets/DataCirclesLaptop.png';
++import qodenextThumb from './assets/QodenextImage.png';
++import commonGroundsThumb from './assets/common-grounds.jpg';
+ 
+ const allProjects = [
+   {
+@@ -106,11 +106,6 @@ const filters = [
+ export default function ProjectsPage() {
+   const [activeFilter, setActiveFilter] = useState('All');
+   const [activeFullImage, setActiveFullImage] = useState(null);
+-  const [isImageLoading, setIsImageLoading] = useState(true);
+-
+-  React.useEffect(() => {
+-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+-  }, []);
+ 
+   React.useEffect(() => {
+     if (activeFullImage) {
+@@ -135,8 +130,8 @@ export default function ProjectsPage() {
+             <ProjectsHeroBg />
+           </div>
+           <div className="projects-hero-content">
+-            <h1 className="projects-hero-title reveal-up">Take A Look At What We Have Created!</h1>
+-            <p className="projects-hero-subtitle reveal-up" style={{ transitionDelay: '100ms' }}>
++            <h1 className="projects-hero-title">Take A Look At What We Have Created!</h1>
++            <p className="projects-hero-subtitle">
+               A collection of work that reflects <strong>our approach, our process and the impact we've helped create</strong> for brands and businesses.
+             </p>
+           </div>
+@@ -144,10 +139,10 @@ export default function ProjectsPage() {
+ 
+         {/* Filter Section */}
+         <div className="projects-filter-section global-container">
+-          <div className="filter-header reveal-up" style={{ transitionDelay: '200ms' }}>
++          <div className="filter-header">
+             <span className="filter-label">FILTER BY INDUSTRY</span>
+           </div>
+-          <div className="filter-pills reveal-up" style={{ transitionDelay: '300ms' }}>
++          <div className="filter-pills">
+             {filters.map(f => (
+               <button 
+                 key={f}
+@@ -163,17 +158,12 @@ export default function ProjectsPage() {
+         {/* Projects Grid */}
+         <div className="projects-grid-section global-container">
+           <div className="pp-grid">
+-            {filteredProjects.map((proj, idx) => (
++            {filteredProjects.map(proj => (
+               <div 
+                 key={proj.id} 
+-                className="pp-card-item reveal-up" 
+-                onClick={() => { 
+-                  if(proj.fullImage) {
+-                    setIsImageLoading(true);
+-                    setActiveFullImage(proj.fullImage); 
+-                  }
+-                }}
+-                style={{ cursor: proj.fullImage ? 'pointer' : 'default', transitionDelay: `${(idx % 3) * 100}ms` }}
++                className="pp-card-item" 
++                onClick={() => { if(proj.fullImage) setActiveFullImage(proj.fullImage); }}
++                style={{ cursor: proj.fullImage ? 'pointer' : 'default' }}
+               >
+                 <div className="pp-card-image">
+                   {proj.image ? (
+@@ -201,19 +191,8 @@ export default function ProjectsPage() {
+               <line x1="6" y1="6" x2="18" y2="18"></line>
+             </svg>
+           </div>
+-          {isImageLoading && (
+-            <div className="copper-loader-container">
+-              <div className="copper-spinner"></div>
+-            </div>
+-          )}
+           <div className="pp-modal-content" onClick={(e) => e.stopPropagation()}>
+-            <img 
+-              src={activeFullImage} 
+-              alt="Project Full Case Study" 
+-              className="pp-modal-full"
+-              style={{ display: isImageLoading ? 'none' : 'block' }}
+-              onLoad={() => setIsImageLoading(false)}
+-            />
++            <img src={activeFullImage} alt="Project Full Case Study" className="pp-modal-full" />
+           </div>
+         </div>
+       )}
+diff --git a/src/ProjectsSection.jsx b/src/ProjectsSection.jsx
+index f3696f6..bd0f041 100644
+--- a/src/ProjectsSection.jsx
++++ b/src/ProjectsSection.jsx
+@@ -1,23 +1,21 @@
+ import React, { useEffect, useRef, useState } from 'react';
+-import { useNavigate } from 'react-router-dom';
++import { Link } from 'react-router-dom';
+ import './ProjectsSection.css';
+-import commonGroundsImg from './assets/common-grounds.webp';
+-import dataCirclesImg from './assets/DataCirclesLaptop.webp';
+-import premiumGroupImg from './assets/image.webp';
+-import qodenextImg from './assets/QodenextImage.webp';
++import commonGroundsImg from './assets/common-grounds.jpg';
++import dataCirclesImg from './assets/DataCirclesLaptop.png';
++import premiumGroupImg from './assets/image.png';
++import qodenextImg from './assets/QodenextImage.png';
+ 
+-import proj1Svg from './assets/projects/cottson-clothing-hq.webp';
+-import proj2Svg from './assets/projects/commongrounds-hq.webp';
+-import projQodenextSvg from './assets/projects/qodenext-hq.webp';
+-import projDataCirclesSvg from './assets/projects/datacircles-hq.webp';
++import proj1Svg from './assets/projects/cottsonCompressed.png';
++import proj2Svg from './assets/projects/CommonGroungsCompressed.png';
++import projQodenextSvg from './assets/projects/Qodenextcompress.png';
++import projDataCirclesSvg from './assets/projects/DataCirclesCompressed.png';
+ 
+ export default function ProjectsSection() {
+-  const navigate = useNavigate();
+   const sectionRef = useRef(null);
+   const wrapperRef = useRef(null);
+   const titleRef = useRef(null);
+   const [activeSvg, setActiveSvg] = useState(null);
+-  const [isImageLoading, setIsImageLoading] = useState(true);
+   const [isTitleVisible, setIsTitleVisible] = useState(false);
+ 
+   useEffect(() => {
+@@ -176,16 +174,13 @@ export default function ProjectsSection() {
+               <div 
+                 className="project-card" 
+                 key={idx}
+-                onClick={() => {
+-                  setIsImageLoading(true);
+-                  setActiveSvg(proj.svgUrl);
+-                }}
++                onClick={() => setActiveSvg(proj.svgUrl)}
+                 style={{ cursor: 'pointer' }}
+               >
+                 <img src={proj.img} alt={proj.title} className="project-card-image" />
+                 <div className="project-card-overlay"></div>
+                 <div className="project-card-content">
+-                  <h3 className="project-card-title">{proj.title}</h3>
++                  <h4 className="project-card-title">{proj.title}</h4>
+                   <p className="project-card-subtitle">{proj.subtitle}</p>
+                   <div className="project-tags">
+                     {proj.tags.map((tag, tIdx) => (
+@@ -197,9 +192,9 @@ export default function ProjectsSection() {
+             ))}
+           </div>
+ 
+-          <div className="view-more-btn" onClick={() => navigate('/projects')}>
++          <Link to="/projects" className="view-more-btn">
+             See More Projects <span className="arrow-icon">&rsaquo;</span>
+-          </div>
++          </Link>
+         </div>
+ 
+       </div>
+@@ -207,11 +202,6 @@ export default function ProjectsSection() {
+       {/* SVG Modal Overlay */}
+       {activeSvg && (
+         <div className="project-svg-modal-overlay" onClick={() => setActiveSvg(null)}>
+-          {isImageLoading && (
+-            <div className="copper-loader-container">
+-              <div className="copper-spinner"></div>
+-            </div>
+-          )}
+           <div className="project-svg-modal-content" onClick={e => e.stopPropagation()}>
+             <button className="project-svg-modal-close" onClick={() => setActiveSvg(null)}>
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+@@ -219,13 +209,7 @@ export default function ProjectsSection() {
+                 <line x1="6" y1="6" x2="18" y2="18"></line>
+               </svg>
+             </button>
+-            <img 
+-              src={activeSvg} 
+-              alt="Project Presentation" 
+-              className="project-svg-full" 
+-              style={{ display: isImageLoading ? 'none' : 'block' }}
+-              onLoad={() => setIsImageLoading(false)}
+-            />
++            <img src={activeSvg} alt="Project Presentation" className="project-svg-full" />
+           </div>
+         </div>
+       )}
+diff --git a/src/ServicePricing.jsx b/src/ServicePricing.jsx
+index be09644..0979850 100644
+--- a/src/ServicePricing.jsx
++++ b/src/ServicePricing.jsx
+@@ -1,4 +1,5 @@
+ import React, { useState } from 'react';
++import { Link } from 'react-router-dom';
+ import './Pricing.css';
+ import './ServicePricing.css';
+ import { pricingServices } from './pricingData';
+@@ -24,23 +25,12 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
+       <div className="pricing-main-container global-container">
+         {!hideTitle && (
+           <>
+-            <h2 className="pricing-title reveal-up">Pricing</h2>
+-            <div className="pricing-header-text reveal-up" style={{ transitionDelay: '100ms' }}>
+-              {activeKey === 'web' ? (
+-                <>
+-                  <p className="pricing-subtitle-italic">Find The Perfect Website Package For Your Brand</p>
+-                  <p className="pricing-subtitle">
+-                    Every business has different needs. Explore our website packages to find the right combination of design, development, and ongoing support for your brand.
+-                  </p>
+-                </>
+-              ) : (
+-                <>
+-                  <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
+-                  <p className="pricing-subtitle">
+-                    Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
+-                  </p>
+-                </>
+-              )}
++            <h2 className="pricing-title">Pricing</h2>
++            <div className="pricing-header-text">
++              <p className="pricing-subtitle-italic">Find the Right Fit for Your Brand</p>
++              <p className="pricing-subtitle">
++                Whether you're just getting started, refreshing your identity, or building a complete brand experience, we've put together flexible packages designed around where your business is today and where you want it to go.
++              </p>
+             </div>
+           </>
+         )}
+@@ -65,7 +55,7 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
+ 
+         <div className="pricing-grid">
+           {plans.map((plan, index) => (
+-            <div key={index} className={`pricing-card reveal-up ${plan.name === 'Advance' ? 'popular-card' : ''}`} style={{ transitionDelay: `${200 + index * 100}ms` }}>
++            <div key={index} className={`pricing-card ${plan.name === 'Advance' ? 'popular-card' : ''}`}>
+               {plan.name === 'Advance' && (
+                 <div className="popular-banner">MOST POPULAR!</div>
+               )}
+@@ -99,24 +89,25 @@ const ServicePricing = ({ activeService, onServiceChange, showToggle = true, hid
+               </div>
+ 
+               <div className="pricing-card-footer">
+-                <button className="pricing-cta-btn">{plan.cta}</button>
++                <Link to="/contact" className="pricing-cta-btn">{plan.cta}</Link>
+               </div>
+             </div>
+           ))}
+         </div>
+ 
+         {!hideCustomBanner && (
+-          <div className="custom-plan-banner reveal-up" style={{ transitionDelay: '300ms' }}>
++          <div className="custom-plan-banner">
+             <div className="ellipse-orange"></div>
++            <div className="ellipse-blue"></div>
+             
+             <div className="custom-plan-content">
+-              <span className="custom-plan-tag">HAVE A CUSTOM REQUIREMENT?</span>
+-              <h3 className="custom-plan-title">Let's Create Something That Fits Your Brand</h3>
++              <span className="custom-req-tag">HAVE A CUSTOM REQUIREMENT?</span>
++              <h3 className="custom-plan-title">Not Finding The Perfect Plan?</h3>
+               <p className="custom-plan-desc">
+                 Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.
+               </p>
+             </div>
+-            <button className="custom-plan-btn">Book A Meeting</button>
++            <Link to="/contact" className="custom-plan-btn">Book A Meeting</Link>
+           </div>
+         )}
+       </div>
+diff --git a/src/ServicesHeroBg.jsx b/src/ServicesHeroBg.jsx
+index 63cd00e..5a3d68f 100644
+--- a/src/ServicesHeroBg.jsx
++++ b/src/ServicesHeroBg.jsx
+@@ -45,7 +45,18 @@ const ServicesHeroBg = () => {
+       css += `.svg-stripe-${i} { animation: svgComplexPulse${i} 9s infinite linear; }\n`;
+     }
+     
+-    // Removed slow breathing animation for the colored blobs due to heavy GPU lag with feGaussianBlur
++    // Add slow breathing animation for the colored blobs
++    css += `
++      @keyframes blobBreathe {
++        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
++        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++      }
++      .svg-blob { transform-origin: center; animation: blobBreathe 12s infinite ease-in-out; }
++      .svg-blob-orange { animation-delay: -3s; }
++      .svg-blob-copper { animation-delay: -6s; }
++      .svg-blob-light { animation-delay: -9s; }
++    `;
+     
+     return css;
+   }, []);
+diff --git a/src/ServicesPage.jsx b/src/ServicesPage.jsx
+index c4f84f2..32811ff 100644
+--- a/src/ServicesPage.jsx
++++ b/src/ServicesPage.jsx
+@@ -1,4 +1,4 @@
+-import React, { useState, useMemo } from 'react';
++import React, { useState } from 'react';
+ import { Link } from 'react-router-dom';
+ import Navbar from './Navbar';
+ import ServicePricing from './ServicePricing';
+@@ -10,15 +10,15 @@ import { services } from './servicesData';
+ import ServicesHeroBg from './ServicesHeroBg';
+ import './ContactPage.css';
+ import './ServicesPage.css';
+-import cardImg0 from './assets/servicessvg/card_img_0.webp';
++import cardImg0 from './assets/servicessvg/card_img_0.png';
+ import brandLogo from './assets/logos/CopperBrand.svg';
+ import webLogo from './assets/logos/CopperWeb.svg';
+ import flowLogo from './assets/logos/CopperFlow.svg';
+ 
+-import commonGroundsImg from './assets/common-grounds.webp';
+-import dataCirclesImg from './assets/DataCirclesLaptop.webp';
+-import premiumGroupImg from './assets/image.webp';
+-import qodenextImg from './assets/QodenextImage.webp';
++import commonGroundsImg from './assets/common-grounds.jpg';
++import dataCirclesImg from './assets/DataCirclesLaptop.png';
++import premiumGroupImg from './assets/image.png';
++import qodenextImg from './assets/QodenextImage.png';
+ 
+ const getLogo = (suffix) => {
+   if (suffix === 'Brand') return brandLogo;
+@@ -47,7 +47,7 @@ function ServicesPage() {
+           </div>
+         </div>
+ 
+-        <div className="services-hero-subtitle-wrap reveal-up">
++        <div className="services-hero-subtitle-wrap">
+           <p className="services-hero-sub">
+             From <strong>strategy and visual identity to websites and custom portals</strong>, we create thoughtful brand experience that helps your business stand out, connect and grow.
+           </p>
+@@ -56,8 +56,8 @@ function ServicesPage() {
+         {/* Three clickable service cards */}
+         <div className="svc-cards-section">
+           <div className="svc-cards-grid new-layout">
+-            {services.map((s, i) => (
+-              <Link to={`/services/${s.slug}`} className="svc-card new-card reveal-up" key={s.slug} style={{ transitionDelay: `${i * 100}ms` }}>
++            {services.map((s) => (
++              <Link to={`/services/${s.slug}`} className="svc-card new-card" key={s.slug}>
+                 <div className="svc-card-header">
+                   <img src={getLogo(s.suffix)} alt={`Copper${s.suffix} Logo`} className="svc-card-logo-img" />
+                 </div>
+@@ -77,7 +77,7 @@ function ServicesPage() {
+ 
+         {/* Dark Container for Ecosystem, Pricing, See it in Action */}
+         <div className="services-dark-section">
+-          <div className="ecosystem-header reveal-up">
++          <div className="ecosystem-header">
+             <h2 className="ecosystem-title">Discover The CopperEcosystem</h2>
+             <h3 className="ecosystem-subtitle">Services</h3>
+           </div>
+@@ -86,31 +86,31 @@ function ServicesPage() {
+             <ServicePricing activeService={pricingService} onServiceChange={setPricingService} showToggle={true} hideTitle={true} hideCustomBanner={true} />
+           </div>
+ 
+-          <div className="custom-req-banner reveal-up">
++          <div className="custom-req-banner">
+             <div className="custom-req-ellipse"></div>
+-            <div className="custom-req-content reveal-up" style={{ transitionDelay: '100ms' }}>
++            <div className="custom-req-content">
+               <span className="custom-req-label">HAVE A CUSTOM REQUIREMENT?</span>
+               <h2 className="custom-req-title">Let's Create Something That Fits Your Brand</h2>
+               <p className="custom-req-desc">Not every brand fits into a package. If you're looking for specific services, have custom requirements, or need support for a particular project, we'll build a solution designed around your goals.</p>
+             </div>
+-            <div className="custom-req-action reveal-up" style={{ transitionDelay: '200ms' }}>
+-              <button className="book-meeting-btn" onClick={() => window.location.href = '#contact'}>Book A Meeting</button>
++            <div className="custom-req-action">
++              <Link to="/contact" className="book-meeting-btn">Book A Meeting</Link>
+             </div>
+           </div>
+ 
+           <div className="see-in-action-section">
+-            <h2 className="see-in-action-title reveal-up">See It In Action</h2>
++            <h2 className="see-in-action-title">See It In Action</h2>
+             <div className="see-in-action-grid">
+-              <div className="action-box reveal-up" style={{ transitionDelay: '100ms' }}>
++              <div className="action-box">
+                 <img src={commonGroundsImg} alt="Common Grounds Project" className="action-box-img" />
+               </div>
+-              <div className="action-box reveal-up" style={{ transitionDelay: '200ms' }}>
++              <div className="action-box">
+                 <img src={dataCirclesImg} alt="Data Circles Project" className="action-box-img" />
+               </div>
+-              <div className="action-box reveal-up" style={{ transitionDelay: '300ms' }}>
++              <div className="action-box">
+                 <img src={premiumGroupImg} alt="Premium Group Project" className="action-box-img" />
+               </div>
+-              <div className="action-box reveal-up" style={{ transitionDelay: '400ms' }}>
++              <div className="action-box">
+                 <img src={qodenextImg} alt="Qodenext Project" className="action-box-img" />
+               </div>
+             </div>
+diff --git a/src/ServicesSection.jsx b/src/ServicesSection.jsx
+index 6313392..4f179d9 100644
+--- a/src/ServicesSection.jsx
++++ b/src/ServicesSection.jsx
+@@ -13,15 +13,15 @@ import copperBrandLogo from './assets/logos/CopperBrand.svg';
+ import copperWebLogo from './assets/logos/CopperWeb.svg';
+ import copperFlowLogo from './assets/logos/CopperFlow.svg';
+ 
+-import commonGroundsImg from './assets/common-grounds.webp';
++import commonGroundsImg from './assets/common-grounds.jpg';
+ import commonGroundsVid from './assets/Transform_this_static_caf├⌐_sce.mp4';
+-import dataCirclesImg from './assets/DataCirclesLaptop.webp';
+-import dataCirclesDashboardImg from './assets/datacirclesdashboard.webp';
+-import dataCirclesWebImg from './assets/DataCircles_web.webp';
+-import cottsonWebImg from './assets/Cottson_web.webp';
+-import premiumGroupImg from './assets/image.webp';
++import dataCirclesImg from './assets/DataCirclesLaptop.png';
++import dataCirclesDashboardImg from './assets/datacirclesdashboard.png';
++import dataCirclesWebImg from './assets/DataCircles_web.png';
++import cottsonWebImg from './assets/Cottson_web.png';
++import premiumGroupImg from './assets/image.png';
+ import premiumGroupVid from './assets/Create_a_premium_micro_animati (3).mp4';
+-import qodenextImg from './assets/QodenextImage.webp';
++import qodenextImg from './assets/QodenextImage.png';
+ 
+ export default function ServicesSection() {
+   const logos = [brand1, brand2, brand3, brand4, brand5, brand7];
+@@ -29,7 +29,7 @@ export default function ServicesSection() {
+   return (
+     <div className="services-wrapper">
+       {/* Trusted Brands Banner */}
+-      <div className="trusted-banner reveal-up">
++      <div className="trusted-banner">
+         <h3 className="trusted-banner-title">Brands Who Trusted Us With Their Vision</h3>
+         <div className="trusted-marquee">
+           <div className="trusted-marquee-track">
+@@ -46,7 +46,7 @@ export default function ServicesSection() {
+ 
+       {/* Main Services Area */}
+       <div className="services-main-container">
+-        <div className="services-header reveal-up">
++        <div className="services-header">
+           <h2 className="services-title">Services To Design Your Brand</h2>
+           <p className="services-subtitle">
+             From strategy and visual identity to websites and ongoing support, we create thoughtful brand experience that helps your business stand out, connect and grow.
+@@ -59,18 +59,18 @@ export default function ServicesSection() {
+           {/* Service 01 */}
+           <div className="service-block block-01">
+             <div className="service-top-row">
+-              <div className="service-number text-orange reveal-up">01 - BRAND IDENITY</div>
+-              <div className="service-logo-text reveal-up" style={{ transitionDelay: '100ms' }}>
++              <div className="service-number text-orange">01 - BRAND IDENITY</div>
++              <div className="service-logo-text">
+                 <img src={copperBrandLogo} alt="CopperBrand" className="service-logo-img" />
+               </div>
+-              <div className="service-desc-col reveal-up" style={{ transitionDelay: '200ms' }}>
++              <div className="service-desc-col">
+                 <p className="service-desc">
+                   <span className="desc-highlight text-orange">From first impressions to lasting recognition.</span> We believe great brands are built through consistency at every touchpoint. By combining strategy, visual identity, print, packaging, and branded assets, we create unified brand experiences that people remember and businesses grow with.
+                 </p>
+               </div>
+             </div>
+             <div className="service-cards-grid grid-4">
+-              <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
++              <div className="s-card">
+                 <img src={premiumGroupImg} alt="Cottson Clothing" className="s-card-img" />
+                 <video 
+                   src={premiumGroupVid} 
+@@ -80,12 +80,9 @@ export default function ServicesSection() {
+                   playsInline 
+                   disablePictureInPicture
+                   controlsList="nodownload noplaybackrate"
+-                  aria-hidden="true"
+-                >
+-                  <track kind="captions" srcLang="en" label="English" default />
+-                </video>
++                />
+               </div>
+-              <div className="s-card reveal-up" style={{ transitionDelay: '400ms' }}>
++              <div className="s-card">
+                 <img src={commonGroundsImg} alt="Common Grounds" className="s-card-img" />
+                 <video 
+                   src={commonGroundsVid} 
+@@ -95,19 +92,16 @@ export default function ServicesSection() {
+                   playsInline 
+                   disablePictureInPicture
+                   controlsList="nodownload noplaybackrate"
+-                  aria-hidden="true"
+-                >
+-                  <track kind="captions" srcLang="en" label="English" default />
+-                </video>
++                />
+               </div>
+-              <div className="s-card reveal-up" style={{ transitionDelay: '500ms' }}>
++              <div className="s-card">
+                 <img src={dataCirclesImg} alt="DataCircles" className="s-card-img" />
+               </div>
+-              <div className="s-card reveal-up" style={{ transitionDelay: '600ms' }}>
++              <div className="s-card">
+                 <img src={qodenextImg} alt="Qodenext India Pvt. Ltd." className="s-card-img" />
+               </div>
+             </div>
+-            <Link to="/copper-brand" className="service-more reveal-up" style={{textDecoration: 'none', transitionDelay: '700ms'}}>
++            <Link to="/services/brand-identity" className="service-more">
+               Want To <strong>Know More?</strong>
+               <div className="more-arrow-btn">
+                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+@@ -123,24 +117,24 @@ export default function ServicesSection() {
+           <div className="service-block block-02">
+             <div className="service-split-layout">
+               <div className="service-left-col">
+-                <div className="service-number text-light-orange reveal-up">02 - WEB DESIGN & DEVELOPMENT</div>
+-                <div className="service-logo-text reveal-up" style={{ transitionDelay: '100ms' }}>
++                <div className="service-number text-light-orange">02 - WEB DESIGN & DEVELOPMENT</div>
++                <div className="service-logo-text">
+                   <img src={copperWebLogo} alt="CopperWeb" className="service-logo-img" />
+                 </div>
+-                <p className="service-desc max-w-400 reveal-up" style={{ transitionDelay: '200ms' }}>
++                <p className="service-desc max-w-400">
+                   <span className="desc-highlight text-light-orange">We take care of everything your website needs,</span> from custom design and development to secure hosting, routine maintenance, and continuous optimizationΓÇöso you can focus on growing your business while your website performs at its best.
+                 </p>
+               </div>
+               <div className="service-right-col grid-2">
+-                <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
++                <div className="s-card">
+                   <img src={dataCirclesWebImg} alt="DataCircles Web" className="s-card-img" />
+                 </div>
+-                <div className="s-card reveal-up" style={{ transitionDelay: '400ms' }}>
++                <div className="s-card">
+                   <img src={cottsonWebImg} alt="Cottson Web" className="s-card-img" />
+                 </div>
+               </div>
+             </div>
+-            <Link to="/copper-web" className="service-more reveal-up" style={{textDecoration: 'none', transitionDelay: '500ms'}}>
++            <Link to="/services/web-design" className="service-more">
+               Want To <strong>Know More?</strong>
+               <div className="more-arrow-btn">
+                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+@@ -156,28 +150,28 @@ export default function ServicesSection() {
+           <div className="service-block block-03">
+             <div className="service-split-layout">
+               <div className="service-left-col">
+-                <div className="service-number text-light-orange reveal-up">03 - CLIENT PORTAL</div>
+-                <div className="service-logo-text reveal-up" style={{ transitionDelay: '100ms' }}>
++                <div className="service-number text-light-orange">03 - CLIENT PORTAL</div>
++                <div className="service-logo-text">
+                   <img src={copperFlowLogo} alt="CopperFlow" className="service-logo-img" />
+                 </div>
+-                <p className="service-desc max-w-600 reveal-up" style={{ transitionDelay: '200ms' }}>
++                <p className="service-desc max-w-600">
+                   <span className="desc-highlight text-light-orange">Custom Portals Built Around Your Business.</span> Every business works differently, and your portal should too. We design and develop custom client, employee, and business portals that simplify workflows, centralize information, and create secure, intuitive experiences tailored to the way your team and customers work.
+                 </p>
+               </div>
+               <div className="service-right-col grid-1">
+-                <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
++                <div className="s-card">
+                   <img src={dataCirclesDashboardImg} alt="CopperFlow Dashboard" className="s-card-img" />
+                 </div>
+               </div>
+             </div>
+-            <div className="service-more reveal-up" style={{ transitionDelay: '400ms' }}>
++            <Link to="/services/client-portal" className="service-more">
+               Want To <strong>Know More?</strong>
+               <div className="more-arrow-btn">
+                 <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M1 1L5 4L1 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                 </svg>
+               </div>
+-            </div>
++            </Link>
+           </div>
+           <div className="service-divider last-divider"></div>
+         </div>
+diff --git a/src/StudioHeroBg.jsx b/src/StudioHeroBg.jsx
+index 154b1cc..367767d 100644
+--- a/src/StudioHeroBg.jsx
++++ b/src/StudioHeroBg.jsx
+@@ -45,7 +45,16 @@ const StudioHeroBg = () => {
+       css += `.svg-stripe-${i} { animation: svgComplexPulse${i} 9s infinite linear; }\n`;
+     }
+     
+-    // Removed slow breathing animation for the colored blobs due to heavy GPU lag with feGaussianBlur
++    css += `
++      @keyframes blobBreathe {
++        0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++        50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
++        100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
++      }
++      .svg-blob { transform-origin: center; animation: blobBreathe 12s infinite ease-in-out; }
++      .svg-blob-orange { animation-delay: -3s; }
++      .svg-blob-copper { animation-delay: -6s; }
++    `;
+     
+     return css;
+   }, []);
+@@ -63,14 +72,14 @@ const StudioHeroBg = () => {
+ <path d="M-35.4111 474.641C-160.553 257.889 -86.2881 -19.2696 130.463 -144.411C347.215 -269.553 624.374 -195.288 749.516 21.4634C874.657 238.215 800.393 515.374 583.641 640.516C366.89 765.657 89.7304 691.393 -35.4111 474.641Z" fill="url(#paint1_radial_45_279)"/>
+ </g>
+ <rect className="svg-stripe svg-stripe-0" x="-16" width="96.0613" height="800" fill="url(#paint2_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-1" x="80.0615" width="95.1286" height="800" fill="url(#paint4_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-2" x="175.19" width="96.0613" height="800" fill="url(#paint6_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-3" x="271.251" width="96.0613" height="800" fill="url(#paint7_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-4" x="366.38" width="96.0613" height="800" fill="url(#paint10_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-5" x="462.441" width="95.1286" height="800" fill="url(#paint3_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-6" x="557.569" width="96.0613" height="800" fill="url(#paint5_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-7" x="653.631" width="96.0613" height="800" fill="url(#paint8_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+-<rect className="svg-stripe svg-stripe-8" x="749.692" width="95.1286" height="800" fill="url(#paint9_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-1" x="462.441" width="95.1286" height="800" fill="url(#paint3_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-2" x="80.0615" width="95.1286" height="800" fill="url(#paint4_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-3" x="557.569" width="96.0613" height="800" fill="url(#paint5_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-4" x="175.19" width="96.0613" height="800" fill="url(#paint6_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-5" x="271.251" width="96.0613" height="800" fill="url(#paint7_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-6" x="653.631" width="96.0613" height="800" fill="url(#paint8_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-7" x="749.692" width="95.1286" height="800" fill="url(#paint9_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
++<rect className="svg-stripe svg-stripe-8" x="366.38" width="96.0613" height="800" fill="url(#paint10_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+ <rect className="svg-stripe svg-stripe-9" x="844.82" width="96.0613" height="800" fill="url(#paint11_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+ <rect className="svg-stripe svg-stripe-10" x="940.882" width="95.1286" height="800" fill="url(#paint12_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+ <rect className="svg-stripe svg-stripe-11" x="1036.01" width="96.0613" height="800" fill="url(#paint13_linear_45_279)" style={{ mixBlendMode: 'overlay' }}/>
+diff --git a/src/StudioPage.jsx b/src/StudioPage.jsx
+index b4116ad..7934eb5 100644
+--- a/src/StudioPage.jsx
++++ b/src/StudioPage.jsx
+@@ -16,10 +16,10 @@ import connectionIcon from './assets/studio/connection.svg';
+ import craftsmanshipIcon from './assets/studio/craftsmanship.svg';
+ import characterIcon from './assets/studio/character.svg';
+ 
+-import projImg1 from './assets/brand-identity-brochure.webp';
+-import projImg2 from './assets/common-grounds.webp';
+-import projImg3 from './assets/Tea - Boxes 1.webp';
+-import projImg4 from './assets/image.webp';
++import projImg1 from './assets/brand-identity-brochure.png';
++import projImg2 from './assets/common-grounds.jpg';
++import projImg3 from './assets/Tea - Boxes 1.png';
++import projImg4 from './assets/image.png';
+ 
+ const studioProjects = [projImg1, projImg2, projImg3, projImg4];
+ 
+@@ -189,9 +189,9 @@ const StudioPage = () => {
+ 
+       {/* Our Story */}
+       <section className="studio-section studio-story">
+-        <span className="section-label reveal-up">1 - OUR STORY</span>
++        <span className="section-label">1 - OUR STORY</span>
+         <div className="story-content">
+-          <div className="story-left reveal-up" style={{ transitionDelay: '100ms' }}>
++          <div className="story-left">
+             <h2>
+               Born from the love for creativity,<br/>
+               an eye for detail and a deep<br/>
+@@ -199,7 +199,7 @@ const StudioPage = () => {
+             </h2>
+             <div className="script-text">Storytelling</div>
+           </div>
+-          <div className="story-right reveal-up" style={{ transitionDelay: '200ms' }}>
++          <div className="story-right">
+             <p>Behind every business is a journey of ambition, countless hours of hard work, and a vision that deserves to be seen and remembered. Yet too often, those stories are hidden behind generic branding that fails to capture what makes a business truly unique.</p>
+             <p>To us, storytelling is more than a creative processΓÇöit's an art form that builds trust, evokes emotion, and creates lasting connections. That belief is at the heart of everything we do at Copper Studio. Through thoughtful branding, strategic design, and purposeful digital experiences, we transform businesses into brands with character, clarity, and meaning.</p>
+           </div>
+@@ -208,30 +208,30 @@ const StudioPage = () => {
+ 
+       {/* Our Belief */}
+       <section className="studio-section studio-belief">
+-        <div className="belief-label-container reveal-up">
++        <div className="belief-label-container">
+           <span className="section-label">2 - OUR BELIEF</span>
+         </div>
+-        <h2 className="belief-quote reveal-up" style={{ transitionDelay: '100ms' }}>
++        <h2 className="belief-quote">
+           <span className="text-light-gray">Inspired by the enduring</span> <span className="text-dark-bold">qualities of copper, our beliefs are rooted in connection, craftsmanship, and thoughtful design,</span> <span className="text-light-gray">guiding how we create brands that grow stronger, connect deeper, and stand the test of time.</span>
+         </h2>
+         <div className="belief-grid">
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '200ms' }}>
++          <div className="belief-item">
+             <div className="belief-icon">
+               <img src={connectionIcon} alt="Connection" className="belief-icon-img" />
+             </div>
+             <h3>Connection</h3>
+             <p>We close the gap between your business and people it's for.</p>
+           </div>
+-          <div className="belief-divider reveal-up" style={{ transitionDelay: '300ms' }}></div>
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '400ms' }}>
++          <div className="belief-divider"></div>
++          <div className="belief-item">
+             <div className="belief-icon">
+               <img src={craftsmanshipIcon} alt="Craftsmanship" className="belief-icon-img" />
+             </div>
+             <h3>Craftsmanship</h3>
+             <p>Every detail made deliberately, never assembled from a template.</p>
+           </div>
+-          <div className="belief-divider reveal-up" style={{ transitionDelay: '500ms' }}></div>
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '600ms' }}>
++          <div className="belief-divider"></div>
++          <div className="belief-item">
+             <div className="belief-icon">
+               <img src={characterIcon} alt="Character" className="belief-icon-img" />
+             </div>
+@@ -243,21 +243,21 @@ const StudioPage = () => {
+ 
+       {/* What makes Copper different */}
+       <section className="studio-section">
+-        <span className="section-label reveal-up">3 - WHAT MAKES COPPER DIFFERENT?</span>
++        <span className="section-label">3 - WHAT MAKES COPPER DIFFERENT?</span>
+         <div className="different-grid">
+-          <div className="diff-card card-cream reveal-up" style={{ transitionDelay: '100ms' }}>
++          <div className="diff-card card-cream">
+             <div className="diff-card-ellipse-1"></div>
+             <div className="diff-card-ellipse-2"></div>
+             <h3>A dedicated client portal for complete project transparency.</h3>
+           </div>
+-          <div className="diff-card card-black reveal-up" style={{ transitionDelay: '200ms' }}>
++          <div className="diff-card card-black">
+             <div className="diff-card-ellipse-3"></div>
+             <div className="diff-card-ellipse-4"></div>
+             <div className="diff-card-ellipse-5"></div>
+             <h3>Branding, website, and company portals,</h3>
+             <h3 style={{ marginTop: 'auto' }}><span className="diff-highlight">all under one roof.</span></h3>
+           </div>
+-          <div className="diff-card card-orange reveal-up" style={{ transitionDelay: '300ms' }}>
++          <div className="diff-card card-orange">
+             <div className="diff-card-ellipse-6"></div>
+             <div className="diff-card-ellipse-7"></div>
+             <h3 style={{ marginTop: 'auto' }}>Ongoing hosting & maintenance, and support beyond launch.</h3>
+@@ -339,14 +339,14 @@ const StudioPage = () => {
+ 
+       {/* Selected Projects */}
+       <section className="studio-section">
+-        <span className="section-label reveal-up">6 - SELECTED PROJECTS</span>
+-        <div className="studio-projects-header reveal-up" style={{ transitionDelay: '100ms' }}>
++        <span className="section-label">6 - SELECTED PROJECTS</span>
++        <div className="studio-projects-header">
+           <h2>Work we're proud of</h2>
+           <div className="script-text">Projects</div>
+         </div>
+         <div className="studio-projects-grid">
+           {studioProjects.map((img, i) => (
+-            <div className="studio-project-card reveal-up" key={i} style={{ transitionDelay: `${200 + i * 100}ms` }}>
++            <div className="studio-project-card" key={i}>
+               <img src={img} alt={`Project ${i + 1}`} />
+             </div>
+           ))}
+diff --git a/src/WebLandingPage.jsx b/src/WebLandingPage.jsx
+deleted file mode 100644
+index 1dc4ec5..0000000
+--- a/src/WebLandingPage.jsx
++++ /dev/null
+@@ -1,126 +0,0 @@
+-import React, { useEffect } from 'react';
+-import './WebLandingPage.css';
+-import logoImg from './assets/logo.svg';
+-import BrandLandingHeroBg from './BrandLandingHeroBg';
+-
+-import BrandProjectsSection from './BrandProjectsSection';
+-import ServicePricingComponent from './ServicePricing';
+-import WallOfLoveComponent from './WallOfLove';
+-import FAQComponent from './FAQ';
+-import BookingComponent from './Booking';
+-import Footer from './Footer';
+-
+-import logo79 from './assets/logos/Group 79.svg';
+-import logo80 from './assets/logos/Group 80.svg';
+-import logo81 from './assets/logos/Group 81.svg';
+-import logo82 from './assets/logos/Group 82.svg';
+-import logoDC from './assets/logos/DataCircles White Logo 2 (1).svg';
+-import nittygrittyLogo from './assets/nittygrittylogo.png';
+-
+-import connectionIcon from './assets/studio/connection.svg';
+-import craftsmanshipIcon from './assets/studio/craftsmanship.svg';
+-import characterIcon from './assets/studio/character.svg';
+-
+-export default function WebLandingPage() {
+-  useEffect(() => {
+-    window.scrollTo(0, 0);
+-  }, []);
+-
+-  return (
+-    <div className="web-landing-page">
+-      <div className="bl-hero-wrapper">
+-        <div className="brand-landing-hero">
+-          <div className="bl-hero-bg-wrapper">
+-            <BrandLandingHeroBg />
+-          </div>
+-        <nav className="brand-landing-nav">
+-          <img src={logoImg} alt="Logo" className="bl-logo-img" />
+-          <button className="bl-lets-talk-btn">
+-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+-              <rect x="4" y="5" width="16" height="15" rx="3.5" ry="3.5"></rect>
+-              <line x1="16" y1="3" x2="16" y2="7"></line>
+-              <line x1="8" y1="3" x2="8" y2="7"></line>
+-              <line x1="4" y1="11" x2="20" y2="11"></line>
+-              <circle cx="9" cy="15.5" r="1.5" fill="currentColor" stroke="none"></circle>
+-            </svg>
+-            Let's Talk
+-          </button>
+-        </nav>
+-        <div className="brand-landing-hero-content">
+-          <h1 className="bl-hero-title">A website your<br/>business deserves</h1>
+-          <p className="bl-hero-subtitle">We design and build custom websites that look distinctive and load fast. The kind that<br/>make people trust you and take action. Let's build yours.</p>
+-          <div className="bl-hero-btn-wrapper">
+-            <button className="bl-hero-main-btn">Book A Meeting</button>
+-            <span className="bl-hero-btn-subtext">Free 30 Mins Video Call</span>
+-          </div>
+-        </div>
+-        <div className="bl-trusted-banner-glass">
+-          <div className="bl-trusted-text">Brand Who Have<br/>Trusted Us</div>
+-          <div className="bl-trusted-logos-viewport">
+-            <div className="bl-trusted-logos-track">
+-              {/* Original Set */}
+-              <img src={logo79} alt="Trusted Brand" className="bl-trusted-logo-img logo-1" />
+-              <img src={logo80} alt="Trusted Brand" className="bl-trusted-logo-img logo-2" />
+-              <img src={logo81} alt="Trusted Brand" className="bl-trusted-logo-img logo-3" />
+-              <img src={logo82} alt="Trusted Brand" className="bl-trusted-logo-img logo-4" />
+-              <img src={logoDC} alt="DataCircles" className="bl-trusted-logo-img logo-dc" />
+-              <img src={nittygrittyLogo} alt="Nitty Gritty" className="bl-trusted-logo-img logo-nitty" />
+-              {/* Duplicated Set for infinite loop */}
+-              <img src={logo79} alt="Trusted Brand" className="bl-trusted-logo-img logo-1" />
+-              <img src={logo80} alt="Trusted Brand" className="bl-trusted-logo-img logo-2" />
+-              <img src={logo81} alt="Trusted Brand" className="bl-trusted-logo-img logo-3" />
+-              <img src={logo82} alt="Trusted Brand" className="bl-trusted-logo-img logo-4" />
+-              <img src={logoDC} alt="DataCircles" className="bl-trusted-logo-img logo-dc" />
+-              <img src={nittygrittyLogo} alt="Nitty Gritty" className="bl-trusted-logo-img logo-nitty" />
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+-      </div>
+-
+-      {/* Our Belief */}
+-      <section className="studio-section studio-belief">
+-        <h2 className="belief-quote reveal-up" style={{ transitionDelay: '100ms' }}>
+-          <span className="text-light-gray">Inspired by the enduring</span> <span className="text-dark-bold">qualities of copper, our beliefs are rooted in connection, craftsmanship, and thoughtful design,</span> <span className="text-light-gray">guiding how we create brands that grow stronger, connect deeper, and stand the test of time.</span>
+-        </h2>
+-        <div className="belief-grid">
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '200ms' }}>
+-            <div className="belief-icon">
+-              <img src={connectionIcon} alt="Connection" className="belief-icon-img" />
+-            </div>
+-            <h3>Connection</h3>
+-            <p>We close the gap between your business and people it's for.</p>
+-          </div>
+-          <div className="belief-divider reveal-up" style={{ transitionDelay: '300ms' }}></div>
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '400ms' }}>
+-            <div className="belief-icon">
+-              <img src={craftsmanshipIcon} alt="Craftsmanship" className="belief-icon-img" />
+-            </div>
+-            <h3>Craftsmanship</h3>
+-            <p>Every detail made deliberately, never assembled from a template.</p>
+-          </div>
+-          <div className="belief-divider reveal-up" style={{ transitionDelay: '500ms' }}></div>
+-          <div className="belief-item reveal-up" style={{ transitionDelay: '600ms' }}>
+-            <div className="belief-icon">
+-              <img src={characterIcon} alt="Character" className="belief-icon-img" />
+-            </div>
+-            <h3>Character</h3>
+-            <p>Identities with enough personality to be unmistakably yours.</p>
+-          </div>
+-        </div>
+-      </section>
+-
+-      <BrandProjectsSection />
+-      
+-      <div className="bl-pricing-wrapper">
+-        <ServicePricingComponent activeService="web" showToggle={false} />
+-      </div>
+-
+-      <WallOfLoveComponent />
+-      <FAQComponent />
+-      <BookingComponent />
+-      <Footer />
+-
+-    </div>
+-  );
+-}
+diff --git a/src/WebServicePage.jsx b/src/WebServicePage.jsx
+deleted file mode 100644
+index 61427e6..0000000
+--- a/src/WebServicePage.jsx
++++ /dev/null
+@@ -1,298 +0,0 @@
+-import React, { useEffect } from 'react';
+-import Navbar from './Navbar';
+-import Footer from './Footer';
+-import FAQ from './FAQ';
+-import Booking from './Booking';
+-import ServicePricing from './ServicePricing';
+-import ContactHeroBg from './ContactHeroBg';
+-import copperWebLogo from './assets/logos/CopperWeb.svg';
+-import fourthCardSvg from './assets/fourthcard.svg';
+-
+-import './WebServicePage.css';
+-
+-export default function WebServicePage() {
+-  useEffect(() => {
+-    window.scrollTo(0, 0);
+-  }, []);
+-
+-  const compareSections = [
+-    {
+-      title: "Design & Build",
+-      features: [
+-        { name: "Custom Responsive Design", plans: [true, true, true] },
+-        { name: "Mobile & Tablet Optimization", plans: [true, true, true] },
+-        { name: "Content Management System (CMS)", plans: [false, true, true] },
+-        { name: "Blog / News Section", plans: [false, true, true] },
+-        { name: "E-commerce / Product Catalogue", plans: [false, false, true] },
+-        { name: "Secure Checkout", plans: [false, false, true] }
+-      ]
+-    },
+-    {
+-      title: "Marketing & Analytics",
+-      features: [
+-        { name: "Contact Form Integration", plans: [true, true, true] },
+-        { name: "Basic On-Page SEO Setup", plans: [true, true, true] },
+-        { name: "Advanced SEO Optimization", plans: [false, true, true] },
+-        { name: "Google Analytics Integration", plans: [false, true, true] }
+-      ]
+-    },
+-    {
+-      title: "Hosting, Support & Advanced",
+-      features: [
+-        { name: "Domain & Hosting Setup", plans: [true, true, true] },
+-        { name: "Performance & Speed Optimization", plans: [false, true, true] },
+-        { name: "Third-Party API Integrations", plans: [false, false, true] },
+-        { name: "Ongoing Maintenance & Support", plans: [false, false, true] },
+-        { name: "Priority Support", plans: [false, false, true] }
+-      ]
+-    }
+-  ];
+-
+-  return (
+-    <div className="web-service-page">
+-      <Navbar activeSection="services" />
+-      
+-      {/* Hero Section */}
+-      <div className="ws-hero-wrap">
+-        <div className="ws-hero-card">
+-          <div className="ws-hero-bg">
+-            <ContactHeroBg />
+-          </div>
+-          <div className="ws-hero-content">
+-            <h1 className="ws-hero-title">Everything Your Brand<br/>Needs</h1>
+-          </div>
+-        </div>
+-      </div>
+-
+-      {/* Content Section */}
+-      <div className="ws-content-section">
+-        <div className="ws-content-inner">
+-          <div className="ws-content-header">
+-            <span className="ws-tag">WEB DESIGN & DEVELOPMENT</span>
+-            <img src={copperWebLogo} alt="Copper Web" className="ws-main-logo" />
+-            <p className="ws-desc">
+-              <span className="desc-highlight text-orange italic-text">We take care of everything your website needs, </span>
+-              from custom design and development to secure hosting, routine maintenance, and continuous optimization, so you can focus on growing your business while your website performs at its best.
+-            </p>
+-          </div>
+-
+-          <div className="ws-features-grid">
+-            {/* Card 1 */}
+-            <div className="ws-feature-card ws-fc-1 reveal-up">
+-              <h3 className="ws-feature-title">Content Management System(CMS)</h3>
+-              <div className="ws-circle-1"></div>
+-              <p className="ws-feature-desc">Manage your website through a <strong>built-in content management system</strong>. Update text and images, and publish new posts without a developer.</p>
+-            </div>
+-
+-            {/* Card 2 */}
+-            <div className="ws-feature-card ws-fc-2 reveal-up" style={{ transitionDelay: '100ms' }}>
+-              <h3 className="ws-feature-title text-white">Third Party Integrations</h3>
+-              <div className="ws-circle-2"></div>
+-              <div className="ws-circle-3"></div>
+-              <p className="ws-feature-desc text-white">Connects the <strong>tools your business runs on</strong>, booking calendars, live chat, analytics or newsletter or directly into your website</p>
+-            </div>
+-
+-            {/* Card 3 */}
+-            <div className="ws-feature-card ws-fc-3 reveal-up" style={{ transitionDelay: '200ms' }}>
+-              <h3 className="ws-feature-title">SEO Setup</h3>
+-              <div className="ws-circle-4"></div>
+-              <p className="ws-feature-desc"><strong>On page SEO</strong> is built into every website, giving your business a strong foundation to be found by customer on search engines</p>
+-            </div>
+-
+-            {/* Card 4 */}
+-            <div className="ws-feature-card ws-fc-4 reveal-up" style={{ transitionDelay: '300ms' }}>
+-              <h3 className="ws-feature-title">Hosting & Fast-Loading</h3>
+-              <img src={fourthCardSvg} alt="Hosting & Fast-Loading" className="ws-vector" />
+-              <p className="ws-feature-desc">Every website launches with the first year of hosting, an SSL certificate and a <strong>performance optimized</strong> build engineered to load quickly</p>
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+-
+-      {/* Pricing */}
+-      <ServicePricing activeService="web" showToggle={false} />
+-
+-      {/* Every Website Comes With */}
+-      <div className="ws-every-website-section">
+-        <div className="ws-every-website-inner">
+-          <h2 className="ws-every-title reveal-up">Every Website Comes With</h2>
+-          
+-          <div className="ws-every-grid">
+-            {/* Card 1 */}
+-            <div className="ws-every-card ws-every-card-dark reveal-up">
+-              <div className="ws-every-icon">
+-                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+-                  <path d="M12.5 18C15.5376 18 18 15.5376 18 12.5C18 9.46243 15.5376 7 12.5 7C9.46243 7 7 9.46243 7 12.5C7 15.5376 9.46243 18 12.5 18Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+-                  <path d="M4 21L7.5 17.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+-                  <path d="M12.5 7L16 3.5C16.3314 3.16863 16.8686 3.16863 17.2 3.5L21.5 7.8C21.8314 8.13137 21.8314 8.66863 21.5 9L18 12.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+-                </svg>
+-              </div>
+-              <div className="ws-every-content">
+-                <h4 className="ws-every-heading text-white">Custom Figma Design</h4>
+-                <div className="ws-every-line ws-every-line-dark"></div>
+-                <p className="ws-every-desc text-white">Approved before development begins</p>
+-              </div>
+-            </div>
+-
+-            {/* Card 2 */}
+-            <div className="ws-every-card ws-every-card-light reveal-up" style={{ transitionDelay: '100ms' }}>
+-              <div className="ws-every-icon">
+-                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+-                  <rect x="4" y="6" width="17" height="13" rx="2" stroke="#070815" strokeWidth="2"/>
+-                  <path d="M4 11H21" stroke="#070815" strokeWidth="2"/>
+-                  <circle cx="7.5" cy="15.5" r="1" fill="#070815"/>
+-                </svg>
+-              </div>
+-              <div className="ws-every-content">
+-                <h4 className="ws-every-heading">First Year Hosting</h4>
+-                <div className="ws-every-line ws-every-line-light"></div>
+-                <p className="ws-every-desc">Includes SSL certificate and domain setup</p>
+-              </div>
+-            </div>
+-
+-            {/* Card 3 */}
+-            <div className="ws-every-card ws-every-card-light reveal-up" style={{ transitionDelay: '200ms' }}>
+-              <div className="ws-every-icon">
+-                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+-                  <rect x="5" y="6" width="15" height="9" rx="1" stroke="#070815" strokeWidth="2"/>
+-                  <path d="M3 18H22" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+-                  <path d="M11 15V18" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+-                  <path d="M14 15V18" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+-                </svg>
+-              </div>
+-              <div className="ws-every-content">
+-                <h4 className="ws-every-heading">Responsive Design</h4>
+-                <div className="ws-every-line ws-every-line-light"></div>
+-                <p className="ws-every-desc">Across desktop, tablet and mobile</p>
+-              </div>
+-            </div>
+-
+-            {/* Card 4 */}
+-            <div className="ws-every-card ws-every-card-light reveal-up" style={{ transitionDelay: '300ms' }}>
+-              <div className="ws-every-icon">
+-                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+-                  <circle cx="11.5" cy="11.5" r="5.5" stroke="#070815" strokeWidth="2"/>
+-                  <path d="M20 20L15.5 15.5" stroke="#070815" strokeWidth="2" strokeLinecap="round"/>
+-                </svg>
+-              </div>
+-              <div className="ws-every-content">
+-                <h4 className="ws-every-heading">Hosting & Fast-Loading</h4>
+-                <div className="ws-every-line ws-every-line-light"></div>
+-                <p className="ws-every-desc">Optimized for search visibility</p>
+-              </div>
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+-
+-      {/* Compare Plans */}
+-      <div className="compare-plans-section">
+-        <div className="compare-plans-inner">
+-          <h2 className="cp-title reveal-up">Compare Plans</h2>
+-          <p className="cp-subtitle reveal-up" style={{ transitionDelay: '100ms' }}>Every plan includes the core research tools. Pick the one that matches how many shops, products, and advertisers you track.</p>
+-          
+-          <div className="cp-table-container">
+-            <table className="cp-table">
+-              <thead>
+-                <tr>
+-                  <th className="cp-feature-col"></th>
+-                  <th className="cp-plan-col">
+-                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '200ms' }}>Essential</div>
+-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '300ms' }}>A strong foundation for brands ready to get started</div>
+-                    <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '400ms' }}>
+-                      <button className="cp-btn-light">Get Started</button>
+-                    </div>
+-                  </th>
+-                  <th className="cp-plan-col cp-highlight-col">
+-                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '300ms' }}>Advance</div>
+-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '400ms' }}>Perfect for growing businesses ready to elevate their digital presence</div>
+-                    <div className="cp-btn-wrap-dark reveal-up" style={{ transitionDelay: '500ms' }}>
+-                      <button className="cp-btn-dark">Get Started</button>
+-                    </div>
+-                  </th>
+-                  <th className="cp-plan-col">
+-                    <div className="cp-plan-name reveal-up" style={{ transitionDelay: '400ms' }}>Ultimate</div>
+-                    <div className="cp-plan-desc reveal-up" style={{ transitionDelay: '500ms' }}>The most comprehensive solution for brands that want it all</div>
+-                    <div className="cp-btn-wrap-light reveal-up" style={{ transitionDelay: '600ms' }}>
+-                      <button className="cp-btn-light">Get Started</button>
+-                    </div>
+-                  </th>
+-                </tr>
+-              </thead>
+-              <tbody>
+-                {compareSections.map((section, sIdx) => (
+-                  <React.Fragment key={sIdx}>
+-                    <tr className="cp-section-row">
+-                      <td>
+-                        <div className="cp-section-title reveal-up">{section.title}</div>
+-                      </td>
+-                      <td></td>
+-                      <td className="cp-highlight-col"></td>
+-                      <td></td>
+-                    </tr>
+-                    {section.features.map((feature, fIdx) => (
+-                      <tr key={`${sIdx}-${fIdx}`}>
+-                        <td><div className="cp-feature-name reveal-right">{feature.name}</div></td>
+-                        <td className="cp-check">
+-                          {feature.plans[0] ? (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>
+-                              <span className="cp-dot cp-dot-grey"></span>
+-                            </div>
+-                          ) : (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '100ms' }}>
+-                              <span className="cp-dash">-</span>
+-                            </div>
+-                          )}
+-                        </td>
+-                        <td className="cp-check cp-highlight-col">
+-                          {feature.plans[1] ? (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '200ms' }}>
+-                              <span className="cp-dot cp-dot-orange"></span>
+-                            </div>
+-                          ) : (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '200ms' }}>
+-                              <span className="cp-dash">-</span>
+-                            </div>
+-                          )}
+-                        </td>
+-                        <td className="cp-check">
+-                          {feature.plans[2] ? (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '300ms' }}>
+-                              <span className="cp-dot cp-dot-grey"></span>
+-                            </div>
+-                          ) : (
+-                            <div className="cp-dot-wrap reveal-up" style={{ transitionDelay: '300ms' }}>
+-                              <span className="cp-dash">-</span>
+-                            </div>
+-                          )}
+-                        </td>
+-                      </tr>
+-                    ))}
+-                  </React.Fragment>
+-                ))}
+-              </tbody>
+-            </table>
+-          </div>
+-        </div>
+-      </div>
+-
+-      {/* Brands We've Helped Grow */}
+-      <div className="ws-brands-section">
+-        <div className="ws-brands-inner">
+-          <span className="ws-tag">BRANDS & PARTNERS</span>
+-          <h2 className="ws-brands-title">Brands We've Helped Grow</h2>
+-          <div className="ws-brands-grid">
+-            <div className="ws-brand-box"></div>
+-            <div className="ws-brand-box"></div>
+-            <div className="ws-brand-box"></div>
+-            <div className="ws-brand-box"></div>
+-          </div>
+-        </div>
+-      </div>
+-
+-      <FAQ />
+-      <Booking />
+-      <Footer />
+-    </div>
+-  );
+-}
