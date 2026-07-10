@@ -3,7 +3,7 @@
 
 export const services = [
   {
-    slug: 'brand-identity',
+    slug: 'copperbrand',
     pricingKey: 'brand',
     number: '01',
     category: 'Brand Identity',
@@ -13,7 +13,7 @@ export const services = [
     desc: 'We build memorable brands through strategy, identity, print, packaging, and cohesive visual systems that inspire trust and support business growth.',
   },
   {
-    slug: 'web-design',
+    slug: 'copperweb',
     pricingKey: 'web',
     number: '02',
     category: 'Web Design & Development',
@@ -23,7 +23,7 @@ export const services = [
     desc: 'We create high-performing websites that blend exceptional design, seamless functionality, and measurable business results.',
   },
   {
-    slug: 'client-portal',
+    slug: 'copperflow',
     pricingKey: 'flow',
     number: '03',
     category: 'Client Portal',
