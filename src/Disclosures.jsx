@@ -24,7 +24,7 @@ export default function Disclosures() {
         </div>
 
         {/* Content Section */}
-        <div className="global-container" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+        <div className="global-container" style={{ marginTop: '-238px', position: 'relative', zIndex: 10, paddingBottom: '100px' }}>
           <div className="terms-content reveal-up" style={{ fontSize: '16px', fontWeight: '300', color: '#504F4F' }}>
             <style>{`
               .terms-content p { margin-bottom: 1.5rem; }
