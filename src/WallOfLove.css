@@ -1,6 +1,13 @@
 .wall-section {
   width: 100%;
   background-color: #FFFFFF;
+  /* Sit above the preceding section's backdrop. The Studio "Our Process"
+     panel is a tall (1200px) black box pinned inside a 100vh sticky
+     container, so its bottom protrudes past that section and would otherwise
+     paint over this section's "Testimonial" heading. A stacking context with
+     an opaque background keeps this section on top of that overflow. */
+  position: relative;
+  z-index: 1;
 }
 
 .wall-section .global-container {
@@ -14,14 +21,15 @@
   height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
 }
 
 .wall-header-wrapper {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +39,11 @@
 }
 
 .wall-glass-wrapper {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   z-index: 2;
   width: 100%;
   max-width: 1440px;

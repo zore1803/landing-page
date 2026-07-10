@@ -7,7 +7,7 @@ import './ProjectsPage.css';
 
 import cottsonFull from './assets/projects/cottson-clothing-hq.webp';
 import dataCirclesFull from './assets/projects/datacircles-hq.webp';
-import nittyGrittyFull from './assets/projects/nitty-gritty-hq.png';
+import nittyGrittyFull from './assets/nittygritty.png';
 import qodenextFull from './assets/projects/qodenext-hq.webp';
 import commonGroundsFull from './assets/projects/commongrounds-hq.webp';
 

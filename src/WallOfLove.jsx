@@ -84,9 +84,10 @@ const WallOfLove = () => {
           const viewportHeight = window.innerHeight;
           const wrapperHeight = glass.offsetHeight;
           
-          // Set section height to create the freeze duration
-          // A reasonable scroll distance for the swoop animation to play out
-          const scrollDistance = 1200;
+          // We need the scroll distance to equal the total travel distance of the glass wrapper.
+          const scrollDistance = wrapperHeight + viewportHeight;
+          
+          // Set section height if not set
           const targetHeight = scrollDistance + viewportHeight;
           if (section.style.height !== `${targetHeight}px`) {
             section.style.height = `${targetHeight}px`;
@@ -97,7 +98,28 @@ const WallOfLove = () => {
           progress = Math.max(0, Math.min(1, progress));
           
           const cards = glass.querySelectorAll('.bento-card');
-          
+
+          // Glass wrapper translation
+          const glassY = viewportHeight - (progress * wrapperHeight);
+          glass.style.transform = `translateY(${glassY}px)`;
+
+          // Header catch-and-lift:
+          // The title stays frozen in the center while the cards rise. Once the
+          // top of the rising cards reaches the title, the title unlocks and
+          // slides up in lockstep with the cards so they exit together.
+          const header = titleRef.current;
+          if (header) {
+            const headerHeight = header.offsetHeight;
+            const headerNaturalTop = (viewportHeight - headerHeight) / 2;
+            const gap = 40; // breathing room kept between title bottom and cards top
+            // glassY is the on-screen top of the cards region. Keep the title's
+            // bottom pinned `gap` above it once they meet; clamp so the title
+            // only ever lifts up, never drops below its centered rest position.
+            let headerY = (glassY - gap - headerHeight) - headerNaturalTop;
+            headerY = Math.min(0, headerY);
+            header.style.transform = `translate(-50%, calc(-50% + ${headerY}px))`;
+          }
+
           // Cards staggered 3D animation
           cards.forEach((card, i) => {
             const startProgress = 0.05 + (i * 0.06); // Tighter stagger, earlier start
