@@ -7,17 +7,16 @@ import './ProjectsPage.css';
 
 import cottsonFull from './assets/projects/cottson-clothing-hq.webp';
 import dataCirclesFull from './assets/projects/datacircles-hq.webp';
+import nittyGrittyFull from './assets/projects/nitty-gritty-hq.png';
 import qodenextFull from './assets/projects/qodenext-hq.webp';
 import commonGroundsFull from './assets/projects/commongrounds-hq.webp';
 
-import cottsonThumb from './assets/image.webp';
-import dataCirclesThumb from './assets/DataCirclesLaptop.webp';
-import qodenextThumb from './assets/QodenextImage.webp';
-import commonGroundsThumb from './assets/common-grounds.webp';
+import cottsonThumb from './assets/projects/cottsonclothing-thumb.webp';
+import dataCirclesThumb from './assets/projects/datacircles-thumb.webp';
 import nittyGrittyThumb from './assets/projects/nittygrity-thumb.webp';
 import facilitiesThumb from './assets/projects/facilities-thumb.webp';
-
-import nittyGrittyFull from './assets/projects/nitty-gritty-hq.png';
+import qodenextThumb from './assets/projects/qodenext-thumb.webp';
+import commonGroundsThumb from './assets/projects/commongrounds-thumb.webp';
 
 const allProjects = [
   {
@@ -67,30 +66,6 @@ const allProjects = [
     image: commonGroundsThumb,
     fullImage: commonGroundsFull,
     industry: 'Food & Beverage'
-  },
-  {
-    id: 7,
-    title: 'The Tea Archive',
-    category: 'Boutique Tea • Food & Beverages',
-    image: null,
-    fullImage: null,
-    industry: 'Food & Beverage'
-  },
-  {
-    id: 8,
-    title: 'Groove Studio',
-    category: 'Music Instrument Retailer • Retail',
-    image: null,
-    fullImage: null,
-    industry: 'Retail/E-commerce'
-  },
-  {
-    id: 9,
-    title: 'Bacoola',
-    category: 'Contemporary Apparel Brand • Apparel',
-    image: null,
-    fullImage: null,
-    industry: 'Fashion/Beauty'
   }
 ];
 

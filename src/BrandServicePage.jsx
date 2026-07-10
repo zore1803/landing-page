@@ -6,6 +6,22 @@ import Booking from './Booking';
 import ServicePricing from './ServicePricing';
 import ContactHeroBg from './ContactHeroBg';
 import copperBrandLogo from './assets/logos/CopperBrand.svg';
+import copperBrand1 from './assets/projects/copperbrand1.png';
+import copperBrand2 from './assets/projects/copperbrand2.png';
+import copperBrand3 from './assets/projects/copperbrand3.png';
+import project7 from './assets/project-7.png';
+import copperBrand4 from './assets/projects/copperbrand4.png';
+import copperBrand5 from './assets/projects/copperbrand5.png';
+import copperBrand6 from './assets/projects/copperbrand6.png';
+import copperBrand7 from './assets/projects/copperbrand7.png';
+import copperBrand8 from './assets/projects/copperbrand8.png';
+import copperBrand9 from './assets/projects/copperbrand9.png';
+import copperBrand10 from './assets/projects/copperbrand10.png';
+import copperBrand11 from './assets/projects/copperbrand11.png';
+import cottsonClothingImg from './assets/projects/cottsonclothing.png';
+import dataCirclesImg from './assets/projects/datacircles.png';
+import qodenextImg from './assets/projects/qodenext.png';
+import commonGroundsImg from './assets/projects/commongrounds.png';
 
 import './BrandServicePage.css';
 
@@ -114,9 +130,15 @@ export default function BrandServicePage() {
               <span className="bs-skill-tag">Visual Assets</span>
             </div>
             <div className="bs-grid-identity">
-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '300ms' }}>
+                <img src={copperBrand1} alt="Brand Identity Design 1" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '400ms' }}>
+                <img src={copperBrand2} alt="Brand Identity Design 2" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '500ms' }}>
+                <img src={copperBrand3} alt="Brand Identity Design 3" className="bs-card-img" />
+              </div>
             </div>
           </div>
 
@@ -137,9 +159,15 @@ export default function BrandServicePage() {
               <span className="bs-skill-tag">Employee ID Card</span>
             </div>
             <div className="bs-grid-corporate">
-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '300ms' }}>
+                <img src={copperBrand5} alt="Corporate Branding" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '400ms' }}>
+                <img src={project7} alt="Corporate Branding" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '500ms' }}>
+                <img src={copperBrand4} alt="Corporate Branding" className="bs-card-img" />
+              </div>
             </div>
           </div>
 
@@ -159,12 +187,15 @@ export default function BrandServicePage() {
               <span className="bs-skill-tag">Newsletter Design</span>
             </div>
             <div className="bs-grid-marketing">
-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '600ms' }}></div>
-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '700ms' }}></div>
-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '800ms' }}></div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '300ms' }}>
+                <img src={copperBrand7} alt="Marketing Collateral" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '400ms' }}>
+                <img src={copperBrand8} alt="Marketing Collateral" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '500ms' }}>
+                <img src={copperBrand6} alt="Marketing Collateral" className="bs-card-img" />
+              </div>
             </div>
           </div>
 
@@ -184,9 +215,15 @@ export default function BrandServicePage() {
               <span className="bs-skill-tag">Mug/Bottle Branding</span>
             </div>
             <div className="bs-grid-packaging">
-              <div className="bs-card bg-light-blue reveal-up" style={{ transitionDelay: '300ms' }}></div>
-              <div className="bs-card bg-dark reveal-up" style={{ transitionDelay: '400ms' }}></div>
-              <div className="bs-card bg-light-gray reveal-up" style={{ transitionDelay: '500ms' }}></div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '300ms' }}>
+                <img src={copperBrand11} alt="Packaging & Merchandise Design" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '400ms' }}>
+                <img src={copperBrand10} alt="Packaging & Merchandise Design" className="bs-card-img" />
+              </div>
+              <div className="bs-card reveal-up" style={{ transitionDelay: '500ms' }}>
+                <img src={copperBrand9} alt="Packaging & Merchandise Design" className="bs-card-img" />
+              </div>
             </div>
           </div>
         </div>
@@ -292,10 +329,10 @@ export default function BrandServicePage() {
           <span className="bs-tag">BRANDS & PARTNERS</span>
           <h2 className="bs-brands-title">Brands We've Helped Grow</h2>
           <div className="bs-brands-grid">
-            <div className="bs-brand-box"></div>
-            <div className="bs-brand-box"></div>
-            <div className="bs-brand-box"></div>
-            <div className="bs-brand-box"></div>
+            <img src={cottsonClothingImg} alt="Cottson Clothing" className="bs-brand-box" />
+            <img src={dataCirclesImg} alt="DataCircles" className="bs-brand-box" />
+            <img src={qodenextImg} alt="Qodenext" className="bs-brand-box" />
+            <img src={commonGroundsImg} alt="Common Grounds" className="bs-brand-box" />
           </div>
         </div>
       </div>
