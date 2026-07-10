@@ -21,8 +21,8 @@
   gap: 30px;
   box-sizing: border-box;
   overflow: hidden;
-  /* Top spacing to match the design flow if needed */
-  margin-top: 153px;
+  /* White gap between the orange hero card and this dark banner */
+  margin-top: 59px;
 }
 
 .trusted-banner-title {

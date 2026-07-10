@@ -30,12 +30,13 @@
 }
 
 .faq-title {
+  font-family: 'Zalando Sans', sans-serif;
   font-size: 56px;
-  font-weight: 700;
+  font-weight: 600;
   color: #070815;
   margin: 0 0 24px 0;
-  line-height: 1.1;
-  letter-spacing: -1px;
+  line-height: 1.15;
+  letter-spacing: 0;
 }
 
 .faq-description {

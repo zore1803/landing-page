@@ -1,6 +1,7 @@
 .coordinate-section {
   width: 100%;
-  padding: 0 0 120px 0;
+  /* Gap between the laptop card and the dark projects card below */
+  padding: 0 0 167px 0;
   background-color: #FFFFFF;
 }
 
