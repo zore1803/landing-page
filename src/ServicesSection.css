@@ -383,6 +383,10 @@
     justify-content: flex-start;
     flex-wrap: wrap;
   }
+  /* Two-class selector must be overridden explicitly or it keeps its 627px */
+  .service-right-col.grid-2x2 {
+    width: 100%;
+  }
   .grid-2 .s-card, .grid-1 .s-card {
     width: 100%;
     max-width: 500px;
@@ -458,6 +462,17 @@
   }
   .grid-4 .s-card {
     min-width: 0;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Brand Identity block: keep all four cards as a screen-fitting 2x2 grid */
+  .service-right-col.grid-2x2 {
+    width: 100%;
+    gap: 16px;
+  }
+  .grid-2x2 .s-card {
+    width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
   }
