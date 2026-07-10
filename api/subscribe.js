@@ -1,9 +1,12 @@
 import sgMail from '@sendgrid/mail';
+import connectDB from './_db.js';
+import Subscriber from './_models/Subscriber.js';
 
 // Configured via environment variables (set these in Vercel Project Settings):
 //   SENDGRID_API_KEY  - your SendGrid API key
 //   SENDGRID_FROM     - verified sender (defaults to no-reply@datacircles.in)
 //   NOTIFY_EMAIL      - internal notification recipient (defaults to rohit.zore@datacircles.in)
+//   MONGODB_URI       - same connection string as the portal (subscribers are stored here)
 const FROM_EMAIL = process.env.SENDGRID_FROM || 'no-reply@datacircles.in';
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'rohit.zore@datacircles.in';
 
@@ -28,6 +31,20 @@ export default async function handler(req, res) {
 
   const subscriber = email.trim().toLowerCase();
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+  // Persist the subscriber in the shared MongoDB (best-effort — a DB hiccup
+  // must not block the confirmation flow). Upsert so repeat sign-ups don't
+  // create duplicates or throw on the unique email index.
+  try {
+    await connectDB();
+    await Subscriber.updateOne(
+      { email: subscriber },
+      { $setOnInsert: { email: subscriber, source: 'blog-newsletter', subscribedAt: new Date() } },
+      { upsert: true }
+    );
+  } catch (dbErr) {
+    console.error('Mongo error:', dbErr.message);
+  }
 
   const thankYou = {
     to: subscriber,
