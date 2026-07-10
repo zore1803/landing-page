@@ -1,4 +1,5 @@
 import sgMail from '@sendgrid/mail';
+import mongoose from 'mongoose';
 import connectDB from './_db.js';
 import Subscriber from './_models/Subscriber.js';
 
@@ -35,15 +36,25 @@ export default async function handler(req, res) {
   // Persist the subscriber in the shared MongoDB (best-effort — a DB hiccup
   // must not block the confirmation flow). Upsert so repeat sign-ups don't
   // create duplicates or throw on the unique email index.
+  // TEMP DIAGNOSTIC: db status is echoed in the response to debug storage.
+  let dbStatus = { ok: false, hasUri: Boolean(process.env.MONGODB_URI) };
   try {
     await connectDB();
-    await Subscriber.updateOne(
+    const result = await Subscriber.updateOne(
       { email: subscriber },
       { $setOnInsert: { email: subscriber, source: 'blog-newsletter', subscribedAt: new Date() } },
       { upsert: true }
     );
+    dbStatus = {
+      ok: true,
+      hasUri: true,
+      upsertedId: result.upsertedId || null,
+      matched: result.matchedCount,
+      db: mongoose.connection?.name || null,
+    };
   } catch (dbErr) {
     console.error('Mongo error:', dbErr.message);
+    dbStatus = { ok: false, hasUri: Boolean(process.env.MONGODB_URI), error: dbErr.message };
   }
 
   const thankYou = {
@@ -88,7 +99,7 @@ export default async function handler(req, res) {
   try {
     // The notification to the internal address is mandatory; send both.
     await Promise.all([sgMail.send(thankYou), sgMail.send(notify)]);
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, dbStatus });
   } catch (err) {
     console.error('SendGrid error:', err?.response?.body || err.message);
     return res.status(502).json({ error: 'Could not complete subscription. Please try again.' });
