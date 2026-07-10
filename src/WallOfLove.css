@@ -301,6 +301,12 @@
   .bento-card {
     padding: 28px 22px;
   }
+  .bento-center-content {
+    align-items: flex-start;
+  }
+  .bento-inner-content {
+    max-width: 100%;
+  }
   .bento-icon-title {
     font-size: 20px;
     line-height: 26px;

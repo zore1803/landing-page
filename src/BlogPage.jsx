@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -15,9 +15,35 @@ const recentArticles = [
 ];
 
 export default function BlogPage() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [message, setMessage] = useState('');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (status === 'loading') return;
+    setStatus('loading');
+    setMessage('');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Something went wrong. Please try again.');
+      setStatus('success');
+      setMessage('Thanks for subscribing! Check your inbox for a confirmation.');
+      setEmail('');
+    } catch (err) {
+      setStatus('error');
+      setMessage(err.message || 'Something went wrong. Please try again.');
+    }
+  };
 
   return (
     <>
@@ -128,10 +154,28 @@ export default function BlogPage() {
               Get practical insights on branding, UI/UX, web design, and digital<br />
               strategy delivered straight to your inbox.
             </p>
-            <form className="blog-nl-form">
-              <input type="email" placeholder="Enter your email address" className="blog-nl-input" />
-              <button type="submit" className="blog-nl-button">Subscribe</button>
+            <form className="blog-nl-form" onSubmit={handleSubscribe}>
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="blog-nl-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={status === 'loading'}
+              />
+              <button type="submit" className="blog-nl-button" disabled={status === 'loading'}>
+                {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
+              </button>
             </form>
+            {message && (
+              <p
+                className="blog-nl-message"
+                style={{ color: status === 'error' ? '#c0392b' : '#2e7d32', marginTop: '12px' }}
+              >
+                {message}
+              </p>
+            )}
             <p className="blog-nl-spam">No spam. Unsubscribe at any time.</p>
           </div>
         </div>
