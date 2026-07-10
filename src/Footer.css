@@ -13,58 +13,30 @@
   width: 100%;
   height: 85vw; /* increased to make strips longer */
   max-height: 1200px;
-  background: #FFFFFF;
+  background: #F0EDE4; /* cream base; the stripe effect sits in a band at the bottom */
 }
 
-/* Rectangle 145 */
-.rect-145 {
+/* Mirrored Terms & Conditions shimmer-stripe background — kept as a compact
+   band at the bottom (same visual scale as the T&C hero) rather than stretching
+   the full tall footer. A top mask fades the stripes softly out of the cream. */
+.footer-stripes-bg {
   position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 66vw;
+  max-height: 960px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 24%);
+}
+
+.footer-stripes-svg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  left: 0px;
-  top: 0px;
-  background: #F0EDE4;
-}
-
-/* Ellipses - kept with original sizes but centered relatively so they scale nicely */
-.ellipse-37 {
-  position: absolute;
-  width: 137vw;
-  height: 60vw;
-  left: -19vw;
-  top: -41vw;
-  background: #FFFFFF;
-  filter: blur(20vw);
-}
-
-.ellipse-39 {
-  position: absolute;
-  width: 145vw;
-  height: 59vw;
-  left: -26vw;
-  bottom: -10%;
-  background: #E47317;
-  filter: blur(15vw);
-}
-
-.ellipse-38 {
-  position: absolute;
-  width: 110vw;
-  height: 30vw;
-  left: -6vw;
-  bottom: -15%;
-  background: #C55418;
-  filter: blur(10vw);
-}
-
-.ellipse-40 {
-  position: absolute;
-  width: 110vw;
-  height: 26vw;
-  left: -6vw;
-  bottom: -15%;
-  background: #5A1A14;
-  filter: blur(10vw);
+  display: block;
 }
 
 .footer-top-fade {
@@ -84,36 +56,6 @@
     rgba(255, 255, 255, 0) 100%
   );
   z-index: 20;
-}
-
-/* Group 106 */
-.group-106 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  display: flex;
-}
-
-@keyframes pleatWave {
-  0%, 100% {
-    box-shadow: inset -15px 0px 20px -15px rgba(0, 0, 0, 0.1);
-  }
-  50% {
-    box-shadow: inset -40px 0px 40px -15px rgba(0, 0, 0, 0.35);
-  }
-}
-
-.pleat {
-  flex: 1; /* This will automatically make all 14 pleats perfectly equal width */
-  height: 100%;
-  background: transparent;
-  /* A sharp, 1px thin bright line to create that perfect folded metal edge */
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
-  /* A super clean inset shadow on the right edge for 3D depth, completely avoiding muddy gradients */
-  box-shadow: inset -25px 0px 30px -15px rgba(0, 0, 0, 0.25);
-  animation: pleatWave 4s ease-in-out infinite;
 }
 
 /* --- Marquee Animation --- */
@@ -378,26 +320,9 @@
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .separator {
     display: none; /* Hide bullets between stacked links */
-  }
-  
-  /* Make sure the orange ellipses don't stretch the screen */
-  .ellipse-39 {
-    bottom: -5%;
-    width: 200vw;
-    left: -50vw;
-  }
-  
-  .ellipse-38 {
-    bottom: -10%;
-    width: 150vw;
-  }
-  
-  .ellipse-40 {
-    bottom: -10%;
-    width: 150vw;
   }
 }
 
@@ -430,11 +355,10 @@
     font-size: 18px;
   }
 
-  /* The vw-sized glow ellipses only cover a thin band at the bottom of the
-     tall mobile footer, so it read as mostly cream. Replace them with a
-     vertical gradient — cream for most of the height, easing into copper /
-     orange at the very bottom, mirroring the desktop footer's feel. */
-  .rect-145 {
+  /* On the tall mobile footer the SVG (sliced to cover) would crop most of
+     its height and read as a thin band, so overlay a cream→copper vertical
+     gradient that mirrors the desktop feel — cream up top, orange at the base. */
+  .footer-stripes-bg {
     background: linear-gradient(
       180deg,
       #F0EDE4 0%,
@@ -445,16 +369,7 @@
       #7A2A15 100%
     );
   }
-  .ellipse-37,
-  .ellipse-39,
-  .ellipse-38,
-  .ellipse-40 {
-    display: none;
-  }
-
-  /* 14 folds are far too dense on a phone — hide every other pleat so the
-     remaining 7 (flex:1) widen out into cleaner, less crowded folds. */
-  .group-106 .pleat:nth-child(even) {
+  .footer-stripes-svg {
     display: none;
   }
 }

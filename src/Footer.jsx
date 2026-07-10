@@ -3,32 +3,19 @@ import { Link } from 'react-router-dom';
 import './Footer.css';
 import footerText from './assets/footer/Group 70.svg';
 import footerMainLogo from './assets/Group 18.svg';
+import FooterStripesBg from './FooterStripesBg';
 
 const Footer = () => {
-  // 14 pleats based on the Figma structure
-  const pleats = Array.from({ length: 14 });
-
   return (
     <footer className="footer-wrapper">
       <div className="footer-container">
-        <div className="rect-145"></div>
-        <div className="ellipse-37"></div>
-        <div className="ellipse-39"></div>
-        <div className="ellipse-38"></div>
-        <div className="ellipse-40"></div>
-        
+        {/* Terms & Conditions shimmer-stripe effect, mirrored (blob points up) */}
+        <div className="footer-stripes-bg">
+          <FooterStripesBg />
+        </div>
+
         {/* Top fade overlay to transition smoothly from the white page */}
         <div className="footer-top-fade"></div>
-        
-        <div className="group-106">
-          {pleats.map((_, index) => (
-            <div 
-              key={index} 
-              className={`pleat pleat-${index + 1}`}
-              style={{ animationDelay: `${index * 0.15}s` }}
-            ></div>
-          ))}
-        </div>
 
         {/* Footer Top Content */}
         <div className="footer-content global-container">

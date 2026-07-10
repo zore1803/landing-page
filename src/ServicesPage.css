@@ -299,6 +299,19 @@
   color: #FFFFFF;
 }
 
+/* On the dark cards the default near-black CTA blends in — make it white */
+.dark-pricing-wrapper .pricing-cta-btn,
+.dark-pricing-wrapper .custom-plan-btn {
+  background-color: #FFFFFF !important;
+  color: #070815 !important;
+}
+
+.dark-pricing-wrapper .pricing-cta-btn:hover,
+.dark-pricing-wrapper .custom-plan-btn:hover {
+  background-color: #C55418 !important;
+  color: #FFFFFF !important;
+}
+
 
 /* Custom Requirement Banner */
 .custom-req-banner {
