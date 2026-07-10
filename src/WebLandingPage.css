@@ -201,7 +201,7 @@
 
 /* Studio Belief Overrides for Brand Landing Page */
 .web-landing-page .studio-belief {
-  padding: 120px 40px;
+  padding: 60px 18px 151px 18px;
   max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -237,12 +237,18 @@
   background: #070815 !important;
   border-radius: 25px;
   overflow: hidden;
+  padding-top: 67px !important;
   margin-bottom: 40px; /* spacing before Wall of Love */
 }
 
-.bl-pricing-wrapper .pricing-title,
+.bl-pricing-wrapper .pricing-title {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
 .bl-pricing-wrapper .pricing-subtitle-italic {
   color: #FFFFFF !important;
+  font-style: normal !important;
 }
 
 .bl-pricing-wrapper .pricing-subtitle {
@@ -251,9 +257,8 @@
 
 /* Dark Mode Pricing Cards */
 .bl-pricing-wrapper .pricing-card::before {
-  background-color: rgba(255, 255, 255, 0.03) !important;
-  /* Retain the original orange border from Pricing.css or make it subtle white */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: #070815 !important;
+  border: 1px solid #C55418 !important;
 }
 
 .bl-pricing-wrapper .pricing-card:hover::before {
@@ -265,6 +270,7 @@
 .bl-pricing-wrapper .feature-text,
 .bl-pricing-wrapper .custom-plan-title {
   color: #FFFFFF !important;
+  font-weight: 600 !important;
 }
 
 .bl-pricing-wrapper .plan-desc,
@@ -286,8 +292,8 @@
 }
 
 .bl-pricing-wrapper .custom-plan-banner {
-  background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: #070815 !important;
+  border: 1px solid #C55418 !important;
 }
 
 /* ------------------------------------------------------------------ */

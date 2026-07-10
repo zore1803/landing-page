@@ -3,14 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import './BrandProjectsSection.css';
 import './ProjectsSection.css';
 //images "Take A Look At What We Have Created!" 
-import img1 from './assets/image.webp';
+import img1 from './assets/cottson_thumbnail.jpg';
 import img2 from './assets/QodenextImage.webp';
-import img3 from './assets/nittygritty21.png';
+import commonGroundsMenu from './assets/common_grounds_menu.png';
 import img4 from './assets/common-grounds.webp';
 import img5 from './assets/project-4.png';
 import img6 from './assets/project-6.png'; 
 import img7 from './assets/project-7.png'; 
 import img8 from './assets/last-project.png'; 
+
+import nittyGrittyWeb from './assets/nitty_gritty_desktop_black_1.png';
+import dataCirclesLaptop from './assets/datacircles_square.png';
+import dataCirclesPhone from './assets/DataCircles_web.webp';
+import facilitiesWeb from './assets/facilities-tours.png';
+import qodenextWeb from './assets/qodenext_square.jpg';
+import cottsonWeb from './assets/cottson_square.png';
 
 import proj1Svg from './assets/projects/cottson-clothing-hq.webp';
 import proj2Svg from './assets/projects/commongrounds-hq.webp';
@@ -43,28 +50,40 @@ export default function BrandProjectsSection({ web = false }) {
       <div className="global-container">
         <h2 className="bp-title">Take A Look At What We Have Created!</h2>
         
-        <div className="bp-grid">
-          {/* Top Row */}
-          <div className="bp-card" onClick={() => handleCardClick(proj1Svg)} style={{ cursor: 'pointer' }}><img src={img1} alt="Project 1" /></div>
-          <div className="bp-card" onClick={() => handleCardClick(projQodenextSvg)} style={{ cursor: 'pointer' }}><img src={img2} alt="Project 2" /></div>
-          <div className="bp-card" onClick={() => handleCardClick(projNittyGritty)} style={{ cursor: 'pointer' }}><img src={img3} alt="Project 3" /></div>
-          
-          {/* Bottom Row */}
+        <div className={`bp-grid ${web ? 'bp-grid-web' : ''}`}>
           {web ? (
-            <div className="bp-card" onClick={() => handleCardClick(facilitiesImg)} style={{ cursor: 'pointer' }}><img src={facilitiesImg} alt="Facilities Tours and Travels" /></div>
+            <>
+              {/* Web Specific 6 Cards */}
+              <div className="bp-card" onClick={() => handleCardClick(projNittyGritty)} style={{ cursor: 'pointer' }}><img src={nittyGrittyWeb} alt="Nitty Gritty Desktop" /></div>
+              <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={dataCirclesLaptop} alt="DataCircles Laptop" /></div>
+              <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={dataCirclesPhone} alt="DataCircles Mobile" /></div>
+              
+              <div className="bp-card" onClick={() => handleCardClick(facilitiesImg)} style={{ cursor: 'pointer' }}><img src={facilitiesWeb} alt="Facilities Tours and Travels" /></div>
+              <div className="bp-card" onClick={() => handleCardClick(projQodenextSvg)} style={{ cursor: 'pointer' }}><img src={qodenextWeb} alt="Qodenext" /></div>
+              <div className="bp-card" onClick={() => handleCardClick(proj1Svg)} style={{ cursor: 'pointer' }}><img src={cottsonWeb} alt="Cottson Clothing" /></div>
+            </>
           ) : (
-            <div className="bp-card" onClick={() => handleCardClick(proj2Svg)} style={{ cursor: 'pointer' }}><img src={img4} alt="Project 4" /></div>
+            <>
+              {/* Brand Specific 8 Cards */}
+              {/* Top Row */}
+              <div className="bp-card" onClick={() => handleCardClick(proj1Svg)} style={{ cursor: 'pointer' }}><img src={img1} alt="Project 1" /></div>
+              <div className="bp-card" onClick={() => handleCardClick(projQodenextSvg)} style={{ cursor: 'pointer' }}><img src={img2} alt="Project 2" /></div>
+              <div className="bp-card" onClick={() => handleCardClick(proj2Svg)} style={{ cursor: 'pointer' }}><img src={commonGroundsMenu} alt="Common Grounds Menu" /></div>
+              
+              {/* Bottom Row */}
+              <div className="bp-card" onClick={() => handleCardClick(proj2Svg)} style={{ cursor: 'pointer' }}><img src={img4} alt="Project 4" /></div>
+              <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img5} alt="Project 5" /></div>
+              
+              {/* Bottom Right Complex Cell */}
+              <div className="bp-complex-cell">
+                <div className="bp-tall" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img6} alt="Project 6" /></div>
+                <div className="bp-small-col">
+                  <div className="bp-small" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img7} alt="Project 7" /></div>
+                  <div className="bp-small" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img8} alt="Project 8" /></div>
+                </div>
+              </div>
+            </>
           )}
-          <div className="bp-card" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img5} alt="Project 5" /></div>
-          
-          {/* Bottom Right Complex Cell */}
-          <div className="bp-complex-cell">
-            <div className="bp-tall" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img6} alt="Project 6" /></div>
-            <div className="bp-small-col">
-              <div className="bp-small" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img7} alt="Project 7" /></div>
-              <div className="bp-small" onClick={() => handleCardClick(projDataCirclesSvg)} style={{ cursor: 'pointer' }}><img src={img8} alt="Project 8" /></div>
-            </div>
-          </div>
         </div>
 
         <div className="bp-view-more-container">

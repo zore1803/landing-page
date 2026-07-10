@@ -99,7 +99,7 @@ export default function BrandLandingPage() {
         <div className="belief-grid">
           <div className="belief-item reveal-up" style={{ transitionDelay: '200ms' }}>
             <div className="belief-icon">
-              <img src={connectionIcon} alt="Connection" className="belief-icon-img" />
+              <img src={characterIcon} alt="Connection" className="belief-icon-img" />
             </div>
             <h3>Connection</h3>
             <p>We close the gap between your business and people it's for.</p>
@@ -115,7 +115,7 @@ export default function BrandLandingPage() {
           <div className="belief-divider reveal-up" style={{ transitionDelay: '500ms' }}></div>
           <div className="belief-item reveal-up" style={{ transitionDelay: '600ms' }}>
             <div className="belief-icon">
-              <img src={characterIcon} alt="Character" className="belief-icon-img" />
+              <img src={connectionIcon} alt="Character" className="belief-icon-img" />
             </div>
             <h3>Character</h3>
             <p>Identities with enough personality to be unmistakably yours.</p>
