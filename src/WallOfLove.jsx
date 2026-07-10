@@ -84,10 +84,9 @@ const WallOfLove = () => {
           const viewportHeight = window.innerHeight;
           const wrapperHeight = glass.offsetHeight;
           
-          // We need the scroll distance to equal the total travel distance of the glass wrapper.
-          const scrollDistance = wrapperHeight + viewportHeight;
-          
-          // Set section height if not set
+          // Set section height to create the freeze duration
+          // A reasonable scroll distance for the swoop animation to play out
+          const scrollDistance = 1200;
           const targetHeight = scrollDistance + viewportHeight;
           if (section.style.height !== `${targetHeight}px`) {
             section.style.height = `${targetHeight}px`;
@@ -98,10 +97,6 @@ const WallOfLove = () => {
           progress = Math.max(0, Math.min(1, progress));
           
           const cards = glass.querySelectorAll('.bento-card');
-          
-          // Glass wrapper translation
-          const glassY = viewportHeight - (progress * wrapperHeight);
-          glass.style.transform = `translateY(${glassY}px)`;
           
           // Cards staggered 3D animation
           cards.forEach((card, i) => {

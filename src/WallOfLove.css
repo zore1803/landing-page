@@ -14,15 +14,14 @@
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 
 .wall-header-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,11 +31,7 @@
 }
 
 .wall-glass-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
+  position: relative;
   z-index: 2;
   width: 100%;
   max-width: 1440px;
