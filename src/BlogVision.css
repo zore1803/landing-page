@@ -1,0 +1,363 @@
+.blog-vision-page {
+  width: 100%;
+  background: #FFFFFF;
+  padding-top: 173px; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.bv-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 120px;
+  width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+}
+
+.bv-header-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 52px 0px 8px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.bv-back-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #504F4F;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+
+.bv-back-link:hover {
+  color: #070815;
+}
+
+.bv-meta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.bv-tag-pill {
+  padding: 5px 11px;
+  background: rgba(58, 14, 18, 0.1);
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: #3A0E12;
+}
+
+.bv-meta-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #504F4F;
+}
+
+.bv-main-title {
+  width: 1000px;
+  max-width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: -0.32px;
+  color: #0B0722;
+  margin: 16px 0 0 0;
+  text-align: left;
+}
+
+.bv-main-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #504F4F;
+  margin: 18px 0 16px 0;
+  max-width: 620px;
+  text-align: left;
+}
+
+.bv-content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 0px 60px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.bv-lead-paragraph {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 31px;
+  color: #0B0722;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.bv-mission-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin-top: 34px;
+  width: 100%;
+}
+
+.bv-mcard {
+  flex: 1;
+  background: #FFFFFF;
+  border: 0.8px solid rgba(11, 7, 34, 0.1);
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.bv-mcard-icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bv-mcard-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+  color: #989795;
+  margin-top: 14px;
+}
+
+.bv-mcard-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #0B0722;
+  margin: 6px 0 0 0;
+}
+
+.bv-mcard-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #504F4F;
+  margin: 6px 0 0 0;
+}
+
+.bv-section-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: -0.24px;
+  color: #0B0722;
+  margin: 48px 0 0 0;
+  text-align: left;
+}
+
+.bv-standard-paragraph {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #2A2438;
+  margin: 16px 0 0 0;
+  width: 100%;
+  text-align: left;
+}
+
+.bv-feature-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.bv-fitem {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 22px 0;
+  gap: 20px;
+  border-bottom: 0.8px solid rgba(11, 7, 34, 0.1);
+}
+
+.bv-fitem:first-child {
+  border-top: 0.8px solid rgba(11, 7, 34, 0.1);
+}
+
+.bv-fnumber {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 31px;
+  color: #C55418;
+  width: 34px;
+}
+
+.bv-ftext {
+  display: flex;
+  flex-direction: column;
+  padding-top: 21px;
+}
+
+.bv-ftext h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #0B0722;
+  margin: 0;
+}
+
+.bv-ftext p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #504F4F;
+  margin: 6px 0 0 0;
+}
+
+.bv-impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.bv-impact-item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-top: 0.8px solid rgba(11, 7, 34, 0.1);
+  padding-right: 20px;
+}
+
+.bv-impact-item h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  color: #0B0722;
+  margin: 0;
+}
+
+.bv-impact-item p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #504F4F;
+  margin: 6px 0 0 0;
+}
+
+.bv-commitment-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 42px;
+  background: #070815;
+  border-radius: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 44px;
+}
+
+.bv-cbox-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #E47317;
+  margin-bottom: 10px;
+}
+
+.bv-commitment-box p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(240, 237, 228, 0.72);
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .bv-main-wrapper {
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .bv-main-wrapper {
+    padding: 0 40px;
+  }
+  .bv-mission-cards {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .bv-main-wrapper {
+    padding: 0 20px;
+  }
+  .bv-impact-grid {
+    grid-template-columns: 1fr;
+  }
+  .bv-main-title {
+    font-size: 28px;
+  }
+  .bv-lead-paragraph {
+    font-size: 16px;
+  }
+}
+
+.bv-blockquote {
+  border-left: 2.4px solid #E47317;
+  padding: 6px 0 6px 24px;
+  margin: 38px 0;
+}
+
+.bv-blockquote p {
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  color: #3A0E12;
+  margin: 0;
+  text-align: left;
+}

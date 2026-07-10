@@ -17,6 +17,13 @@ import TermsConditions from './TermsConditions';
 import PrivacyPolicy from './PrivacyPolicy';
 import Disclosures from './Disclosures';
 import BlogPage from './BlogPage';
+import BlogVision from './BlogVision';
+import BlogIdentity from './BlogIdentity';
+import BlogCommerce from './BlogCommerce';
+import BlogSystems from './BlogSystems';
+import BlogCaseStudy from './BlogCaseStudy';
+import BlogWireframe from './BlogWireframe';
+import BlogManifesto from './BlogManifesto';
 
 import CoordinateSectionComponent from './CoordinateSection';
 import ProjectsSectionComponent from './ProjectsSection';
@@ -381,6 +388,13 @@ function App() {
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/disclosures" element={<Disclosures />} />
           <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/blogs/subblog1" element={<BlogVision />} />
+          <Route path="/blogs/subblog2" element={<BlogIdentity />} />
+          <Route path="/blogs/subblog3" element={<BlogCommerce />} />
+          <Route path="/blogs/subblog4" element={<BlogSystems />} />
+          <Route path="/blogs/subblog5" element={<BlogCaseStudy />} />
+          <Route path="/blogs/subblog6" element={<BlogWireframe />} />
+          <Route path="/blogs/subblog7" element={<BlogManifesto />} />
         </Routes>
       </ErrorBoundary>
     </>);

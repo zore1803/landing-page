@@ -58,8 +58,14 @@
   font-weight: 400;
   color: #6b7280;
   line-height: 1.5;
-  margin: 377px auto 0;
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   max-width: 1244px;
+  padding: 0 32px;
+  box-sizing: border-box;
 }
 
 .blog-hero-subtitle strong {
@@ -89,7 +95,7 @@
     left: 20px;
   }
   .blog-hero-subtitle {
-    margin-top: 100px;
+    bottom: 40px;
     font-size: 18px;
     padding: 0 16px;
   }

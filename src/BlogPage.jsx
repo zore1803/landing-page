@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ContactHeroBg from './ContactHeroBg';
 import './BlogPage.css';
 
 const recentArticles = [
-  { tag: "Brand Identity", title: "Brand Identity for Startups: Building Trust Before You Have a Track Record", desc: "How early stage companies use brand identity design to signal credibility long before revenue, retention or a recognizable name can do it for them.", date: "June 30, 2026", time: "7 min read" },
-  { tag: "Web Design", title: "Web Design for E-Commerce: Designing for Scale Without Losing Soul", desc: "How we help consumer brands grow their product catalog and traffic without their site starting to feel like a template with a logo swapped in.", date: "June 24, 2026", time: "8 min read" },
-  { tag: "Design Systems", title: "Design Systems: Keeping Every Team on the Same Page", desc: "How a well-built design system removes friction between founders, marketers, and engineers and why most systems fail for reasons that have nothing to do with the components.", date: "Feb 21, 2026", time: "8 min read" },
-  { tag: "Case Study", title: "Rebranding Without Losing Equity: Lessons from Three Client Rebrands", desc: "What we learned helping three companies evolve their identity without alienating the customers who already knew and trusted the old one.", date: "Apr 17, 2026", time: "6 min read" },
-  { tag: "Web Design", title: "From Wireframe to Website: Our End-to-End Process", desc: "A behind-the-scenes look at how a CopperStudio web project actually moves from a blank page to a live URL, and where most of the real decisions get made.", date: "Mar 18, 2026", time: "6 min read" },
-  { tag: "Manifesto", title: "The Proactive Design Manifesto: Beyond the Pretty Deck", desc: "A manifesto on treating design as a system that anticipates a company's next six months, not a deliverable that answers only what was asked.", date: "Jan 21, 2026", time: "6 min read" }
+  { link: "/blogs/subblog2", tag: "Brand Identity", title: "Brand Identity for Startups: Building Trust Before You Have a Track Record", desc: "How early stage companies use brand identity design to signal credibility long before revenue, retention or a recognizable name can do it for them.", date: "June 30, 2026", time: "7 min read" },
+  { link: "/blogs/subblog3", tag: "Web Design", title: "Web Design for E-Commerce: Designing for Scale Without Losing Soul", desc: "How we help consumer brands grow their product catalog and traffic without their site starting to feel like a template with a logo swapped in.", date: "June 24, 2026", time: "8 min read" },
+  { link: "/blogs/subblog4", tag: "Design Systems", title: "Design Systems: Keeping Every Team on the Same Page", desc: "How a well-built design system removes friction between founders, marketers, and engineers and why most systems fail for reasons that have nothing to do with the components.", date: "Feb 21, 2026", time: "8 min read" },
+  { link: "/blogs/subblog5", tag: "Case Study", title: "Rebranding Without Losing Equity: Lessons from Three Client Rebrands", desc: "What we learned helping three companies evolve their identity without alienating the customers who already knew and trusted the old one.", date: "Apr 17, 2026", time: "6 min read" },
+  { link: "/blogs/subblog6", tag: "Web Design", title: "From Wireframe to Website: Our End-to-End Process", desc: "A behind-the-scenes look at how a CopperStudio web project actually moves from a blank page to a live URL, and where most of the real decisions get made.", date: "Mar 18, 2026", time: "6 min read" },
+  { link: "/blogs/subblog7", tag: "Manifesto", title: "The Proactive Design Manifesto: Beyond the Pretty Deck", desc: "A manifesto on treating design as a system that anticipates a company's next six months, not a deliverable that answers only what was asked.", date: "Jan 21, 2026", time: "6 min read" }
 ];
 
 export default function BlogPage() {
@@ -70,10 +71,10 @@ export default function BlogPage() {
                 <h3 className="bfc-title">Our Vision: Designing Brands That Move Markets</h3>
                 <p className="bfc-desc">Why we're building Copper Studio to be the first call for ambitious, growing businesses and how we're balancing craftsmanship with speed every step of the way.</p>
                 
-                <a href="#" className="bfc-link">
+                <Link to="/blogs/subblog1" className="bfc-link">
                   Read Full Article
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px' }}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -89,7 +90,7 @@ export default function BlogPage() {
 
             <div className="blog-recent-grid">
               {recentArticles.map((article, idx) => (
-                <div key={idx} className="blog-recent-card">
+                <Link to={article.link} key={idx} className="blog-recent-card" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column' }}>
                   <div className="brc-tag-row">
                     <span className="brc-tag-icon">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
@@ -113,7 +114,7 @@ export default function BlogPage() {
                     </div>
                     <span className="brc-arrow">&rarr;</span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
