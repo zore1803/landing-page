@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import FAQ from './FAQ';
@@ -333,6 +334,16 @@ export default function BrandServicePage() {
             <img src={dataCirclesImg} alt="DataCircles" className="bs-brand-box" />
             <img src={qodenextImg} alt="Qodenext" className="bs-brand-box" />
             <img src={commonGroundsImg} alt="Common Grounds" className="bs-brand-box" />
+          </div>
+          <div className="bs-more-projects-wrap">
+            <Link to="/projects" className="bs-more-projects-link">
+              <span className="bs-more-projects-text">Want to <strong>See More Projects?</strong></span>
+              <div className="bs-more-projects-btn">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 2.5L8 6L4.5 9.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

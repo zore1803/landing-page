@@ -673,3 +673,44 @@
   font-weight: 400;
   color: rgba(0, 0, 0, 0.2);
 }
+
+.bs-more-projects-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+.bs-more-projects-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.bs-more-projects-link:hover {
+  opacity: 0.8;
+}
+
+.bs-more-projects-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  color: #8C8C8C;
+}
+
+.bs-more-projects-text strong {
+  color: #070815;
+  font-weight: 600;
+}
+
+.bs-more-projects-btn {
+  width: 24px;
+  height: 24px;
+  background-color: #C55418;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
