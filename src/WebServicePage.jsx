@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import FAQ from './FAQ';
@@ -7,6 +8,10 @@ import ServicePricing from './ServicePricing';
 import ContactHeroBg from './ContactHeroBg';
 import copperWebLogo from './assets/logos/CopperWeb.svg';
 import fourthCardSvg from './assets/fourthcard.svg';
+import brandImg1 from './assets/DataCirclesLaptop.webp';
+import brandImg2 from './assets/DataCircles_web.webp';
+import brandImg3 from './assets/Free_MacBook_Pro_3_1_2.png';
+import brandImg4 from './assets/nitty_gritty_desktop_black_1.png';
 
 import './WebServicePage.css';
 
@@ -282,10 +287,20 @@ export default function WebServicePage() {
           <span className="ws-tag">BRANDS & PARTNERS</span>
           <h2 className="ws-brands-title">Brands We've Helped Grow</h2>
           <div className="ws-brands-grid">
-            <div className="ws-brand-box"></div>
-            <div className="ws-brand-box"></div>
-            <div className="ws-brand-box"></div>
-            <div className="ws-brand-box"></div>
+            <img src={brandImg1} alt="DataCircles Laptop" className="ws-brand-box" style={{ width: '448px', objectFit: 'cover' }} />
+            <img src={brandImg2} alt="DataCircles Web" className="ws-brand-box" style={{ width: '140px', objectFit: 'cover' }} />
+            <img src={brandImg3} alt="MacBook Pro" className="ws-brand-box" style={{ objectFit: 'cover' }} />
+            <img src={brandImg4} alt="Nitty Gritty Desktop" className="ws-brand-box" style={{ objectFit: 'cover' }} />
+          </div>
+          <div className="ws-more-projects-wrap">
+            <Link to="/projects" className="ws-more-projects-link">
+              <span className="ws-more-projects-text">Want to <strong>See More Projects?</strong></span>
+              <div className="ws-more-projects-btn">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 2.5L8 6L4.5 9.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
