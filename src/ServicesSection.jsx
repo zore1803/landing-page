@@ -13,15 +13,15 @@ import copperBrandLogo from './assets/logos/CopperBrand.svg';
 import copperWebLogo from './assets/logos/CopperWeb.svg';
 import copperFlowLogo from './assets/logos/CopperFlow.svg';
 
-import commonGroundsImg from './assets/common-grounds.webp';
-import commonGroundsVid from './assets/Transform_this_static_café_sce.mp4';
-import dataCirclesImg from './assets/DataCirclesLaptop.webp';
 import dataCirclesDashboardImg from './assets/studio/datacirclesdashboard.png';
-import dataCirclesWebImg from './assets/DataCircles_web.webp';
-import cottsonWebImg from './assets/Cottson_web.webp';
-import premiumGroupImg from './assets/image.webp';
-import premiumGroupVid from './assets/Create_a_premium_micro_animati (3).mp4';
-import qodenextImg from './assets/QodenextImage_enhanced.webp';
+import dataCirclesProjImg from './assets/projects/datacircles.png';
+import copperBrand13 from './assets/projects/copperbrand13.png';
+
+// Brand Identity (01) card thumbnails
+import cottsonThumb from './assets/projects/cottsonclothing-thumb.webp';
+import copperBrand12 from './assets/projects/copperbrand12.png';
+import copperBrand6 from './assets/projects/copperbrand6.png';
+import copperBrand7 from './assets/projects/copperbrand7.png';
 
 export default function ServicesSection() {
   const logos = [brand1, brand2, brand3, brand4, brand5, brand7];
@@ -78,40 +78,16 @@ export default function ServicesSection() {
               </div>
               <div className="service-right-col grid-2x2">
                 <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
-                  <img src={premiumGroupImg} alt="Cottson Clothing" className="s-card-img" />
-                  <video
-                    src={premiumGroupVid}
-                    className="s-card-vid"
-                    muted
-                    loop
-                    playsInline
-                    disablePictureInPicture
-                    controlsList="nodownload noplaybackrate"
-                    aria-hidden="true"
-                  >
-                    <track kind="captions" srcLang="en" label="English" default />
-                  </video>
+                  <img src={cottsonThumb} alt="Cottson Clothing" className="s-card-img" />
                 </div>
                 <div className="s-card reveal-up" style={{ transitionDelay: '400ms' }}>
-                  <img src={dataCirclesImg} alt="DataCircles" className="s-card-img" />
+                  <img src={copperBrand12} alt="DataCircles brand identity" className="s-card-img" />
                 </div>
                 <div className="s-card reveal-up" style={{ transitionDelay: '500ms' }}>
-                  <img src={commonGroundsImg} alt="Common Grounds" className="s-card-img" />
-                  <video
-                    src={commonGroundsVid}
-                    className="s-card-vid"
-                    muted
-                    loop
-                    playsInline
-                    disablePictureInPicture
-                    controlsList="nodownload noplaybackrate"
-                    aria-hidden="true"
-                  >
-                    <track kind="captions" srcLang="en" label="English" default />
-                  </video>
+                  <img src={copperBrand6} alt="Common Grounds brand collateral" className="s-card-img" />
                 </div>
                 <div className="s-card reveal-up" style={{ transitionDelay: '600ms' }}>
-                  <img src={qodenextImg} alt="Qodenext India Pvt. Ltd." className="s-card-img" />
+                  <img src={copperBrand7} alt="Brand apparel collateral" className="s-card-img" />
                 </div>
               </div>
             </div>
@@ -141,10 +117,10 @@ export default function ServicesSection() {
               </div>
               <div className="service-right-col grid-2">
                 <div className="s-card reveal-up" style={{ transitionDelay: '300ms' }}>
-                  <img src={dataCirclesWebImg} alt="DataCircles Web" className="s-card-img" />
+                  <img src={dataCirclesProjImg} alt="DataCircles Web" className="s-card-img" />
                 </div>
                 <div className="s-card reveal-up" style={{ transitionDelay: '400ms' }}>
-                  <img src={cottsonWebImg} alt="Cottson Web" className="s-card-img" />
+                  <img src={copperBrand13} alt="Custom Corporate Clothing website" className="s-card-img" />
                 </div>
               </div>
             </div>
