@@ -80,9 +80,9 @@ const Footer = () => {
             <div className="legal-links">
               <Link to="/termsandconditions">Terms & Conditions</Link>
               <span className="separator"></span>
-              <a href="#privacy">Privacy Policy</a>
+              <Link to="/privacypolicy">Privacy Policy</Link>
               <span className="separator"></span>
-              <a href="#disclosures">Disclosures</a>
+              <Link to="/disclosures">Disclosures</Link>
             </div>
             <p>2026 The Copper Studio. All Rights Reserved</p>
           </div>

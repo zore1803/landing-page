@@ -14,6 +14,8 @@ import WebServicePage from './WebServicePage';
 import BrandLandingPage from './BrandLandingPage';
 import WebLandingPage from './WebLandingPage';
 import TermsConditions from './TermsConditions';
+import PrivacyPolicy from './PrivacyPolicy';
+import Disclosures from './Disclosures';
 
 import CoordinateSectionComponent from './CoordinateSection';
 import ProjectsSectionComponent from './ProjectsSection';
@@ -375,6 +377,8 @@ function App() {
           <Route path="/copperbrand" element={<BrandLandingPage />} />
           <Route path="/copperweb" element={<WebLandingPage />} />
           <Route path="/termsandconditions" element={<TermsConditions />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/disclosures" element={<Disclosures />} />
         </Routes>
       </ErrorBoundary>
     </>);
