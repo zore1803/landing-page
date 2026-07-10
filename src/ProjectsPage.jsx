@@ -14,6 +14,10 @@ import cottsonThumb from './assets/image.webp';
 import dataCirclesThumb from './assets/DataCirclesLaptop.webp';
 import qodenextThumb from './assets/QodenextImage.webp';
 import commonGroundsThumb from './assets/common-grounds.webp';
+import nittyGrittyThumb from './assets/projects/nittygrity-thumb.webp';
+import facilitiesThumb from './assets/projects/facilities-thumb.webp';
+
+import nittyGrittyFull from './assets/projects/nitty-gritty-hq.png';
 
 const allProjects = [
   {
@@ -36,16 +40,16 @@ const allProjects = [
     id: 3,
     title: 'Nitty Gritty Labz',
     category: 'Digital Marketing, Production & Development Services • Marketing Agency',
-    image: null,
-    fullImage: null,
+    image: nittyGrittyThumb,
+    fullImage: nittyGrittyFull,
     industry: 'Corporate'
   },
   {
     id: 4,
     title: 'Facilities Tours & Travels Pvt.Ltd.',
     category: 'Corporate Transportation Services • Transportation',
-    image: null,
-    fullImage: null,
+    image: facilitiesThumb,
+    fullImage: facilitiesThumb,
     industry: 'Corporate'
   },
   {
